@@ -7,8 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    <NavigationView x:Name="Navview" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked">
+    <NavigationView x:Name="NavView" IsBackButtonVisible="Visible" IsSettingsVisible="False" ItemInvoked="NavView_ItemInvoked">
         <NavigationView.Resources>
             <!--<AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
                             BackgroundSource="Backdrop"
@@ -21,16 +20,22 @@
                             FallbackColor="White"/>-->
         </NavigationView.Resources>
         <NavigationView.MenuItems>
-            <NavigationViewItem Icon="Shop" Content="Commandes" />
-            <NavigationViewItem Icon="Slideshow" Content="Stocks" />
-            <NavigationViewItem Icon="Slideshow" Content="Produits" />
-            <NavigationViewItem Icon="Play" Content="Clients" />
-            <NavigationViewItem Icon="Home" Content="Fournisseurs" />
-            <NavigationViewItem Icon="Home" Content="Statistiques" />
-            <NavigationViewItem Icon="Home" Content="Exporter" />
+            <NavigationViewItem Tag="home" Icon="Home" Content="Accueil" />
+            <NavigationViewItem Tag="commandes" Icon="Shop" Content="Commandes" />
+            <NavigationViewItem Tag="stocks" Icon="Priority" Content="Stocks" />
+            <NavigationViewItem Tag="produits" Icon="Edit" Content="Produits" />
+            <NavigationViewItem Tag="clients" Icon="People" Content="Clients" />
+            <NavigationViewItem Tag="fournisseurs" Icon="Manage" Content="Fournisseurs" />
+            <NavigationViewItem Tag="statistiques" Icon="TwoBars" Content="Statistiques" />
+            <NavigationViewItem Tag="exporter" Icon="Save" Content="Exporter" />
         </NavigationView.MenuItems>
+
         <NavigationView.Content>
-            <Frame Name="NavigationContentFrame" />
+            <Frame Name="NavigationContentFrame" >
+                <TextBlock HorizontalAlignment="Left" Height="211" Margin="52,58,0,0" Text="VéloMax" TextWrapping="Wrap" VerticalAlignment="Top" Width="546" Style="{StaticResource HeaderTextBlockStyle}"/>
+            </Frame>
         </NavigationView.Content>
+
     </NavigationView>
+
 </Page>
