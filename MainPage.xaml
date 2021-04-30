@@ -8,20 +8,29 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <NavigationView x:Name="Navview" IsBackButtonVisible="Collapsed" IsSettingsVisible="False">
+    <NavigationView x:Name="Navview" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked">
         <NavigationView.Resources>
-            <AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
-                        BackgroundSource="HostBackdrop"
-                        FallbackColor="{StaticResource SystemChromeLowColor}"/>
+            <!--<AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
+                            BackgroundSource="Backdrop"
+                            TintColor="Transparent"
+                            FallbackColor="White"/>
             <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground"
-                        BackgroundSource="HostBackdrop"
-                        FallbackColor="{StaticResource SystemChromeLowColor}"/>
+                            BackgroundSource="HostBackdrop"
+                            TintColor="{StaticResource SystemRevealChromeWhiteColor}"
+                            TintOpacity="1"
+                            FallbackColor="White"/>-->
         </NavigationView.Resources>
+        <NavigationView.MenuItems>
+            <NavigationViewItem Icon="Shop" Content="Commandes" />
+            <NavigationViewItem Icon="Slideshow" Content="Stocks" />
+            <NavigationViewItem Icon="Slideshow" Content="Produits" />
+            <NavigationViewItem Icon="Play" Content="Clients" />
+            <NavigationViewItem Icon="Home" Content="Fournisseurs" />
+            <NavigationViewItem Icon="Home" Content="Statistiques" />
+            <NavigationViewItem Icon="Home" Content="Exporter" />
+        </NavigationView.MenuItems>
         <NavigationView.Content>
-            <Grid  Padding="40">
-                <TextBlock Text="J'aime les frites" Style="{StaticResource TitleTextBlockStyle}" />
-                <Button Content="azdauizdhiauzdh" />
-            </Grid>
+            <Frame Name="NavigationContentFrame" />
         </NavigationView.Content>
     </NavigationView>
 </Page>
