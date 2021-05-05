@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="VéloMax.Pages.Statistiques"
+    x:Class="VéloMax.Pages.ExporterMain"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:VéloMax.Pages"
@@ -10,7 +10,7 @@
 
     <Grid>
 
-        <NavigationView x:Name="NavViewStatistiques" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked">
+        <NavigationView x:Name="NavViewExporter" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked">
             <NavigationView.Resources>
                 <!--<AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
                             BackgroundSource="Backdrop"
@@ -23,11 +23,12 @@
                             FallbackColor="White"/>-->
             </NavigationView.Resources>
             <NavigationView.MenuItems>
-                <NavigationViewItemHeader Content="Statistiques"/>
-                <NavigationViewItem Tag="statsVentes" Content="Ventes"/>
-                <NavigationViewItem Tag="statClients" Content="Clients"/>
-                <NavigationViewItem Tag="statsFidelio" Content="Fidélio" />
-                <NavigationViewItem Tag="statsCommandes" Content="Commandes" />
+                <NavigationViewItemHeader Content="Exporter"/>
+                <NavigationViewItem Tag="notices" Content="Notices"/>
+                <NavigationViewItem Tag="export1" Content="table1"/>
+                <NavigationViewItem Tag="export2" Content="table2" />
+                <NavigationViewItem Tag="export3" Content="table3" />
+                <NavigationViewItem Tag="export4" Content="table4" />
             </NavigationView.MenuItems>
 
             <NavigationView.Content>

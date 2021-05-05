@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="VéloMax.Pages.Clients.Entreprises"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:VéloMax"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:data="using:VéloMax"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+        <RelativePanel>
+            <ListView Name="ListeBoutiques"
+                  SelectionMode="Single"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.IsVerticalRailEnabled="True"
+                  ScrollViewer.VerticalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.IsHorizontalRailEnabled="True"
+                  Margin="20">
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal"  >
+                            <TextBlock Text="ID" Margin="8,0" Width="50" Foreground="DarkOrange" />
+                            <TextBlock Text="Nom" Width="300" Foreground="DarkOrange" />
+                            <TextBlock Text="ID Adresse" Width="200" Foreground="DarkOrange" />
+                            <TextBlock Text="Tel" Width="80" Foreground="DarkOrange" />
+                            <TextBlock Text="Mail" Width="80" Foreground="DarkOrange" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Boutique">
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Name="NumB"
+                                    Text="{x:Bind numBString}"
+                                    Width="50" />
+                            <TextBlock Name="NomB"
+                                    Text="{x:Bind nomB}"
+                                    Width="300" />
+                            <TextBlock Text="{x:Bind numAString}"
+                                   Width="200" />
+                            <TextBlock Text="{x:Bind telB}"
+                                   Width="80" />
+                            <TextBlock Text="{x:Bind mailB}"
+                                   Width="80" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </RelativePanel>
+    </Grid>
+</Page>

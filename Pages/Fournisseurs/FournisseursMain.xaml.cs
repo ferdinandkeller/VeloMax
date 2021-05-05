@@ -20,9 +20,9 @@ namespace VéloMax.Pages
     /// <summary>
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
-    public sealed partial class Fournisseurs : Page
+    public sealed partial class FournisseursMain : Page
     {
-        public Fournisseurs()
+        public FournisseursMain()
         {
             this.InitializeComponent();
         }

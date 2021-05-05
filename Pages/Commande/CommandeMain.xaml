@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="VéloMax.Pages.Fournisseurs"
+    x:Class="VéloMax.Pages.CommandeMain"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:VéloMax.Pages"
@@ -10,7 +10,7 @@
 
     <Grid>
 
-        <NavigationView x:Name="NavViewFournisseurs" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked">
+        <NavigationView x:Name="NavViewCommandes" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked">
             <NavigationView.Resources>
                 <!--<AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
                             BackgroundSource="Backdrop"
@@ -23,9 +23,11 @@
                             FallbackColor="White"/>-->
             </NavigationView.Resources>
             <NavigationView.MenuItems>
-                <NavigationViewItemHeader Content="Fournisseurs"/>
-                <NavigationViewItem Tag="fournisseurs1" Content="Fournisseurs actuels"/>
-                <NavigationViewItem Tag="fournisseurs2" Content="Ajouter"/>
+                <NavigationViewItemHeader Content="Commandes"/>
+                <NavigationViewItem Tag="commande1" Content="A Gérer"/>
+                <NavigationViewItem Tag="commande2" Content="En Cours" />
+                <NavigationViewItem Tag="commande3" Content="Envoyées" />
+                <NavigationViewItem Tag="commande4" Content="Ajouter" />
             </NavigationView.MenuItems>
 
             <NavigationView.Content>

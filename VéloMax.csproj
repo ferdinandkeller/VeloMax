@@ -12,7 +12,7 @@
     <DefaultLanguage>fr-FR</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -125,32 +125,39 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Boutique.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Accueil.xaml.cs">
       <DependentUpon>Accueil.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Clients.xaml.cs">
-      <DependentUpon>Clients.xaml</DependentUpon>
+    <Compile Include="Pages\Clients\ClientsMain.xaml.cs">
+      <DependentUpon>ClientsMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Commande.xaml.cs">
-      <DependentUpon>Commande.xaml</DependentUpon>
+    <Compile Include="Pages\Clients\Entreprises.xaml.cs">
+      <DependentUpon>Entreprises.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Exporter.xaml.cs">
-      <DependentUpon>Exporter.xaml</DependentUpon>
+    <Compile Include="Pages\Clients\Particuliers.xaml.cs">
+      <DependentUpon>Particuliers.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Fournisseurs.xaml.cs">
-      <DependentUpon>Fournisseurs.xaml</DependentUpon>
+    <Compile Include="Pages\Commande\CommandeMain.xaml.cs">
+      <DependentUpon>CommandeMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Produits.xaml.cs">
-      <DependentUpon>Produits.xaml</DependentUpon>
+    <Compile Include="Pages\Exporter\ExporterMain.xaml.cs">
+      <DependentUpon>ExporterMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Statistiques.xaml.cs">
-      <DependentUpon>Statistiques.xaml</DependentUpon>
+    <Compile Include="Pages\Fournisseurs\FournisseursMain.xaml.cs">
+      <DependentUpon>FournisseursMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Stocks.xaml.cs">
-      <DependentUpon>Stocks.xaml</DependentUpon>
+    <Compile Include="Pages\Produits\ProduitsMain.xaml.cs">
+      <DependentUpon>ProduitsMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Statistiques\StatistiquesMain.xaml.cs">
+      <DependentUpon>StatistiquesMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Stocks\StocksMain.xaml.cs">
+      <DependentUpon>StocksMain.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequetesSQL.cs" />
@@ -231,39 +238,53 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Clients.xaml">
+    <Page Include="Pages\Clients\ClientsMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Commande.xaml">
+    <Page Include="Pages\Clients\Entreprises.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Exporter.xaml">
+    <Page Include="Pages\Clients\Particuliers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Fournisseurs.xaml">
+    <Page Include="Pages\Commande\CommandeMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Produits.xaml">
+    <Page Include="Pages\Exporter\ExporterMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Statistiques.xaml">
+    <Page Include="Pages\Fournisseurs\FournisseursMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Stocks.xaml">
+    <Page Include="Pages\Produits\ProduitsMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Statistiques\StatistiquesMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Stocks\StocksMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.11</Version>
+      <Version>6.2.12</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls.DataGrid">
+      <Version>7.0.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

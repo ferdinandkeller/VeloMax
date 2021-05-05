@@ -12,26 +12,28 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Core;
+using Windows.System;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
+using System.Data.SqlClient;
+using static VéloMax.Boutique;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace VéloMax.Pages
+namespace VéloMax.Pages.Clients
 {
-    /// <summary>
-    /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
-    /// </summary>
-    public sealed partial class Produits : Page
+   
+
+    public sealed partial class Entreprises : Page
     {
-        public Produits()
+        public Entreprises()
         {
             this.InitializeComponent();
+            ListeBoutiques.ItemsSource = GetBoutiques((App.Current as App).ConnectionString);
         }
-        private void Navview_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
-        {
-            if (args.InvokedItemContainer != null)
-            {
-                var navItemTag = args.InvokedItemContainer.Tag.ToString();
-            }
-        }
+
     }
 }
+
+

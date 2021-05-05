@@ -22,6 +22,17 @@ namespace VéloMax
     /// </summary>
     sealed partial class App : Application
     {
+        // Connection string for using Windows Authentication.
+        private string connectionString =
+            @"SERVER=localhost;PORT=3306;DATABASE=VeloMax;UID=root;PASSWORD=___";
+
+        // This is an example connection string for using SQL Server Authentication.
+        // private string connectionString =
+        //     @"Data Source=YourServerName\YourInstanceName;Initial Catalog=DatabaseName; User Id=XXXXX; Password=XXXXX";
+        //       @"Data Source=localhost\SQLEXPRESS;Initial Catalog=BDD_Crea;Integrated Security=SSPI"
+
+        public string ConnectionString { get => connectionString; set => connectionString = value; }
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().

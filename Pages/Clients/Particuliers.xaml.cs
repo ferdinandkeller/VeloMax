@@ -15,23 +15,16 @@ using Windows.UI.Xaml.Navigation;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace VéloMax.Pages
+namespace VéloMax.Pages.Clients
 {
     /// <summary>
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
-    public sealed partial class Statistiques : Page
+    public sealed partial class Particuliers : Page
     {
-        public Statistiques()
+        public Particuliers()
         {
             this.InitializeComponent();
-        }
-        private void Navview_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
-        {
-            if (args.InvokedItemContainer != null)
-            {
-                var navItemTag = args.InvokedItemContainer.Tag.ToString();
-            }
         }
     }
 }

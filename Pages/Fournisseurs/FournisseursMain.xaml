@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="VéloMax.Pages.Stocks"
+    x:Class="VéloMax.Pages.FournisseursMain"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:VéloMax.Pages"
@@ -10,7 +10,7 @@
 
     <Grid>
 
-        <NavigationView x:Name="NavViewStocks" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked">
+        <NavigationView x:Name="NavViewFournisseurs" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked">
             <NavigationView.Resources>
                 <!--<AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
                             BackgroundSource="Backdrop"
@@ -23,17 +23,10 @@
                             FallbackColor="White"/>-->
             </NavigationView.Resources>
             <NavigationView.MenuItems>
-                <NavigationViewItemHeader Content="Stocks"/>
-                <NavigationViewItem Tag="stocksVelos" Content="Vélos"/>
-                <NavigationViewItem Tag="stockPieces" Content="Pièces"/>
-                <NavigationViewItem Tag="stockFournisseur" Content="Fournisseurs" />
-                <NavigationViewItem Tag="alerte" Icon="Important" />
-                <AutoSuggestBox PlaceholderText="Critère" QueryIcon="Find" Width="200"
-                TextChanged="AutoSuggestBox_TextChanged"
-                QuerySubmitted="AutoSuggestBox_QuerySubmitted"
-                SuggestionChosen="AutoSuggestBox_SuggestionChosen"/>
+                <NavigationViewItemHeader Content="Fournisseurs"/>
+                <NavigationViewItem Tag="fournisseurs1" Content="Fournisseurs actuels"/>
+                <NavigationViewItem Tag="fournisseurs2" Content="Ajouter"/>
             </NavigationView.MenuItems>
-   
 
             <NavigationView.Content>
                 <Frame Name="NavigationContentFrame" >
