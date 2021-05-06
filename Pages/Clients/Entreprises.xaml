@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     xmlns:data="using:VéloMax"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    
     <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
         <RelativePanel>
             <ListView Name="ListeBoutiques"
@@ -23,11 +23,11 @@
                 <ListView.HeaderTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal"  >
-                            <TextBlock Text="ID" Margin="8,0" Width="50" Foreground="DarkOrange" />
-                            <TextBlock Text="Nom" Width="300" Foreground="DarkOrange" />
+                            <TextBlock Text="ID" Margin="8,0" Width="100" Foreground="DarkOrange" />
+                            <TextBlock Text="Nom" Width="500" Foreground="DarkOrange" />
                             <TextBlock Text="ID Adresse" Width="200" Foreground="DarkOrange" />
-                            <TextBlock Text="Tel" Width="80" Foreground="DarkOrange" />
-                            <TextBlock Text="Mail" Width="80" Foreground="DarkOrange" />
+                            <TextBlock Text="Tel" Width="200" Foreground="DarkOrange" />
+                            <TextBlock Text="Mail" Width="300" Foreground="DarkOrange" />
                         </StackPanel>
                     </DataTemplate>
                 </ListView.HeaderTemplate>
@@ -52,4 +52,38 @@
             </ListView>
         </RelativePanel>
     </Grid>
+
+    <!--
+    <Page.Resources>
+        <CollectionViewSource x:Name="ListeBoutiques" IsSourceGrouped="False" 
+                              ItemsPath="local:Boutique"/>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <GridView ItemsSource="{Binding Source={StaticResource ListeBoutiques}}" MaxHeight="500">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="20">
+                        <TextBlock Text="{Binding numBString}" FontWeight="Bold" 
+                                   Style="{StaticResource BaseTextBlockStyle}"/>
+                        <TextBlock Text="{Binding nomB}" TextWrapping="NoWrap" 
+                                   Style="{StaticResource BodyTextBlockStyle}" />
+                        <TextBlock Text="{Binding numAString}" TextWrapping="NoWrap" 
+                                   Style="{StaticResource BodyTextBlockStyle}" />
+                        <TextBlock Text="{Binding telB}" TextWrapping="NoWrap" 
+                                   Style="{StaticResource BodyTextBlockStyle}" />
+                        <TextBlock Text="{Binding mailB}" TextWrapping="NoWrap" 
+                                   Style="{StaticResource BodyTextBlockStyle}" />
+                        
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid MaximumRowsOrColumns="3"/>
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+        </GridView>
+    </Grid>
+    -->
 </Page>

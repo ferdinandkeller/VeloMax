@@ -24,7 +24,7 @@ namespace VéloMax
     {
         // Connection string for using Windows Authentication.
         private string connectionString =
-            @"SERVER=localhost;PORT=3306;DATABASE=VeloMax;UID=root;PASSWORD=___";
+            @"SERVER=localhost;PORT=3306;DATABASE=VeloMax;UID=root;PASSWORD=__";
 
         // This is an example connection string for using SQL Server Authentication.
         // private string connectionString =

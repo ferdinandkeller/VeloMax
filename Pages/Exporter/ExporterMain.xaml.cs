@@ -22,9 +22,17 @@ namespace VéloMax.Pages
     /// </summary>
     public sealed partial class ExporterMain : Page
     {
+        public List<File> Files { get; set; }
         public ExporterMain()
         {
             this.InitializeComponent();
+
+            Files = new List<File>
+            {
+                new File{Name="Notice",ExportXAML=false,ExportJSON=false,Exporttxt=false },
+                new File{Name="Blabal",ExportXAML=false,ExportJSON=false,Exporttxt=false }
+            };
+            ListeFiles.Source = Files;
         }
 
         private void Navview_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
@@ -34,5 +42,14 @@ namespace VéloMax.Pages
                 var navItemTag = args.InvokedItemContainer.Tag.ToString();
             }
         }
+
+    }
+    
+    public class File
+    {
+        public string Name { get; set; }
+        public bool ExportXAML { get; set; }
+        public bool ExportJSON { get; set; }
+        public bool Exporttxt { get; set; }
     }
 }

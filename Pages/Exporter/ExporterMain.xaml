@@ -8,6 +8,11 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <CollectionViewSource x:Name="ListeFiles" IsSourceGrouped="False" 
+                              ItemsPath="Files"/>
+    </Page.Resources>
+
     <Grid>
 
         <NavigationView x:Name="NavViewExporter" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked">
@@ -30,10 +35,37 @@
                 <NavigationViewItem Tag="export3" Content="table3" />
                 <NavigationViewItem Tag="export4" Content="table4" />
             </NavigationView.MenuItems>
+            
+            
 
             <NavigationView.Content>
                 <Frame Name="NavigationContentFrame" >
+                    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+                        <GridView ItemsSource="{Binding Source={StaticResource ListeFiles}}">
+                            <GridView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Padding="20">
+                                        <TextBlock Text="{Binding Name}" FontWeight="Bold"
+                                   Style="{StaticResource BaseTextBlockStyle}" />
+                                        <CheckBox Content="XAML" IsChecked="{Binding ExportXAML}" 
+                                  IsEnabled="True"/>
+                                        <CheckBox Content="JSON" IsChecked="{Binding ExportJSON}" 
+                                  IsEnabled="True"/>
+                                        <CheckBox Content="txt" IsChecked="{Binding Exporttxt}" 
+                                  IsEnabled="True"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VariableSizedWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="5"/>
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
+
+
+                        </GridView>
+                    </Grid>
                 </Frame>
             </NavigationView.Content>
 
