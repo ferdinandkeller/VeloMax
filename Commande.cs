@@ -20,16 +20,20 @@ using System.Data.SqlClient;
 
 namespace VéloMax
 {
-    public class Boutique : INotifyPropertyChanged
+    class Commande : INotifyPropertyChanged
     {
-        public int numB { get; set; }
+        public int numC { get; set; }
 
-        public string numBString { get { return numB.ToString(); } }
-        public string nomB { get; set; }
+        public string numCString { get { return numC.ToString(); } }
         public int numA { get; set; }
+
         public string numAString { get { return numA.ToString(); } }
-        public string telB { get; set; }
-        public string mailB { get; set; }
+        public DateTime dateC { get; set; }
+        public string dateCString { get { return dateC.ToString(); } }
+        public DateTime dateL { get; set; }
+        public string dateLString { get { return dateL.ToString(); } }
+        public bool livree { get; set; }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
@@ -37,39 +41,41 @@ namespace VéloMax
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public static ObservableCollection<Boutique> GetBoutiques(string connectionString)
+        public static ObservableCollection<Commande> GetCommandesEnCours(string connectionString)
         {
-            const string GetBoutiquesQuery = "select * from boutique;";
+            const string GetCommandesQuery = "select * from commande where dateL>=@date;";
 
-            var boutiques = new ObservableCollection<Boutique>();
+            var commandes = new ObservableCollection<Commande>();
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand(GetBoutiquesQuery, conn);
+                    SqlCommand cmd = new SqlCommand(GetCommandesQuery, conn);
+                    cmd.Parameters.AddWithValue("@date", DateTime.Now);
                     conn.Open();
                     if (conn.State == System.Data.ConnectionState.Open)
                     {
+                        
                         using (cmd)
                         {
                             using (SqlDataReader reader = cmd.ExecuteReader())
                             {
                                 while (reader.Read())
                                 {
-                                    var boutique = new Boutique();
-                                    boutique.numB = reader.GetInt32(0);
-                                    boutique.nomB = reader.GetString(1);
-                                    boutique.numA = reader.GetInt32(2);
-                                    boutique.telB = reader.GetString(3);
-                                    boutique.mailB = reader.GetString(4);
-                                    boutiques.Add(boutique);
-                                    
+                                    var commande = new Commande();
+                                    commande.numC = reader.GetInt32(0);
+                                    commande.numA = reader.GetInt32(1);
+                                    commande.dateC = reader.GetDateTime(2);
+                                    commande.dateL = reader.GetDateTime(3);
+                                    commande.livree = false;
+                                    commandes.Add(commande);
+
                                 }
                             }
                         }
                     }
                 }
-                return boutiques;
+                return commandes;
             }
             catch (Exception eSql)
             {
@@ -78,5 +84,4 @@ namespace VéloMax
             return null;
         }
     }
-    
 }

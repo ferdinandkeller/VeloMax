@@ -10,7 +10,7 @@
 
     <Grid>
 
-        <NavigationView x:Name="NavViewCommandes" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked">
+        <NavigationView x:Name="NavViewCommandes" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="NavView_ItemInvoked">
             <NavigationView.Resources>
                 <!--<AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
                             BackgroundSource="Backdrop"
@@ -24,10 +24,9 @@
             </NavigationView.Resources>
             <NavigationView.MenuItems>
                 <NavigationViewItemHeader Content="Commandes"/>
-                <NavigationViewItem Tag="commande1" Content="A Gérer"/>
-                <NavigationViewItem Tag="commande2" Content="En Cours" />
-                <NavigationViewItem Tag="commande3" Content="Envoyées" />
-                <NavigationViewItem Tag="commande4" Content="Ajouter" />
+                <NavigationViewItem Tag="commande1" Content="En Cours" />
+                <NavigationViewItem Tag="commande2" Content="Envoyées" />
+                <NavigationViewItem Tag="commande3" Content="Ajouter" />
             </NavigationView.MenuItems>
 
             <NavigationView.Content>
