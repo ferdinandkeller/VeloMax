@@ -10,7 +10,7 @@
 
     <Grid>
 
-        <NavigationView x:Name="NavViewFournisseurs" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked">
+        <NavigationView x:Name="NavViewFournisseurs" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked" BackRequested="NavView_BackRequested">
             <NavigationView.Resources>
                 <!--<AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
                             BackgroundSource="Backdrop"
@@ -23,7 +23,6 @@
                             FallbackColor="White"/>-->
             </NavigationView.Resources>
             <NavigationView.MenuItems>
-                <NavigationViewItemHeader Content="Fournisseurs"/>
                 <NavigationViewItem Tag="fournisseurs1" Content="Fournisseurs actuels"/>
                 <NavigationViewItem Tag="fournisseurs2" Content="Ajouter"/>
             </NavigationView.MenuItems>

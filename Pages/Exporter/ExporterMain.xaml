@@ -15,7 +15,7 @@
 
     <Grid>
 
-        <NavigationView x:Name="NavViewExporter" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked">
+        <NavigationView x:Name="NavViewExporter" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked" BackRequested="NavView_BackRequested">
             <NavigationView.Resources>
                 <!--<AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
                             BackgroundSource="Backdrop"
@@ -28,7 +28,6 @@
                             FallbackColor="White"/>-->
             </NavigationView.Resources>
             <NavigationView.MenuItems>
-                <NavigationViewItemHeader Content="Exporter"/>
                 <NavigationViewItem Tag="notices" Content="Notices"/>
                 <NavigationViewItem Tag="export1" Content="table1"/>
                 <NavigationViewItem Tag="export2" Content="table2" />

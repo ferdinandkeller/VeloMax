@@ -7,6 +7,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using muxc = Microsoft.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
@@ -39,6 +40,7 @@ namespace VéloMax
 
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
+            /*
             // You can also add items in code.
             NavView.MenuItems.Add(new NavigationViewItemSeparator());
             NavView.MenuItems.Add(new NavigationViewItem
@@ -47,6 +49,7 @@ namespace VéloMax
                 Icon = new SymbolIcon((Symbol)0xF1AD),
                 Tag = "content"
             });
+            */
             _pages.Add(("home", typeof(VéloMax.Pages.Accueil)));
 
             // Add handler for ContentFrame navigation.
@@ -156,6 +159,7 @@ namespace VéloMax
                  NavView.DisplayMode == NavigationViewDisplayMode.Minimal))
                 return false;
             NavigationContentFrame.GoBack();
+            ;
             return true;
         }
 

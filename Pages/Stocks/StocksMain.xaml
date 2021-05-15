@@ -10,7 +10,7 @@
 
     <Grid>
 
-        <NavigationView x:Name="NavViewStocks" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked">
+        <NavigationView x:Name="NavViewStocks" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked" BackRequested="NavView_BackRequested">
             <NavigationView.Resources>
                 <!--<AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
                             BackgroundSource="Backdrop"
@@ -23,7 +23,6 @@
                             FallbackColor="White"/>-->
             </NavigationView.Resources>
             <NavigationView.MenuItems>
-                <NavigationViewItemHeader Content="Stocks"/>
                 <NavigationViewItem Tag="stocksVelos" Content="Vélos"/>
                 <NavigationViewItem Tag="stockPieces" Content="Pièces"/>
                 <NavigationViewItem Tag="stockFournisseur" Content="Fournisseurs" />

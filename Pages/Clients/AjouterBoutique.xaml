@@ -8,7 +8,24 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <!-- rue ville code postal province-->
     <Grid>
-
+        <StackPanel>
+            <TextBlock Text="Adresse :" Margin="15"/>
+            <StackPanel Orientation="Vertical">
+                <TextBox Name="rueA" Header="Rue :" Width="300" HorizontalAlignment="Left" Margin="25"/>
+                <TextBox Name="villeA" Header="Ville :" Width="300" HorizontalAlignment="Left" Margin="25"/>
+                <TextBox Name="codePA" Header="Code Postal :" Width="300" HorizontalAlignment="Left" Margin="25"/>
+                <TextBox Name="provinceA" Header="Région :" Width="300" HorizontalAlignment="Left" Margin="25"/>
+                <Button Content="Confirmer l'adresse" Click="ButtonA_Clicked" Margin="15" Background="Peru"/>
+            </StackPanel>
+            <TextBlock Text="Coordonnées :" Margin="15"/>
+            <StackPanel Orientation="Vertical">
+                <TextBox Name="nomBoutique" Header="Nom de la boutique :" Width="300" HorizontalAlignment="Left" Margin="25"/>
+                <TextBox Name="telBoutique" Header="Numéro de téléphone :" Width="300" HorizontalAlignment="Left" Margin="25"/>
+                <TextBox Name="mailBoutique" Header="Mail :" Width="300" HorizontalAlignment="Left" Margin="25"/>
+                <Button Content="Confirmer l'ajout de la boutique" Click="ButtonB_Clicked" Margin="15" Background="Peru"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

@@ -37,16 +37,7 @@ namespace VéloMax.Pages
 
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
-            // You can also add items in code.
-            NavViewClients.MenuItems.Add(new NavigationViewItemSeparator());
-            NavViewClients.MenuItems.Add(new NavigationViewItem
-            {
-                Content = "My content",
-                Icon = new SymbolIcon((Symbol)0xF1AD),
-                Tag = "content"
-            });
-            _pages.Add(("home", typeof(VéloMax.Pages.Accueil)));
-
+            
             // Add handler for ContentFrame navigation.
             NavigationContentFrame.Navigated += On_Navigated;
 
@@ -55,7 +46,7 @@ namespace VéloMax.Pages
             // If navigation occurs on SelectionChanged, this isn't needed.
             // Because we use ItemInvoked to navigate, we need to call Navigate
             // here to load the home page.
-            NavView_Navigate("home", new Windows.UI.Xaml.Media.Animation.EntranceNavigationTransitionInfo());
+            NavView_Navigate("clientParticulier", new Windows.UI.Xaml.Media.Animation.EntranceNavigationTransitionInfo());
 
             // Listen to the window directly so the app responds
             // to accelerator keys regardless of which element has focus.

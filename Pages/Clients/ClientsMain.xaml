@@ -9,8 +9,8 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        
-        <NavigationView x:Name="NavViewClients" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="NavView_ItemInvoked">
+
+        <NavigationView x:Name="NavViewClients" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="NavView_ItemInvoked" BackRequested="NavView_BackRequested">
             <NavigationView.Resources>
                 <!--<AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
                             BackgroundSource="Backdrop"
@@ -23,14 +23,13 @@
                             FallbackColor="White"/>-->
             </NavigationView.Resources>
             <NavigationView.MenuItems>
-                <NavigationViewItemHeader Content="Clients"/>
                 <NavigationViewItem Tag="clientParticulier" Content="Particuliers"/>
                 <NavigationViewItem Tag="clientEntreprise" Content="Entreprises" />
             </NavigationView.MenuItems>
 
             <NavigationView.Content>
-                <Frame Name="NavigationContentFrame" >
-                    
+                <Frame Name="NavigationContentFrame">
+
                 </Frame>
             </NavigationView.Content>
 

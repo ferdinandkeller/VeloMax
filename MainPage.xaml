@@ -1,5 +1,6 @@
 ﻿<Page
     x:Class="VéloMax.MainPage"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:VéloMax"
@@ -7,7 +8,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <NavigationView x:Name="NavView" IsBackButtonVisible="Visible" IsSettingsVisible="False" ItemInvoked="NavView_ItemInvoked">
+
+    <NavigationView x:Name="NavView" IsBackButtonVisible="Visible" IsBackEnabled="True" IsSettingsVisible="False" Loaded="NavView_Loaded" ItemInvoked="NavView_ItemInvoked" BackRequested="NavView_BackRequested">
         <NavigationView.Resources>
             <!--<AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
                             BackgroundSource="Backdrop"
@@ -21,14 +23,15 @@
         </NavigationView.Resources>
         <NavigationView.MenuItems>
             <NavigationViewItem Tag="home" Icon="Home" Content="Accueil" />
-            <NavigationViewItem Tag="commandes" Icon="Shop" Content="Commandes" />
+            <NavigationViewItem Tag="commandes" Icon="Shop" Content="Commandes"/>
             <NavigationViewItem Tag="stocks" Icon="Priority" Content="Stocks" />
             <NavigationViewItem Tag="produits" Icon="Edit" Content="Produits" />
-            <NavigationViewItem Tag="clients" Icon="People" Content="Clients" />
+            <NavigationViewItem Tag="clients" Icon="People" Content="Clients" ToolTipService.ToolTip="Clients"/>
             <NavigationViewItem Tag="fournisseurs" Icon="Manage" Content="Fournisseurs" />
             <NavigationViewItem Tag="statistiques" Icon="TwoBars" Content="Statistiques" />
             <NavigationViewItem Tag="exporter" Icon="Save" Content="Exporter" />
         </NavigationView.MenuItems>
+        
 
         <NavigationView.Content>
             <Frame Name="NavigationContentFrame" >
