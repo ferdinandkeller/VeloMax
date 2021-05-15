@@ -11,7 +11,7 @@ namespace VéloMax.bdd
 {
     public static class ControlleurRequetes
     {
-        /* */
+        /* Requêtes de base */
         public delegate void ExecuteurRequete(MySqlConnection conn);
         public delegate void ParseurRequete(MySqlDataReader reader);
 
@@ -88,8 +88,8 @@ namespace VéloMax.bdd
             });
         }
 
-        /* */
-        public static bool Existe(string req)
+        /* Requêtes complexes */
+        /*public static bool Existe(string req)
         {
             int result = -1;
             ControlleurRequetes.SelectionneUn(req, (MySqlDataReader reader) =>
@@ -97,9 +97,9 @@ namespace VéloMax.bdd
                 result = reader.GetInt32("COUNT(*)");
             });
             return result > 0;
-        }
+        }*/
 
-        public static bool Libre(string req)
+        /*public static bool Libre(string req)
         {
             int result = -1;
             ControlleurRequetes.SelectionneUn(req, (MySqlDataReader reader) =>
@@ -107,7 +107,7 @@ namespace VéloMax.bdd
                 result = reader.GetInt32("COUNT(*)");
             });
             return result == 0;
-        }
+        }*/
 
         public static int Numero(string req)
         {
@@ -131,6 +131,13 @@ namespace VéloMax.bdd
             int res = -1;
             string req = $"SELECT {field_name} FROM {table_name} WHERE {key_name}={key_value}";
             SelectionneUn(req, (MySqlDataReader reader) => { res = reader.GetInt32(field_name); });
+            return res;
+        }
+        public static DateTime ObtenirChampDatetime(string table_name, string key_name, int key_value, string field_name)
+        {
+            DateTime res = DateTime.Now;
+            string req = $"SELECT {field_name} FROM {table_name} WHERE {key_name}={key_value}";
+            SelectionneUn(req, (MySqlDataReader reader) => { res = reader.GetDateTime(field_name); });
             return res;
         }
 

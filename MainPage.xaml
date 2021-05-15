@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <NavigationView x:Name="Navview" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked">
+    <NavigationView x:Name="Navview" IsBackButtonVisible="Collapsed" IsSettingsVisible="False">
         <NavigationView.Resources>
             <!--<AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
                             BackgroundSource="Backdrop"
@@ -30,7 +30,12 @@
             <NavigationViewItem Icon="Home" Content="Exporter" />
         </NavigationView.MenuItems>
         <NavigationView.Content>
-            <Frame Name="NavigationContentFrame" />
+            <StackPanel>
+                <Button Content="Exécuter SQL BTN1" Click="ExecuteSQL1" />
+                <Button Content="Exécuter SQL BTN2" Click="ExecuteSQL2" />
+                <Button Content="Exécuter SQL BTN3" Click="ExecuteSQL3" />
+                <Button Content="Exécuter SQL BTN4" Click="ExecuteSQL4" />
+            </StackPanel>
         </NavigationView.Content>
     </NavigationView>
 </Page>
