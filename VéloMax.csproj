@@ -125,21 +125,24 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="bdd\associations\CatalFournisseur.cs" />
+    <Compile Include="bdd\associations\CompositionModele.cs" />
+    <Compile Include="bdd\associations\ContenuCommandeModele.cs" />
+    <Compile Include="bdd\associations\ContenuCommandePiece.cs" />
+    <Compile Include="bdd\associations\ExecuteurCommandeBoutique.cs" />
+    <Compile Include="bdd\associations\ExecuteurCommandeIndividu.cs" />
+    <Compile Include="bdd\associations\Fidelio.cs" />
+    <Compile Include="bdd\controlleurs\ControlleurRequetes.cs" />
+    <Compile Include="bdd\entites\Adresse.cs" />
     <Compile Include="bdd\entites\Boutique.cs" />
     <Compile Include="bdd\entites\Commande.cs" />
+    <Compile Include="bdd\entites\Fournisseur.cs" />
     <Compile Include="bdd\entites\Individu.cs" />
-    <Compile Include="bdd\entites\LigneModele.cs" />
     <Compile Include="bdd\entites\Modele.cs" />
     <Compile Include="bdd\entites\Piece.cs" />
     <Compile Include="bdd\entites\Programme.cs" />
-    <Compile Include="bdd\controlleurs\ControlleurRequetes.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="bdd\entites\Adresse.cs" />
-    <Compile Include="bdd\entites\Fournisseur.cs" />
-    <Compile Include="Pages\Commande.xaml.cs">
-      <DependentUpon>Commande.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -214,10 +217,6 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Commande.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

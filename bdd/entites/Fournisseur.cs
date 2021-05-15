@@ -1,71 +1,77 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace VéloMax.bdd
 {
     public class Fournisseur
     {
-        // siret map
-        private static int siret_map_index = 0;
-        private static Dictionary<int, int> siret_map = new Dictionary<int, int>();
+        /* Attributs */
+        public readonly int numF;
 
-        /*  */
-        private int _siret_map_key;
-        public int siret {
-            get { return siret_map[_siret_map_key]; }
-            set { ControlleurRequetes.ModifierChamp("fournisseur", "siret", siret, "siret", value); siret_map[_siret_map_key] = value; }
-        }
-
-        public string nom
+        public int siret
         {
-            get { return ControlleurRequetes.ObtenirChampString("fournisseur", "siret", siret, "nomF"); }
-            set { ControlleurRequetes.ModifierChamp("fournisseur", "siret", siret, "nomF", value); }
+            get { return ControlleurRequetes.ObtenirChampInt("Fournisseur", "numF", numF, "siret"); }
+            set { ControlleurRequetes.ModifierChamp("Fournisseur", "numF", numF, "siret", value); }
+        }
+        public string nomF
+        {
+            get { return ControlleurRequetes.ObtenirChampString("Fournisseur", "numF", numF, "nomF"); }
+            set { ControlleurRequetes.ModifierChamp("Fournisseur", "numF", numF, "nomF", value); }
+        }
+        public int numA
+        {
+            get { return ControlleurRequetes.ObtenirChampInt("Fournisseur", "numF", numF, "numA"); }
+            set { ControlleurRequetes.ModifierChamp("Fournisseur", "numF", numF, "numA", value); }
         }
         public Adresse adresse
         {
-            get { return new Adresse(ControlleurRequetes.ObtenirChampInt("fournisseur", "siret", siret, "numA")); }
-            set { ControlleurRequetes.ModifierChamp("fournisseur", "siret", siret, "numA", value.num); }
+            get => new Adresse(numA);
         }
         public string contact
         {
-            get { return ControlleurRequetes.ObtenirChampString("fournisseur", "siret", siret, "contact"); }
-            set { ControlleurRequetes.ModifierChamp("fournisseur", "siret", siret, "contact", value); }
+            get { return ControlleurRequetes.ObtenirChampString("Fournisseur", "numF", numF, "contact"); }
+            set { ControlleurRequetes.ModifierChamp("Fournisseur", "numF", numF, "contact", value); }
         }
         public int reactivite
         {
-            get { return ControlleurRequetes.ObtenirChampInt("fournisseur", "siret", siret, "reactivite"); }
-            set { ControlleurRequetes.ModifierChamp("fournisseur", "siret", siret, "reactivite", value); }
+            get { return ControlleurRequetes.ObtenirChampInt("Fournisseur", "numF", numF, "reactivite"); }
+            set { ControlleurRequetes.ModifierChamp("Fournisseur", "numF", numF, "reactivite", value); }
         }
-
-        /*  */
-        public Fournisseur(int siret, string nom, Adresse adresse, string contact, int reactivite): this(siret)
+        public ReadOnlyCollection<CatalFournisseur> catalogue
         {
-            ControlleurRequetes.Inserer($"INSERT INTO fournisseur (siret, nomF, numA, contact, reactivite) VALUES ({siret}, '{nom}', {adresse.num}, '{contact}', {reactivite})");
+            get => CatalFournisseur.Lister(numF);
         }
 
-        public Fournisseur(int siret)
+        /* Instantiation */
+        public Fournisseur(int numF)
         {
-            foreach (int key in siret_map.Keys)
-            {
-                if (siret_map[key] == siret)
-                {
-                    _siret_map_key = key;
-                    return;
-                }
-            }
-
-            _siret_map_key = siret_map_index;
-            siret_map_index++;
-            siret_map[_siret_map_key] = siret;
+            this.numF = numF;
         }
 
-        /*  */
+        public Fournisseur(int siret, string nomF, int numA, string contact, int reactivite)
+        {
+            ControlleurRequetes.Inserer($"INSERT INTO Fournisseur (siret, nomF, numA, contact, reactivite) VALUES ({siret}, '{nomF}', {numA}, '{contact}', {reactivite})");
+            this.numF = ControlleurRequetes.DernierIDUtilise();
+        }
+
+        /* Suppression */
         public void Supprimer()
         {
-            adresse.Supprimer();
+            new Adresse(numA).Supprimer();
+            ControlleurRequetes.SupprimerElement("Fournisseur", "numF", numF);
+        }
+
+        /* Liste */
+        public static ReadOnlyCollection<Fournisseur> Lister()
+        {
+            List<Fournisseur> list = new List<Fournisseur>();
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numF FROM Fournisseur", (MySqlDataReader reader) => { list.Add(new Fournisseur(reader.GetInt32("numF"))); });
+            return new ReadOnlyCollection<Fournisseur>(list);
         }
     }
 }

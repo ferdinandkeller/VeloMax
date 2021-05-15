@@ -1,51 +1,68 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace VéloMax.bdd
 {
     public class Piece
     {
-        /*  */
-        private int _num;
-        public int num { get { return _num; } }
+        /* Attributs */
+        public readonly int numP;
 
-        public string description
+        public string descriptionP
         {
-            get { return ControlleurRequetes.ObtenirChampString("piece", "numP", num, "description"); }
-            set { ControlleurRequetes.ModifierChamp("piece", "numP", num, "description", value); }
+            get { return ControlleurRequetes.ObtenirChampString("Piece", "numP", numP, "descriptionP"); }
+            set { ControlleurRequetes.ModifierChamp("Piece", "numP", numP, "descriptionP", value); }
         }
-        public DateTime date_intro
+        public int prixP
         {
-            get { return ControlleurRequetes.ObtenirChampString("piece", "numP", num, "ville"); }
-            set { ControlleurRequetes.ModifierChamp("piece", "numP", num, "ville", value); }
+            get { return ControlleurRequetes.ObtenirChampInt("Piece", "numP", numP, "prixP"); }
+            set { ControlleurRequetes.ModifierChamp("Piece", "numP", numP, "prixP", value); }
         }
-        public DateTime date_disc
+        public DateTime dateIntroP
         {
-            get { return ControlleurRequetes.ObtenirChampInt("piece", "numP", num, "codepostal"); }
-            set { ControlleurRequetes.ModifierChamp("piece", "numP", num, "codepostal", value); }
+            get { return ControlleurRequetes.ObtenirChampDatetime("Piece", "numP", numP, "dateIntroP"); }
+            set { ControlleurRequetes.ModifierChamp("Piece", "numP", numP, "dateIntroP", value); }
         }
-        public int prix
+        public DateTime dateDiscP
         {
-            get { return ControlleurRequetes.ObtenirChampInt("piece", "numP", num, "prixP"); }
-            set { ControlleurRequetes.ModifierChamp("piece", "numP", num, "prixP", value); }
+            get { return ControlleurRequetes.ObtenirChampDatetime("Piece", "numP", numP, "dateDiscP"); }
+            set { ControlleurRequetes.ModifierChamp("Piece", "numP", numP, "dateDiscP", value); }
         }
-        public int quant_stock
+        public int quantStockP
         {
-            get { return ControlleurRequetes.ObtenirChampInt("piece", "numP", num, "quantStockP"); }
-            set { ControlleurRequetes.ModifierChamp("piece", "numP", num, "quantStockP", value); }
+            get { return ControlleurRequetes.ObtenirChampInt("Piece", "numP", numP, "quantStockP"); }
+            set { ControlleurRequetes.ModifierChamp("Piece", "numP", numP, "quantStockP", value); }
         }
 
-        public Piece(int num, string description, DateTime date_intro, DateTime date_disc, int prix, int quant_stock)
+        /* Instantiation */
+        public Piece(int numP)
         {
-            this.num = num;
-            this.description = description;
-            this.date_intro = date_intro;
-            this.date_disc = date_disc;
-            this.prix = prix;
-            this.quant_stock = quant_stock;
+            this.numP = numP;
+        }
+
+        public Piece(string descriptionP, DateTime dateIntroP, DateTime dateDiscP, int prixP, int quantStockP)
+        {
+            ControlleurRequetes.Inserer($"INSERT INTO Piece (descriptionP, prixP, dateIntroP, dateDiscP, quantStockP) VALUES ('{descriptionP}', {prixP}, '{dateIntroP.ToString("yyyy-MM-dd HH:mm:ss")}', '{dateDiscP.ToString("yyyy-MM-dd HH:mm:ss")}', {quantStockP})");
+            this.numP = ControlleurRequetes.DernierIDUtilise();
+        }
+
+        /* Suppression */
+        public void Supprimer()
+        {
+            ControlleurRequetes.SupprimerElement("Piece", "numP", numP);
+        }
+
+        /* Liste */
+        public static ReadOnlyCollection<Piece> Lister()
+        {
+            List<Piece> list = new List<Piece>();
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numP FROM Piece", (MySqlDataReader reader) => { list.Add(new Piece(reader.GetInt32("numP"))); });
+            return new ReadOnlyCollection<Piece>(list);
         }
     }
 }

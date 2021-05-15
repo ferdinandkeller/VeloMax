@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -19,9 +20,6 @@ namespace VéloMax
 {
     public sealed partial class MainPage : Page
     {
-        Fournisseur f1;
-        Fournisseur f2;
-
         public MainPage()
         {
             this.InitializeComponent();
@@ -29,23 +27,29 @@ namespace VéloMax
 
         private void ExecuteSQL1(object sender, RoutedEventArgs e)
         {
-            f1 = new Fournisseur(34, "keller&co", new Adresse("rue des tilleuls", "Courbevoie", 92400, "France"), "Ferdinand", 4);
+            /*Fournisseur f = new Fournisseur(314, "Super Fournisseur", new Adresse("rue fournisseur", "ville fournisseur", 11111, "province fournisseur").numA, "contact fournisseur", 14);
+            Piece p1 = new Piece("description pièce 1", DateTime.Now, DateTime.Now + TimeSpan.FromDays(100), 100, 10);
+            Piece p2 = new Piece("description pièce 2", DateTime.Now, DateTime.Now + TimeSpan.FromDays(200), 200, 20);
+            Debug.WriteLine(f.catalogue.Count());
+            new CatalFournisseur(f.numF, p1.numP, 101, 90, 1);
+            new CatalFournisseur(f.numF, p2.numP, 202, 190, 2);
+            Debug.WriteLine(f.catalogue.Count());*/
         }
 
         private void ExecuteSQL2(object sender, RoutedEventArgs e)
         {
-            f2 = new Fournisseur(34);
-            f2.nom = "Keller&Co";
+            /*foreach (CatalFournisseur p in Fournisseur.Lister()[0].catalogue)
+            {
+                Debug.WriteLine($"{p.numPieceF} {p.prixPieceF} {p.delaiF} {p.p}")
+            }*/
         }
 
         private void ExecuteSQL3(object sender, RoutedEventArgs e)
         {
-            f1.siret = 1234;
         }
 
         private void ExecuteSQL4(object sender, RoutedEventArgs e)
-        {
-            f2.Supprimer();
+        {   
         }
     }
 }

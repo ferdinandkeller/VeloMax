@@ -1,57 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Diagnostics;
 using MySql.Data.MySqlClient;
-using VéloMax.bdd;
 
 namespace VéloMax.bdd
 {
     public class Adresse
     {
-        /*  */
-        private int _num;
-        public int num { get { return _num; } }
+        /* Attributs */
+        public readonly int numA;
 
         public string rue
         {
-            get { return ControlleurRequetes.ObtenirChampString("adresse", "numA", num, "rue"); }
-            set { ControlleurRequetes.ModifierChamp("adresse", "numA", num, "rue", value); }
+            get { return ControlleurRequetes.ObtenirChampString("Adresse", "numA", numA, "rue"); }
+            set { ControlleurRequetes.ModifierChamp("Adresse", "numA", numA, "rue", value); }
         }
         public string ville
         {
-            get { return ControlleurRequetes.ObtenirChampString("adresse", "numA", num, "ville"); }
-            set { ControlleurRequetes.ModifierChamp("adresse", "numA", num, "ville", value); }
+            get { return ControlleurRequetes.ObtenirChampString("Adresse", "numA", numA, "ville"); }
+            set { ControlleurRequetes.ModifierChamp("Adresse", "numA", numA, "ville", value); }
         }
         public int codepostal
         {
-            get { return ControlleurRequetes.ObtenirChampInt("adresse", "numA", num, "codepostal"); }
-            set { ControlleurRequetes.ModifierChamp("adresse", "numA", num, "codepostal", value); }
+            get { return ControlleurRequetes.ObtenirChampInt("Adresse", "numA", numA, "codepostal"); }
+            set { ControlleurRequetes.ModifierChamp("Adresse", "numA", numA, "codepostal", value); }
         }
         public string province
         {
-            get { return ControlleurRequetes.ObtenirChampString("adresse", "numA", num, "province"); }
-            set { ControlleurRequetes.ModifierChamp("adresse", "numA", num, "province", value); }
+            get { return ControlleurRequetes.ObtenirChampString("Adresse", "numA", numA, "province"); }
+            set { ControlleurRequetes.ModifierChamp("Adresse", "numA", numA, "province", value); }
         }
 
-        /*  */
+        /* Instantiation */
+        public Adresse(int numA)
+        {
+            this.numA = numA;
+        }
+
         public Adresse(string rue, string ville, int codepostal, string province)
         {
-            ControlleurRequetes.Inserer($"INSERT INTO adresse (rue, ville, codepostal, province) VALUES ('{rue}', '{ville}', {codepostal}, '{province}')");
-            this._num = ControlleurRequetes.DernierIDUtilise();
+            ControlleurRequetes.Inserer($"INSERT INTO Adresse (rue, ville, codepostal, province) VALUES ('{rue}', '{ville}', {codepostal}, '{province}')");
+            this.numA = ControlleurRequetes.DernierIDUtilise();
         }
 
-        public Adresse(int num)
-        {
-            this._num = num;
-        }
-
-        /* */
+        /* Suppression */
         public void Supprimer()
         {
-            ControlleurRequetes.Supprimer($"DELETE FROM adresse WHERE numA={num}");
+            ControlleurRequetes.SupprimerElement("Adresse", "numA", numA);
+        }
+
+        /* Liste */
+        public static ReadOnlyCollection<Adresse> Lister()
+        {
+            List<Adresse> list = new List<Adresse>();
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numA FROM Adresse", (MySqlDataReader reader) => { list.Add(new Adresse(reader.GetInt32("numA"))); });
+            return new ReadOnlyCollection<Adresse>(list);
         }
     }
 }
