@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="VéloMax.Pages.Clients.AjouterBoutique"
+    x:Class="VéloMax.Pages.Clients.AjouterParticulier"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:VéloMax.Pages.Clients"
@@ -14,23 +14,28 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-
-        <StackPanel Orientation="Vertical"  Grid.Column="0">
+        <StackPanel Orientation="Vertical" Grid.Column="0">
                 <TextBlock Text="Adresse :" Margin="15"/>
                 <TextBox Name="rueA" Header="Rue :" Width="300" HorizontalAlignment="Left" Margin="25"/>
                 <TextBox Name="villeA" Header="Ville :" Width="300" HorizontalAlignment="Left" Margin="25"/>
                 <TextBox Name="codePA" Header="Code Postal :" Width="300" HorizontalAlignment="Left" Margin="25"/>
                 <TextBox Name="provinceA" Header="Région :" Width="300" HorizontalAlignment="Left" Margin="25"/>
                 <Button Content="Confirmer l'adresse" Click="ButtonA_Clicked" Margin="15" Background="Peru"/>
+            </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+            <TextBlock Text="Coordonnées :" Margin="15"/>
+            <TextBox Name="nomParticulier" Header="Nom :" Width="300" HorizontalAlignment="Left" Margin="25"/>
+            <TextBox Name="prenomParticulier" Header="Prénom :" Width="300" HorizontalAlignment="Left" Margin="25"/>
+            <TextBox Name="telParticulier" Header="Numéro de téléphone :" Width="300" HorizontalAlignment="Left" Margin="25"/>
+            <TextBox Name="mailParticulier" Header="Mail :" Width="300" HorizontalAlignment="Left" Margin="25"/>
+            <ComboBox Name="FidelioCombo" Header="Programme de fidélité" Margin="25" PlaceholderText="Choisir un programme" Width="300" >
+                <!-- ItemsSource="{x:Bind nomProg}" DisplayMemberPath="Source"-->
+                <x:String>Aucun</x:String>
+            </ComboBox>
+            <Button Content="Confirmer l'ajout du client" Click="ButtonB_Clicked" Margin="15" Background="Peru"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical"  Grid.Column="1">
-                <TextBlock Text="Coordonnées :" Margin="15"/>
-                <TextBox Name="nomBoutique" Header="Nom de la boutique :" Width="300" HorizontalAlignment="Left" Margin="25"/>
-                <TextBox Name="telBoutique" Header="Numéro de téléphone :" Width="300" HorizontalAlignment="Left" Margin="25"/>
-                <TextBox Name="mailBoutique" Header="Mail :" Width="300" HorizontalAlignment="Left" Margin="25"/>
-                <Button Content="Confirmer l'ajout de la boutique" Click="ButtonB_Clicked" Margin="15" Background="Peru"/>
-        </StackPanel>
-        
     </Grid>
 </Page>
+    

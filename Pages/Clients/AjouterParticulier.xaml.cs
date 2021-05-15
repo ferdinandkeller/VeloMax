@@ -20,9 +20,9 @@ namespace VéloMax.Pages.Clients
     /// <summary>
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
-    public sealed partial class AjouterBoutique : Page
+    public sealed partial class AjouterParticulier : Page
     {
-        public AjouterBoutique()
+        public AjouterParticulier()
         {
             this.InitializeComponent();
         }
@@ -40,5 +40,7 @@ namespace VéloMax.Pages.Clients
 
 
         }
+
+       
     }
 }

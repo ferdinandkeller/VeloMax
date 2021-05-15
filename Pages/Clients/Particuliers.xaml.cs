@@ -25,6 +25,12 @@ namespace VéloMax.Pages.Clients
         public Particuliers()
         {
             this.InitializeComponent();
+            //ListeParticuliers.ItemsSource = GetParticuliers((App.Current as App).ConnectionString);
+        }
+
+        public void ButtonClicked(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(AjouterParticulier), null);
         }
     }
 }

@@ -33,5 +33,25 @@ namespace VéloMax.Pages
                 var navItemTag = args.InvokedItemContainer.Tag.ToString();
             }
         }
+
+        private void NavView_BackRequested(NavigationView sender,
+                                           NavigationViewBackRequestedEventArgs args)
+        {
+            TryGoBack();
+        }
+
+        private bool TryGoBack()
+        {
+            if (!NavigationContentFrame.CanGoBack)
+                return false;
+
+            // Don't go back if the nav pane is overlayed.
+            if (NavViewFournisseurs.IsPaneOpen &&
+                (NavViewFournisseurs.DisplayMode == NavigationViewDisplayMode.Compact ||
+                 NavViewFournisseurs.DisplayMode == NavigationViewDisplayMode.Minimal))
+                return false;
+            NavigationContentFrame.GoBack();
+            return true;
+        }
     }
 }

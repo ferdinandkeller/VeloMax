@@ -43,6 +43,26 @@ namespace VéloMax.Pages
             }
         }
 
+        private void NavView_BackRequested(NavigationView sender,
+                                           NavigationViewBackRequestedEventArgs args)
+        {
+            TryGoBack();
+        }
+
+        private bool TryGoBack()
+        {
+            if (!NavigationContentFrame.CanGoBack)
+                return false;
+
+            // Don't go back if the nav pane is overlayed.
+            if (NavViewExporter.IsPaneOpen &&
+                (NavViewExporter.DisplayMode == NavigationViewDisplayMode.Compact ||
+                 NavViewExporter.DisplayMode == NavigationViewDisplayMode.Minimal))
+                return false;
+            NavigationContentFrame.GoBack();
+            return true;
+        }
+
     }
     
     public class File

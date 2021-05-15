@@ -137,7 +137,9 @@
     <Compile Include="Pages\Clients\AjouterBoutique.xaml.cs">
       <DependentUpon>AjouterBoutique.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Clients\AjouterParticulier.cs" />
+    <Compile Include="Pages\Clients\AjouterParticulier.xaml.cs">
+      <DependentUpon>AjouterParticulier.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Clients\ClientsMain.xaml.cs">
       <DependentUpon>ClientsMain.xaml</DependentUpon>
     </Compile>
@@ -254,6 +256,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Clients\AjouterBoutique.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Clients\AjouterParticulier.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
