@@ -27,9 +27,10 @@ namespace VéloMax
         public string numBString { get { return numB.ToString(); } }
         public string nomB { get; set; }
         public int numA { get; set; }
-        public string numAString { get { return numA.ToString(); } }
+        public string adresse { get; set; }
         public string telB { get; set; }
         public string mailB { get; set; }
+        public string remise { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
@@ -39,7 +40,7 @@ namespace VéloMax
 
         public static ObservableCollection<Boutique> GetBoutiques(string connectionString)
         {
-            const string GetBoutiquesQuery = "select * from boutique;";
+            const string GetBoutiquesQuery = "select * from boutique natural join adresse;";
 
             var boutiques = new ObservableCollection<Boutique>();
             try
@@ -57,11 +58,13 @@ namespace VéloMax
                                 while (reader.Read())
                                 {
                                     var boutique = new Boutique();
-                                    boutique.numB = reader.GetInt32(0);
-                                    boutique.nomB = reader.GetString(1);
-                                    boutique.numA = reader.GetInt32(2);
+                                    boutique.numB = reader.GetInt32(1);
+                                    boutique.nomB = reader.GetString(2);
+                                    boutique.numA = reader.GetInt32(0);
                                     boutique.telB = reader.GetString(3);
                                     boutique.mailB = reader.GetString(4);
+                                    boutique.adresse = reader.GetString(5) + " " + reader.GetString(6) + " " + reader.GetString(7) + " " + reader.GetString(8) + " ";
+                                    boutique.remise = "0";
                                     boutiques.Add(boutique);
                                     
                                 }

@@ -24,7 +24,7 @@ using static VéloMax.Boutique;
 
 namespace VéloMax.Pages.Clients
 {
-   
+
 
     public sealed partial class Entreprises : Page
     {
@@ -35,6 +35,47 @@ namespace VéloMax.Pages.Clients
             //ListeBoutiques.Source = GetBoutiques((App.Current as App).ConnectionString);
         }
 
+        public void ButtonClicked(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(AjouterBoutique), null);
+        }
+
+        public void IdClicked(object sender, RoutedEventArgs e)
+        {
+            //A faire (tri par Id)
+            
+            
+        }
+
+        public void nomClicked(object sender, RoutedEventArgs e)
+        {
+            //A faire 
+        }
+
+        public void adresseClicked(object sender, RoutedEventArgs e)
+        {
+            //A faire 
+        }
+
+        public void telClicked(object sender, RoutedEventArgs e)
+        {
+            //A faire 
+        }
+
+        public void mailClicked(object sender, RoutedEventArgs e)
+        {
+            //A faire 
+        }
+
+        public void remiseClicked(object sender, RoutedEventArgs e)
+        {
+            //A faire 
+        }
+
+        private void ListeBoutiques_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
 

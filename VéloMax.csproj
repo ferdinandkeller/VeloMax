@@ -134,6 +134,10 @@
     <Compile Include="Pages\Accueil.xaml.cs">
       <DependentUpon>Accueil.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Clients\AjouterBoutique.xaml.cs">
+      <DependentUpon>AjouterBoutique.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Clients\AjouterParticulier.cs" />
     <Compile Include="Pages\Clients\ClientsMain.xaml.cs">
       <DependentUpon>ClientsMain.xaml</DependentUpon>
     </Compile>
@@ -246,6 +250,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Accueil.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Clients\AjouterBoutique.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

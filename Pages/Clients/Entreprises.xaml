@@ -12,46 +12,102 @@
     <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
         <RelativePanel>
             <Grid Height="1000" Width="1500">
+                <Button Content="Ajouter" VerticalAlignment="Top" HorizontalAlignment="Left" Click="ButtonClicked" Margin="25" Background="Peru"/>
                 <ListView Name="ListeBoutiques"
-                  SelectionMode="Single"
                   ScrollViewer.VerticalScrollBarVisibility="Auto"
                   ScrollViewer.IsVerticalRailEnabled="True"
                   ScrollViewer.VerticalScrollMode="Enabled"
                   ScrollViewer.HorizontalScrollMode="Disabled"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                  ScrollViewer.IsHorizontalRailEnabled="False" Margin="0,090,0,0">
+                  ScrollViewer.IsHorizontalRailEnabled="False"
+                  Margin="0,90,0,0" 
+                  SelectionChanged="ListeBoutiques_SelectionChanged">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="BorderBrush" Value="LightGray"></Setter>
+                            <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    
+                    <!--
                     <ListView.HeaderTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Height="25">
-                                <TextBlock Text="ID" Margin="8,0" Width="Auto"  Foreground="DarkOrange" />
-                                <TextBlock Text="Nom" Width="Auto" Foreground="DarkOrange" />
-                                <TextBlock Text="ID Adresse" Width="Auto" Foreground="DarkOrange" />
-                                <TextBlock Text="Tel" Width="Auto" Foreground="DarkOrange" />
-                                <TextBlock Text="Mail" Width="Auto" Foreground="DarkOrange" />
-                                <TextBlock Text="Remise" Width="Auto" Foreground="DarkOrange" />
+                            <StackPanel Orientation="Horizontal" Height="Auto" HorizontalAlignment="Stretch">
+                                <Button x:Name="idButton" Content="ID ^" Width="Auto" Foreground="Black" Background="White" Click="IdClicked"/>
+                                <Button x:Name="nom" Content="Nom " Width="Auto" Foreground="Peru" Background="White" Click="nomClicked"/>
+                                <Button x:Name="adresse" Content="Adresse" Width="Auto" Foreground="Peru" Background="White" Click="adresseClicked"/>
+                                <Button x:Name="tel" Content="Tel" Width="Auto" Foreground="Peru" Background="White" Click="telClicked"/>
+                                <Button x:Name="mail" Content="Mail" Width="Auto" Foreground="Peru" Background="White" Click="mailClicked"/>
+                                <Button x:Name="remise" Content="Remise" Width="Auto" Foreground="Peru" Background="White" Click="remiseClicked"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.HeaderTemplate>
+                    -->
+                    <ListView.HeaderTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" x:Name="idButton" Content="ID ^" HorizontalAlignment="Stretch" Foreground="Black" Background="White" Click="IdClicked"/>
+                                <Button Grid.Column="1" x:Name="nom" Content="Nom " HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="nomClicked"/>
+                                <Button Grid.Column="2" x:Name="adresse" Content="Adresse" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="adresseClicked"/>
+                                <Button Grid.Column="3" x:Name="tel" Content="Tel" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="telClicked"/>
+                                <Button Grid.Column="4" x:Name="mail" Content="Mail" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="mailClicked"/>
+                                <Button Grid.Column="5" x:Name="remise" Content="Remise" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="remiseClicked"/>
+                                
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.HeaderTemplate>
+                    
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="local:Boutique">
+                            <Grid>
+                                
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <TextBlock Grid.Column="0" TextWrapping="WrapWholeWords" Text="{x:Bind numBString}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <TextBlock Grid.Column="1" TextWrapping="WrapWholeWords" Text="{x:Bind nomB}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <TextBlock Grid.Column="2" TextWrapping="WrapWholeWords" Text="{x:Bind adresse}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <TextBlock Grid.Column="3" TextWrapping="WrapWholeWords" Text="{x:Bind telB}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <TextBlock Grid.Column="4" TextWrapping="WrapWholeWords" Text="{x:Bind mailB}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <TextBlock Grid.Column="5" TextWrapping="WrapWholeWords" Text="{x:Bind remise}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+                            </Grid>
+                            <!--
                             <StackPanel Orientation="Horizontal" >
                                 <TextBlock Name="NumB"
                                     Text="{x:Bind numBString}"
                                     Width="Auto" />
-                                <TextBlock Name="NomB"
+                                <TextBox Name="NomB"
                                     Text="{x:Bind nomB}"
                                     Width="Auto" />
-                                <TextBlock Text="{x:Bind numAString}"
+                                <TextBox Name="AdresseB" 
+                                   Text="{x:Bind adresse}"
                                    Width="Auto" />
-                                <TextBlock Text="{x:Bind telB}"
+                                <TextBox Text="{x:Bind telB}"
                                    Width="Auto" />
-                                <TextBlock Text="{x:Bind mailB}"
+                                <TextBox Text="{x:Bind mailB}"
                                    Width="Auto" />
                             </StackPanel>
+                            -->
+                            
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button Content="Ajouter" Margin="1400,30,0,0" VerticalAlignment="Top"/>
             </Grid>
 
         </RelativePanel>
