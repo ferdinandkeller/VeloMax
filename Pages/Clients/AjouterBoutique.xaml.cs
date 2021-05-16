@@ -12,14 +12,12 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Collections.ObjectModel;
+using Microsoft.Toolkit.Uwp.UI.Controls;
+using VéloMax.bdd;
 
-// Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
-
-namespace VéloMax.Pages.Clients
+namespace VéloMax.Pages
 {
-    /// <summary>
-    /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
-    /// </summary>
     public sealed partial class AjouterBoutique : Page
     {
         public AjouterBoutique()
@@ -27,18 +25,15 @@ namespace VéloMax.Pages.Clients
             this.InitializeComponent();
         }
 
-        public void ButtonA_Clicked(object sender, RoutedEventArgs e)
+        public void AjoutBoutique(object sender, RoutedEventArgs e)
         {
-            //A faire
-
-
-        }
-
-        public void ButtonB_Clicked(object sender, RoutedEventArgs e)
-        {
-            //A faire
-
-
+            try
+            {
+                int codep = int.Parse(codePA.Text);
+                new Boutique(nomBoutique.Text, new Adresse(rueA.Text, villeA.Text, codep, provinceA.Text), telBoutique.Text, mailBoutique.Text);
+                ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(Entreprises));
+            }
+            catch { }
         }
     }
 }

@@ -23,6 +23,11 @@ namespace VéloMax.bdd
             get => ControlleurRequetes.ObtenirChampInt("Boutique", "numB", numB, "numA");
             set { ControlleurRequetes.ModifierChamp("Boutique", "numB", numB, "numA", value); }
         }
+        public Adresse adresse
+        {
+            get => new Adresse(numA);
+            set => numA = value.numA;
+        }
         public string telB
         {
             get => ControlleurRequetes.ObtenirChampString("Boutique", "numB", numB, "telB");
@@ -42,6 +47,11 @@ namespace VéloMax.bdd
         public Boutique(string nomB, int numA, string telB, string mailB)
         {
             ControlleurRequetes.Inserer($"INSERT INTO Boutique (nomB, numA, telB, mailB) VALUES ('{nomB}', {numA}, '{telB}', '{mailB}')");
+            this.numB = ControlleurRequetes.DernierIDUtilise();
+        }
+        public Boutique(string nomB, Adresse adresse, string telB, string mailB)
+        {
+            ControlleurRequetes.Inserer($"INSERT INTO Boutique (nomB, numA, telB, mailB) VALUES ('{nomB}', {adresse.numA}, '{telB}', '{mailB}')");
             this.numB = ControlleurRequetes.DernierIDUtilise();
         }
 

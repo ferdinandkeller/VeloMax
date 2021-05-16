@@ -125,9 +125,25 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Boutique.cs" />
-    <Compile Include="Commande.cs" />
-    <Compile Include="Fichiers.cs" />
+    <Compile Include="bdd\associations\CatalFournisseur.cs" />
+    <Compile Include="bdd\associations\CompositionModele.cs" />
+    <Compile Include="bdd\associations\ContenuCommandeModele.cs" />
+    <Compile Include="bdd\associations\ContenuCommandePiece.cs" />
+    <Compile Include="bdd\associations\ExecuteurCommandeBoutique.cs" />
+    <Compile Include="bdd\associations\ExecuteurCommandeIndividu.cs" />
+    <Compile Include="bdd\associations\Fidelio.cs" />
+    <Compile Include="bdd\controlleurs\ControlleurJson.cs" />
+    <Compile Include="bdd\controlleurs\ControlleurRequetes.cs" />
+    <Compile Include="bdd\controlleurs\ControlleurXML.cs" />
+    <Compile Include="bdd\entites\Adresse.cs" />
+    <Compile Include="bdd\entites\Boutique.cs" />
+    <Compile Include="bdd\entites\Commande.cs" />
+    <Compile Include="bdd\entites\Fournisseur.cs" />
+    <Compile Include="bdd\entites\Individu.cs" />
+    <Compile Include="bdd\entites\LigneModele.cs" />
+    <Compile Include="bdd\entites\Modele.cs" />
+    <Compile Include="bdd\entites\Piece.cs" />
+    <Compile Include="bdd\entites\Programme.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -149,50 +165,7 @@
     <Compile Include="Pages\Clients\Particuliers.xaml.cs">
       <DependentUpon>Particuliers.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Commande\AjouterCommande.xaml.cs">
-      <DependentUpon>AjouterCommande.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Commande\CommandeMain.xaml.cs">
-      <DependentUpon>CommandeMain.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Commande\EnCours.xaml.cs">
-      <DependentUpon>EnCours.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Commande\Envoyee.xaml.cs">
-      <DependentUpon>Envoyee.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Notices\Notices.xaml.cs">
-      <DependentUpon>Notices.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Fournisseurs\FournisseursMain.xaml.cs">
-      <DependentUpon>FournisseursMain.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Produits\Pieces.xaml.cs">
-      <DependentUpon>Pieces.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Produits\ProduitsMain.xaml.cs">
-      <DependentUpon>ProduitsMain.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Produits\Velos.xaml.cs">
-      <DependentUpon>Velos.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Statistiques\StatistiquesMain.xaml.cs">
-      <DependentUpon>StatistiquesMain.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Stocks\StocksFournisseurs.xaml.cs">
-      <DependentUpon>StocksFournisseurs.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Stocks\StocksMain.xaml.cs">
-      <DependentUpon>StocksMain.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Stocks\StocksPieces.xaml.cs">
-      <DependentUpon>StocksPieces.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Stocks\StocksVelos.xaml.cs">
-      <DependentUpon>StocksVelos.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequetesSQL.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -267,84 +240,28 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Accueil.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Clients\AjouterBoutique.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Clients\AjouterParticulier.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Clients\ClientsMain.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Clients\Entreprises.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Clients\Particuliers.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Commande\AjouterCommande.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Commande\CommandeMain.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Commande\EnCours.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Commande\Envoyee.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Notices\Notices.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Fournisseurs\FournisseursMain.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Produits\Pieces.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Produits\ProduitsMain.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Produits\Velos.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Statistiques\StatistiquesMain.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Stocks\StocksFournisseurs.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Stocks\StocksMain.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Stocks\StocksPieces.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Stocks\StocksVelos.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -352,7 +269,10 @@
       <Version>6.2.12</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls.DataGrid">
-      <Version>7.0.1</Version>
+      <Version>7.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="MySql.Data">
+      <Version>8.0.25</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

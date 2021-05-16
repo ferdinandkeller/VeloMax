@@ -9,30 +9,13 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
-        <NavigationView x:Name="NavViewClients" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="NavView_ItemInvoked" BackRequested="NavView_BackRequested">
-            <NavigationView.Resources>
-                <!--<AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
-                            BackgroundSource="Backdrop"
-                            TintColor="Transparent"
-                            FallbackColor="White"/>
-            <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground"
-                            BackgroundSource="HostBackdrop"
-                            TintColor="{StaticResource SystemRevealChromeWhiteColor}"
-                            TintOpacity="1"
-                            FallbackColor="White"/>-->
-            </NavigationView.Resources>
+        <NavigationView Name="NavViewClients" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsBackEnabled="False" IsSettingsVisible="False" SelectionChanged="NavView_SelectionChanged">
             <NavigationView.MenuItems>
-                <NavigationViewItem Tag="clientParticulier" Content="Particuliers"/>
+                <NavigationViewItem Name="NavViewClients_Default" Tag="clientParticulier" Content="Particuliers"/>
                 <NavigationViewItem Tag="clientEntreprise" Content="Entreprises" />
             </NavigationView.MenuItems>
-
-            <NavigationView.Content>
-                <Frame Name="NavigationContentFrame">
-
-                </Frame>
-            </NavigationView.Content>
-
+            
+            <Frame Name="NavigationContentFrame"></Frame>
         </NavigationView>
     </Grid>
 </Page>

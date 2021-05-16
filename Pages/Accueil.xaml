@@ -9,8 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
-        <TextBlock HorizontalAlignment="Left" Height="211" Margin="52,58,0,0" Text="VéloMax" TextWrapping="Wrap" VerticalAlignment="Top" Width="546" Style="{StaticResource HeaderTextBlockStyle}"/>
-
+        <TextBlock HorizontalAlignment="Left" Margin="52,58,0,0" Text="VéloMax" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource HeaderTextBlockStyle}"/>
     </Grid>
 </Page>

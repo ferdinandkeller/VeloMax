@@ -69,5 +69,10 @@ namespace VéloMax.bdd
             cjson.AjouterNormalChamp("province", province);
             return cjson.json_normal;
         }
+
+        public string VersString
+        {
+            get => $"{rue}, {codepostal} {ville}, {province}";
+        }
     }
 }

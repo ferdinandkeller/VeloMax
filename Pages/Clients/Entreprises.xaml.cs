@@ -18,63 +18,31 @@ using Windows.Data;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
-using static VéloMax.Boutique;
+using VéloMax.bdd;
 
-// Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
-
-namespace VéloMax.Pages.Clients
+namespace VéloMax.Pages
 {
-
-
     public sealed partial class Entreprises : Page
     {
         public Entreprises()
         {
             this.InitializeComponent();
-            ListeBoutiques.ItemsSource = GetBoutiques((App.Current as App).ConnectionString);
-            //ListeBoutiques.Source = GetBoutiques((App.Current as App).ConnectionString);
         }
 
-        public void ButtonClicked(object sender, RoutedEventArgs e)
+        public ReadOnlyCollection<Boutique> entreprises
         {
-            this.Frame.Navigate(typeof(AjouterBoutique), null);
+            get => Boutique.Lister();
         }
 
-        public void IdClicked(object sender, RoutedEventArgs e)
+        private void Nouveau_Click(object sender, RoutedEventArgs e)
         {
-            //A faire (tri par Id)
-            
-            
+            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(AjouterBoutique));
         }
 
-        public void nomClicked(object sender, RoutedEventArgs e)
+        private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
-            //A faire 
-        }
-
-        public void adresseClicked(object sender, RoutedEventArgs e)
-        {
-            //A faire 
-        }
-
-        public void telClicked(object sender, RoutedEventArgs e)
-        {
-            //A faire 
-        }
-
-        public void mailClicked(object sender, RoutedEventArgs e)
-        {
-            //A faire 
-        }
-
-        public void remiseClicked(object sender, RoutedEventArgs e)
-        {
-            //A faire 
-        }
-
-        private void ListeBoutiques_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            ((Boutique)MyDataGrid.SelectedItem).Supprimer();
+            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(Entreprises));
         }
     }
 }
