@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using VéloMax.bdd;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,12 +26,38 @@ namespace VéloMax.Pages.Clients
         public Particuliers()
         {
             this.InitializeComponent();
-            //ListeParticuliers.ItemsSource = GetParticuliers((App.Current as App).ConnectionString);
+            Liste.ItemsSource = Individu.Lister();
+        }
+        private void Liste_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
 
         public void ButtonClicked(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(AjouterParticulier), null);
+        }
+
+        public void numClicked(object sender, RoutedEventArgs e)
+        {
+        }
+        public void nomClicked(object sender, RoutedEventArgs e)
+        {
+        }
+        public void prenomClicked(object sender, RoutedEventArgs e)
+        {
+        }
+        public void adresseClicked(object sender, RoutedEventArgs e)
+        {
+        }
+        public void telClicked(object sender, RoutedEventArgs e)
+        {
+        }
+        public void mailClicked(object sender, RoutedEventArgs e)
+        {
+        }
+        public void fideClicked(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

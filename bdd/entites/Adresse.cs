@@ -69,5 +69,11 @@ namespace VéloMax.bdd
             cjson.AjouterNormalChamp("province", province);
             return cjson.json_normal;
         }
+
+        public override string ToString()
+        {
+            string s = this.rue + " " + this.ville + " " + this.codepostal + " " + this.province;
+            return s;
+        }
     }
 }

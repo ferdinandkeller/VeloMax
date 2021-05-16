@@ -14,6 +14,8 @@ namespace VéloMax.bdd
         /* Attributs */
         public readonly int numI;
 
+        public string numIString { get { return numI.ToString(); } }
+
         public string nomI
         {
             get => ControlleurRequetes.ObtenirChampString("Individu", "numI", numI, "nomI");
@@ -34,6 +36,8 @@ namespace VéloMax.bdd
             get => new Adresse(numA);
             set => numA = value.numA;
         }
+
+        public string adresseString { get { return adresse.ToString(); } }
         public string telI
         {
             get => ControlleurRequetes.ObtenirChampString("Individu", "numI", numI, "telI");
