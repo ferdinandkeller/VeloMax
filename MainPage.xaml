@@ -24,5 +24,4 @@
         <Frame Name="NavigationContentFrame">
         </Frame>
     </NavigationView>
-
 </Page>

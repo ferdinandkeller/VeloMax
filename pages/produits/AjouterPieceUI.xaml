@@ -7,12 +7,21 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Orientation="Vertical" Grid.Column="0">
-        <TextBox Name="rueA" Header="Rue :" Width="300" HorizontalAlignment="Left" Margin="25"/>
-        <TextBox Name="villeA" Header="Ville :" Width="300" HorizontalAlignment="Left" Margin="25"/>
-        <TextBox Name="codePA" Header="Code Postal :" Width="300" HorizontalAlignment="Left" Margin="25"/>
-        <TextBox Name="provinceA" Header="Région :" Width="300" HorizontalAlignment="Left" Margin="25"/>
-        <Button Content="Ajouter la piece" Click="Ajouter_Piece" Margin="15" Background="Peru"/>
-    </StackPanel>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Column="0">
+            <TextBox Name="descriptionP" Header="Description :" Width="300" HorizontalAlignment="Left" Margin="25" />
+            <TextBox Name="prixP" Header="Prix :" Width="300" HorizontalAlignment="Left" Margin="25" />
+            <TextBox Name="dateIntroP" Header="Date introduction :" Width="300" HorizontalAlignment="Left" Margin="25" />
+        </StackPanel>
+        <StackPanel Orientation="Vertical"  Grid.Column="1">
+            <TextBox Name="dateDiscP" Header="Date discontinuité :" Width="300" HorizontalAlignment="Left" Margin="25" />
+            <TextBox Name="quantStockP" Header="Quantité en Stock :" Width="300" HorizontalAlignment="Left" Margin="25" />
+            <Button Content="Confirmer le modele" Click="Ajouter_Piece" Margin="25" Background="Peru" />
+        </StackPanel>
+    </Grid>
 </Page>
-    

@@ -12,40 +12,35 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Windows.UI.Core;
-using Windows.System;
-using Windows.Data;
-using System.ComponentModel;
-using System.Collections.ObjectModel;
-using System.Data.SqlClient;
 using VéloMax.bdd;
+using System.Collections.ObjectModel;
+using Microsoft.Toolkit.Uwp.UI.Controls;
+using System.Diagnostics;
 using VéloMax.pages;
 
 namespace VéloMax.pages
 {
-    public sealed partial class Entreprises : Page
+    public sealed partial class IndividusUI : Page
     {
-        public Entreprises()
+        public IndividusUI()
         {
             this.InitializeComponent();
         }
 
-        public ReadOnlyCollection<Boutique> entreprises
+        public ReadOnlyCollection<Individu> individus
         {
-            get => Boutique.Lister();
+            get => Individu.Lister();
         }
 
         private void Nouveau_Click(object sender, RoutedEventArgs e)
         {
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(AjouterBoutique));
+            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(AjouterIndividuUI));
         }
 
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
-            ((Boutique)azd.SelectedItem).Supprimer();
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(Entreprises));
+            ((Individu)MyDataGrid.SelectedItem).Supprimer();
+            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(IndividusUI));
         }
     }
 }
-
-

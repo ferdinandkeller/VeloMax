@@ -29,10 +29,8 @@ namespace VéloMax.pages
         {
             try
             {
-                /*int codep = int.Parse(codePA.Text);
-                new Piece()
-                new Individu(nomParticulier.Text, prenomParticulier.Text, new Adresse(rueA.Text, villeA.Text, codep, provinceA.Text), telParticulier.Text, mailParticulier.Text);
-                ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(Particuliers));*/
+                new Piece(descriptionP.Text, DateTime.Parse(dateIntroP.Text), DateTime.Parse(dateDiscP.Text), int.Parse(prixP.Text), int.Parse(quantStockP.Text));
+                ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(PiecesUI));
             } catch { }
         }
     }

@@ -28,10 +28,20 @@ namespace VéloMax.bdd
             get { return ControlleurRequetes.ObtenirChampDatetime("Piece", "numP", numP, "dateIntroP"); }
             set { ControlleurRequetes.ModifierChamp("Piece", "numP", numP, "dateIntroP", value); }
         }
+        public string dateIntroPS
+        {
+            get { return dateIntroP.ToString(); }
+            set { dateIntroP = DateTime.Parse(value); }
+        }
         public DateTime dateDiscP
         {
             get { return ControlleurRequetes.ObtenirChampDatetime("Piece", "numP", numP, "dateDiscP"); }
             set { ControlleurRequetes.ModifierChamp("Piece", "numP", numP, "dateDiscP", value); }
+        }
+        public string dateDiscPS
+        {
+            get { return dateDiscP.ToString(); }
+            set { dateDiscP = DateTime.Parse(value); }
         }
         public int quantStockP
         {
