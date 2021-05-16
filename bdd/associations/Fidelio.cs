@@ -40,7 +40,7 @@ namespace VéloMax.bdd
 
         public Fidelio(int numI, int numProg, DateTime dateAdherence)
         {
-            ControlleurRequetes.Inserer($"INSERT INTO Fidelio (numI, numProg, dateAdherence) VALUES ({numI}, {numProg}, {dateAdherence.ToString("yyyy-MM-dd HH:mm:ss")})");
+            ControlleurRequetes.Inserer($"INSERT INTO Fidelio (numI, numProg, dateAdherence) VALUES ({numI}, {numProg}, '{dateAdherence.ToString("yyyy-MM-dd HH:mm:ss")}')");
             this.numI = numI;
         }
 

@@ -59,5 +59,16 @@ namespace VéloMax.bdd
             ControlleurRequetes.SelectionnePlusieurs($"SELECT numA FROM Adresse", (MySqlDataReader reader) => { list.Add(new Adresse(reader.GetInt32("numA"))); });
             return new ReadOnlyCollection<Adresse>(list);
         }
+
+        /* Conversion */
+        public string VersJson()
+        {
+            ControlleurJson cjson = new ControlleurJson();
+            cjson.AjouterNormalChamp("rue", rue);
+            cjson.AjouterNormalChamp("ville", ville);
+            cjson.AjouterNormalChamp("codepostal", codepostal.ToString());
+            cjson.AjouterNormalChamp("province", province);
+            return cjson.json_normal;
+        }
     }
 }
