@@ -1,86 +1,27 @@
 ﻿<Page
     x:Class="VéloMax.Pages.Produits.Pieces"
+    xmlns:local="using:VéloMax.Pages"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:VéloMax.bdd"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
-    xmlns:data="using:VéloMax"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
-        <RelativePanel>
-            <Grid Height="1000" Width="1500">
-                <Button Content="Ajouter une pièce" VerticalAlignment="Top" HorizontalAlignment="Left" Click="ButtonClicked" Margin="25" Background="Peru"/>
-                <ListView Name="Liste"
-                  ScrollViewer.VerticalScrollBarVisibility="Auto"
-                  ScrollViewer.IsVerticalRailEnabled="True"
-                  ScrollViewer.VerticalScrollMode="Enabled"
-                  ScrollViewer.HorizontalScrollMode="Disabled"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                  ScrollViewer.IsHorizontalRailEnabled="False"
-                  Margin="0,90,0,0" 
-                  SelectionChanged="Liste_SelectionChanged">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                            <Setter Property="BorderBrush" Value="LightGray"></Setter>
-                            <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                    <ListView.HeaderTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="0.5*"/>
-                                </Grid.ColumnDefinitions>
-                                <Button Grid.Column="0" x:Name="num" Content="Num" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="numClicked"/>
-                                <Button Grid.Column="1" x:Name="description" Content="Description " HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="descriptionClicked"/>
-                                <Button Grid.Column="2" x:Name="prix" Content="Prix" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="prixClicked"/>
-                                <Button Grid.Column="3" x:Name="dateIntro" Content="Date d'intro" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="dateIntroClicked"/>
-                                <Button Grid.Column="4" x:Name="dateDesc" Content="Date de disc" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="dateDiscClicked"/>
-                                <Button Grid.Column="5" x:Name="stock" Content="Stock" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="stockClicked"/>
-                                <TextBlock Grid.Column="6" x:Name="suppr" Text="Supprimer" HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="Black"/>
-
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.HeaderTemplate>
-
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="local:Piece">
-                            <Grid>
-
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <TextBlock Grid.Column="0" TextWrapping="WrapWholeWords" Text="{x:Bind numPString}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                                <TextBox Grid.Column="1" TextWrapping="WrapWholeWords" Text="{x:Bind descriptionP}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                                <TextBox Grid.Column="2" TextWrapping="WrapWholeWords" Text="{x:Bind prixP}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                                <TextBlock Grid.Column="3" TextWrapping="WrapWholeWords" Text="{x:Bind dateIntroP}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                                <TextBox Grid.Column="4" TextWrapping="WrapWholeWords" Text="{x:Bind dateDiscP}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                                <TextBlock Grid.Column="5" TextWrapping="WrapWholeWords" Text="{x:Bind quantStockP}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                                <Button Grid.Column="6" Content="Suppr" VerticalAlignment="Center" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="supprClicked"/>
-
-                            </Grid>
-
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
-        </RelativePanel>
-    </Grid>
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <Button Name="Nouveau" Content="Nouveau" Click="Nouveau_Click" />
+            <Button Name="Supprimer" Content="Supprimer" Click="Supprimer_Click" />
+        </StackPanel>
+        <controls:DataGrid Name="MyDataGrid" ItemsSource="{x:Bind pieces}" AutoGenerateColumns="False">
+            <controls:DataGrid.Columns>
+                <controls:DataGridTextColumn Header="description" Binding="{Binding descriptionP}"/>
+                <controls:DataGridTextColumn Header="prix" Binding="{Binding prixP}"/>
+                <controls:DataGridTextColumn Header="date introduction" Binding="{Binding dateIntroP}"/>
+                <controls:DataGridTextColumn Header="date discontinuité" Binding="{Binding dateDiscP}"/>
+                <controls:DataGridTextColumn Header="quantité stock" Binding="{Binding quantStockP}"/>
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
+    </StackPanel>
 </Page>

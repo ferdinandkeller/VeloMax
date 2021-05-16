@@ -11,19 +11,8 @@
     <Grid>
 
         <NavigationView x:Name="NavViewProduits" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="NavView_ItemInvoked" BackRequested="NavView_BackRequested">
-            <NavigationView.Resources>
-                <!--<AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
-                            BackgroundSource="Backdrop"
-                            TintColor="Transparent"
-                            FallbackColor="White"/>
-            <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground"
-                            BackgroundSource="HostBackdrop"
-                            TintColor="{StaticResource SystemRevealChromeWhiteColor}"
-                            TintOpacity="1"
-                            FallbackColor="White"/>-->
-            </NavigationView.Resources>
             <NavigationView.MenuItems>
-                <NavigationViewItem Tag="produitsVelos" Content="Vélos"/>
+                <NavigationViewItem Tag="produitsVelos" Content="Modèles"/>
                 <NavigationViewItem Tag="produitsPieces" Content="Pièces de rechange"/>
                 <!--NavigationViewItem Tag="goodies" Content="Goodies" -->
             </NavigationView.MenuItems>

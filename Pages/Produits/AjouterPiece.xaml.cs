@@ -12,6 +12,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using VéloMax.bdd;
+using System.Diagnostics;
+using VéloMax.Pages;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -27,14 +30,14 @@ namespace VéloMax.Pages.Produits
             this.InitializeComponent();
         }
 
-        public void ButtonA_Clicked(object sender, RoutedEventArgs e)
+        public void Ajouter_Piece(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        public void ButtonB_Clicked(object sender, RoutedEventArgs e)
-        {
-
+            try
+            {
+                new Piece(descriptionP.Text, DateTime.Parse(dateIntroP.Text), DateTime.Parse(dateDiscP.Text), int.Parse(prixP.Text), int.Parse(quantStockP.Text));
+                ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(Pieces));
+            }
+            catch { }
         }
     }
 }

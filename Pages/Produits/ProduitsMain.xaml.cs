@@ -30,7 +30,7 @@ namespace VéloMax.Pages
         }
 
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>{
-            ("produitsVelos", typeof(VéloMax.Pages.Produits.Velos)),
+            ("produitsVelos", typeof(VéloMax.Pages.Produits.Modeles)),
             ("produitsPieces", typeof(VéloMax.Pages.Produits.Pieces)),
         };
 
