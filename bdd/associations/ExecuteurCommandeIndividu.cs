@@ -25,6 +25,7 @@ namespace VéloMax.bdd
         public Individu individu
         {
             get => new Individu(numI);
+            set => numI = value.numI;
         }
 
         /* Instantiation */
@@ -32,11 +33,16 @@ namespace VéloMax.bdd
         {
             this.numC = numC;
         }
-
+        public ExecuteurCommandeIndividu(Commande commande): this(commande.numC)
+        {
+        }
         public ExecuteurCommandeIndividu(int numC, int numI)
         {
             ControlleurRequetes.Inserer($"INSERT INTO ExecuteurCommandeIndividu (numC, numI) VALUES ({numC}, {numI})");
             this.numC = numC;
+        }
+        public ExecuteurCommandeIndividu(Commande commande, Individu individu): this(commande.numC, individu.numI)
+        {
         }
 
         /* Suppression */

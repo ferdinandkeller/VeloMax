@@ -44,7 +44,11 @@ namespace VéloMax.bdd
             this.numF = numF;
             this.numP = numP;
         }
-
+        public CatalFournisseur(Fournisseur fournisseur, Piece piece)
+        {
+            this.numF = fournisseur.numF;
+            this.numP = piece.numP;
+        }
         public CatalFournisseur(int numF, int numP, int numPieceF, int prixPieceF, int delaiF)
         {
             ControlleurRequetes.Inserer($"INSERT INTO CatalFournisseur (numF, numP, numPieceF, prixPieceF, delaiF) VALUES ({numF}, {numP}, {numPieceF}, {prixPieceF}, {delaiF})");

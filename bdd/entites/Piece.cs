@@ -44,7 +44,6 @@ namespace VéloMax.bdd
         {
             this.numP = numP;
         }
-
         public Piece(string descriptionP, DateTime dateIntroP, DateTime dateDiscP, int prixP, int quantStockP)
         {
             ControlleurRequetes.Inserer($"INSERT INTO Piece (descriptionP, prixP, dateIntroP, dateDiscP, quantStockP) VALUES ('{descriptionP}', {prixP}, '{dateIntroP.ToString("yyyy-MM-dd HH:mm:ss")}', '{dateDiscP.ToString("yyyy-MM-dd HH:mm:ss")}', {quantStockP})");

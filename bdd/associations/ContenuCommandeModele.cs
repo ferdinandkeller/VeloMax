@@ -34,12 +34,17 @@ namespace VéloMax.bdd
             this.numC = numC;
             this.numM = numM;
         }
-
+        public ContenuCommandeModele(Commande commande, Modele modele): this(commande.numC, modele.numM)
+        {
+        }
         public ContenuCommandeModele(int numC, int numM, int quantPieceC)
         {
             ControlleurRequetes.Inserer($"INSERT INTO ContenuCommandeModele (numC, numM, quantPieceC) VALUES ({numC}, {numM}, {quantPieceC})");
             this.numC = numC;
             this.numM = numM;
+        }
+        public ContenuCommandeModele(Commande commande, Modele modele, int quantPieceC): this(commande.numC, modele.numM)
+        {
         }
 
         /* Suppression */
@@ -54,6 +59,10 @@ namespace VéloMax.bdd
             List<ContenuCommandeModele> list = new List<ContenuCommandeModele>();
             ControlleurRequetes.SelectionnePlusieurs($"SELECT numM FROM ContenuCommandeModele WHERE numC={numC}", (MySqlDataReader reader) => { list.Add(new ContenuCommandeModele(numC, reader.GetInt32("numM"))); });
             return new ReadOnlyCollection<ContenuCommandeModele>(list);
+        }
+        public static ReadOnlyCollection<ContenuCommandeModele> Lister(Commande commande)
+        {
+            return Lister(commande.numC);
         }
     }
 }

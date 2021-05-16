@@ -25,6 +25,7 @@ namespace VéloMax.bdd
         public Boutique boutique
         {
             get => new Boutique(numB);
+            set => numB = value.numB;
         }
 
         /* Instantiation */
@@ -32,11 +33,16 @@ namespace VéloMax.bdd
         {
             this.numC = numC;
         }
-
+        public ExecuteurCommandeBoutique(Commande commande): this(commande.numC)
+        {
+        }
         public ExecuteurCommandeBoutique(int numC, int numB)
         {
             ControlleurRequetes.Inserer($"INSERT INTO ExecuteurCommandeBoutique (numC, numB) VALUES ({numC}, {numB})");
             this.numC = numC;
+        }
+        public ExecuteurCommandeBoutique(Commande commande, Boutique boutique): this(commande.numC, boutique.numB)
+        {
         }
 
         /* Suppression */

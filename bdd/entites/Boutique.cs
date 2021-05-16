@@ -39,7 +39,6 @@ namespace VéloMax.bdd
         {
             this.numB = numB;
         }
-
         public Boutique(string nomB, int numA, string telB, string mailB)
         {
             ControlleurRequetes.Inserer($"INSERT INTO Boutique (nomB, numA, telB, mailB) VALUES ('{nomB}', {numA}, '{telB}', '{mailB}')");

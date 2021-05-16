@@ -34,12 +34,15 @@ namespace VéloMax.bdd
             this.numM = numM;
             this.numP = numP;
         }
-
-        public CompositionModele(int numM, int numP, int quant)
+        public CompositionModele(Modele modele, Piece piece) : this(modele.numM, piece.numP)
+        {
+        }
+        public CompositionModele(int numM, int numP, int quant): this(numM, numP)
         {
             ControlleurRequetes.Inserer($"INSERT INTO CompositionModele (numM, numP, quant) VALUES ({numM}, {numP}, {quant})");
-            this.numM = numM;
-            this.numP = numP;
+        }
+        public CompositionModele(Modele modele, Piece piece, int quant) : this(modele.numM, piece.numP, quant)
+        {
         }
 
         /* Suppression */
@@ -54,6 +57,10 @@ namespace VéloMax.bdd
             List<CompositionModele> list = new List<CompositionModele>();
             ControlleurRequetes.SelectionnePlusieurs($"SELECT numP FROM CompositionModele WHERE numM={numM}", (MySqlDataReader reader) => { list.Add(new CompositionModele(numM, reader.GetInt32("numP"))); });
             return new ReadOnlyCollection<CompositionModele>(list);
+        }
+        public static ReadOnlyCollection<CompositionModele> Lister(Modele modele)
+        {
+            return Lister(modele.numM);
         }
     }
 }

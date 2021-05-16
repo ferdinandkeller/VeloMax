@@ -21,6 +21,7 @@ namespace VéloMax.bdd
         public Adresse adresse
         {
             get => new Adresse(numA);
+            set => numA = value.numA;
         }
         public DateTime dateC
         {

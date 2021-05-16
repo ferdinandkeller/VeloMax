@@ -25,6 +25,7 @@ namespace VéloMax.bdd
         public Programme programme
         {
             get => new Programme(numProg);
+            set => numProg = value.numProg;
         }
         public DateTime dateAdherence
         {
@@ -37,11 +38,16 @@ namespace VéloMax.bdd
         {
             this.numI = numI;
         }
-
+        public Fidelio(Individu individu) : this(individu.numI)
+        {
+        }
         public Fidelio(int numI, int numProg, DateTime dateAdherence)
         {
             ControlleurRequetes.Inserer($"INSERT INTO Fidelio (numI, numProg, dateAdherence) VALUES ({numI}, {numProg}, '{dateAdherence.ToString("yyyy-MM-dd HH:mm:ss")}')");
             this.numI = numI;
+        }
+        public Fidelio(Individu individu, Programme programme, DateTime dateAdherence): this(individu.numI, programme.numProg, dateAdherence)
+        {
         }
 
         /* Suppression */

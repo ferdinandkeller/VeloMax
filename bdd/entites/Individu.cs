@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using System.Text.Json;
 
 namespace VéloMax.bdd
 {
@@ -32,6 +31,7 @@ namespace VéloMax.bdd
         public Adresse adresse
         {
             get => new Adresse(numA);
+            set => numA = value.numA;
         }
         public string telI
         {
@@ -48,8 +48,8 @@ namespace VéloMax.bdd
             get
             {
                 int res = 0;
-                string req = $"SELECT COUNT(*) FROM Fidelio WHERE numI={numI} AND ";
-                SelectionneUn(req, (MySqlDataReader reader) => { res = reader.GetInt32("COUNT(*)"); });
+                string req = $"SELECT COUNT(*) FROM Fidelio WHERE numI={numI}";
+                ControlleurRequetes.SelectionneUn(req, (MySqlDataReader reader) => { res = reader.GetInt32("COUNT(*)"); });
                 return res == 0;
             }
         }
@@ -63,10 +63,14 @@ namespace VéloMax.bdd
         {
             this.numI = numI;
         }
-
         public Individu(string nomI, string prenomI, int numA, string telI, string mailI)
         {
             ControlleurRequetes.Inserer($"INSERT INTO Individu (nomI, prenomI, numA, telI, mailI) VALUES ('{nomI}', '{prenomI}', {numA}, '{telI}', '{mailI}')");
+            this.numI = ControlleurRequetes.DernierIDUtilise();
+        }
+        public Individu(string nomI, string prenomI, Adresse adresse, string telI, string mailI)
+        {
+            ControlleurRequetes.Inserer($"INSERT INTO Individu (nomI, prenomI, numA, telI, mailI) VALUES ('{nomI}', '{prenomI}', {adresse.numA}, '{telI}', '{mailI}')");
             this.numI = ControlleurRequetes.DernierIDUtilise();
         }
 
@@ -84,7 +88,6 @@ namespace VéloMax.bdd
             ControlleurRequetes.SelectionnePlusieurs($"SELECT numI FROM Individu", (MySqlDataReader reader) => { list.Add(new Individu(reader.GetInt32("numI"))); });
             return new ReadOnlyCollection<Individu>(list);
         }
-        
         public static ReadOnlyCollection<Individu> ListerFidelio()
         {
             List<Individu> list = new List<Individu>();
@@ -92,6 +95,7 @@ namespace VéloMax.bdd
             return new ReadOnlyCollection<Individu>(list);
         }
 
+        /* Conversion */
         public string VersJson()
         {
             ControlleurJson cjson = new ControlleurJson();

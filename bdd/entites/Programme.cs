@@ -39,7 +39,6 @@ namespace VéloMax.bdd
         {
             this.numProg = numProg;
         }
-
         public Programme(string nom, int cout, int rabais, int duree)
         {
             ControlleurRequetes.Inserer($"INSERT INTO Programme (nomProg, cout, rabais, duree) VALUES ('{nom}', {cout}, {rabais}, {duree})");
