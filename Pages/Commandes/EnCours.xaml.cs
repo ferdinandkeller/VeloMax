@@ -12,10 +12,13 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using VéloMax.bdd;
+using Windows.UI.Core;
+using Windows.System;
+using Windows.Data;
+using System.ComponentModel;
 using System.Collections.ObjectModel;
-using Microsoft.Toolkit.Uwp.UI.Controls;
-using System.Diagnostics;
+using System.Data.SqlClient;
+using VéloMax.bdd;
 using VéloMax.Pages;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
@@ -29,12 +32,12 @@ namespace VéloMax.Pages.Commandes
             this.InitializeComponent();
         }
 
-        /*
+        
         public ReadOnlyCollection<Commande> commandes
         {
             get => Commande.Lister();
         }
-        */
+        
         
 
         private void Nouveau_Click(object sender, RoutedEventArgs e)

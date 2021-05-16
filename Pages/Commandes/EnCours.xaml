@@ -8,7 +8,7 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+            
     <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Horizontal">
             <Button Name="Nouveau" Content="Nouveau" Click="Nouveau_Click" />

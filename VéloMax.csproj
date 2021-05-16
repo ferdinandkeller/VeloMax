@@ -189,6 +189,9 @@
     <Compile Include="Pages\Fournisseurs\FournisseursMain.xaml.cs">
       <DependentUpon>FournisseursMain.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Produits\AjouterModele.xaml.cs">
+      <DependentUpon>AjouterModele.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Produits\AjouterPiece.xaml.cs">
       <DependentUpon>AjouterPiece.xaml</DependentUpon>
     </Compile>
@@ -198,8 +201,8 @@
     <Compile Include="Pages\Produits\ProduitsMain.xaml.cs">
       <DependentUpon>ProduitsMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Produits\Velos.xaml.cs">
-      <DependentUpon>Velos.xaml</DependentUpon>
+    <Compile Include="Pages\Produits\Modeles.xaml.cs">
+      <DependentUpon>Modeles.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Statistiques\StatistiquesMain.xaml.cs">
       <DependentUpon>StatistiquesMain.xaml</DependentUpon>
@@ -343,6 +346,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Produits\AjouterModele.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Produits\AjouterPiece.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -355,7 +362,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Produits\Velos.xaml">
+    <Page Include="Pages\Produits\Modeles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
