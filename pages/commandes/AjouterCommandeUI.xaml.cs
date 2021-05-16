@@ -49,21 +49,16 @@ namespace VéloMax.pages
 
         }
 
-        public void Chosen_Client_Type(object sender, SelectionChangedEventArgs e)
+        public void Type_Client_Change(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems[0].ToString() == "Particulier")
             {
-                AdaptableCombo.ItemsSource = Individu.Lister();
+                AdaptableCombo.ItemsSource = Individu.ListerString();
             }
-            if (e.AddedItems[0].ToString() == "Boutique")
+            else if (e.AddedItems[0].ToString() == "Boutique")
             {
-                AdaptableCombo.ItemsSource = Boutique.Lister();
+                AdaptableCombo.ItemsSource = Boutique.ListerString();
             }
-            if (e.AddedItems[0].ToString() == "Nouveau")
-            {
-                // this.Frame.Navigate(typeof(ClientsMain), null);
-            }
-
         }
 
         public void Chosen_Client(object sender, SelectionChangedEventArgs e)

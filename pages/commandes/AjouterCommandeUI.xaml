@@ -9,45 +9,40 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel Orientation="Vertical" Margin="25">
-        <StackPanel Orientation="Horizontal">
-            <ComboBox Name="ClientCombo" PlaceholderText="Client" Width="300" SelectionChanged="Chosen_Client_Type">
+        <StackPanel Orientation="Horizontal" Margin="0 0 0 25">
+            <ComboBox Name="ClientCombo" PlaceholderText="Type de client" SelectionChanged="Type_Client_Change" Margin="0 0 25 0">
                 <x:String>Particulier</x:String>
                 <x:String>Boutique</x:String>
             </ComboBox>
-            <ComboBox Name="AdaptableCombo" PlaceholderText="Sélectionner le client" Width="300" SelectionChanged="Chosen_Client"  DisplayMemberPath="Source"/>
+            <ComboBox Name="AdaptableCombo" PlaceholderText="Le client" SelectionChanged="Chosen_Client" />
         </StackPanel>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <StackPanel Orientation="Vertical"  Grid.Column="0">
-                <TextBlock Text="Pièce :"/>
-                <ComboBox Name="TypePiecesCombo" Header="Type de pièce" PlaceholderText="" Width="300" >
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical" Margin="0 0 25 0">
+                <TextBlock Text="Pièce :" Margin="0 0 0 25" Style="{ThemeResource SubheaderTextBlockStyle}" />
+                <ComboBox Name="TypePiecesCombo" Header="Type de pièce" PlaceholderText="" Width="300" Margin="0 0 0 25">
                     <x:String>Aucun</x:String>
                 </ComboBox>
-                <ComboBox Name="fournisseurPiecesCombo" Header="Fournisseur" PlaceholderText="" Width="300" >
+                <ComboBox Name="fournisseurPiecesCombo" Header="Fournisseur" PlaceholderText="" Width="300" Margin="0 0 0 25" >
                     <x:String>Aucun</x:String>
                 </ComboBox>
-                <ComboBox Name="refPiecesCombo" Header="Référence" PlaceholderText="" Width="300" >
+                <ComboBox Name="refPiecesCombo" Header="Référence" PlaceholderText="" Width="300" Margin="0 0 0 25" >
                     <x:String>Aucune</x:String>
                 </ComboBox>
-                <TextBox Name="quantiteP" Header="Quantité :" Width="300" HorizontalAlignment="Left" />
+                <TextBox Name="quantiteP" Header="Quantité :" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25" />
                 <Button Content="Ajouter" Click="ButtonP_Clicked" Background="Peru"/>
             </StackPanel>
-            <StackPanel Orientation="Vertical" Grid.Column="1">
-                <TextBlock Text="Vélo :" />
-                <ComboBox Name="ligneModeleCombo" Header="Type" PlaceholderText="" Width="300" >
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Vélo :" Margin="0 0 0 25" Style="{ThemeResource SubheaderTextBlockStyle}" />
+                <ComboBox Name="ligneModeleCombo" Header="Type" PlaceholderText="" Width="300" Margin="0 0 0 25" >
                     <x:String>Aucun</x:String>
                 </ComboBox>
-                <ComboBox Name="nomModeleCombo" Header="Modèle" PlaceholderText="" Width="300" >
+                <ComboBox Name="nomModeleCombo" Header="Modèle" PlaceholderText="" Width="300" Margin="0 0 0 25" >
                     <x:String>Aucun</x:String>
                 </ComboBox>
-                <TextBox Name="quantiteM" Header="Quantité :" Width="300" HorizontalAlignment="Left"/>
+                <TextBox Name="quantiteM" Header="Quantité :" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25" />
                 <Button Content="Ajouter" Click="ButtonM_Clicked" Background="Peru"/>
             </StackPanel>
-        </Grid>
+        </StackPanel>
         <!-- <TextBlock Grid.Row="3" Text="Contenu Commande"/> -->
     </StackPanel>
 </Page>
