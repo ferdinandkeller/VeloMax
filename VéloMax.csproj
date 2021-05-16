@@ -168,16 +168,16 @@
     <Compile Include="Pages\Clients\Individus.xaml.cs">
       <DependentUpon>Individus.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Commande\AjouterCommande.xaml.cs">
+    <Compile Include="Pages\Commandes\AjouterCommande.xaml.cs">
       <DependentUpon>AjouterCommande.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Commande\CommandeMain.xaml.cs">
+    <Compile Include="Pages\Commandes\CommandeMain.xaml.cs">
       <DependentUpon>CommandeMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Commande\EnCours.xaml.cs">
+    <Compile Include="Pages\Commandes\EnCours.xaml.cs">
       <DependentUpon>EnCours.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Commande\Envoyee.xaml.cs">
+    <Compile Include="Pages\Commandes\Envoyee.xaml.cs">
       <DependentUpon>Envoyee.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Fournisseurs\Catalogue.xaml.cs">
@@ -315,19 +315,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Commande\AjouterCommande.xaml">
+    <Page Include="Pages\Commandes\AjouterCommande.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Commande\CommandeMain.xaml">
+    <Page Include="Pages\Commandes\CommandeMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Commande\EnCours.xaml">
+    <Page Include="Pages\Commandes\EnCours.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Commande\Envoyee.xaml">
+    <Page Include="Pages\Commandes\Envoyee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

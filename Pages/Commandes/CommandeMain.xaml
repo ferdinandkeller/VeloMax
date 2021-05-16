@@ -11,17 +11,6 @@
     <Grid>
 
         <NavigationView x:Name="NavViewCommandes" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="NavView_ItemInvoked" BackRequested="NavView_BackRequested">
-            <NavigationView.Resources>
-                <!--<AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
-                            BackgroundSource="Backdrop"
-                            TintColor="Transparent"
-                            FallbackColor="White"/>
-            <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground"
-                            BackgroundSource="HostBackdrop"
-                            TintColor="{StaticResource SystemRevealChromeWhiteColor}"
-                            TintOpacity="1"
-                            FallbackColor="White"/>-->
-            </NavigationView.Resources>
             <NavigationView.MenuItems>
                 <NavigationViewItem Tag="commande1" Content="En Cours" />
                 <NavigationViewItem Tag="commande2" Content="Envoyées" />

@@ -17,7 +17,7 @@
                         <Button Name="Nouveau" Content="Nouveau" Click="Nouveau_Click" />
                         <Button Name="Supprimer" Content="Supprimer" Click="Supprimer_Click" />
                     </StackPanel>
-                    <controls:DataGrid Name="MyDataGrid" ItemsSource="{x:Bind entreprises}" AutoGenerateColumns="False">
+                    <controls:DataGrid Name="MyDataGridB" ItemsSource="{x:Bind entreprises}" AutoGenerateColumns="False">
                         <controls:DataGrid.Columns>
                             <controls:DataGridTextColumn Header="nom" Binding="{Binding nomB}"/>
                             <controls:DataGridTextColumn Header="adresse" Binding="{Binding adresse.VersString}"/>

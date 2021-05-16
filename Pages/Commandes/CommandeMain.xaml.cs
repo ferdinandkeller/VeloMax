@@ -30,9 +30,9 @@ namespace VéloMax.Pages
         }
 
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>{
-            ("commande1", typeof(VéloMax.Pages.Commande.EnCours)),
-            ("commande2", typeof(VéloMax.Pages.Commande.Envoyee)),
-            ("commande3", typeof(VéloMax.Pages.Commande.AjouterCommande))
+            ("commande1", typeof(VéloMax.Pages.Commandes.EnCours)),
+            ("commande2", typeof(VéloMax.Pages.Commandes.Envoyee)),
+            ("commande3", typeof(VéloMax.Pages.Commandes.AjouterCommande))
         };
 
         

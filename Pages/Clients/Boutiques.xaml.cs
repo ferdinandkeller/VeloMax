@@ -19,6 +19,7 @@ using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 using VéloMax.bdd;
+using VéloMax.Pages;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -50,7 +51,7 @@ namespace VéloMax.Pages.Clients
 
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
-            ((Boutique)MyDataGrid.SelectedItem).Supprimer();
+            ((Boutique)MyDataGridB.SelectedItem).Supprimer();
             ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(Boutiques));
         }
     }

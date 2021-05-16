@@ -12,43 +12,40 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using VéloMax.bdd;
 using System.Collections.ObjectModel;
 using Microsoft.Toolkit.Uwp.UI.Controls;
 using System.Diagnostics;
-using VéloMax.bdd;
+using VéloMax.Pages;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace VéloMax.Pages.Clients
+namespace VéloMax.Pages.Commandes
 {
-    /// <summary>
-    /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
-    /// </summary>
-    public sealed partial class Individus : Page
+    public sealed partial class EnCours : Page
     {
-        public Individus()
+        public EnCours()
         {
             this.InitializeComponent();
         }
-        private void Liste_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-        }
-
-        public ReadOnlyCollection<Individu> individus
+        /*
+        public ReadOnlyCollection<Commande> commandes
         {
-            get => Individu.Lister();
+            get => Commande.Lister();
         }
+        */
+        
 
         private void Nouveau_Click(object sender, RoutedEventArgs e)
         {
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(AjouterIndividu));
+            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(AjouterCommande));
         }
 
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
-            ((Individu)MyDataGridI.SelectedItem).Supprimer();
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(Individus));
+            //((Individu)MyDataGrid.SelectedItem).Supprimer();
+            //((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(IndividusUI));
         }
     }
 }

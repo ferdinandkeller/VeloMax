@@ -17,7 +17,7 @@ using VéloMax.bdd;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace VéloMax.Pages.Commande
+namespace VéloMax.Pages.Commandes
 {
     /// <summary>
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
@@ -27,6 +27,17 @@ namespace VéloMax.Pages.Commande
         public AjouterCommande()
         {
             this.InitializeComponent();
+        }
+
+        public void AjoutCommande(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                /*int codep = int.Parse(codePA.Text);
+                new Individu(nomParticulier.Text, prenomParticulier.Text, new Adresse(rueA.Text, villeA.Text, codep, provinceA.Text), telParticulier.Text, mailParticulier.Text);
+                ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(IndividusUI));*/
+            }
+            catch { }
         }
 
         public void ButtonP_Clicked(object sender, RoutedEventArgs e)
@@ -47,15 +58,15 @@ namespace VéloMax.Pages.Commande
         {
             if (e.AddedItems[0].ToString() == "Particulier")
             {
-                AdaptableCombo.ItemsSource = Individu.Lister();
+                AdaptableCombo.ItemsSource = Individu.ListerString();
             }
             if (e.AddedItems[0].ToString() == "Boutique")
             {
-                AdaptableCombo.ItemsSource = Boutique.Lister();
+                AdaptableCombo.ItemsSource = Boutique.ListerString();
             }
             if (e.AddedItems[0].ToString() == "Nouveau")
             {
-               // this.Frame.Navigate(typeof(ClientsMain), null);
+                ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(ClientsMain));
             }
             
         }
