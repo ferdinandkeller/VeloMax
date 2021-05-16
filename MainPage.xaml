@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <NavigationView x:Name="NavigationPrincipale" IsBackButtonVisible="Visible" IsBackEnabled="True" IsSettingsVisible="False" Loaded="NavView_Loaded" ItemInvoked="NavView_ItemInvoked" BackRequested="NavView_BackRequested">
+    <NavigationView x:Name="NavigationPrincipale" IsBackButtonVisible="Visible" IsBackEnabled="True" IsSettingsVisible="False" BackRequested="NavView_BackRequested" SelectionChanged="NavigationPrincipale_SelectionChanged">
         <NavigationView.MenuItems>
             <NavigationViewItem Name="NavigationPrincipale_Default" Tag="home" Icon="Home" Content="Accueil" />
             <NavigationViewItem Tag="commandes" Icon="Shop" Content="Commandes" />
