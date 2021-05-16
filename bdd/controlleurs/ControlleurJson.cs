@@ -11,11 +11,30 @@ namespace VéloMax.bdd
         private string _json = "";
         public string json_normal
         {
-            get => "{\n" + Indenter(_json.Substring(0, _json.Length - 2)) + "\n}";
+            get
+            {
+                if (_json.Length == 0)
+                {
+                    return "{\n}";
+                } else
+                {
+                    return "{\n" + Indenter(_json.Substring(0, _json.Length - 2)) + "\n}";
+                }
+            }
         }
         public string json_liste
         {
-            get => "[\n" + Indenter(_json.Substring(0, _json.Length - 2)) + "\n]";
+            get
+            {
+                if (_json.Length == 0)
+                {
+                    return "[\n]";
+                }
+                else
+                {
+                    return "[\n" + Indenter(_json.Substring(0, _json.Length - 2)) + "\n]";
+                }
+            }
         }
 
         public ControlleurJson() { }

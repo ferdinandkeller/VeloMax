@@ -50,16 +50,17 @@ namespace VéloMax
             Individu i3 = new Individu("nom3", "", new Adresse("", "", 3, ""), "", "");
             Individu i4 = new Individu("nom4", "", new Adresse("", "", 3, ""), "", "");
 
-            new Fidelio(i2, Programme.Lister()[0], DateTime.Now);
-            new Fidelio(i3, Programme.Lister()[0], DateTime.Now + TimeSpan.FromDays(30));
-            new Fidelio(i4, Programme.Lister()[0], DateTime.Now + TimeSpan.FromDays(90));
-
-            Debug.WriteLine(Individu.FidelioFinJSON());
+            new Fidelio(i2, Programme.Lister()[0], DateTime.Now - TimeSpan.FromDays(120), 0);
+            new Fidelio(i2, Programme.Lister()[0], DateTime.Now - TimeSpan.FromDays(30), 1);
+            new Fidelio(i3, Programme.Lister()[0], DateTime.Now - TimeSpan.FromDays(30), 1);
+            new Fidelio(i3, Programme.Lister()[0], DateTime.Now - TimeSpan.FromDays(90), 0);
+            new Fidelio(i3, Programme.Lister()[0], DateTime.Now - TimeSpan.FromDays(120), 0);
+            new Fidelio(i4, Programme.Lister()[0], DateTime.Now, 1);
         }
 
         private void ExecuteSQL3(object sender, RoutedEventArgs e)
         {
-            
+            Debug.WriteLine(Fidelio.FidelioFinJSON());
         }
 
         private void ExecuteSQL4(object sender, RoutedEventArgs e)

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
 
 namespace VéloMax.bdd
 {
@@ -105,20 +106,6 @@ namespace VéloMax.bdd
             cjson.AjouterNormalChamp("telI", telI);
             cjson.AjouterNormalChamp("mailI", mailI);
             return cjson.json_normal;
-        }
-
-        public static string FidelioFinJSON()
-        {
-            List<Individu> list = new List<Individu>();
-            ControlleurRequetes.SelectionnePlusieurs($"SELECT numI FROM Individu NATURAL JOIN Fidelio WHERE dateAdherence <= '{(DateTime.Now + TimeSpan.FromDays(60)).ToString("yyyy-MM-dd HH:mm:ss")}'", (MySqlDataReader reader) => { list.Add(new Individu(reader.GetInt32("numI"))); });
-
-            ControlleurJson cjson = new ControlleurJson();
-            foreach (Individu individu in list)
-            {
-                cjson.AjouterListeJson(individu.VersJson());
-            }
-
-            return cjson.json_liste;
         }
     }
 }
