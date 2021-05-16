@@ -89,6 +89,15 @@ namespace VéloMax.bdd
             ControlleurRequetes.SelectionnePlusieurs($"SELECT numI FROM Individu", (MySqlDataReader reader) => { list.Add(new Individu(reader.GetInt32("numI"))); });
             return new ReadOnlyCollection<Individu>(list);
         }
+        public static ReadOnlyCollection<string> ListerString()
+        {
+            List<string> list = new List<string>();
+            foreach (Individu i in Lister())
+            {
+                list.Add($"{i.nomI} {i.prenomI} [{i.numI}]");
+            }
+            return new ReadOnlyCollection<string>(list);
+        }
         public static ReadOnlyCollection<Individu> ListerFidelio()
         {
             List<Individu> list = new List<Individu>();

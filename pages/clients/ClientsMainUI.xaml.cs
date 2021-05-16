@@ -18,13 +18,13 @@ using System.Diagnostics;
 
 namespace VéloMax.pages
 {
-    public sealed partial class ClientsMain : Page
+    public sealed partial class ClientsMainUI : Page
     {
-        public ClientsMain()
+        public ClientsMainUI()
         {
             this.InitializeComponent();
             NavViewClients.SelectedItem = NavViewClients_Default;
-            NavigationContentFrame.Navigate(typeof(Particuliers));
+            NavigationContentFrame.Navigate(typeof(IndividusUI));
         }
 
         private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -32,10 +32,10 @@ namespace VéloMax.pages
             switch (((NavigationViewItem)args.SelectedItem).Tag)
             {
                 case "clientParticulier":
-                    NavigationContentFrame.Navigate(typeof(Particuliers));
+                    NavigationContentFrame.Navigate(typeof(IndividusUI));
                     break;
                 case "clientEntreprise":
-                    NavigationContentFrame.Navigate(typeof(Entreprises));
+                    NavigationContentFrame.Navigate(typeof(BoutiquesUI));
                     break;
             }
         }

@@ -20,27 +20,27 @@ using VéloMax.pages;
 
 namespace VéloMax.pages
 {
-    public sealed partial class Particuliers : Page
+    public sealed partial class CommandesEncoursUI : Page
     {
-        public Particuliers()
+        public CommandesEncoursUI()
         {
             this.InitializeComponent();
         }
 
-        public ReadOnlyCollection<Individu> individus
+        public ReadOnlyCollection<Commande> commandes
         {
-            get => Individu.Lister();
+            get => Commande.Lister();
         }
 
         private void Nouveau_Click(object sender, RoutedEventArgs e)
         {
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(AjouterParticulier));
+            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(AjouterCommandeUI));
         }
 
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
-            ((Individu)azd.SelectedItem).Supprimer();
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(Particuliers));
+            //((Individu)MyDataGrid.SelectedItem).Supprimer();
+            //((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(IndividusUI));
         }
     }
 }

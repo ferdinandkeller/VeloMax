@@ -150,20 +150,32 @@
     <Compile Include="pages\Accueil.xaml.cs">
       <DependentUpon>Accueil.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\clients\AjouterBoutique.xaml.cs">
-      <DependentUpon>AjouterBoutique.xaml</DependentUpon>
+    <Compile Include="pages\clients\AjouterBoutiqueUI.xaml.cs">
+      <DependentUpon>AjouterBoutiqueUI.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\clients\AjouterParticulier.xaml.cs">
-      <DependentUpon>AjouterParticulier.xaml</DependentUpon>
+    <Compile Include="pages\clients\AjouterIndividuUI.xaml.cs">
+      <DependentUpon>AjouterIndividuUI.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\clients\ClientsMain.xaml.cs">
-      <DependentUpon>ClientsMain.xaml</DependentUpon>
+    <Compile Include="pages\clients\ClientsMainUI.xaml.cs">
+      <DependentUpon>ClientsMainUI.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\clients\Entreprises.xaml.cs">
-      <DependentUpon>Entreprises.xaml</DependentUpon>
+    <Compile Include="pages\clients\BoutiquesUI.xaml.cs">
+      <DependentUpon>BoutiquesUI.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pages\clients\Particuliers.xaml.cs">
-      <DependentUpon>Particuliers.xaml</DependentUpon>
+    <Compile Include="pages\clients\IndividusUI.xaml.cs">
+      <DependentUpon>IndividusUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\commandes\AjouterCommandeUI.xaml.cs">
+      <DependentUpon>AjouterCommandeUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\commandes\CommandesEncoursUI.xaml.cs">
+      <DependentUpon>CommandesEncoursUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\commandes\CommandesEnvoyeeUI.xaml.cs">
+      <DependentUpon>CommandesEnvoyeeUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\commandes\CommandesMainUI.xaml.cs">
+      <DependentUpon>CommandesMainUI.xaml</DependentUpon>
     </Compile>
     <Compile Include="pages\produits\AjouterModeleUI.xaml.cs">
       <DependentUpon>AjouterModeleUI.xaml</DependentUpon>
@@ -258,23 +270,39 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="pages\clients\AjouterBoutique.xaml">
+    <Page Include="pages\clients\AjouterBoutiqueUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="pages\clients\AjouterParticulier.xaml">
+    <Page Include="pages\clients\AjouterIndividuUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="pages\clients\ClientsMain.xaml">
+    <Page Include="pages\clients\ClientsMainUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="pages\clients\Entreprises.xaml">
+    <Page Include="pages\clients\BoutiquesUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="pages\clients\Particuliers.xaml">
+    <Page Include="pages\clients\IndividusUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\commandes\AjouterCommandeUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\commandes\CommandesEncoursUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\commandes\CommandesEnvoyeeUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\commandes\CommandesMainUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -313,6 +341,7 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="VéloMax.pages.Particuliers"
+    x:Class="VéloMax.pages.IndividusUI"
     xmlns:local="using:VéloMax.pages"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -14,7 +14,7 @@
             <Button Name="Nouveau" Content="Nouveau" Click="Nouveau_Click" />
             <Button Name="Supprimer" Content="Supprimer" Click="Supprimer_Click" />
         </StackPanel>
-        <controls:DataGrid Name="azd" ItemsSource="{x:Bind individus}" AutoGenerateColumns="False">
+        <controls:DataGrid Name="MyDataGrid" ItemsSource="{x:Bind individus}" AutoGenerateColumns="False">
             <controls:DataGrid.Columns>
                 <controls:DataGridTextColumn Header="nom" Binding="{Binding nomI}"/>
                 <controls:DataGridTextColumn Header="prenom" Binding="{Binding prenomI}"/>

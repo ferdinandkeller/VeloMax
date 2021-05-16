@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="VéloMax.pages.ClientsMain"
+    x:Class="VéloMax.pages.CommandesMainUI"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,10 +8,10 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <NavigationView Name="NavViewClients" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsBackEnabled="False" IsSettingsVisible="False" SelectionChanged="NavView_SelectionChanged">
+        <NavigationView Name="NavViewCommandes" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsBackEnabled="False" IsSettingsVisible="False" SelectionChanged="NavView_SelectionChanged">
             <NavigationView.MenuItems>
-                <NavigationViewItem Name="NavViewClients_Default" Tag="clientParticulier" Content="Particuliers"/>
-                <NavigationViewItem Tag="clientEntreprise" Content="Entreprises" />
+                <NavigationViewItem Name="NavViewCommandes_Default" Tag="commandesEncours" Content="Commandes en cours"/>
+                <NavigationViewItem Tag="commandesEnvoyee" Content="Commandes envoyées" />
             </NavigationView.MenuItems>
             
             <Frame Name="NavigationContentFrame"></Frame>
