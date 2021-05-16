@@ -1,5 +1,6 @@
 ﻿<Page
     x:Class="VéloMax.MainPage"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:VéloMax"
@@ -8,7 +9,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <NavigationView x:Name="NavigationPrincipale" IsBackButtonVisible="Collapsed" IsBackEnabled="False" IsSettingsVisible="False" SelectionChanged="NavigationPrincipale_SelectionChanged">
+    <NavigationView x:Name="NavigationPrincipale" IsBackButtonVisible="Visible" IsBackEnabled="True" IsSettingsVisible="False" BackRequested="NavView_BackRequested" SelectionChanged="NavigationPrincipale_SelectionChanged">
         <NavigationView.MenuItems>
             <NavigationViewItem Name="NavigationPrincipale_Default" Tag="home" Icon="Home" Content="Accueil" />
             <NavigationViewItem Tag="commandes" Icon="Shop" Content="Commandes" />

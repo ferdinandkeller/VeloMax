@@ -17,6 +17,7 @@ using Windows.System;
 using System.Diagnostics;
 using VéloMax.bdd;
 using VéloMax.pages;
+using muxc = Microsoft.UI.Xaml.Controls;
 
 namespace VéloMax
 {
@@ -57,5 +58,31 @@ namespace VéloMax
                     break;
             }
         }
+
+        
+
+        private void NavView_BackRequested(NavigationView sender,
+                                           NavigationViewBackRequestedEventArgs args)
+        {
+            TryGoBack();
+        }
+
+
+
+        private bool TryGoBack()
+        {
+            if (!NavigationContentFrame.CanGoBack)
+                return false;
+
+            // Don't go back if the nav pane is overlayed.
+            if (NavigationPrincipale.IsPaneOpen &&
+                (NavigationPrincipale.DisplayMode == NavigationViewDisplayMode.Compact ||
+                 NavigationPrincipale.DisplayMode == NavigationViewDisplayMode.Minimal))
+                return false;
+            NavigationContentFrame.GoBack();
+            ;
+            return true;
+        }
+
     }
 }
