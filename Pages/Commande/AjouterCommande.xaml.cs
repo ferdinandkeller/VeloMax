@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -12,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using VéloMax.bdd;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -37,6 +39,28 @@ namespace VéloMax.Pages.Commande
             
         }
         public void ButtonC_Clicked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public void Chosen_Client_Type(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems[0].ToString() == "Particulier")
+            {
+                AdaptableCombo.ItemsSource = Individu.Lister();
+            }
+            if (e.AddedItems[0].ToString() == "Boutique")
+            {
+                AdaptableCombo.ItemsSource = Boutique.Lister();
+            }
+            if (e.AddedItems[0].ToString() == "Nouveau")
+            {
+               // this.Frame.Navigate(typeof(ClientsMain), null);
+            }
+            
+        }
+
+        public void Chosen_Client(object sender, SelectionChangedEventArgs e)
         {
 
         }

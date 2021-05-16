@@ -18,13 +18,13 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <ComboBox Name="ClientCombo" Margin="25" PlaceholderText="Client" Width="300" >
+            <ComboBox Name="ClientCombo" Margin="25" PlaceholderText="Client" Width="300" SelectionChanged="Chosen_Client_Type">
                 <x:String>Particulier</x:String>
                 <x:String>Boutique</x:String>
                 <x:String>Nouveau</x:String>
             </ComboBox>
-            <TextBox Name="nomC" Header="Nom" Width="300" VerticalAlignment="Top" Margin="5"/>
-            <TextBox Name="prenomC" Header="Prénom (Particulier) :" Width="300" VerticalAlignment="Top" Margin="5"/>
+            <ComboBox Name="AdaptableCombo" Margin="25" PlaceholderText="Sélectionner le client" Width="300" SelectionChanged="Chosen_Client"  DisplayMemberPath="Source"/>
+
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="1">
         <TextBlock Text="Adresse :" Margin="15"/>
