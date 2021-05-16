@@ -13,6 +13,8 @@ namespace VéloMax.bdd
         /* Attributs */
         public readonly int numP;
 
+        public string numPString { get { return numP.ToString(); } }
+
         public string descriptionP
         {
             get { return ControlleurRequetes.ObtenirChampString("Piece", "numP", numP, "descriptionP"); }
@@ -81,5 +83,7 @@ namespace VéloMax.bdd
         {
             return PieceMoinsCher().delaiF;
         }
+
+        //Par défaut, ranger par quantité croissante, mettre qté<=2 en gras et qté=0 en rouge
     }
 }

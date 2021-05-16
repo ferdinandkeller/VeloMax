@@ -23,9 +23,9 @@ namespace VéloMax.bdd
             get { return ControlleurRequetes.ObtenirChampString("Adresse", "numA", numA, "ville"); }
             set { ControlleurRequetes.ModifierChamp("Adresse", "numA", numA, "ville", value); }
         }
-        public int codepostal
+        public string codepostal
         {
-            get { return ControlleurRequetes.ObtenirChampInt("Adresse", "numA", numA, "codepostal"); }
+            get { return ControlleurRequetes.ObtenirChampString("Adresse", "numA", numA, "codepostal"); }
             set { ControlleurRequetes.ModifierChamp("Adresse", "numA", numA, "codepostal", value); }
         }
         public string province
@@ -39,7 +39,7 @@ namespace VéloMax.bdd
         {
             this.numA = numA;
         }
-        public Adresse(string rue, string ville, int codepostal, string province)
+        public Adresse(string rue, string ville, string codepostal, string province)
         {
             ControlleurRequetes.Inserer($"INSERT INTO Adresse (rue, ville, codepostal, province) VALUES ('{rue}', '{ville}', {codepostal}, '{province}')");
             this.numA = ControlleurRequetes.DernierIDUtilise();

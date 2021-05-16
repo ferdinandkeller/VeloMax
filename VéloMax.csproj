@@ -180,11 +180,17 @@
     <Compile Include="Pages\Commande\Envoyee.xaml.cs">
       <DependentUpon>Envoyee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Fournisseurs\Catalogue.xaml.cs">
+      <DependentUpon>Catalogue.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Notices\Notices.xaml.cs">
       <DependentUpon>Notices.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Fournisseurs\FournisseursMain.xaml.cs">
       <DependentUpon>FournisseursMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Produits\AjouterPiece.xaml.cs">
+      <DependentUpon>AjouterPiece.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Produits\Pieces.xaml.cs">
       <DependentUpon>Pieces.xaml</DependentUpon>
@@ -325,11 +331,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Fournisseurs\Catalogue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Notices\Notices.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Fournisseurs\FournisseursMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Produits\AjouterPiece.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

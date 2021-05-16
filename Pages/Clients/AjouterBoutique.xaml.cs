@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using VéloMax.bdd;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,16 +30,13 @@ namespace VéloMax.Pages.Clients
 
         public void ButtonA_Clicked(object sender, RoutedEventArgs e)
         {
-            //A faire
-
-
+           
         }
 
         public void ButtonB_Clicked(object sender, RoutedEventArgs e)
         {
-            //A faire
-
-
+            Adresse a = new Adresse(rueA.Text, villeA.Text, codePA.Text, provinceA.Text);
+            Boutique b = new Boutique(nomBoutique.Text, Convert.ToInt32(a.numA), telBoutique.Text, mailBoutique.Text);
         }
     }
 }

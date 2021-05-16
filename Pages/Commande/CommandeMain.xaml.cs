@@ -33,39 +33,10 @@ namespace VéloMax.Pages
             ("commande1", typeof(VéloMax.Pages.Commande.EnCours)),
             ("commande2", typeof(VéloMax.Pages.Commande.Envoyee)),
             ("commande3", typeof(VéloMax.Pages.Commande.AjouterCommande))
-            };
+        };
 
-        private void NavView_Loaded(object sender, RoutedEventArgs e)
-        {
-            // You can also add items in code.
-            NavViewCommandes.MenuItems.Add(new NavigationViewItemSeparator());
-            NavViewCommandes.MenuItems.Add(new NavigationViewItem
-            {
-                Content = "My content",
-                Icon = new SymbolIcon((Symbol)0xF1AD),
-                Tag = "content"
-            });
-            _pages.Add(("home", typeof(VéloMax.Pages.Accueil)));
-
-            // Add handler for ContentFrame navigation.
-            NavigationContentFrame.Navigated += On_Navigated;
-
-            // NavView doesn't load any page by default, so load home page.
-            NavViewCommandes.SelectedItem = NavViewCommandes.MenuItems[0];
-            // If navigation occurs on SelectionChanged, this isn't needed.
-            // Because we use ItemInvoked to navigate, we need to call Navigate
-            // here to load the home page.
-            NavView_Navigate("home", new Windows.UI.Xaml.Media.Animation.EntranceNavigationTransitionInfo());
-
-            // Listen to the window directly so the app responds
-            // to accelerator keys regardless of which element has focus.
-            Window.Current.CoreWindow.Dispatcher.AcceleratorKeyActivated +=
-                CoreDispatcher_AcceleratorKeyActivated;
-
-            Window.Current.CoreWindow.PointerPressed += CoreWindow_PointerPressed;
-
-            SystemNavigationManager.GetForCurrentView().BackRequested += System_BackRequested;
-        }
+        
+        
 
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
@@ -112,36 +83,7 @@ namespace VéloMax.Pages
                                            NavigationViewBackRequestedEventArgs args)
         {
             TryGoBack();
-        }
-
-        private void CoreDispatcher_AcceleratorKeyActivated(CoreDispatcher sender, AcceleratorKeyEventArgs e)
-        {
-            // When Alt+Left are pressed navigate back
-            if (e.EventType == CoreAcceleratorKeyEventType.SystemKeyDown
-                && e.VirtualKey == VirtualKey.Left
-                && e.KeyStatus.IsMenuKeyDown == true
-                && !e.Handled)
-            {
-                e.Handled = TryGoBack();
-            }
-        }
-
-        private void System_BackRequested(object sender, BackRequestedEventArgs e)
-        {
-            if (!e.Handled)
-            {
-                e.Handled = TryGoBack();
-            }
-        }
-
-        private void CoreWindow_PointerPressed(CoreWindow sender, PointerEventArgs e)
-        {
-            // Handle mouse back button.
-            if (e.CurrentPoint.Properties.IsXButton1Pressed)
-            {
-                e.Handled = TryGoBack();
-            }
-        }
+        } 
 
         private bool TryGoBack()
         {
@@ -157,27 +99,5 @@ namespace VéloMax.Pages
             return true;
         }
 
-        private void On_Navigated(object sender, NavigationEventArgs e)
-        {
-            NavViewCommandes.IsBackEnabled = NavigationContentFrame.CanGoBack;
-
-            if (NavigationContentFrame.SourcePageType == typeof(VéloMax.Pages.Accueil))
-            {
-                // SettingsItem is not part of NavView.MenuItems, and doesn't have a Tag.
-                NavViewCommandes.SelectedItem = (NavigationViewItem)NavViewCommandes.SettingsItem;
-                NavViewCommandes.Header = "Accueil";
-            }
-            else if (NavigationContentFrame.SourcePageType != null)
-            {
-                var item = _pages.FirstOrDefault(p => p.Page == e.SourcePageType);
-
-                NavViewCommandes.SelectedItem = NavViewCommandes.MenuItems
-                    .OfType<NavigationViewItem>()
-                    .First(n => n.Tag.Equals(item.Tag));
-
-                NavViewCommandes.Header =
-                    ((NavigationViewItem)NavViewCommandes.SelectedItem)?.Content?.ToString();
-            }
-        }
     }
 }

@@ -12,6 +12,7 @@ namespace VéloMax.bdd
     {
         /* Attributs */
         public readonly int numI;
+        public string nomFidelio;
 
         public Individu individu
         {

@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using VéloMax.bdd;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,33 +26,42 @@ namespace VéloMax.Pages
         public FournisseursMain()
         {
             this.InitializeComponent();
+            Liste.ItemsSource = Fournisseur.Lister();
         }
-        private void Navview_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        public void ButtonClicked(object sender, RoutedEventArgs e)
         {
-            if (args.InvokedItemContainer != null)
-            {
-                var navItemTag = args.InvokedItemContainer.Tag.ToString();
-            }
+            this.Frame.Navigate(typeof(FournisseursMain), null);
         }
+        private void Liste_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
-        private void NavView_BackRequested(NavigationView sender,
-                                           NavigationViewBackRequestedEventArgs args)
-        {
-            TryGoBack();
         }
 
-        private bool TryGoBack()
+        public void supprClicked(object sender, RoutedEventArgs e)
         {
-            if (!NavigationContentFrame.CanGoBack)
-                return false;
+        }
+        public void catalogueClicked(object sender, RoutedEventArgs e)
+        {
+        }
+        public void numClicked(object sender, RoutedEventArgs e)
+        {
+        }
 
-            // Don't go back if the nav pane is overlayed.
-            if (NavViewFournisseurs.IsPaneOpen &&
-                (NavViewFournisseurs.DisplayMode == NavigationViewDisplayMode.Compact ||
-                 NavViewFournisseurs.DisplayMode == NavigationViewDisplayMode.Minimal))
-                return false;
-            NavigationContentFrame.GoBack();
-            return true;
+        public void nomClicked(object sender, RoutedEventArgs e)
+        {
+        }
+        public void adresseClicked(object sender, RoutedEventArgs e)
+        {
+        }
+        public void contacteClicked(object sender, RoutedEventArgs e)
+        {
+        }
+        public void reactiviteClicked(object sender, RoutedEventArgs e)
+        {
+        }
+        public void Clicked(object sender, RoutedEventArgs e)
+        {
+            //rien
         }
     }
 }

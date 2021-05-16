@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using VéloMax.bdd;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,11 +26,39 @@ namespace VéloMax.Pages.Produits
         public Pieces()
         {
             this.InitializeComponent();
+            Liste.ItemsSource = Piece.Lister();
         }
 
         public void ButtonClicked(object sender, RoutedEventArgs e)
         {
-            //this.Frame.Navigate(typeof(AjouterParticulier), null);
+            this.Frame.Navigate(typeof(FournisseursMain), null);
+        }
+        private void Liste_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        public void supprClicked(object sender, RoutedEventArgs e)
+        {
+        }
+        public void numClicked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        public void descriptionClicked(object sender, RoutedEventArgs e)
+        {
+        }
+        public void prixClicked(object sender, RoutedEventArgs e)
+        {
+        }
+        public void dateIntroClicked(object sender, RoutedEventArgs e)
+        {
+        }
+        public void dateDiscClicked(object sender, RoutedEventArgs e)
+        {
+        }
+        public void stockClicked(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

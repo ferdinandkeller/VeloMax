@@ -67,5 +67,7 @@ namespace VéloMax.bdd
             ControlleurRequetes.SelectionnePlusieurs($"SELECT numC FROM Commande", (MySqlDataReader reader) => { list.Add(new Commande(reader.GetInt32("numC"))); });
             return new ReadOnlyCollection<Commande>(list);
         }
+        //Commandes en cours
+        //Commandes livrées
     }
 }

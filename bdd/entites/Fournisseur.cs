@@ -12,6 +12,7 @@ namespace VéloMax.bdd
     {
         /* Attributs */
         public readonly int numF;
+        public string numFString { get { return numF.ToString(); } }
 
         public int siret
         {
