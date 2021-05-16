@@ -15,27 +15,28 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.Core;
 using Windows.System;
 using System.Diagnostics;
+using VéloMax.pages;
 
 namespace VéloMax.pages
 {
-    public sealed partial class ClientsMain : Page
+    public sealed partial class ProduitsUIMain : Page
     {
-        public ClientsMain()
+        public ProduitsUIMain()
         {
             this.InitializeComponent();
-            NavViewClients.SelectedItem = NavViewClients_Default;
-            NavigationContentFrame.Navigate(typeof(Particuliers));
+            NV_Produits.SelectedItem = NV_Produits_Default;
+            NV_Produits_CF.Navigate(typeof(PiecesUI));
         }
 
-        private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        private void NV_Produits_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             switch (((NavigationViewItem)args.SelectedItem).Tag)
             {
-                case "clientParticulier":
-                    NavigationContentFrame.Navigate(typeof(Particuliers));
+                case "produits_pieces":
+                    NV_Produits_CF.Navigate(typeof(PiecesUI));
                     break;
-                case "clientEntreprise":
-                    NavigationContentFrame.Navigate(typeof(Entreprises));
+                case "produits_modeles":
+                    NV_Produits_CF.Navigate(typeof(ModelesUI));
                     break;
             }
         }

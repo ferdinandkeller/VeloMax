@@ -19,31 +19,39 @@ using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 using VéloMax.bdd;
-using VéloMax.pages;
+using Microsoft.Toolkit.Uwp.UI.Controls;
+using System.Diagnostics;
 
 namespace VéloMax.pages
 {
-    public sealed partial class Entreprises : Page
+    public sealed partial class ModelesUI : Page
     {
-        public Entreprises()
+        public ModelesUI()
         {
             this.InitializeComponent();
+            foreach (DataGridColumn c in MyDataGrid.Columns)
+            {
+                if (c.Tag != null && c.Tag.Equals("MaLigne"))
+                {
+                    (c as DataGridComboBoxColumn).ItemsSource = ConvertisseurLigneModel.LigneVersListe();
+                }
+            }
         }
 
-        public ReadOnlyCollection<Boutique> entreprises
+        public ReadOnlyCollection<Modele> modeles
         {
-            get => Boutique.Lister();
+            get => Modele.Lister();
         }
 
         private void Nouveau_Click(object sender, RoutedEventArgs e)
         {
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(AjouterBoutique));
+            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(AjouterModeleUI));
         }
 
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
-            ((Boutique)azd.SelectedItem).Supprimer();
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(Entreprises));
+            ((Modele)MyDataGrid.SelectedItem).Supprimer();
+            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(ModelesUI));
         }
     }
 }

@@ -16,7 +16,7 @@ using Windows.UI.Core;
 using Windows.System;
 using System.Diagnostics;
 using VéloMax.bdd;
-using VéloMax.Pages;
+using VéloMax.pages;
 
 namespace VéloMax
 {
@@ -44,6 +44,9 @@ namespace VéloMax
                 case "programmes":
                     break;
                 case "fournisseurs":
+                    break;
+                case "produits":
+                    NavigationContentFrame.Navigate(typeof(ProduitsUIMain));
                     break;
                 case "stocks":
                     break;

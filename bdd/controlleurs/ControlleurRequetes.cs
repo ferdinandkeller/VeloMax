@@ -162,11 +162,11 @@ namespace VéloMax.bdd
 
         public static void ModifierChamp(string table_name, string key_name, int key_value, string field_name, string field_value)
         {
-            Modifier($"UPDATE {table_name} SET {field_name}='{field_value}' WHERE {key_name}={key_value}");
+            Modifier($"UPDATE {table_name} SET {field_name}='{field_value.Replace("'", "''")}' WHERE {key_name}={key_value}");
         }
         public static void ModifierChamp(string table_name, string key_1_name, int key_1_value, string key_2_name, int key_2_value, string field_name, string field_value)
         {
-            Modifier($"UPDATE {table_name} SET {field_name}='{field_value}' WHERE {key_1_name}={key_1_value} AND {key_2_name}={key_2_value}");
+            Modifier($"UPDATE {table_name} SET {field_name}='{field_value.Replace("'", "''")}' WHERE {key_1_name}={key_1_value} AND {key_2_name}={key_2_value}");
         }
         public static void ModifierChamp(string table_name, string key_name, int key_value, string field_name, int field_value)
         {
@@ -178,11 +178,11 @@ namespace VéloMax.bdd
         }
         public static void ModifierChamp(string table_name, string key_name, int key_value, string field_name, DateTime field_value)
         {
-            Modifier($"UPDATE {table_name} SET {field_name}={field_value.ToString("yyyy-MM-dd HH:mm:ss")} WHERE {key_name}={key_value}");
+            Modifier($"UPDATE {table_name} SET {field_name}='{field_value.ToString("yyyy-MM-dd HH:mm:ss")}' WHERE {key_name}={key_value}");
         }
         public static void ModifierChamp(string table_name, string key_1_name, int key_1_value, string key_2_name, int key_2_value, string field_name, DateTime field_value)
         {
-            Modifier($"UPDATE {table_name} SET {field_name}={field_value.ToString("yyyy-MM-dd HH:mm:ss")} WHERE {key_1_name}={key_1_value} AND {key_2_name}={key_2_value}");
+            Modifier($"UPDATE {table_name} SET {field_name}='{field_value.ToString("yyyy-MM-dd HH:mm:ss")}' WHERE {key_1_name}={key_1_value} AND {key_2_name}={key_2_value}");
         }
 
         public static void SupprimerElement(string table_name, string key_name, int key_value)

@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,27 +20,27 @@ using VéloMax.pages;
 
 namespace VéloMax.pages
 {
-    public sealed partial class Particuliers : Page
+    public sealed partial class PiecesUI : Page
     {
-        public Particuliers()
+        public PiecesUI()
         {
             this.InitializeComponent();
         }
 
-        public ReadOnlyCollection<Individu> individus
+        public ReadOnlyCollection<Piece> pieces
         {
-            get => Individu.Lister();
+            get => Piece.Lister();
         }
 
         private void Nouveau_Click(object sender, RoutedEventArgs e)
         {
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(AjouterParticulier));
+            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(AjouterPieceUI));
         }
 
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
-            ((Individu)azd.SelectedItem).Supprimer();
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(Particuliers));
+            ((Individu)MyDataGrid.SelectedItem).Supprimer();
+            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(PiecesUI));
         }
     }
 }

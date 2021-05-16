@@ -147,23 +147,38 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Accueil.xaml.cs">
+    <Compile Include="pages\Accueil.xaml.cs">
       <DependentUpon>Accueil.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Clients\AjouterBoutique.xaml.cs">
+    <Compile Include="pages\clients\AjouterBoutique.xaml.cs">
       <DependentUpon>AjouterBoutique.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Clients\AjouterParticulier.xaml.cs">
+    <Compile Include="pages\clients\AjouterParticulier.xaml.cs">
       <DependentUpon>AjouterParticulier.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Clients\ClientsMain.xaml.cs">
+    <Compile Include="pages\clients\ClientsMain.xaml.cs">
       <DependentUpon>ClientsMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Clients\Entreprises.xaml.cs">
+    <Compile Include="pages\clients\Entreprises.xaml.cs">
       <DependentUpon>Entreprises.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Clients\Particuliers.xaml.cs">
+    <Compile Include="pages\clients\Particuliers.xaml.cs">
       <DependentUpon>Particuliers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\produits\AjouterModeleUI.xaml.cs">
+      <DependentUpon>AjouterModeleUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\produits\AjouterPieceUI.xaml.cs">
+      <DependentUpon>AjouterPieceUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\produits\ModelesUI.xaml.cs">
+      <DependentUpon>ModelesUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\produits\PiecesUI.xaml.cs">
+      <DependentUpon>PiecesUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\produits\ProduitsUIMain.xaml.cs">
+      <DependentUpon>ProduitsUIMain.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -239,27 +254,47 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Accueil.xaml">
+    <Page Include="pages\Accueil.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Clients\AjouterBoutique.xaml">
+    <Page Include="pages\clients\AjouterBoutique.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Clients\AjouterParticulier.xaml">
+    <Page Include="pages\clients\AjouterParticulier.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Clients\ClientsMain.xaml">
+    <Page Include="pages\clients\ClientsMain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Clients\Entreprises.xaml">
+    <Page Include="pages\clients\Entreprises.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Clients\Particuliers.xaml">
+    <Page Include="pages\clients\Particuliers.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\produits\AjouterModeleUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\produits\AjouterPieceUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\produits\ModelesUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\produits\PiecesUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pages\produits\ProduitsUIMain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

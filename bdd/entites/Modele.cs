@@ -5,17 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
 
 namespace VéloMax.bdd
 {
-    public enum Ligne
-    {
-        VTT,
-        VeloCourse,
-        Classique,
-        BMX
-    }
-
     public class Modele
     {
         /* Attributs */
@@ -36,9 +29,9 @@ namespace VéloMax.bdd
             get { return ControlleurRequetes.ObtenirChampInt("Modele", "numM", numM, "tailleM"); }
             set { ControlleurRequetes.ModifierChamp("Modele", "numM", numM, "tailleM", value); }
         }
-        public Ligne ligne
+        public LigneModele ligne
         {
-            get { Ligne l; Enum.TryParse(ControlleurRequetes.ObtenirChampString("Modele", "numM", numM, "ligne"), out l); return l; }
+            get { LigneModele l; Enum.TryParse(ControlleurRequetes.ObtenirChampString("Modele", "numM", numM, "ligne"), out l); return l; }
             set { ControlleurRequetes.ModifierChamp("Modele", "numM", numM, "ligne", value.ToString()); }
         }
         public int prixM
@@ -51,10 +44,20 @@ namespace VéloMax.bdd
             get { return ControlleurRequetes.ObtenirChampDatetime("Modele", "numM", numM, "dateIntroM"); }
             set { ControlleurRequetes.ModifierChamp("Modele", "numM", numM, "dateIntroM", value); }
         }
+        public string dateIntroMS
+        {
+            get { return dateIntroM.ToString(); }
+            set { dateIntroM = DateTime.Parse(value); }
+        }
         public DateTime dateDiscM
         {
             get { return ControlleurRequetes.ObtenirChampDatetime("Modele", "numM", numM, "dateDiscM"); }
             set { ControlleurRequetes.ModifierChamp("Modele", "numM", numM, "dateDiscM", value); }
+        }
+        public string dateDiscMS
+        {
+            get { return dateDiscM.ToString(); }
+            set { dateDiscM = DateTime.Parse(value); }
         }
         public int quantStockM
         {
@@ -72,9 +75,9 @@ namespace VéloMax.bdd
         {
             this.numM = numM;
         }
-        public Modele(string nomM, string descriptionM, int tailleM, Ligne ligne, int prixM, DateTime dateIntroM, DateTime dateDiscM, int quantStockM)
+        public Modele(string nomM, string descriptionM, int tailleM, LigneModele ligne, int prixM, DateTime dateIntroM, DateTime dateDiscM, int quantStockM)
         {
-            ControlleurRequetes.Inserer($"INSERT INTO Modele (nomM, descriptionM, tailleM, ligne, prixM, dateIntroM, dateDiscM, quantStockM) VALUES ('{nomM}', '{descriptionM}', {tailleM}, '{ligne.ToString()}', {prixM}, '{dateIntroM.ToString("yyyy-MM-dd HH:mm:ss")}', '{dateDiscM.ToString("yyyy-MM-dd HH:mm:ss")}', {quantStockM})");
+            ControlleurRequetes.Inserer($"INSERT INTO Modele (nomM, descriptionM, tailleM, ligne, prixM, dateIntroM, dateDiscM, quantStockM) VALUES ('{nomM}', '{descriptionM.Replace("'", "''")}', {tailleM}, '{ligne.ToString()}', {prixM}, '{dateIntroM.ToString("yyyy-MM-dd HH:mm:ss")}', '{dateDiscM.ToString("yyyy-MM-dd HH:mm:ss")}', {quantStockM})");
             this.numM = ControlleurRequetes.DernierIDUtilise();
         }
 

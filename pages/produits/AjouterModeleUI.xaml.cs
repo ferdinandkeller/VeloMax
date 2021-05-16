@@ -18,20 +18,19 @@ using VéloMax.pages;
 
 namespace VéloMax.pages
 {
-    public sealed partial class AjouterParticulier : Page
+    public sealed partial class AjouterModeleUI : Page
     {
-        public AjouterParticulier()
+        public AjouterModeleUI()
         {
             this.InitializeComponent();
+            ligneM.ItemsSource = ConvertisseurLigneModel.LigneVersListe();
         }
 
-        public void AjoutClient(object sender, RoutedEventArgs e)
+        public void Ajouter_Modele(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                int codep = int.Parse(codePA.Text);
-                new Individu(nomParticulier.Text, prenomParticulier.Text, new Adresse(rueA.Text, villeA.Text, codep, provinceA.Text), telParticulier.Text, mailParticulier.Text);
-                ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(Particuliers));
+            try {
+                new Modele(nomM.Text, descriptionM.Text, int.Parse(tailleM.Text), ConvertisseurLigneModel.StringVersLigne(ligneM.Text), int.Parse(prixM.Text), DateTime.Parse(dateIntroM.Text), DateTime.Parse(dateDiscM.Text), int.Parse(quantStockM.Text));
+                ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(ModelesUI));
             } catch { }
         }
     }
