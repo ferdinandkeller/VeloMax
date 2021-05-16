@@ -44,16 +44,14 @@ namespace VéloMax.bdd
             this.numF = numF;
             this.numP = numP;
         }
-        public CatalFournisseur(Fournisseur fournisseur, Piece piece)
-        {
-            this.numF = fournisseur.numF;
-            this.numP = piece.numP;
-        }
         public CatalFournisseur(int numF, int numP, int numPieceF, int prixPieceF, int delaiF)
         {
             ControlleurRequetes.Inserer($"INSERT INTO CatalFournisseur (numF, numP, numPieceF, prixPieceF, delaiF) VALUES ({numF}, {numP}, {numPieceF}, {prixPieceF}, {delaiF})");
             this.numF = numF;
             this.numP = numP;
+        }
+        public CatalFournisseur(Fournisseur fournisseur, Piece piece, int numPieceF, int prixPieceF, int delaiF) : this(fournisseur.numF, piece.numP, numPieceF, prixPieceF, delaiF)
+        {
         }
 
         /* Suppression */
@@ -68,6 +66,20 @@ namespace VéloMax.bdd
             List<CatalFournisseur> list = new List<CatalFournisseur>();
             ControlleurRequetes.SelectionnePlusieurs($"SELECT numP FROM CatalFournisseur WHERE numF={numF}", (MySqlDataReader reader) => { list.Add(new CatalFournisseur(numF, reader.GetInt32("numP"))); });
             return new ReadOnlyCollection<CatalFournisseur>(list);
+        }
+        public static ReadOnlyCollection<CatalFournisseur> Lister(Fournisseur fournisseur)
+        {
+            return Lister(fournisseur.numF);
+        }
+        public static ReadOnlyCollection<CatalFournisseur> ListerPiece(int numP)
+        {
+            List<CatalFournisseur> list = new List<CatalFournisseur>();
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numF FROM CatalFournisseur WHERE numP={numP}", (MySqlDataReader reader) => { list.Add(new CatalFournisseur(reader.GetInt32("numF"), numP)); });
+            return new ReadOnlyCollection<CatalFournisseur>(list);
+        }
+        public static ReadOnlyCollection<CatalFournisseur> ListerPiece(Piece piece)
+        {
+            return ListerPiece(piece.numP);
         }
     }
 }

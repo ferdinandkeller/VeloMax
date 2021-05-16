@@ -63,5 +63,23 @@ namespace VéloMax.bdd
             ControlleurRequetes.SelectionnePlusieurs($"SELECT numP FROM Piece", (MySqlDataReader reader) => { list.Add(new Piece(reader.GetInt32("numP"))); });
             return new ReadOnlyCollection<Piece>(list);
         }
+
+        /* Commander */
+        public CatalFournisseur PieceMoinsCher()
+        {
+            CatalFournisseur piece_moins_cher = null;
+            foreach (CatalFournisseur cf in CatalFournisseur.ListerPiece(this))
+            {
+                if (piece_moins_cher == null || piece_moins_cher.prixPieceF > cf.prixPieceF)
+                {
+                    piece_moins_cher = cf;
+                }
+            }
+            return piece_moins_cher;
+        }
+        public int TempsCommande()
+        {
+            return PieceMoinsCher().delaiF;
+        }
     }
 }

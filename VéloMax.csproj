@@ -132,6 +132,7 @@
     <Compile Include="bdd\associations\ExecuteurCommandeBoutique.cs" />
     <Compile Include="bdd\associations\ExecuteurCommandeIndividu.cs" />
     <Compile Include="bdd\associations\Fidelio.cs" />
+    <Compile Include="bdd\controlleurs\ControlleurXML.cs" />
     <Compile Include="bdd\controlleurs\ControlleurJson.cs" />
     <Compile Include="bdd\controlleurs\ControlleurRequetes.cs" />
     <Compile Include="bdd\entites\Adresse.cs" />
@@ -226,9 +227,6 @@
     </PackageReference>
     <PackageReference Include="MySql.Data">
       <Version>8.0.24</Version>
-    </PackageReference>
-    <PackageReference Include="System.Text.Json">
-      <Version>5.0.2</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />

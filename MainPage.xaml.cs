@@ -27,50 +27,69 @@ namespace VéloMax
 
         private void ExecuteSQL1(object sender, RoutedEventArgs e)
         {
-            Fournisseur f = new Fournisseur(314, "Super Fournisseur", new Adresse("rue fournisseur", "ville fournisseur", 11111, "province fournisseur").numA, "contact fournisseur", 14);
-            Piece p1 = new Piece("description pièce 1", DateTime.Now, DateTime.Now + TimeSpan.FromDays(100), 100, 10);
-            Piece p2 = new Piece("description pièce 2", DateTime.Now, DateTime.Now + TimeSpan.FromDays(200), 200, 20);
-            Debug.WriteLine(f.catalogue.Count());
-            new CatalFournisseur(f.numF, p1.numP, 101, 90, 1);
-            new CatalFournisseur(f.numF, p2.numP, 202, 190, 2);
-            Debug.WriteLine(f.catalogue.Count());
+            Piece p1 = new Piece("super piece 1", DateTime.Now, DateTime.Now, 100, 0);
+            Fournisseur f1 = new Fournisseur(13, "fournisseur 1", new Adresse("rue 1", "ville 1", 1, "province 1"), "contact 1", 1);
+            new CatalFournisseur(f1, p1, 91, 10, 1);
+            Fournisseur f3 = new Fournisseur(15, "fournisseur 3", new Adresse("rue 3", "ville 3", 3, "province 3"), "contact 3", 3);
+            new CatalFournisseur(f3, p1, 94, 10, 2);
+
+            /*Piece p2 = new Piece("super piece 2", DateTime.Now, DateTime.Now, 100, 0);
+            Fournisseur f2 = new Fournisseur(14, "fournisseur 2", new Adresse("rue 2", "ville 2", 2, "province 2"), "contact 2", 2);
+            new CatalFournisseur(f2, p2, 92, 20, 2);*/
+
+            foreach (CatalFournisseur cf in CatalFournisseur.ListerPiece(p1))
+            {
+                Debug.WriteLine(cf.fournisseur.nomF);
+            }
         }
 
         private void ExecuteSQL2(object sender, RoutedEventArgs e)
         {
-            foreach (CatalFournisseur p in Fournisseur.Lister()[0].catalogue)
-            {
-                Debug.WriteLine($"{p.numPieceF} {p.prixPieceF} {p.delaiF} {p.piece.descriptionP}");
-                p.piece.prixP = p.piece.prixP * 2;
-                p.Supprimer();
-            }
+            Individu i1 = new Individu("nom1", "", new Adresse("", "", 3, ""), "", "");
+            Individu i2 = new Individu("nom2", "", new Adresse("", "", 3, ""), "", "");
+            Individu i3 = new Individu("nom3", "", new Adresse("", "", 3, ""), "", "");
+            Individu i4 = new Individu("nom4", "", new Adresse("", "", 3, ""), "", "");
+
+            new Fidelio(i2, Programme.Lister()[0], DateTime.Now);
+            new Fidelio(i3, Programme.Lister()[0], DateTime.Now + TimeSpan.FromDays(30));
+            new Fidelio(i4, Programme.Lister()[0], DateTime.Now + TimeSpan.FromDays(90));
+
+            Debug.WriteLine(Individu.FidelioFinJSON());
         }
 
         private void ExecuteSQL3(object sender, RoutedEventArgs e)
         {
-            Individu i1 = new Individu("Hector", "nom1", new Adresse("rue 1", "ville 1", 1, "province 1").numA, "01", "1@mail.com");
-            Individu i2 = new Individu("Vector", "nom2", new Adresse("rue 2", "ville 2", 2, "province 2").numA, "02", "2@mail.com");
-
-            new Fidelio(i1.numI, Programme.Lister()[0].numProg, DateTime.Now);
+            
         }
 
         private void ExecuteSQL4(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Liste totale :");
-            foreach (Individu i in Individu.Lister())
-            {
-                Debug.WriteLine($"{i.nomI} {i.prenomI} {i.fidelio.programme.nomProg}");
-                Debug.WriteLine(i.VersJson());
-                Debug.WriteLine(i.fidelio, i.fidelio == null);
-            }
+            Fournisseur f1 = new Fournisseur(91, "fournisseur 1", new Adresse("rue 1", "ville 1", 1, "province 1"), "contact 1", 1);
+            Fournisseur f2 = new Fournisseur(92, "fournisseur 2", new Adresse("rue 2", "ville 2", 2, "province 2"), "contact 2", 2);
+            Fournisseur f3 = new Fournisseur(93, "fournisseur 3", new Adresse("rue 3", "ville 3", 3, "province 3"), "contact 3", 3);
+            Fournisseur f4 = new Fournisseur(94, "fournisseur 4", new Adresse("rue 4", "ville 4", 4, "province 4"), "contact 4", 4);
+            Fournisseur f5 = new Fournisseur(95, "fournisseur 5", new Adresse("rue 5", "ville 5", 5, "province 5"), "contact 5", 5);
+            Fournisseur f6 = new Fournisseur(96, "fournisseur 6", new Adresse("rue 6", "ville 6", 6, "province 6"), "contact 6", 6);
 
-            Debug.WriteLine("Liste fidelio :");
-            foreach (Individu i in Individu.ListerFidelio())
-            {
-                Debug.WriteLine($"{i.nomI} {i.prenomI} {i.fidelio.programme.nomProg}");
-            }
 
-            // Debug.WriteLine("Serialized : " + Individu.FidelioFinJSON());
+            Piece p1 = new Piece("super piece 1", DateTime.Now, DateTime.Now, 100, 0);
+            Piece p2 = new Piece("super piece 2", DateTime.Now, DateTime.Now, 100, 0);
+            Piece p3 = new Piece("super piece 3", DateTime.Now, DateTime.Now, 100, 0);
+            Piece p4 = new Piece("super piece 4", DateTime.Now, DateTime.Now, 100, 0);
+
+            new CatalFournisseur(f1, p1, 1, 50, 1);
+            new CatalFournisseur(f2, p1, 1, 100, 1);
+            new CatalFournisseur(f3, p1, 1, 40, 1);
+            new CatalFournisseur(f4, p3, 1, 50, 1);
+            new CatalFournisseur(f5, p3, 1, 100, 1);
+            new CatalFournisseur(f6, p1, 1, 50, 1);
+
+            Modele m = new Modele("super modele 1", "top", 100, Ligne.Classique, 200, DateTime.Now, DateTime.Now + TimeSpan.FromDays(300), 0);
+
+            new CompositionModele(m, p1, 2);
+            new CompositionModele(m, p3, 1);
+
+            Debug.WriteLine(m.PrixCommande());
         }
     }
 }

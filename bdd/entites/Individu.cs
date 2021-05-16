@@ -107,18 +107,18 @@ namespace VéloMax.bdd
             return cjson.json_normal;
         }
 
-        /*public static string FidelioFinJSON()
+        public static string FidelioFinJSON()
         {
             List<Individu> list = new List<Individu>();
-            ControlleurRequetes.SelectionnePlusieurs($"SELECT numI FROM Individu NATURAL JOIN Fidelio", (MySqlDataReader reader) => { list.Add(new Individu(reader.GetInt32("numI"))); });
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numI FROM Individu NATURAL JOIN Fidelio WHERE dateAdherence <= '{(DateTime.Now + TimeSpan.FromDays(60)).ToString("yyyy-MM-dd HH:mm:ss")}'", (MySqlDataReader reader) => { list.Add(new Individu(reader.GetInt32("numI"))); });
 
-            string json = "[";
-            foreach (Individu i in list)
+            ControlleurJson cjson = new ControlleurJson();
+            foreach (Individu individu in list)
             {
-                Adresse a = i.adresse;
-                json += $"{{\"nomI\": \"{i.nomI}\", \"prenomI\": \"{i.prenomI}\", \"adresse\": {{\"rue\": \"{a.rue}\", \"ville\": \"{ville}\", \"codepostal\": \"{}\"";
+                cjson.AjouterListeJson(individu.VersJson());
             }
-            return json + "]";
-        }*/
+
+            return cjson.json_liste;
+        }
     }
 }
