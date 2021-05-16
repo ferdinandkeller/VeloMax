@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -34,7 +34,7 @@ namespace VéloMax.pages
             {
                 if (c.Tag != null && c.Tag.Equals("MaLigne"))
                 {
-                    (c as DataGridComboBoxColumn).ItemsSource = ConvertisseurLigneModel.LigneVersListe();
+                    (c as DataGridComboBoxColumn).ItemsSource = ConvertisseurLigneModel.LigneVersListeString();
                 }
             }
             */

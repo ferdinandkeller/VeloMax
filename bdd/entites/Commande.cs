@@ -12,6 +12,7 @@ namespace VéloMax.bdd
     {
         /* Attributs */
         public readonly int numC;
+        public int numCg { get => numC; }
 
         public int numA
         {
@@ -28,10 +29,20 @@ namespace VéloMax.bdd
             get { return ControlleurRequetes.ObtenirChampDatetime("Commande", "numC", numC, "dateC"); }
             set { ControlleurRequetes.ModifierChamp("Commande", "numC", numC, "dateC", value); }
         }
+        public string dateCg
+        {
+            get { return dateC.ToString(); }
+            set { dateC = DateTime.Parse(value); }
+        }
         public DateTime dateL
         {
             get { return ControlleurRequetes.ObtenirChampDatetime("Commande", "numC", numC, "dateL"); }
             set { ControlleurRequetes.ModifierChamp("Commande", "numC", numC, "dateL", value); }
+        }
+        public string dateLg
+        {
+            get { return dateL.ToString(); }
+            set { dateL = DateTime.Parse(value); }
         }
         public ReadOnlyCollection<ContenuCommandePiece> contenuPiece
         {
@@ -47,11 +58,13 @@ namespace VéloMax.bdd
         {
             this.numC = numC;
         }
-
         public Commande(int numA, DateTime dateC, DateTime dateL)
         {
             ControlleurRequetes.Inserer($"INSERT INTO Commande (numA, dateC, dateL) VALUES ({numA}, '{dateC.ToString("yyyy-MM-dd HH:mm:ss")}', '{dateL.ToString("yyyy-MM-dd HH:mm:ss")}')");
             this.numC = ControlleurRequetes.DernierIDUtilise();
+        }
+        public Commande(Adresse adresse, DateTime dateC, DateTime dateL): this(adresse.numA, dateC, dateL)
+        {
         }
 
         /* Suppression */

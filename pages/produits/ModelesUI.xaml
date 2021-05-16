@@ -16,6 +16,7 @@
             </StackPanel>
             <controls:DataGrid Name="MyDataGrid" ItemsSource="{x:Bind modeles}" AutoGenerateColumns="False">
                 <controls:DataGrid.Columns>
+                    <controls:DataGridTextColumn Header="référence" Binding="{Binding numMg}"/>
                     <controls:DataGridTextColumn Header="nom" Binding="{Binding nomM}"/>
                     <controls:DataGridTextColumn Header="description" Binding="{Binding descriptionM}"/>
                     <controls:DataGridTextColumn Header="taille" Binding="{Binding tailleM}"/>

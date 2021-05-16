@@ -37,10 +37,14 @@ namespace VéloMax.pages
             ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(AjouterCommandeUI));
         }
 
+        private void Afficher_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
-            //((Individu)MyDataGrid.SelectedItem).Supprimer();
-            //((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(IndividusUI));
+            ((Commande)MyDataGrid.SelectedItem).Supprimer();
+            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(CommandesEncoursUI));
         }
     }
 }

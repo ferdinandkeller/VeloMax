@@ -23,13 +23,13 @@ namespace VéloMax.pages
         public AjouterModeleUI()
         {
             this.InitializeComponent();
-            ligneM.ItemsSource = ConvertisseurLigneModel.LigneVersListe();
+            ligneM.ItemsSource = ConvertisseurLigneModel.LigneVersListeString();
         }
 
         public void Ajouter_Modele(object sender, RoutedEventArgs e)
         {
             try {
-                new Modele(nomM.Text, descriptionM.Text, int.Parse(tailleM.Text), ConvertisseurLigneModel.StringVersLigne(ligneM.Text), int.Parse(prixM.Text), DateTime.Parse(dateIntroM.Text), DateTime.Parse(dateDiscM.Text), int.Parse(quantStockM.Text));
+                new Modele(nomM.Text, descriptionM.Text, int.Parse(tailleM.Text), ConvertisseurLigneModel.LigneVersListe()[ligneM.SelectedIndex], int.Parse(prixM.Text), DateTime.Parse(dateIntroM.Text), DateTime.Parse(dateDiscM.Text), int.Parse(quantStockM.Text));
                 ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(ModelesUI));
             } catch { }
         }

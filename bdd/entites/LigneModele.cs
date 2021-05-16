@@ -16,10 +16,19 @@ namespace VéloMax.bdd
 
     public static class ConvertisseurLigneModel
     {
-        public static List<string> LigneVersListe()
+        public static List<LigneModele> LigneVersListe()
+        {
+            List<LigneModele> lignes = new List<LigneModele>();
+            foreach (LigneModele l in Enum.GetValues(typeof(LigneModele)))
+            {
+                lignes.Add(l);
+            }
+            return lignes;
+        }
+        public static List<string> LigneVersListeString()
         {
             List<string> lignes = new List<string>();
-            foreach (LigneModele l in Enum.GetValues(typeof(LigneModele)))
+            foreach (LigneModele l in LigneVersListe())
             {
                 lignes.Add(ConvertisseurLigneModel.LigneVersString(l));
             }

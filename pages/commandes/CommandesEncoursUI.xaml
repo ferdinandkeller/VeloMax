@@ -11,16 +11,17 @@
 
     <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Horizontal">
-            <Button Name="Nouveau" Content="Nouveau" Click="Nouveau_Click" />
-            <Button Name="Supprimer" Content="Supprimer" Click="Supprimer_Click" />
+            <Button Content="Nouveau" Click="Nouveau_Click" />
+            <Button Content="Afficher" Click="Afficher_Click" />
+            <Button Content="Supprimer" Click="Supprimer_Click" />
         </StackPanel>
 
         <controls:DataGrid Name="MyDataGrid" ItemsSource="{x:Bind commandes}" AutoGenerateColumns="False">
             <controls:DataGrid.Columns>
-                <controls:DataGridTextColumn Header="Numéro Commande" Binding="{Binding numC}"/>
+                <controls:DataGridTextColumn Header="Numéro Commande" Binding="{Binding numCg}" IsReadOnly="True"/>
                 <controls:DataGridTextColumn Header="Adresse" Binding="{Binding adresse.VersString}"/>
-                <controls:DataGridTextColumn Header="Date Commande" Binding="{Binding dateC}"/>
-                <controls:DataGridTextColumn Header="Date Livraison" Binding="{Binding dateL}"/>
+                <controls:DataGridTextColumn Header="Date Commande" Binding="{Binding dateCg}"/>
+                <controls:DataGridTextColumn Header="Date Livraison" Binding="{Binding dateLg}"/>
             </controls:DataGrid.Columns>
         </controls:DataGrid>
     </StackPanel>

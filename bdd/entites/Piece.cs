@@ -12,6 +12,7 @@ namespace VéloMax.bdd
     {
         /* Attributs */
         public readonly int numP;
+        public int numPg { get => numP; }
 
         public string descriptionP
         {
@@ -72,6 +73,15 @@ namespace VéloMax.bdd
             List<Piece> list = new List<Piece>();
             ControlleurRequetes.SelectionnePlusieurs($"SELECT numP FROM Piece", (MySqlDataReader reader) => { list.Add(new Piece(reader.GetInt32("numP"))); });
             return new ReadOnlyCollection<Piece>(list);
+        }
+        public static ReadOnlyCollection<string> ListerString()
+        {
+            List<string> list = new List<string>();
+            foreach (Piece p in Lister())
+            {
+                list.Add($"{p.descriptionP} [{p.numP}]");
+            }
+            return new ReadOnlyCollection<string>(list);
         }
 
         /* Commander */

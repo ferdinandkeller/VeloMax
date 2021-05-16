@@ -13,6 +13,7 @@ namespace VéloMax.bdd
     {
         /* Attributs */
         public readonly int numM;
+        public int numMg { get => numM; }
 
         public string nomM
         {
@@ -93,6 +94,15 @@ namespace VéloMax.bdd
             List<Modele> list = new List<Modele>();
             ControlleurRequetes.SelectionnePlusieurs($"SELECT numM FROM Modele", (MySqlDataReader reader) => { list.Add(new Modele(reader.GetInt32("numM"))); });
             return new ReadOnlyCollection<Modele>(list);
+        }
+        public static ReadOnlyCollection<string> ListerString()
+        {
+            List<string> list = new List<string>();
+            foreach (Modele m in Lister())
+            {
+                list.Add($"{m.nomM} ({ConvertisseurLigneModel.LigneVersString(m.ligne)}) [{m.numM}]");
+            }
+            return new ReadOnlyCollection<string>(list);
         }
 
         /* Commander */

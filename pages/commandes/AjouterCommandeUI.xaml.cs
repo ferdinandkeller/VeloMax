@@ -15,38 +15,42 @@ using Windows.UI.Xaml.Navigation;
 using VéloMax.bdd;
 using System.Diagnostics;
 using VéloMax.pages;
+using System.Collections.ObjectModel;
 
 namespace VéloMax.pages
 {
+    public class ComP
+    {
+        public Piece p;
+        public int q;
+        public ComP(Piece p, int q)
+        {
+            this.p = p;
+            this.q = q;
+        }
+    }
+    public class ComM
+    {
+        public Modele m;
+        public int q;
+        public ComM(Modele m, int q)
+        {
+            this.m = m;
+            this.q = q;
+        }
+    }
+
     public sealed partial class AjouterCommandeUI : Page
     {
+        public List<ComP> pieces = new List<ComP>();
+        public List<ComM> modeles = new List<ComM>();
+
         public AjouterCommandeUI()
         {
             this.InitializeComponent();
-        }
 
-        public void AjoutCommande(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                /*int codep = int.Parse(codePA.Text);
-                new Individu(nomParticulier.Text, prenomParticulier.Text, new Adresse(rueA.Text, villeA.Text, codep, provinceA.Text), telParticulier.Text, mailParticulier.Text);
-                ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(IndividusUI));*/
-            } catch { }
-        }
-
-        public void ButtonP_Clicked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        public void ButtonM_Clicked(object sender, RoutedEventArgs e)
-        {
-
-        }
-        public void ButtonC_Clicked(object sender, RoutedEventArgs e)
-        {
-
+            refPiecesCombo.ItemsSource = Piece.ListerString();
+            refModeleCombo.ItemsSource = Modele.ListerString();
         }
 
         public void Type_Client_Change(object sender, SelectionChangedEventArgs e)
@@ -61,9 +65,59 @@ namespace VéloMax.pages
             }
         }
 
-        public void Chosen_Client(object sender, SelectionChangedEventArgs e)
+        public void AjoutPieceCommande(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                pieces.Add(new ComP(Piece.Lister()[refPiecesCombo.SelectedIndex], int.Parse(quantiteP.Text)));
+            } catch { }
+        }
 
+        public void AjoutModeleCommande(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                modeles.Add(new ComM(Modele.Lister()[refPiecesCombo.SelectedIndex], int.Parse(quantiteM.Text)));
+            }
+            catch { }
+        }
+
+        private void AjoutCommande(object sender, RoutedEventArgs e)
+        {
+            if (ClientCombo.SelectedIndex == 0)
+            {
+                Individu ind = Individu.Lister()[AdaptableCombo.SelectedIndex];
+
+                Commande c = new Commande(ind.adresse, DateTime.Parse(dateC.Text), DateTime.Parse(dateL.Text));
+
+                foreach (ComP cp in pieces)
+                {
+                    new ContenuCommandePiece(c, cp.p, cp.q);
+                }
+                foreach (ComM cm in modeles)
+                {
+                    new ContenuCommandeModele(c, cm.m, cm.q);
+                }
+
+                new ExecuteurCommandeIndividu(c, ind);
+            }
+            else if (ClientCombo.SelectedIndex == 1)
+            {
+                Boutique bout = Boutique.Lister()[AdaptableCombo.SelectedIndex];
+
+                Commande c = new Commande(bout.adresse, DateTime.Parse(dateC.Text), DateTime.Parse(dateL.Text));
+
+                foreach (ComP cp in pieces)
+                {
+                    new ContenuCommandePiece(c, cp.p, cp.q);
+                }
+                foreach (ComM cm in modeles)
+                {
+                    new ContenuCommandeModele(c, cm.m, cm.q);
+                }
+
+                new ExecuteurCommandeBoutique(c, bout);
+            }
         }
     }
 }

@@ -15,10 +15,11 @@
         </StackPanel>
         <controls:DataGrid Name="MyDataGrid" ItemsSource="{x:Bind pieces}" AutoGenerateColumns="False">
             <controls:DataGrid.Columns>
+                <controls:DataGridTextColumn Header="référence" Binding="{Binding numPg}" IsReadOnly="True"/>
                 <controls:DataGridTextColumn Header="description" Binding="{Binding descriptionP}"/>
                 <controls:DataGridTextColumn Header="prix" Binding="{Binding prixP}"/>
-                <controls:DataGridTextColumn Header="date introduction" Binding="{Binding dateIntroP}"/>
-                <controls:DataGridTextColumn Header="date discontinuité" Binding="{Binding dateDiscP}"/>
+                <controls:DataGridTextColumn Header="date introduction" Binding="{Binding dateIntroPS}"/>
+                <controls:DataGridTextColumn Header="date discontinuité" Binding="{Binding dateDiscPS}"/>
                 <controls:DataGridTextColumn Header="quantité stock" Binding="{Binding quantStockP}"/>
             </controls:DataGrid.Columns>
         </controls:DataGrid>
