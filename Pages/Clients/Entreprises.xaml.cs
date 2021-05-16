@@ -18,7 +18,7 @@ using Windows.Data;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
-using static VéloMax.Boutique;
+using VéloMax.bdd;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -31,8 +31,9 @@ namespace VéloMax.Pages.Clients
         public Entreprises()
         {
             this.InitializeComponent();
-            ListeBoutiques.ItemsSource = GetBoutiques((App.Current as App).ConnectionString);
+            //ListeBoutiques.ItemsSource = GetBoutiques((App.Current as App).ConnectionString);
             //ListeBoutiques.Source = GetBoutiques((App.Current as App).ConnectionString);
+            ListeBoutiques.ItemsSource = Boutique.GetBoutiques();
         }
 
         public void ButtonClicked(object sender, RoutedEventArgs e)

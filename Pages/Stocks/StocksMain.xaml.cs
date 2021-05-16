@@ -32,7 +32,7 @@ namespace VéloMax.Pages
             ("stocksPieces", typeof(VéloMax.Pages.Stocks.StocksPieces)),
             ("stocksFournisseurs", typeof(VéloMax.Pages.Stocks.StocksFournisseurs)),
         };
-        private void Navview_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             if (args.InvokedItemContainer != null)
             {

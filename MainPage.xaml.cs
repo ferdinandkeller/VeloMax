@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Diagnostics;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -15,6 +16,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Core;
 using Windows.System;
+using VéloMax.bdd;
 
 namespace VéloMax
 {
@@ -23,6 +25,10 @@ namespace VéloMax
         public MainPage()
         {
             this.InitializeComponent();
+            foreach (Boutique b in Boutique.Lister())
+            {
+                Debug.Write(b.nomB);
+            }
         }
 
         

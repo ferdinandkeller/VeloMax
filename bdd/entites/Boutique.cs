@@ -5,6 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.IO;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
+using Windows.UI.Core;
+using Windows.System;
+using System.ComponentModel;
+using System.Data.SqlClient;
 
 namespace VéloMax.bdd
 {
@@ -12,6 +27,8 @@ namespace VéloMax.bdd
     {
         /* Attributs */
         public readonly int numB;
+
+        public string numBString { get { return numB.ToString(); } }
 
         public string nomB
         {
@@ -23,6 +40,8 @@ namespace VéloMax.bdd
             get => ControlleurRequetes.ObtenirChampInt("Boutique", "numB", numB, "numA");
             set { ControlleurRequetes.ModifierChamp("Boutique", "numB", numB, "numA", value); }
         }
+
+        public string numAString { get { return numA.ToString(); } }
         public string telB
         {
             get => ControlleurRequetes.ObtenirChampString("Boutique", "numB", numB, "telB");
@@ -33,6 +52,9 @@ namespace VéloMax.bdd
             get => ControlleurRequetes.ObtenirChampString("Boutique", "numB", numB, "mailB");
             set { ControlleurRequetes.ModifierChamp("Boutique", "numB", numB, "mailB", value); }
         }
+
+        public string remise = "0";
+        public string adresse;
 
         /* Instantiation */
         public Boutique(int numB)
@@ -59,5 +81,23 @@ namespace VéloMax.bdd
             ControlleurRequetes.SelectionnePlusieurs($"SELECT numB FROM Boutique", (MySqlDataReader reader) => { list.Add(new Boutique(reader.GetInt32("numB"))); });
             return new ReadOnlyCollection<Boutique>(list);
         }
+
+        public static ObservableCollection<Boutique> GetBoutiques()
+        {
+            var boutiques= new List<Boutique>();
+            ControlleurRequetes.SelectionnePlusieurs($"select * from boutique natural join adresse;", (MySqlDataReader reader) => {
+                Boutique boutique = new Boutique(reader.GetInt32("numB"));
+                boutique.numA = reader.GetInt32(0);
+                boutique.nomB = reader.GetString(2);
+                boutique.telB = reader.GetString(3);
+                boutique.mailB = reader.GetString(4);
+                boutique.adresse = reader.GetString(5) + " " + reader.GetString(6) + " " + reader.GetString(7) + " " + reader.GetString(8) + " ";
+                boutique.remise = "0";
+                boutiques.Add(boutique); 
+            });
+            return new ObservableCollection<Boutique>(boutiques);
+
+        }
+
     }
 }

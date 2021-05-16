@@ -63,6 +63,23 @@ namespace VéloMax.Pages
 
 
         }
+        private void ListeBoutiques_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        public void nomClicked(object sender, RoutedEventArgs e)
+        {
+            //A faire 
+        }
+        public void tailleClicked(object sender, RoutedEventArgs e)
+        {
+            //A faire 
+        }
+        public void telClicked(object sender, RoutedEventArgs e)
+        {
+            //A faire 
+        }
 
     }
     

@@ -125,7 +125,26 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Boutique.cs" />
+    <Compile Include="bdd\associations\CatalFournisseur.cs" />
+    <Compile Include="bdd\associations\CompositionModele.cs" />
+    <Compile Include="bdd\associations\ContenuCommandeModele.cs" />
+    <Compile Include="bdd\associations\ContenuCommandePiece.cs" />
+    <Compile Include="bdd\associations\ExecuteurCommandeBoutique.cs" />
+    <Compile Include="bdd\associations\ExecuteurCommandeIndividu.cs" />
+    <Compile Include="bdd\associations\Fidelio.cs" />
+    <Compile Include="bdd\controlleurs\ControlleurJson.cs" />
+    <Compile Include="bdd\controlleurs\ControlleurRequetes.cs" />
+    <Compile Include="bdd\controlleurs\ControlleurXML.cs" />
+    <Compile Include="bdd\entites\Adresse.cs" />
+    <Compile Include="bdd\entites\Boutique.cs" />
+    <Compile Include="bdd\entites\Commande.cs" />
+    <Compile Include="bdd\entites\Fournisseur.cs" />
+    <Compile Include="bdd\entites\Individu.cs" />
+    <Compile Include="bdd\entites\LigneModele.cs" />
+    <Compile Include="bdd\entites\Modele.cs" />
+    <Compile Include="bdd\entites\Piece.cs" />
+    <Compile Include="bdd\entites\Programme.cs" />
+    <Compile Include="Boutique_R.cs" />
     <Compile Include="Commande.cs" />
     <Compile Include="Fichiers.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -353,6 +372,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls.DataGrid">
       <Version>7.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="MySql.Data">
+      <Version>8.0.25</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

@@ -20,8 +20,9 @@ using System.Data.SqlClient;
 
 namespace VéloMax
 {
-    public class Boutique : INotifyPropertyChanged
+    class Boutique_R: INotifyPropertyChanged
     {
+
         public int numB { get; set; }
 
         public string numBString { get { return numB.ToString(); } }
@@ -38,11 +39,11 @@ namespace VéloMax
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public static ObservableCollection<Boutique> GetBoutiques(string connectionString)
+        public static ObservableCollection<Boutique_R> GetBoutiques(string connectionString)
         {
             const string GetBoutiquesQuery = "select * from boutique natural join adresse;";
 
-            var boutiques = new ObservableCollection<Boutique>();
+            var boutiques = new ObservableCollection<Boutique_R>();
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -57,7 +58,7 @@ namespace VéloMax
                             {
                                 while (reader.Read())
                                 {
-                                    var boutique = new Boutique();
+                                    var boutique = new Boutique_R();
                                     boutique.numB = reader.GetInt32(1);
                                     boutique.nomB = reader.GetString(2);
                                     boutique.numA = reader.GetInt32(0);
@@ -66,7 +67,7 @@ namespace VéloMax
                                     boutique.adresse = reader.GetString(5) + " " + reader.GetString(6) + " " + reader.GetString(7) + " " + reader.GetString(8) + " ";
                                     boutique.remise = "0";
                                     boutiques.Add(boutique);
-                                    
+
                                 }
                             }
                         }
@@ -81,5 +82,7 @@ namespace VéloMax
             return null;
         }
     }
-    
+
 }
+
+
