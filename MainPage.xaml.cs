@@ -27,7 +27,7 @@ namespace VéloMax
 
         private void ExecuteSQL1(object sender, RoutedEventArgs e)
         {
-            Piece p1 = new Piece("super piece 1", DateTime.Now, DateTime.Now, 100, 0);
+            /*Piece p1 = new Piece("super piece 1", DateTime.Now, DateTime.Now, 100, 0);
             Fournisseur f1 = new Fournisseur(13, "fournisseur 1", new Adresse("rue 1", "ville 1", 1, "province 1"), "contact 1", 1);
             new CatalFournisseur(f1, p1, 91, 10, 1);
             Fournisseur f3 = new Fournisseur(15, "fournisseur 3", new Adresse("rue 3", "ville 3", 3, "province 3"), "contact 3", 3);
@@ -35,11 +35,22 @@ namespace VéloMax
 
             /*Piece p2 = new Piece("super piece 2", DateTime.Now, DateTime.Now, 100, 0);
             Fournisseur f2 = new Fournisseur(14, "fournisseur 2", new Adresse("rue 2", "ville 2", 2, "province 2"), "contact 2", 2);
-            new CatalFournisseur(f2, p2, 92, 20, 2);*/
+            new CatalFournisseur(f2, p2, 92, 20, 2);
 
             foreach (CatalFournisseur cf in CatalFournisseur.ListerPiece(p1))
             {
                 Debug.WriteLine(cf.fournisseur.nomF);
+            }
+            */
+
+            Modele m1 = new Modele("m1", "", 100, Ligne.Classique, 100, DateTime.Now, DateTime.Now, 100);
+            new Modele("m2", "", 100, Ligne.Classique, 100, DateTime.Now, DateTime.Now, 100);
+            new Modele("m3", "", 100, Ligne.Classique, 100, DateTime.Now, DateTime.Now, 100);
+            new Modele("m4", "", 100, Ligne.BMX, 100, DateTime.Now, DateTime.Now, 100);
+
+            foreach (Modele m in m1.ModelesSimilaires())
+            {
+                Debug.WriteLine(m.nomM);
             }
         }
 
