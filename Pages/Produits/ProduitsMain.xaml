@@ -10,7 +10,7 @@
 
     <Grid>
 
-        <NavigationView x:Name="NavViewProduits" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked" BackRequested="NavView_BackRequested">
+        <NavigationView x:Name="NavViewProduits" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="NavView_ItemInvoked" BackRequested="NavView_BackRequested">
             <NavigationView.Resources>
                 <!--<AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
                             BackgroundSource="Backdrop"
@@ -23,13 +23,13 @@
                             FallbackColor="White"/>-->
             </NavigationView.Resources>
             <NavigationView.MenuItems>
-                <NavigationViewItem Tag="vélos" Content="Vélos"/>
-                <NavigationViewItem Tag="pieces" Content="Pièces de rechange"/>
-                <NavigationViewItem Tag="goodies" Content="Goodies" />
+                <NavigationViewItem Tag="produitsVelos" Content="Vélos"/>
+                <NavigationViewItem Tag="produitsPieces" Content="Pièces de rechange"/>
+                <!--NavigationViewItem Tag="goodies" Content="Goodies" -->
             </NavigationView.MenuItems>
 
             <NavigationView.Content>
-                <Frame Name="NavigationContentFrame" >
+                <Frame Name="NavigationContentFrameProduits" >
 
                 </Frame>
             </NavigationView.Content>

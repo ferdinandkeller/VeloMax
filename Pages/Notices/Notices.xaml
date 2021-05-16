@@ -1,0 +1,141 @@
+﻿<Page
+    x:Class="VéloMax.Pages.Notices"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:VéloMax"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:data="using:VéloMax"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <CollectionViewSource x:Name="ListeFiles" IsSourceGrouped="False" 
+                              ItemsPath="Files"/>
+    </Page.Resources>
+
+    <NavigationView x:Name="NavViewNotices" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked" BackRequested="NavView_BackRequested">
+        <NavigationView.Resources>
+            <AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
+                            BackgroundSource="Backdrop"
+                            TintColor="Transparent"
+                            FallbackColor="White"/>
+            <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground"
+                            BackgroundSource="HostBackdrop"
+                            TintColor="{StaticResource SystemRevealChromeWhiteColor}"
+                            TintOpacity="1"
+                            FallbackColor="White"/>
+        </NavigationView.Resources>
+
+        <NavigationView.Content>
+            <Frame Name="NavigationContentFrame" >
+                <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                    
+                    <ListView Name="ListePieces"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.IsVerticalRailEnabled="True"
+                  ScrollViewer.VerticalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollMode="Disabled"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ScrollViewer.IsHorizontalRailEnabled="False"
+                  Margin="0,0,0,0" 
+                  SelectionChanged="ListeBoutiques_SelectionChanged">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                <Setter Property="BorderBrush" Value="LightGray"></Setter>
+                                <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.HeaderTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="5*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Column="0" x:Name="nomModele" Content="Nom" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="nomClicked"/>
+                                    <Button Grid.Column="1" x:Name="tailleModele" Content="Taille" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="tailleClicked"/>
+                                    <TextBlock Grid.Column="3" x:Name="piecesModele" Text="Pièces + descriptions" HorizontalAlignment="Stretch" Foreground="Peru"/>
+                                    <Button Grid.Column="2" x:Name="prixModele" Content="Prix" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="telClicked"/>
+
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.HeaderTemplate>
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="local:Boutique">
+                                <Grid>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="5*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" TextWrapping="WrapWholeWords" Text="{x:Bind numBString}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                    <TextBlock Grid.Column="1" TextWrapping="WrapWholeWords" Text="{x:Bind nomB}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                    <TextBlock Grid.Column="2" TextWrapping="WrapWholeWords" Text="{x:Bind adresse}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                    <TextBlock Grid.Column="3" TextWrapping="WrapWholeWords" Text="{x:Bind telB}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <!--
+                        <GridView ItemsSource="{Binding Source={StaticResource ListeFiles}}">
+                            <GridView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Padding="20">
+                                        <TextBlock Text="{Binding Name}" FontWeight="Bold"
+                                   Style="{StaticResource BaseTextBlockStyle}" />
+                                        <CheckBox Content="XAML" IsChecked="{Binding ExportXAML}" 
+                                  IsEnabled="True"/>
+                                        <CheckBox Content="JSON" IsChecked="{Binding ExportJSON}" 
+                                  IsEnabled="True"/>
+                                        <CheckBox Content="txt" IsChecked="{Binding Exporttxt}" 
+                                  IsEnabled="True"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VariableSizedWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="5"/>
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
+
+
+                        </GridView>
+                        -->
+
+                    <StackPanel Padding="20" VerticalAlignment="Bottom" Margin="25">
+                        <ComboBox Name="NoticesCombo" Header="Modèle de vélo" Margin="0,10" PlaceholderText="Choisir un modèle" Width="300" >
+                            <!-- ItemsSource="{x:Bind nomModele}" DisplayMemberPath="Source"-->
+                            <x:String>Tout</x:String>
+                        </ComboBox>
+                        <TextBlock Text="Format" FontWeight="Bold"
+                                   Style="{StaticResource BaseTextBlockStyle}" />
+                        <CheckBox Content="XAML" IsChecked="{Binding ExportXAML}" 
+                                  IsEnabled="True"/>
+                        <CheckBox Content="JSON" IsChecked="{Binding ExportJSON}" 
+                                  IsEnabled="True"/>
+                        <CheckBox Content="txt" IsChecked="{Binding Exporttxt}" 
+                                  IsEnabled="True"/>
+                        <CheckBox Content="csv" IsChecked="{Binding Exporttxt}" 
+                                  IsEnabled="True"/>
+                        <TextBox PlaceholderText="Nom du document" Width="300" HorizontalAlignment="Left" Margin="0,10"/>
+                        <Button Content="Enregistrer" Click="Enregistrer_Clicked" Margin="0,10" Background="Peru"/>
+                    </StackPanel>
+
+
+                </Grid>
+            </Frame>
+        </NavigationView.Content>
+
+    </NavigationView>
+
+</Page>

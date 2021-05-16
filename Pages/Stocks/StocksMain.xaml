@@ -10,7 +10,7 @@
 
     <Grid>
 
-        <NavigationView x:Name="NavViewStocks" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked" BackRequested="NavView_BackRequested">
+        <NavigationView x:Name="NavViewStocks" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="NavView_ItemInvoked" BackRequested="NavView_BackRequested">
             <NavigationView.Resources>
                 <!--<AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
                             BackgroundSource="Backdrop"
@@ -26,8 +26,6 @@
                 <NavigationViewItem Tag="stocksVelos" Content="Vélos"/>
                 <NavigationViewItem Tag="stockPieces" Content="Pièces"/>
                 <NavigationViewItem Tag="stockFournisseur" Content="Fournisseurs" />
-                <NavigationViewItem Tag="alerte" Icon="Important" />
-                <AutoSuggestBox PlaceholderText="Critère" QueryIcon="Find" Width="200"/>
                 <!--="AutoSuggestBox_TextChanged"
                 QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                 SuggestionChosen="AutoSuggestBox_SuggestionChosen"-->

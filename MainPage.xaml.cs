@@ -34,7 +34,7 @@ namespace VéloMax
             ("clients", typeof(VéloMax.Pages.ClientsMain)),
             ("fournisseurs", typeof(VéloMax.Pages.FournisseursMain)),
             ("statistiques", typeof(VéloMax.Pages.StatistiquesMain)),
-            ("exporter", typeof(VéloMax.Pages.ExporterMain)),
+            ("notices", typeof(VéloMax.Pages.Notices)),
             ("home", typeof(VéloMax.Pages.Accueil))
             };
 

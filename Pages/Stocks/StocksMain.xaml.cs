@@ -26,12 +26,38 @@ namespace VéloMax.Pages
         {
             this.InitializeComponent();
         }
+
+        private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>{
+            ("stocksVelos", typeof(VéloMax.Pages.Stocks.StocksVelos)),
+            ("stocksPieces", typeof(VéloMax.Pages.Stocks.StocksPieces)),
+            ("stocksFournisseurs", typeof(VéloMax.Pages.Stocks.StocksFournisseurs)),
+        };
         private void Navview_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             if (args.InvokedItemContainer != null)
             {
                 var navItemTag = args.InvokedItemContainer.Tag.ToString();
             }
+        }
+
+        private void NavView_Navigate(
+            string navItemTag,
+            Windows.UI.Xaml.Media.Animation.NavigationTransitionInfo transitionInfo)
+        {
+            Type _page = null;
+            var item = _pages.FirstOrDefault(p => p.Tag.Equals(navItemTag));
+            _page = item.Page;
+
+            // Get the page type before navigation so you can prevent duplicate
+            // entries in the backstack.
+            var preNavPageType = NavigationContentFrame.CurrentSourcePageType;
+
+            // Only navigate if the selected page isn't currently loaded.
+            if (!(_page is null) && !Type.Equals(preNavPageType, _page))
+            {
+                NavigationContentFrame.Navigate(_page, null, transitionInfo);
+            }
+
         }
 
         private void NavView_BackRequested(NavigationView sender,

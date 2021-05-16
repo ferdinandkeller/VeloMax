@@ -20,19 +20,13 @@ namespace VéloMax.Pages
     /// <summary>
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
-    public sealed partial class ExporterMain : Page
+    public sealed partial class Notices : Page
     {
-        public List<File> Files { get; set; }
-        public ExporterMain()
+        public List<Notice> notices { get; set; }
+        public Notices()
         {
             this.InitializeComponent();
 
-            Files = new List<File>
-            {
-                new File{Name="Notice",ExportXAML=false,ExportJSON=false,Exporttxt=false },
-                new File{Name="Blabal",ExportXAML=false,ExportJSON=false,Exporttxt=false }
-            };
-            ListeFiles.Source = Files;
         }
 
         private void Navview_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
@@ -55,17 +49,24 @@ namespace VéloMax.Pages
                 return false;
 
             // Don't go back if the nav pane is overlayed.
-            if (NavViewExporter.IsPaneOpen &&
-                (NavViewExporter.DisplayMode == NavigationViewDisplayMode.Compact ||
-                 NavViewExporter.DisplayMode == NavigationViewDisplayMode.Minimal))
+            if (NavViewNotices.IsPaneOpen &&
+                (NavViewNotices.DisplayMode == NavigationViewDisplayMode.Compact ||
+                 NavViewNotices.DisplayMode == NavigationViewDisplayMode.Minimal))
                 return false;
             NavigationContentFrame.GoBack();
             return true;
         }
 
+        public void Enregistrer_Clicked(object sender, RoutedEventArgs e)
+        {
+            //A faire
+
+
+        }
+
     }
     
-    public class File
+    public class Notice
     {
         public string Name { get; set; }
         public bool ExportXAML { get; set; }

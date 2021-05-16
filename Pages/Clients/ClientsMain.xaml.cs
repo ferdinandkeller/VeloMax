@@ -29,13 +29,13 @@ namespace VéloMax.Pages
             this.InitializeComponent();
         }
 
-        
+
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>{
             ("clientEntreprise", typeof(VéloMax.Pages.Clients.Entreprises)),
             ("clientParticulier", typeof(VéloMax.Pages.Clients.Particuliers)),
-            };
+        };
 
-        private void NavView_Loaded(object sender, RoutedEventArgs e)
+        /*private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
             
             // Add handler for ContentFrame navigation.
@@ -57,7 +57,7 @@ namespace VéloMax.Pages
 
             SystemNavigationManager.GetForCurrentView().BackRequested += System_BackRequested;
         }
-
+        */
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             if (args.InvokedItemContainer != null)
@@ -70,7 +70,7 @@ namespace VéloMax.Pages
         // NavView_SelectionChanged is not used in this example, but is shown for completeness.
         // You will typically handle either ItemInvoked or SelectionChanged to perform navigation,
         // but not both.
-        private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        /*private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             if (args.SelectedItemContainer != null)
             {
@@ -78,6 +78,7 @@ namespace VéloMax.Pages
                 NavView_Navigate(navItemTag, args.RecommendedNavigationTransitionInfo);
             }
         }
+        */
 
         private void NavView_Navigate(
             string navItemTag,
@@ -105,6 +106,7 @@ namespace VéloMax.Pages
             TryGoBack();
         }
 
+        /*
         private void CoreDispatcher_AcceleratorKeyActivated(CoreDispatcher sender, AcceleratorKeyEventArgs e)
         {
             // When Alt+Left are pressed navigate back
@@ -133,6 +135,7 @@ namespace VéloMax.Pages
                 e.Handled = TryGoBack();
             }
         }
+        */
 
         private bool TryGoBack()
         {
@@ -148,6 +151,7 @@ namespace VéloMax.Pages
             return true;
         }
 
+        /*
         private void On_Navigated(object sender, NavigationEventArgs e)
         {
             NavViewClients.IsBackEnabled = NavigationContentFrame.CanGoBack;
@@ -170,6 +174,7 @@ namespace VéloMax.Pages
                     ((NavigationViewItem)NavViewClients.SelectedItem)?.Content?.ToString();
             }
         }
+        */
     
 }
 }
