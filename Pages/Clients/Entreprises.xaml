@@ -30,20 +30,7 @@
                         </Style>
                     </ListView.ItemContainerStyle>
                     
-                    <!--
-                    <ListView.HeaderTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Height="Auto" HorizontalAlignment="Stretch">
-                                <Button x:Name="idButton" Content="ID ^" Width="Auto" Foreground="Black" Background="White" Click="IdClicked"/>
-                                <Button x:Name="nom" Content="Nom " Width="Auto" Foreground="Peru" Background="White" Click="nomClicked"/>
-                                <Button x:Name="adresse" Content="Adresse" Width="Auto" Foreground="Peru" Background="White" Click="adresseClicked"/>
-                                <Button x:Name="tel" Content="Tel" Width="Auto" Foreground="Peru" Background="White" Click="telClicked"/>
-                                <Button x:Name="mail" Content="Mail" Width="Auto" Foreground="Peru" Background="White" Click="mailClicked"/>
-                                <Button x:Name="remise" Content="Remise" Width="Auto" Foreground="Peru" Background="White" Click="remiseClicked"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.HeaderTemplate>
-                    -->
+                    
                     <ListView.HeaderTemplate>
                         <DataTemplate>
                             <Grid>
@@ -79,7 +66,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 
-                                <TextBlock Grid.Column="0" TextWrapping="WrapWholeWords" Text="{x:Bind numBString}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <TextBox Grid.Column="0" TextWrapping="WrapWholeWords" Text="{x:Bind numBString}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                                 <TextBlock Grid.Column="1" TextWrapping="WrapWholeWords" Text="{x:Bind nomB}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                                 <TextBlock Grid.Column="2" TextWrapping="WrapWholeWords" Text="{x:Bind adresse}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                                 <TextBlock Grid.Column="3" TextWrapping="WrapWholeWords" Text="{x:Bind telB}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
@@ -87,23 +74,6 @@
                                 <TextBlock Grid.Column="5" TextWrapping="WrapWholeWords" Text="{x:Bind remise}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 
                             </Grid>
-                            <!--
-                            <StackPanel Orientation="Horizontal" >
-                                <TextBlock Name="NumB"
-                                    Text="{x:Bind numBString}"
-                                    Width="Auto" />
-                                <TextBox Name="NomB"
-                                    Text="{x:Bind nomB}"
-                                    Width="Auto" />
-                                <TextBox Name="AdresseB" 
-                                   Text="{x:Bind adresse}"
-                                   Width="Auto" />
-                                <TextBox Text="{x:Bind telB}"
-                                   Width="Auto" />
-                                <TextBox Text="{x:Bind mailB}"
-                                   Width="Auto" />
-                            </StackPanel>
-                            -->
                             
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -112,39 +82,5 @@
 
         </RelativePanel>
     </Grid>
-
-    <!--
-    <Page.Resources>
-        <CollectionViewSource x:Name="ListeBoutiques" IsSourceGrouped="False" 
-                              ItemsPath="local:Boutique"/>
-    </Page.Resources>
-
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <GridView ItemsSource="{Binding Source={StaticResource ListeBoutiques}}" MaxHeight="500">
-            <GridView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Margin="20">
-                        <TextBlock Text="{Binding numBString}" FontWeight="Bold" 
-                                   Style="{StaticResource BaseTextBlockStyle}"/>
-                        <TextBlock Text="{Binding nomB}" TextWrapping="NoWrap" 
-                                   Style="{StaticResource BodyTextBlockStyle}" />
-                        <TextBlock Text="{Binding numAString}" TextWrapping="NoWrap" 
-                                   Style="{StaticResource BodyTextBlockStyle}" />
-                        <TextBlock Text="{Binding telB}" TextWrapping="NoWrap" 
-                                   Style="{StaticResource BodyTextBlockStyle}" />
-                        <TextBlock Text="{Binding mailB}" TextWrapping="NoWrap" 
-                                   Style="{StaticResource BodyTextBlockStyle}" />
-                        
-                    </StackPanel>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-            <GridView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <ItemsWrapGrid MaximumRowsOrColumns="3"/>
-                </ItemsPanelTemplate>
-            </GridView.ItemsPanel>
-        </GridView>
-    </Grid>
-    -->
 
 </Page>
