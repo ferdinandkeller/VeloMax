@@ -46,9 +46,10 @@
                                 <Button Grid.Column="2" x:Name="prix" Content="Adresse" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="adresseClicked"/>
                                 <Button Grid.Column="3" x:Name="contact" Content="Contact" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="contactClicked"/>
                                 <Button Grid.Column="4" x:Name="reactivite" Content="Réactivité" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="reactiviteClicked"/>
+                               <!--
                                 <Button Grid.Column="5" x:Name="catalogue" Content="Catalogue" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="Clicked"/>
                                 <TextBlock Grid.Column="6" x:Name="suppr" Text="Supprimer" HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="Black"/>
-
+                                -->
                             </Grid>
                         </DataTemplate>
                     </ListView.HeaderTemplate>

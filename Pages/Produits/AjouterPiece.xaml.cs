@@ -26,5 +26,15 @@ namespace VéloMax.Pages.Produits
         {
             this.InitializeComponent();
         }
+
+        public void ButtonA_Clicked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public void ButtonB_Clicked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

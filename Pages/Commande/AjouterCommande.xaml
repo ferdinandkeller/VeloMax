@@ -7,9 +7,75 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
- 
-        <StackPanel>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <ComboBox Name="ClientCombo" Margin="25" PlaceholderText="Client" Width="300" >
+                <x:String>Particulier</x:String>
+                <x:String>Boutique</x:String>
+                <x:String>Nouveau</x:String>
+            </ComboBox>
+            <TextBox Name="nomC" Header="Nom" Width="300" VerticalAlignment="Top" Margin="5"/>
+            <TextBox Name="prenomC" Header="Prénom (Particulier) :" Width="300" VerticalAlignment="Top" Margin="5"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+        <TextBlock Text="Adresse :" Margin="15"/>
+            <TextBox Name="rueA" Header="Rue :" Width="300" VerticalAlignment="Top" Margin="5"/>
+            <TextBox Name="villeA" Header="Ville :" Width="200" VerticalAlignment="Top" Margin="5"/>
+            <TextBox Name="codePA" Header="Code Postal :" Width="100" VerticalAlignment="Top" Margin="5"/>
+            <TextBox Name="provinceA" Header="Région :" Width="300" VerticalAlignment="Top" Margin="5"/>
+        </StackPanel>
+        
+
+        <Grid Grid.Row="2">
             
-    </StackPanel>
-    
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <StackPanel Orientation="Vertical"  Grid.Column="0">
+                <Button Content="Confirmer" Click="ButtonC_Clicked" Margin="15" Background="Peru"/>
+                <TextBlock Text="Pièce :" Margin="15,5"/>
+                <ComboBox Name="TypePiecesCombo" Header="Type de pièce" Margin="25,0" PlaceholderText="" Width="300" >
+                    <!-- ItemsSource="{x:Bind nomProg}" DisplayMemberPath="Source"-->
+                    <x:String>Aucun</x:String>
+                </ComboBox>
+                <ComboBox Name="fournisseurPiecesCombo" Header="Fournisseur" Margin="25,5" PlaceholderText="" Width="300" >
+                    <!-- ItemsSource="{x:Bind nomProg}" DisplayMemberPath="Source"-->
+                    <x:String>Aucun</x:String>
+                </ComboBox>
+                <ComboBox Name="refPiecesCombo" Header="Référence" Margin="25,5" PlaceholderText="" Width="300" >
+                    <!-- ItemsSource="{x:Bind nomProg}" DisplayMemberPath="Source"-->
+                    <x:String>Aucune</x:String>
+                </ComboBox>
+                <TextBox Name="quantiteP" Header="Quantité :" Width="300" HorizontalAlignment="Left" Margin="25,10"/>
+                <Button Content="Ajouter" Click="ButtonP_Clicked" Margin="15,5" Background="Peru"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Column="1">
+                <TextBlock Text="Vélo :" Margin="15,60"/>
+                <ComboBox Name="ligneModeleCombo" Header="Type" Margin="25,-50" PlaceholderText="" Width="300" >
+                    <!-- ItemsSource="{x:Bind nomProg}" DisplayMemberPath="Source"-->
+                    <x:String>Aucun</x:String>
+                </ComboBox>
+                <ComboBox Name="nomModeleCombo" Header="Modèle" Margin="25,5" PlaceholderText="" Width="300" >
+                    <!-- ItemsSource="{x:Bind nomProg}" DisplayMemberPath="Source"-->
+                    <x:String>Aucun</x:String>
+                </ComboBox>
+                <TextBox Name="quantiteM" Header="Quantité :" Width="300" HorizontalAlignment="Left" Margin="25,10"/>
+                <Button Content="Ajouter" Click="ButtonM_Clicked" Margin="15,5" Background="Peru"/>
+            </StackPanel>
+        </Grid>
+        <TextBlock Grid.Row="3" Text="Contenu Commande"/>
+    </Grid>
+
 </Page>

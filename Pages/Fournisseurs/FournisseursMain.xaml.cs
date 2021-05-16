@@ -53,7 +53,7 @@ namespace VéloMax.Pages
         public void adresseClicked(object sender, RoutedEventArgs e)
         {
         }
-        public void contacteClicked(object sender, RoutedEventArgs e)
+        public void contactClicked(object sender, RoutedEventArgs e)
         {
         }
         public void reactiviteClicked(object sender, RoutedEventArgs e)

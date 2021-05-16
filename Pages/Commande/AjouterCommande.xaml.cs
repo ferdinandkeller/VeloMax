@@ -26,5 +26,20 @@ namespace VéloMax.Pages.Commande
         {
             this.InitializeComponent();
         }
+
+        public void ButtonP_Clicked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public void ButtonM_Clicked(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        public void ButtonC_Clicked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
