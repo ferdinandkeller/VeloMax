@@ -156,17 +156,17 @@
     <Compile Include="Pages\Clients\AjouterBoutique.xaml.cs">
       <DependentUpon>AjouterBoutique.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Clients\AjouterParticulier.xaml.cs">
-      <DependentUpon>AjouterParticulier.xaml</DependentUpon>
+    <Compile Include="Pages\Clients\AjouterIndividu.xaml.cs">
+      <DependentUpon>AjouterIndividu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Clients\ClientsMain.xaml.cs">
       <DependentUpon>ClientsMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Clients\Entreprises.xaml.cs">
-      <DependentUpon>Entreprises.xaml</DependentUpon>
+    <Compile Include="Pages\Clients\Boutiques.xaml.cs">
+      <DependentUpon>Boutiques.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Clients\Particuliers.xaml.cs">
-      <DependentUpon>Particuliers.xaml</DependentUpon>
+    <Compile Include="Pages\Clients\Individus.xaml.cs">
+      <DependentUpon>Individus.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Commande\AjouterCommande.xaml.cs">
       <DependentUpon>AjouterCommande.xaml</DependentUpon>
@@ -299,7 +299,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Clients\AjouterParticulier.xaml">
+    <Page Include="Pages\Clients\AjouterIndividu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -307,11 +307,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Clients\Entreprises.xaml">
+    <Page Include="Pages\Clients\Boutiques.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Clients\Particuliers.xaml">
+    <Page Include="Pages\Clients\Individus.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

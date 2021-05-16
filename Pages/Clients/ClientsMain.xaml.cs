@@ -31,8 +31,8 @@ namespace VéloMax.Pages
 
 
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>{
-            ("clientEntreprise", typeof(VéloMax.Pages.Clients.Entreprises)),
-            ("clientParticulier", typeof(VéloMax.Pages.Clients.Particuliers)),
+            ("clientEntreprise", typeof(VéloMax.Pages.Clients.Boutiques)),
+            ("clientParticulier", typeof(VéloMax.Pages.Clients.Individus)),
         };
 
         /*private void NavView_Loaded(object sender, RoutedEventArgs e)

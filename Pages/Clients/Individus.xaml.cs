@@ -12,6 +12,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Collections.ObjectModel;
+using Microsoft.Toolkit.Uwp.UI.Controls;
+using System.Diagnostics;
 using VéloMax.bdd;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
@@ -21,43 +24,31 @@ namespace VéloMax.Pages.Clients
     /// <summary>
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
-    public sealed partial class Particuliers : Page
+    public sealed partial class Individus : Page
     {
-        public Particuliers()
+        public Individus()
         {
             this.InitializeComponent();
-            Liste.ItemsSource = Individu.Lister();
         }
         private void Liste_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
 
-        public void ButtonClicked(object sender, RoutedEventArgs e)
+        public ReadOnlyCollection<Individu> individus
         {
-            this.Frame.Navigate(typeof(AjouterParticulier), null);
+            get => Individu.Lister();
         }
 
-        public void numClicked(object sender, RoutedEventArgs e)
+        private void Nouveau_Click(object sender, RoutedEventArgs e)
         {
+            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(AjouterIndividu));
         }
-        public void nomClicked(object sender, RoutedEventArgs e)
+
+        private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
-        }
-        public void prenomClicked(object sender, RoutedEventArgs e)
-        {
-        }
-        public void adresseClicked(object sender, RoutedEventArgs e)
-        {
-        }
-        public void telClicked(object sender, RoutedEventArgs e)
-        {
-        }
-        public void mailClicked(object sender, RoutedEventArgs e)
-        {
-        }
-        public void fideClicked(object sender, RoutedEventArgs e)
-        {
+            ((Individu)MyDataGrid.SelectedItem).Supprimer();
+            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(Individus));
         }
     }
 }

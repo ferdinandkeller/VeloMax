@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using VéloMax.bdd;
+using System.Diagnostics;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -21,23 +22,22 @@ namespace VéloMax.Pages.Clients
     /// <summary>
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
     /// </summary>
-    public sealed partial class AjouterParticulier : Page
+    public sealed partial class AjouterIndividu : Page
     {
-        public AjouterParticulier()
+        public AjouterIndividu()
         {
             this.InitializeComponent();
         }
 
-        public void ButtonA_Clicked(object sender, RoutedEventArgs e)
+        public void AjoutClient(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        public void ButtonB_Clicked(object sender, RoutedEventArgs e)
-        {
-            Adresse a = new Adresse(rueA.Text, villeA.Text, codePA.Text, provinceA.Text);
-            Individu i = new Individu(nomParticulier.Text, prenomParticulier.Text, Convert.ToInt32(a.numA), telParticulier.Text, mailParticulier.Text);
-            new Fidelio(i.numI); //Il faut différents noms de prog de fidélité
+            try
+            {
+                int codep = int.Parse(codePA.Text);
+                new Individu(nomParticulier.Text, prenomParticulier.Text, new Adresse(rueA.Text, villeA.Text, codePA.Text, provinceA.Text), telParticulier.Text, mailParticulier.Text);
+                ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(Individus));
+            }
+            catch { }
         }
 
 

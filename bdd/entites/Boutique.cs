@@ -40,6 +40,11 @@ namespace VéloMax.bdd
             get => ControlleurRequetes.ObtenirChampInt("Boutique", "numB", numB, "numA");
             set { ControlleurRequetes.ModifierChamp("Boutique", "numB", numB, "numA", value); }
         }
+        public Adresse adresse
+        {
+            get => new Adresse(numA);
+            set => numA = value.numA;
+        }
 
         public string numAString { get { return numA.ToString(); } }
         public string telB
@@ -54,7 +59,6 @@ namespace VéloMax.bdd
         }
 
         public string remise = "0";
-        public string adresse;
 
         /* Instantiation */
         public Boutique(int numB)
@@ -64,6 +68,11 @@ namespace VéloMax.bdd
         public Boutique(string nomB, int numA, string telB, string mailB)
         {
             ControlleurRequetes.Inserer($"INSERT INTO Boutique (nomB, numA, telB, mailB) VALUES ('{nomB}', {numA}, '{telB}', '{mailB}')");
+            this.numB = ControlleurRequetes.DernierIDUtilise();
+        }
+        public Boutique(string nomB, Adresse adresse, string telB, string mailB)
+        {
+            ControlleurRequetes.Inserer($"INSERT INTO Boutique (nomB, numA, telB, mailB) VALUES ('{nomB}', {adresse.numA}, '{telB}', '{mailB}')");
             this.numB = ControlleurRequetes.DernierIDUtilise();
         }
 
@@ -82,22 +91,14 @@ namespace VéloMax.bdd
             return new ReadOnlyCollection<Boutique>(list);
         }
 
-        public static ObservableCollection<Boutique> GetBoutiques()
+        public static ReadOnlyCollection<string> ListerString()
         {
-            var boutiques= new List<Boutique>();
-            ControlleurRequetes.SelectionnePlusieurs($"select * from boutique natural join adresse;", (MySqlDataReader reader) => {
-                Boutique boutique = new Boutique(reader.GetInt32("numB"));
-                boutique.numA = reader.GetInt32(0);
-                boutique.nomB = reader.GetString(2);
-                boutique.telB = reader.GetString(3);
-                boutique.mailB = reader.GetString(4);
-                boutique.adresse = reader.GetString(5) + " " + reader.GetString(6) + " " + reader.GetString(7) + " " + reader.GetString(8) + " ";
-                boutique.remise = "0";
-                boutiques.Add(boutique); 
-            });
-            return new ObservableCollection<Boutique>(boutiques);
-
+            List<string> list = new List<string>();
+            foreach (Boutique b in Lister())
+            {
+                list.Add($"{b.nomB} [{b.numB}]");
+            }
+            return new ReadOnlyCollection<string>(list);
         }
-
     }
 }

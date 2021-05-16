@@ -75,5 +75,10 @@ namespace VéloMax.bdd
             string s = this.rue + " " + this.ville + " " + this.codepostal + " " + this.province;
             return s;
         }
+
+        public string VersString
+        {
+            get => $"{rue}, {codepostal} {ville}, {province}";
+        }
     }
 }

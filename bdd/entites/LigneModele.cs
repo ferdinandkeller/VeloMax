@@ -16,6 +16,15 @@ namespace VéloMax.bdd
 
     public static class ConvertisseurLigneModel
     {
+        public static List<string> LigneVersListe()
+        {
+            List<string> lignes = new List<string>();
+            foreach (LigneModele l in Enum.GetValues(typeof(LigneModele)))
+            {
+                lignes.Add(ConvertisseurLigneModel.LigneVersString(l));
+            }
+            return lignes;
+        }
         public static LigneModele StringVersLigne(String ligne)
         {
             if (ligne == "VTT")

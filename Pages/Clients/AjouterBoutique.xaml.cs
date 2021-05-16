@@ -18,9 +18,6 @@ using VéloMax.bdd;
 
 namespace VéloMax.Pages.Clients
 {
-    /// <summary>
-    /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
-    /// </summary>
     public sealed partial class AjouterBoutique : Page
     {
         public AjouterBoutique()
@@ -33,10 +30,15 @@ namespace VéloMax.Pages.Clients
            
         }
 
-        public void ButtonB_Clicked(object sender, RoutedEventArgs e)
+        public void AjoutBoutique(object sender, RoutedEventArgs e)
         {
-            Adresse a = new Adresse(rueA.Text, villeA.Text, codePA.Text, provinceA.Text);
-            Boutique b = new Boutique(nomBoutique.Text, Convert.ToInt32(a.numA), telBoutique.Text, mailBoutique.Text);
+            try
+            {
+                int codep = int.Parse(codePA.Text);
+                new Boutique(nomBoutique.Text, new Adresse(rueA.Text, villeA.Text, codePA.Text, provinceA.Text), telBoutique.Text, mailBoutique.Text);
+                ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(Boutique));
+            }
+            catch { }
         }
     }
 }
