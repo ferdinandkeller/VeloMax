@@ -12,10 +12,13 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using VéloMax.bdd;
+using Windows.UI.Core;
+using Windows.System;
+using Windows.Data;
+using System.ComponentModel;
 using System.Collections.ObjectModel;
-using Microsoft.Toolkit.Uwp.UI.Controls;
-using System.Diagnostics;
+using System.Data.SqlClient;
+using VéloMax.bdd;
 using VéloMax.pages;
 
 namespace VéloMax.pages
@@ -41,6 +44,21 @@ namespace VéloMax.pages
         {
             ((Fidelio)MyDataGrid.SelectedItem).Supprimer();
             ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(FidelioUI));
+        }
+
+        private async void ExporterJSON(object sender, RoutedEventArgs e)
+        {
+            var savePicker = new Windows.Storage.Pickers.FileSavePicker();
+            savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
+            savePicker.FileTypeChoices.Add("JSON", new List<string>() { ".json" });
+            savePicker.SuggestedFileName = "clients_importants";
+            Windows.Storage.StorageFile file = await savePicker.PickSaveFileAsync();
+            if (file != null)
+            {
+                Windows.Storage.CachedFileManager.DeferUpdates(file);
+                await Windows.Storage.FileIO.WriteTextAsync(file, Fidelio.FidelioFinJSON());
+                Windows.Storage.Provider.FileUpdateStatus status = await Windows.Storage.CachedFileManager.CompleteUpdatesAsync(file);
+            }
         }
     }
 }

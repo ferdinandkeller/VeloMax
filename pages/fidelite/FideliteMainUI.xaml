@@ -8,7 +8,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <NavigationView Name="NavViewFidelite" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsBackEnabled="False" IsSettingsVisible="False" SelectionChanged="NavView_SelectionChanged">
+        <NavigationView Name="NavViewFidelite" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsBackEnabled="False" IsSettingsVisible="False"  ItemInvoked="NavView_ItemInvoked" BackRequested="NavView_BackRequested">
             <NavigationView.MenuItems>
                 <NavigationViewItem Name="NavViewFidelite_Default" Tag="fidelio" Content="Abonnements Client"/>
                 <NavigationViewItem Tag="fidelite" Content="Programmes Fidelio" />

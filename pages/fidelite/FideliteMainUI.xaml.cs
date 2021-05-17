@@ -12,9 +12,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Windows.UI.Core;
-using Windows.System;
-using System.Diagnostics;
 
 namespace VéloMax.pages
 {
@@ -23,10 +20,11 @@ namespace VéloMax.pages
         public FideliteMainUI()
         {
             this.InitializeComponent();
-            NavViewFidelite.SelectedItem = NavViewFidelite_Default;
-            NavigationContentFrame.Navigate(typeof(FidelioUI));
+            //NavViewFidelite.SelectedItem = NavViewFidelite_Default;
+            //NavigationContentFrame.Navigate(typeof(FidelioUI));
         }
 
+        /*
         private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             switch (((NavigationViewItem)args.SelectedItem).Tag)
@@ -39,10 +37,11 @@ namespace VéloMax.pages
                     break;
             }
         }
+        */
 
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>{
-            ("commande2", typeof(VéloMax.pages.FidelioUI)),
-            ("commande1", typeof(VéloMax.pages.FideliteUI))
+            ("fidelio", typeof(VéloMax.pages.FidelioUI)),
+            ("fidelite", typeof(VéloMax.pages.FideliteUI))
         };
 
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
