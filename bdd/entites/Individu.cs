@@ -44,16 +44,6 @@ namespace VéloMax.bdd
             get => ControlleurRequetes.ObtenirChampString("Individu", "numI", numI, "mailI");
             set { ControlleurRequetes.ModifierChamp("Individu", "numI", numI, "mailI", value); }
         }
-        public bool estMembreFidelio
-        {
-            get
-            {
-                int res = 0;
-                string req = $"SELECT COUNT(*) FROM Fidelio WHERE numI={numI}";
-                ControlleurRequetes.SelectionneUn(req, (MySqlDataReader reader) => { res = reader.GetInt32("COUNT(*)"); });
-                return res == 0;
-            }
-        }
         public Fidelio fidelio
         {
             get => new Fidelio(numI);
@@ -101,8 +91,47 @@ namespace VéloMax.bdd
         public static ReadOnlyCollection<Individu> ListerFidelio()
         {
             List<Individu> list = new List<Individu>();
-            ControlleurRequetes.SelectionnePlusieurs($"SELECT numI FROM Individu NATURAL JOIN Fidelio", (MySqlDataReader reader) => { list.Add(new Individu(reader.GetInt32("numI"))); });
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT DISTINCT numI FROM fidelio NATURAL JOIN individu NATURAL JOIN programme WHERE DATE_ADD(dateAdherence, INTERVAL duree DAY) > CURDATE()", (MySqlDataReader reader) => { list.Add(new Individu(reader.GetInt32("numI"))); });
             return new ReadOnlyCollection<Individu>(list);
+        }
+        public static ReadOnlyCollection<string> ListerFidelioString()
+        {
+            List<string> list = new List<string>();
+            foreach (Individu i in ListerFidelio())
+            {
+                list.Add($"{i.nomI} {i.prenomI} [{i.numI}]");
+            }
+            return new ReadOnlyCollection<string>(list);
+        }
+        public static ReadOnlyCollection<Individu> ListerAncienFidelio()
+        {
+            List<Individu> list = new List<Individu>();
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numI FROM fidelio WHERE numI NOT IN (SELECT DISTINCT numI FROM fidelio NATURAL JOIN individu NATURAL JOIN programme WHERE DATE_ADD(dateAdherence, INTERVAL duree DAY) > CURDATE())", (MySqlDataReader reader) => { list.Add(new Individu(reader.GetInt32("numI"))); });
+            return new ReadOnlyCollection<Individu>(list);
+        }
+        public static ReadOnlyCollection<string> ListerAncienFidelioString()
+        {
+            List<string> list = new List<string>();
+            foreach (Individu i in ListerAncienFidelio())
+            {
+                list.Add($"{i.nomI} {i.prenomI} [{i.numI}]");
+            }
+            return new ReadOnlyCollection<string>(list);
+        }
+        public static ReadOnlyCollection<Individu> ListerPasFidelio()
+        {
+            List<Individu> list = new List<Individu>();
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numI FROM Individu WHERE numI NOT IN (SELECT DISTINCT numI FROM fidelio NATURAL JOIN individu NATURAL JOIN programme WHERE DATE_ADD(dateAdherence, INTERVAL duree DAY) > CURDATE())", (MySqlDataReader reader) => { list.Add(new Individu(reader.GetInt32("numI"))); });
+            return new ReadOnlyCollection<Individu>(list);
+        }
+        public static ReadOnlyCollection<string> ListerPasFidelioString()
+        {
+            List<string> list = new List<string>();
+            foreach (Individu i in ListerPasFidelio())
+            {
+                list.Add($"{i.nomI} {i.prenomI} [{i.numI}]");
+            }
+            return new ReadOnlyCollection<string>(list);
         }
 
         /* Conversion */

@@ -117,6 +117,7 @@ namespace VéloMax.pages
                 }
 
                 new ExecuteurCommandeBoutique(c, bout);
+                ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(CommandesEncoursUI));
             }
         }
     }

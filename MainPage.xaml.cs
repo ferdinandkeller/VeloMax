@@ -44,6 +44,7 @@ namespace VéloMax
                     NavigationContentFrame.Navigate(typeof(ClientsMainUI));
                     break;
                 case "programmes":
+                    NavigationContentFrame.Navigate(typeof(FideliteMainUI));
                     break;
                 case "fournisseurs":
                     break;
