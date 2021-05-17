@@ -11,17 +11,21 @@ namespace VéloMax.bdd
     public class Fidelio
     {
         /* Attributs */
-        public readonly int numI;
-        public string nomFidelio;
+        public readonly int numFid;
 
+        public int numI
+        {
+            get { return ControlleurRequetes.ObtenirChampInt("Fidelio", "numFid", numFid, "numI"); }
+            set { ControlleurRequetes.ModifierChamp("Fidelio", "numFid", numFid, "numI", value); }
+        }
         public Individu individu
         {
             get => new Individu(numI);
         }
         public int numProg
         {
-            get { return ControlleurRequetes.ObtenirChampInt("Fidelio", "numI", numI, "numProg"); }
-            set { ControlleurRequetes.ModifierChamp("Fidelio", "numI", numI, "numProg", value); }
+            get { return ControlleurRequetes.ObtenirChampInt("Fidelio", "numFid", numFid, "numProg"); }
+            set { ControlleurRequetes.ModifierChamp("Fidelio", "numFid", numFid, "numProg", value); }
         }
         public Programme programme
         {
@@ -30,8 +34,8 @@ namespace VéloMax.bdd
         }
         public DateTime dateAdherence
         {
-            get => ControlleurRequetes.ObtenirChampDatetime("Fidelio", "numI", numI, "dateAdherence");
-            set => ControlleurRequetes.ModifierChamp("Fidelio", "numI", numI, "dateAdherence", value);
+            get => ControlleurRequetes.ObtenirChampDatetime("Fidelio", "numFid", numFid, "dateAdherence");
+            set => ControlleurRequetes.ModifierChamp("Fidelio", "numFid", numFid, "dateAdherence", value);
         }
         public string dateAdherenceS
         {
@@ -40,17 +44,14 @@ namespace VéloMax.bdd
         }
 
         /* Instantiation */
-        public Fidelio(int numI)
+        public Fidelio(int numFid)
         {
-            this.numI = numI;
-        }
-        public Fidelio(Individu individu) : this(individu.numI)
-        {
+            this.numFid = numFid;
         }
         public Fidelio(int numI, int numProg, DateTime dateAdherence)
         {
             ControlleurRequetes.Inserer($"INSERT INTO Fidelio (numI, numProg, dateAdherence) VALUES ({numI}, {numProg}, '{dateAdherence.ToString("yyyy-MM-dd HH:mm:ss")}')");
-            this.numI = numI;
+            this.numFid = ControlleurRequetes.DernierIDUtilise();
         }
         public Fidelio(Individu individu, Programme programme, DateTime dateAdherence) : this(individu.numI, programme.numProg, dateAdherence)
         {
@@ -59,15 +60,27 @@ namespace VéloMax.bdd
         /* Suppression */
         public void Supprimer()
         {
-            ControlleurRequetes.SupprimerElement("Fidelio", "numI", numI);
+            ControlleurRequetes.SupprimerElement("Fidelio", "numFid", numFid);
         }
 
         /* Liste */
         public static ReadOnlyCollection<Fidelio> Lister()
         {
             List<Fidelio> list = new List<Fidelio>();
-            ControlleurRequetes.SelectionnePlusieurs($"SELECT numI FROM Fidelio", (MySqlDataReader reader) => { list.Add(new Fidelio(reader.GetInt32("numI"))); });
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numFid FROM Fidelio", (MySqlDataReader reader) => { list.Add(new Fidelio(reader.GetInt32("numFid"))); });
             return new ReadOnlyCollection<Fidelio>(list);
+        }
+        public static Fidelio Actuel(Individu i)
+        {
+            int fid = -1;
+            ControlleurRequetes.SelectionneUn($"SELECT numFid FROM Fidelio WHERE numI={i.numI} ORDER BY dateAdherence DESC LIMIT 1", (MySqlDataReader reader) => { fid = reader.GetInt32("numFid"); });
+            return fid == -1 ? null : new Fidelio(fid);
+        }
+        public static List<Fidelio> Anciens(Individu i)
+        {
+            List<Fidelio> fid = new List<Fidelio>();
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numFid FROM Fidelio WHERE numFid <> (SELECT numFid FROM Fidelio WHERE numI={i.numI} ORDER BY dateAdherence DESC LIMIT 1)", (MySqlDataReader reader) => { fid.Add(new Fidelio(reader.GetInt32("numFid"))); });
+            return fid;
         }
 
         /* Conversion */
@@ -76,7 +89,7 @@ namespace VéloMax.bdd
             List<Fidelio> list = new List<Fidelio>();
             foreach (Individu i in Individu.ListerFidelio())
             {
-                list.Add(new Fidelio(i));
+                list.Add(Fidelio.Actuel(i));
             }
             ControlleurJson cjson = new ControlleurJson();
             foreach (Fidelio f in list)
@@ -84,11 +97,7 @@ namespace VéloMax.bdd
                 ControlleurJson cjson3 = new ControlleurJson();
                 cjson3.AjouterNormalJson("encours", f.individu.VersJson());
 
-                List<Fidelio> list2 = new List<Fidelio>();
-                foreach (Individu i in Individu.ListerAncienFidelio())
-                {
-                    list2.Add(new Fidelio(i));
-                }
+                List<Fidelio> anciens = Anciens(f.individu);
                 ControlleurJson cjson2 = new ControlleurJson();
                 foreach (Programme p in Individu.ListerAncienAbonnements(f.individu))
                 {
