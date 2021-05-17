@@ -18,7 +18,7 @@
             <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground"
                             BackgroundSource="HostBackdrop"
                             TintColor="{StaticResource SystemRevealChromeWhiteColor}"
-                            TintOpacity="1"
+                            TintOpacity="0.5"
                             FallbackColor="White"/>
         </NavigationView.Resources>
         <NavigationView.MenuItems>

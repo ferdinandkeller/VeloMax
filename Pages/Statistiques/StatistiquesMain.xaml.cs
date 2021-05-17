@@ -24,7 +24,7 @@ namespace VéloMax.pages
 
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>{
             ("statsVentes", typeof(VéloMax.pages.StatVentes)),
-            ("statsClients", typeof(VéloMax.pages.StatClients)),
+            ("statClients", typeof(VéloMax.pages.StatClients)),
             ("statsFidelio", typeof(VéloMax.pages.StatFidelio)),
             ("statsCommandes", typeof(VéloMax.pages.StatCommandes))
         };

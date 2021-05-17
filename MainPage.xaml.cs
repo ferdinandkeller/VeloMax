@@ -17,6 +17,9 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.Core;
 using Windows.System;
 using VéloMax.bdd;
+using Windows.UI.ViewManagement;
+using Windows.ApplicationModel.Core;
+using Windows.UI;
 
 namespace VéloMax
 {
@@ -25,6 +28,14 @@ namespace VéloMax
         public MainPage()
         {
             this.InitializeComponent();
+
+            ApplicationViewTitleBar formattableTitleBar = ApplicationView.GetForCurrentView().TitleBar;
+            formattableTitleBar.ButtonBackgroundColor = Colors.Transparent;
+            CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+            coreTitleBar.ExtendViewIntoTitleBar = true;
+
+            NavView.Shadow = new ThemeShadow();
+
             foreach (Boutique b in Boutique.Lister())
             {
                 Debug.Write(b.nomB);
@@ -106,7 +117,7 @@ namespace VéloMax
                 {
                     NavigationContentFrame.Navigate(_page, null, transitionInfo);
                 }
-            
+
         }
 
         private void NavView_BackRequested(NavigationView sender,

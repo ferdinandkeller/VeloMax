@@ -16,7 +16,7 @@
                             BackgroundSource="Backdrop"
                             TintColor="Transparent"
                             FallbackColor="White"/>
-            <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground"
+                <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground"
                             BackgroundSource="HostBackdrop"
                             TintColor="{StaticResource SystemRevealChromeWhiteColor}"
                             TintOpacity="1"

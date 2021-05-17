@@ -14,15 +14,13 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.ViewManagement;
+using Windows.UI;
 
 namespace VéloMax
 {
     sealed partial class App : Application
     {
-        private string connectionString =
-            @"SERVER=localhost;PORT=3306;DATABASE=VeloMax;UID=root;PASSWORD=__";
-
-        public string ConnectionString { get => connectionString; set => connectionString = value; }
 
         public App()
         {
@@ -37,9 +35,7 @@ namespace VéloMax
             if (rootFrame == null)
             {
                 rootFrame = new Frame();
-
                 rootFrame.NavigationFailed += OnNavigationFailed;
-
                 Window.Current.Content = rootFrame;
             }
 
