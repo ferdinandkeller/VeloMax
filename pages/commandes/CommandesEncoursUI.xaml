@@ -12,7 +12,7 @@
     <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Horizontal">
             <Button Content="Nouveau" Click="Nouveau_Click" />
-            <Button Content="Afficher" Click="Afficher_Click" />
+            <Button Content="Détail" Click="Afficher_Click" />
             <Button Content="Supprimer" Click="Supprimer_Click" />
         </StackPanel>
 

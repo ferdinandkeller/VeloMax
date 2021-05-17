@@ -36,7 +36,7 @@ namespace VéloMax
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>{
             ("commandes", typeof(VéloMax.pages.CommandesMainUI)),
             ("stocks", typeof(VéloMax.Pages.StocksMain)),
-            ("produits", typeof(VéloMax.Pages.ProduitsMain)),
+            ("produits", typeof(VéloMax.pages.ProduitsUIMain)),
             ("clients", typeof(VéloMax.pages.ClientsMainUI)),
             ("fournisseurs", typeof(VéloMax.Pages.FournisseursMain)),
             ("statistiques", typeof(VéloMax.Pages.StatistiquesMain)),

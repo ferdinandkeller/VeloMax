@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="VéloMax.pages.ModelesUI"
+    xmlns:local="using:VéloMax.pages"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Button Name="Nouveau" Content="Nouveau" Click="Nouveau_Click" />
+                <Button Name="Supprimer" Content="Supprimer" Click="Supprimer_Click" />
+            </StackPanel>
+            <controls:DataGrid Name="MyDataGrid" ItemsSource="{x:Bind modeles}" AutoGenerateColumns="False">
+                <controls:DataGrid.Columns>
+                    <controls:DataGridTextColumn Header="référence" Binding="{Binding numMg}"/>
+                    <controls:DataGridTextColumn Header="nom" Binding="{Binding nomM}"/>
+                    <controls:DataGridTextColumn Header="description" Binding="{Binding descriptionM}"/>
+                    <controls:DataGridTextColumn Header="taille" Binding="{Binding tailleM}"/>
+                    <controls:DataGridComboBoxColumn Header="ligne" Binding="{Binding ligne}" Tag="MaLigne"/>
+                    <controls:DataGridTextColumn Header="prix" Binding="{Binding prixM}"/>
+                    <controls:DataGridTextColumn Header="date introduction" Binding="{Binding dateIntroMS }"/>
+                    <controls:DataGridTextColumn Header="date discontinuité" Binding="{Binding dateDiscMS}"/>
+                    <controls:DataGridTextColumn Header="quantité stock" Binding="{Binding quantStockM}"/>
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
+        </StackPanel>
+    </Grid>
+</Page>
