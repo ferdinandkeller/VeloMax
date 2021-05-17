@@ -34,7 +34,7 @@ namespace VéloMax
         // List of ValueTuple holding the Navigation Tag and the relative Navigation Page
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>{
             ("commandes", typeof(VéloMax.pages.CommandesMainUI)),
-            ("stocks", typeof(VéloMax.Pages.StocksMain)),
+            //("stocks", typeof(VéloMax.Pages.StocksMain)),
             ("produits", typeof(VéloMax.pages.ProduitsUIMain)),
             ("clients", typeof(VéloMax.pages.ClientsMainUI)),
             ("programmes", typeof(VéloMax.pages.FideliteMainUI)),

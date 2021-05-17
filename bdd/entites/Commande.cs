@@ -67,6 +67,28 @@ namespace VéloMax.bdd
         {
             get => ContenuCommandeModele.Lister(numC);
         }
+        public bool enStock
+        {
+            get
+            {
+                bool res = true;
+                foreach (ContenuCommandePiece ccp in contenuPiece)
+                {
+                    if (ccp.quantPieceC > ccp.piece.quantStockP)
+                    {
+                        res = false;
+                    }
+                }
+                foreach (ContenuCommandeModele ccm in contenuModele)
+                {
+                    if (ccm.quantModeleC > ccm.modele.quantStockM)
+                    {
+                        res = false;
+                    }
+                }
+                return res;
+            }
+        }
 
         /* Instantiation */
         public Commande(int numC)

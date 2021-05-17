@@ -93,14 +93,14 @@ namespace VéloMax.bdd
         public readonly int numM;
         public string nomM;
         public int qteM;
-        public int quantSotckM;
+        public int quantStockM;
 
         public EtatStockModele(int numM, string nomM, int qteM, int quantStockM)
         {
             this.numM = numM;
             this.nomM = nomM;
             this.qteM = qteM;
-            this.quantSotckM = quantSotckM;
+            this.quantStockM = quantStockM;
         }
     }
 }
