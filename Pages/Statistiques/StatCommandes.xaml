@@ -1,14 +1,21 @@
 ﻿<Page
-    x:Class="VéloMax.Pages.Statistiques.StatCommandes"
+    x:Class="VéloMax.pages.StatCommandes"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:VéloMax.Pages.Statistiques"
+    xmlns:local="using:VéloMax.pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <StackPanel>
+            <TextBlock Text="Prix moyen d'une commande : " Margin="25"/>
+            <TextBlock Text="{Binding prixMoyenC}" Margin="30" Foreground="Peru"/>
+            <TextBlock Text="Nombre moyen de pièces d'une commande : " Margin="25"/>
+            <TextBlock Text="{Binding piecesMoy}" Margin="30" Foreground="Peru"/>
+            <TextBlock Text="Nombre moyen de modèles d'une commande : " Margin="25"/>
+            <TextBlock Text="{Binding modelesMoy}" Margin="30" Foreground="Peru"/>
+        </StackPanel>
     </Grid>
 </Page>

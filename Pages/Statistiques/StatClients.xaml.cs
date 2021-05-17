@@ -12,10 +12,18 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Core;
+using Windows.System;
+using Windows.Data;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
+using System.Data.SqlClient;
+using VéloMax.bdd;
+using VéloMax.pages;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace VéloMax.Pages.Statistiques
+namespace VéloMax.pages
 {
     /// <summary>
     /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.

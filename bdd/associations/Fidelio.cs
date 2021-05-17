@@ -103,7 +103,7 @@ namespace VéloMax.bdd
         public static ReadOnlyCollection<MembreFidelioStat> ListerMembresStat()
         {
             List<MembreFidelioStat> list = new List<MembreFidelioStat>();
-            ControlleurRequetes.SelectionnePlusieurs($"SELECT numI, nomI,prenomI,nomProg,dateAdherence,duree FROM Programme NATURAL JOIN Fidelio NATURAL JOIN Individu ORDER BY nomProg;", (MySqlDataReader reader) => { list.Add(new MembreFidelioStat(reader.GetString("nomI"), reader.GetString("prenomI"), reader.GetString("nomProg"),reader.GetDateTime("dateAdherence"),reader.GetInt32("duree"))); });
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numI, nomI,prenomI,nomProg,dateAdherence,duree FROM Programme NATURAL JOIN Fidelio NATURAL JOIN Individu  WHERE dateAdherence + INTERVAL duree DAY > NOW() ORDER BY nomProg;", (MySqlDataReader reader) => { list.Add(new MembreFidelioStat(reader.GetString("nomI"), reader.GetString("prenomI"), reader.GetString("nomProg"),reader.GetDateTime("dateAdherence"),reader.GetInt32("duree"))); });
             return new ReadOnlyCollection<MembreFidelioStat>(list);
         }
     }

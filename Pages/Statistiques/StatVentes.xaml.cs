@@ -19,11 +19,11 @@ using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 using VéloMax.bdd;
-using VéloMax.Pages;
+using VéloMax.pages;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace VéloMax.Pages.Statistiques
+namespace VéloMax.pages
 {
     public sealed partial class StatVentes : Page
     {

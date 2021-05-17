@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace VéloMax.Pages
+namespace VéloMax.pages
 {
     public sealed partial class StatistiquesMain : Page
     {
@@ -23,10 +23,10 @@ namespace VéloMax.Pages
         }
 
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>{
-            ("statsVentes", typeof(VéloMax.Pages.Statistiques.StatVentes)),
-            ("statsClients", typeof(VéloMax.Pages.Statistiques.StatClients)),
-            ("statsFidelio", typeof(VéloMax.Pages.Statistiques.StatFidelio)),
-            ("statsCommandes", typeof(VéloMax.Pages.Statistiques.StatCommandes))
+            ("statsVentes", typeof(VéloMax.pages.StatVentes)),
+            ("statsClients", typeof(VéloMax.pages.StatClients)),
+            ("statsFidelio", typeof(VéloMax.pages.StatFidelio)),
+            ("statsCommandes", typeof(VéloMax.pages.StatCommandes))
         };
 
         private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)

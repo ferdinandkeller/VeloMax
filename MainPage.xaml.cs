@@ -39,7 +39,7 @@ namespace VéloMax
             ("clients", typeof(VéloMax.pages.ClientsMainUI)),
             ("programmes", typeof(VéloMax.pages.FideliteMainUI)),
             ("fournisseurs", typeof(VéloMax.pages.FournisseursUIMain)),
-            ("statistiques", typeof(VéloMax.Pages.StatistiquesMain)),
+            ("statistiques", typeof(VéloMax.pages.StatistiquesMain)),
             ("notices", typeof(VéloMax.Pages.Notices)),
             ("home", typeof(VéloMax.pages.Accueil))
         };
