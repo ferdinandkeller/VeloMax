@@ -8,9 +8,8 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-
-        <TextBlock HorizontalAlignment="Left" Height="211" Margin="52,58,0,0" Text="VéloMax" TextWrapping="Wrap" VerticalAlignment="Top" Width="546" Style="{StaticResource HeaderTextBlockStyle}"/>
-
-    </Grid>
+    <StackPanel Orientation="Vertical" Margin="25">
+        <TextBlock TextWrapping="Wrap" Style="{StaticResource HeaderTextBlockStyle}" Text="VéloMax"/>
+        <TextBlock Text="Vous en reviez ? Le voici !" TextWrapping="Wrap" Style="{StaticResource SubHeaderTextBlockStyle}"/>
+    </StackPanel>
 </Page>
