@@ -18,8 +18,8 @@
             <controls:DataGrid.Columns>
                 <controls:DataGridTextColumn Header="nom" Binding="{Binding individu.nomI}"/>
                 <controls:DataGridTextColumn Header="prenom" Binding="{Binding individu.prenomI}"/>
-                <controls:DataGridTextColumn Header="adresse" Binding="{Binding individu.adresse.VersString}"/>
-                <controls:DataGridTextColumn Header="programme" Binding="{Binding programme.nomProg}"/>
+                <controls:DataGridTextColumn Header="adresse" Binding="{Binding individu.adresse.VersString}" IsReadOnly="True"/>
+                <controls:DataGridTextColumn Header="programme" Binding="{Binding programme.nomProg}" IsReadOnly="True"/>
                 <controls:DataGridTextColumn Header="date adhérence" Binding="{Binding dateAdherenceS}"/>
             </controls:DataGrid.Columns>
         </controls:DataGrid>
