@@ -28,7 +28,7 @@
             <NavigationViewItem Tag="programmes" Icon="Edit" Content="Fidelio" />
             <NavigationViewItem Tag="fournisseurs" Icon="Manage" Content="Fournisseurs" />
             <NavigationViewItem Tag="produits" Icon="Edit" Content="Produits" />
-            <NavigationViewItem Tag="stocks" Icon="Priority" Content="Stocks" />
+            <!--<NavigationViewItem Tag="stocks" Icon="Priority" Content="Stocks" />-->
             <NavigationViewItem Tag="statistiques" Icon="TwoBars" Content="Statistiques" />
             <NavigationViewItem Tag="notices" Icon="Page" Content="Notices" />
         </NavigationView.MenuItems>

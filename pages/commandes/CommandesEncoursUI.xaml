@@ -22,6 +22,7 @@
                 <controls:DataGridTextColumn Header="Adresse" Binding="{Binding adresse.VersString}"/>
                 <controls:DataGridTextColumn Header="Date Commande" Binding="{Binding dateCg}"/>
                 <controls:DataGridTextColumn Header="Date Livraison" Binding="{Binding dateLg}"/>
+                <controls:DataGridTextColumn Header="En Stock" Binding="{Binding enStock}" IsReadOnly="True"/>
             </controls:DataGrid.Columns>
         </controls:DataGrid>
     </StackPanel>

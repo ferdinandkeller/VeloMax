@@ -72,7 +72,7 @@ namespace VéloMax.bdd
         public static ReadOnlyCollection<ContenuCommandePiece> Lister(int numC)
         {
             List<ContenuCommandePiece> list = new List<ContenuCommandePiece>();
-            ControlleurRequetes.SelectionnePlusieurs($"SELECT numP FROM ContenuCoPiece WHERE numC={numC}", (MySqlDataReader reader) => { list.Add(new ContenuCommandePiece(numC, reader.GetInt32("numP"))); });
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numP FROM ContenuCommandePiece WHERE numC={numC}", (MySqlDataReader reader) => { list.Add(new ContenuCommandePiece(numC, reader.GetInt32("numP"))); });
             return new ReadOnlyCollection<ContenuCommandePiece>(list);
         }
         public static ReadOnlyCollection<ContenuCommandePiece> Lister(Commande commande)
@@ -93,14 +93,14 @@ namespace VéloMax.bdd
         public readonly int numP;
         public string descriptionP;
         public int qteP;
-        public int quantSotckP;
+        public int quantStockP;
 
         public EtatStockPiece(int numP, string descriptionP, int qteP, int quantStockP)
         {
             this.numP = numP;
             this.descriptionP = descriptionP;
             this.qteP = qteP;
-            this.quantSotckP = quantSotckP;
+            this.quantStockP = quantStockP;
         }
     }
 }
