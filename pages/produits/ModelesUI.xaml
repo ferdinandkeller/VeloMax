@@ -14,6 +14,13 @@
             <StackPanel Orientation="Horizontal">
                 <Button Name="Nouveau" Content="Nouveau" Click="Nouveau_Click" Margin="15"/>
                 <Button Name="Supprimer" Content="Supprimer" Click="Supprimer_Click" Margin="15"/>
+                <StackPanel Orientation="Horizontal" Margin="15">
+                    <StackPanel.Background>
+                        <SolidColorBrush Color="#A1573A"/>
+                    </StackPanel.Background>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE74E;" HorizontalAlignment="Right" Width="30"/>
+                    <Button Content="Stocks Faibles -> XML" Background="#A1573A" Foreground="White" Width="150" Margin="0 0 25 0" Click="ExporterXML"/>
+                </StackPanel>
             </StackPanel>
             <controls:DataGrid Name="MyDataGrid" ItemsSource="{x:Bind modeles}" AutoGenerateColumns="False">
                 <controls:DataGrid.Columns>
