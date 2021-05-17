@@ -11,9 +11,9 @@
 
     <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Horizontal">
-            <Button Content="Nouveau" Click="Nouveau_Click" />
-            <Button Content="Détail" Click="Afficher_Click" />
-            <Button Content="Supprimer" Click="Supprimer_Click" />
+            <Button Content="Nouveau" Click="Nouveau_Click" Margin="15"/>
+            <Button Content="Détail" Click="Afficher_Click" Margin="15"/>
+            <Button Content="Supprimer" Click="Supprimer_Click" Margin="15"/>
         </StackPanel>
 
         <controls:DataGrid Name="MyDataGrid" ItemsSource="{x:Bind commandes}" AutoGenerateColumns="False">

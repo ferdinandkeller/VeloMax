@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <NavigationView x:Name="NavView" IsBackButtonVisible="Collapsed" IsBackEnabled="True" IsSettingsVisible="False" Loaded="NavView_Loaded" ItemInvoked="NavView_ItemInvoked" BackRequested="NavView_BackRequested">
+    <NavigationView x:Name="NavView" IsBackButtonVisible="Visible"  IsBackEnabled="True" IsSettingsVisible="False" Loaded="NavView_Loaded" ItemInvoked="NavView_ItemInvoked" BackRequested="NavView_BackRequested">
         <NavigationView.Resources>
             <AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
                             BackgroundSource="Backdrop"
