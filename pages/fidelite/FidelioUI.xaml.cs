@@ -12,10 +12,13 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using VéloMax.bdd;
+using Windows.UI.Core;
+using Windows.System;
+using Windows.Data;
+using System.ComponentModel;
 using System.Collections.ObjectModel;
-using Microsoft.Toolkit.Uwp.UI.Controls;
-using System.Diagnostics;
+using System.Data.SqlClient;
+using VéloMax.bdd;
 using VéloMax.pages;
 
 namespace VéloMax.pages
