@@ -5,6 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.IO;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
+using Windows.UI.Core;
+using Windows.System;
+using System.ComponentModel;
+using System.Data.SqlClient;
 
 namespace VéloMax.bdd
 {
@@ -63,6 +78,29 @@ namespace VéloMax.bdd
         public static ReadOnlyCollection<ContenuCommandeModele> Lister(Commande commande)
         {
             return Lister(commande.numC);
+        }
+
+        public static ReadOnlyCollection<EtatStockModele> ListerQuantitesVenduesM()
+        {
+            List<EtatStockModele> list = new List<EtatStockModele>();
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numM, nomM,SUM(quantModeleC) qteM,quantStockM FROM ContenuCommandeModele NATURAL JOIN Modele  GROUP BY numM ORDER BY quantStockM;", (MySqlDataReader reader) => { list.Add(new EtatStockModele(reader.GetInt32("numM"), reader.GetString("nomM"), reader.GetInt32("qteM"), reader.GetInt32("quantSotckM"))); });
+            return new ReadOnlyCollection<EtatStockModele>(list);
+        }
+    }
+
+    public class EtatStockModele
+    {
+        public readonly int numM;
+        public string nomM;
+        public int qteM;
+        public int quantSotckM;
+
+        public EtatStockModele(int numM, string nomM, int qteM, int quantStockM)
+        {
+            this.numM = numM;
+            this.nomM = nomM;
+            this.qteM = qteM;
+            this.quantSotckM = quantSotckM;
         }
     }
 }
