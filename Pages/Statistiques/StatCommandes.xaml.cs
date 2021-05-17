@@ -36,19 +36,20 @@ namespace VéloMax.pages
         public StatCommandes()
         {
             this.InitializeComponent();
-            string prixMoyenC = GetPrixMoyC("prixMoyen");
-            string piecesMoy = GetPrixMoyC("piecesMoyen");
-            string modelesMoy = GetPrixMoyC("modelesMoyen");
+            int[] moyens = GetPrixMoyC();
         }
 
-
-
-        public string GetPrixMoyC(string s)
+        public int[] GetPrixMoyC()
         {
-            string moy="";
-            string requetePrixMoyComm = "select AVG( prixPieces+prixModeles) prixMoyen, AVG(quantPieceC) piecesMoyen, AVG(quantModeleC) modelesMoyen from ( select numC, prixP*quantPieceC prixPieces,quantPieceC from contenucommandepiece natural join commande natural join piece) as t1 natural join (select numC, prixM*quantModeleC prixModeles,quantModeleC from contenucommandemodele natural join commande natural join modele) as t2;";
-            ControlleurRequetes.SelectionneUn(requetePrixMoyComm, (MySqlDataReader reader) => { moy=reader.GetString(s); });
-            return moy;
+            int[] moys = new int[3];
+            string requetePrixMoyComm = "select AVG(prixPieces+prixModeles) prixMoyen, AVG(quantPieceC) piecesMoyen, AVG(quantModeleC) modelesMoyen from ( select numC, prixP*quantPieceC prixPieces,quantPieceC from contenucommandepiece natural join commande natural join piece) as t1 natural join (select numC, prixM*quantModeleC prixModeles,quantModeleC from contenucommandemodele natural join commande natural join modele) as t2;";
+            ControlleurRequetes.SelectionneUn(requetePrixMoyComm, (MySqlDataReader reader) =>
+            {
+                moys[0] = reader.IsDBNull(0) ? -1 : reader.GetInt32(0);
+                moys[1] = reader.IsDBNull(1) ? -1 : reader.GetInt32(1);
+                moys[2] = reader.IsDBNull(2) ? -1 : reader.GetInt32(2);
+            });
+            return moys;
         }
 
     }
