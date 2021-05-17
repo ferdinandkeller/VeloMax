@@ -105,6 +105,12 @@ namespace VéloMax.bdd
             }
             return new ReadOnlyCollection<string>(list);
         }
+        public static ReadOnlyCollection<Modele> ListerStockFaible()
+        {
+            List<Modele> list = new List<Modele>();
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numM FROM Modele WHERE quantStockM <= 5", (MySqlDataReader reader) => { list.Add(new Modele(reader.GetInt32("numM"))); });
+            return new ReadOnlyCollection<Modele>(list);
+        }
 
         /* Commander */
         public int PrixCommande()

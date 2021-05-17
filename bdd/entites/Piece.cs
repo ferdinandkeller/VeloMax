@@ -85,6 +85,12 @@ namespace VéloMax.bdd
             }
             return new ReadOnlyCollection<string>(list);
         }
+        public static ReadOnlyCollection<Piece> ListerStockFaible()
+        {
+            List<Piece> list = new List<Piece>();
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numP FROM Piece WHERE quantStockP <= 5", (MySqlDataReader reader) => { list.Add(new Piece(reader.GetInt32("numP"))); });
+            return new ReadOnlyCollection<Piece>(list);
+        }
 
         /* Commander */
         public CatalFournisseur PieceMoinsCher()
