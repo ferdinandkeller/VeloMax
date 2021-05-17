@@ -23,6 +23,19 @@
                 </StackPanel>
             </StackPanel>
             <controls:DataGrid Name="MyDataGrid" ItemsSource="{x:Bind modeles}" AutoGenerateColumns="False">
+                <controls:DataGrid.RowStyle>
+                    <Style TargetType="controls:DataGridRow">
+                        <Setter Property="IsHitTestVisible" Value="False"/>
+                        <d:Style.Triggers>
+                            <d:DataTrigger Binding="{Binding RelativeSource={RelativeSource Self},Path=Row.DataItem.estStockFaibleM}" Value="True">
+                                <Setter Property="Background" Value="LightSalmon"/>
+                            </d:DataTrigger>
+                            <d:DataTrigger Binding="{Binding RelativeSource={RelativeSource Self},Path=Row.DataItem.quantStockM}" Value="5">
+                                <Setter Property="Background" Value="DarkSalmon"/>
+                            </d:DataTrigger>
+                        </d:Style.Triggers>
+                    </Style>
+                </controls:DataGrid.RowStyle>
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Header="référence" Binding="{Binding numMg}"/>
                     <controls:DataGridTextColumn Header="nom" Binding="{Binding nomM}"/>

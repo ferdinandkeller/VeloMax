@@ -21,7 +21,7 @@
                             <Style TargetType="controls:DataGridRow">
                                 <Setter Property="IsHitTestVisible" Value="False"/>
                                 <d:Style.Triggers>
-                                    <d:DataTrigger Binding="{Binding estStockFaibleM}" Value="true">
+                                    <d:DataTrigger Binding="{Binding estStockFaibleM}" Value="True">
                                         <Setter Property="Background" Value="LightSalmon"/>
                                     </d:DataTrigger>
                                     <d:DataTrigger Binding="{Binding quantStockM}" Value="0">
@@ -48,7 +48,7 @@
                             <Style TargetType="controls:DataGridRow">
                                 <Setter Property="IsHitTestVisible" Value="False"/>
                                 <d:Style.Triggers>
-                                    <d:DataTrigger Binding="{Binding estStockFaibleP}" Value="true">
+                                    <d:DataTrigger Binding="{Binding estStockFaibleP}" Value="True">
                                         <Setter Property="Background" Value="LightSalmon"/>
                                     </d:DataTrigger>
                                     <d:DataTrigger Binding="{Binding quantStockP}" Value="0">
