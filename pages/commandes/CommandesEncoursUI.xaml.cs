@@ -39,6 +39,11 @@ namespace VéloMax.pages
 
         private void Afficher_Click(object sender, RoutedEventArgs e)
         {
+            Commande c = (Commande)MyDataGrid.SelectedItem;
+            if (c != null)
+            {
+                ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(DetailCommandeUI), c.numC);
+            }
         }
 
         private void Supprimer_Click(object sender, RoutedEventArgs e)

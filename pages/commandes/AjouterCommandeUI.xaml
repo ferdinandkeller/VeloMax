@@ -36,6 +36,7 @@
                 <Button Content="Ajouter Modèle" Click="AjoutModeleCommande" Background="Peru"/>
             </StackPanel>
         </StackPanel>
+        <TextBlock Name="Content" Text="" Margin="0 25 0 0" />
     </StackPanel>
 </Page>
     

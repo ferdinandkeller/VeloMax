@@ -77,7 +77,13 @@ namespace VéloMax.bdd
         public static ReadOnlyCollection<Commande> Lister()
         {
             List<Commande> list = new List<Commande>();
-            ControlleurRequetes.SelectionnePlusieurs($"SELECT numC FROM Commande", (MySqlDataReader reader) => { list.Add(new Commande(reader.GetInt32("numC"))); });
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numC FROM Commande WHERE dateL >= Now()", (MySqlDataReader reader) => { list.Add(new Commande(reader.GetInt32("numC"))); });
+            return new ReadOnlyCollection<Commande>(list);
+        }
+        public static ReadOnlyCollection<Commande> ListerLivrees()
+        {
+            List<Commande> list = new List<Commande>();
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numC FROM Commande WHERE dateL < Now()", (MySqlDataReader reader) => { list.Add(new Commande(reader.GetInt32("numC"))); });
             return new ReadOnlyCollection<Commande>(list);
         }
     }

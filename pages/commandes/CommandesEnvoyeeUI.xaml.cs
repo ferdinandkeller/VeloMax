@@ -30,22 +30,9 @@ namespace VéloMax.pages
             this.InitializeComponent();
         }
 
-        /*
-        public ReadOnlyCollection<Boutique> entreprises
+        public ReadOnlyCollection<Commande> commandes
         {
-            get => Boutique.Lister();
-        }
-        */
-
-        private void Nouveau_Click(object sender, RoutedEventArgs e)
-        {
-            // ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(AjouterBoutiqueUI));
-        }
-
-        private void Supprimer_Click(object sender, RoutedEventArgs e)
-        {
-            // ((Boutique)MyDataGrid.SelectedItem).Supprimer();
-            // ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(BoutiquesUI));
+            get => Commande.ListerLivrees();
         }
     }
 }

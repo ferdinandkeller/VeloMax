@@ -16,6 +16,7 @@ using VéloMax.bdd;
 using System.Diagnostics;
 using VéloMax.pages;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace VéloMax.pages
 {
@@ -44,6 +45,7 @@ namespace VéloMax.pages
     {
         public List<ComP> pieces = new List<ComP>();
         public List<ComM> modeles = new List<ComM>();
+        public string content = "";
 
         public AjouterCommandeUI()
         {
@@ -51,6 +53,22 @@ namespace VéloMax.pages
 
             refPiecesCombo.ItemsSource = Piece.ListerString();
             refModeleCombo.ItemsSource = Modele.ListerString();
+        }
+
+        public void AfficherContenuCommande()
+        {
+            string t = "PIECES :\n";
+            foreach (ComP cp in pieces)
+            {
+                t += $"[{cp.p.numP}] x{cp.q}\n";
+            }
+            t += "\nMODELES :\n";
+            foreach (ComM cm in modeles)
+            {
+                t += $"[{cm.m.numM}] {cm.m.nomM} x{cm.q}\n";
+            }
+            Debug.WriteLine(t);
+            Content.Text = t;
         }
 
         public void Type_Client_Change(object sender, SelectionChangedEventArgs e)
@@ -69,15 +87,48 @@ namespace VéloMax.pages
         {
             try
             {
-                pieces.Add(new ComP(Piece.Lister()[refPiecesCombo.SelectedIndex], int.Parse(quantiteP.Text)));
-            } catch { }
+                Piece p = Piece.Lister()[refPiecesCombo.SelectedIndex];
+                int quant = int.Parse(quantiteP.Text);
+                bool edited = false;
+                foreach (ComP cp in pieces)
+                {
+                    if (cp.p.numP == p.numP)
+                    {
+                        cp.q += quant;
+                        edited = true;
+                        break;
+                    }
+                }
+                if (!edited)
+                {
+                    pieces.Add(new ComP(p, quant));
+                }
+                AfficherContenuCommande();
+            }
+            catch { }
         }
 
         public void AjoutModeleCommande(object sender, RoutedEventArgs e)
         {
             try
             {
-                modeles.Add(new ComM(Modele.Lister()[refPiecesCombo.SelectedIndex], int.Parse(quantiteM.Text)));
+                Modele m = Modele.Lister()[refModeleCombo.SelectedIndex];
+                int quant = int.Parse(quantiteM.Text);
+                bool edited = false;
+                foreach (ComM cm in modeles)
+                {
+                    if (cm.m.numM == m.numM)
+                    {
+                        cm.q += quant;
+                        edited = true;
+                        break;
+                    }
+                }
+                if (!edited)
+                {
+                    modeles.Add(new ComM(m, quant));
+                }
+                AfficherContenuCommande();
             }
             catch { }
         }
@@ -100,6 +151,7 @@ namespace VéloMax.pages
                 }
 
                 new ExecuteurCommandeIndividu(c, ind);
+                ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(CommandesEncoursUI));
             }
             else if (ClientCombo.SelectedIndex == 1)
             {
