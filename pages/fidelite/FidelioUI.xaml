@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="VéloMax.pages.FidelioUI"
+    xmlns:local="using:VéloMax.pages"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <Button Name="Nouveau" Content="Nouveau" Click="Nouveau_Click" />
+            <Button Name="Supprimer" Content="Supprimer" Click="Supprimer_Click" />
+        </StackPanel>
+        <controls:DataGrid Name="MyDataGrid" ItemsSource="{x:Bind fidelios}" AutoGenerateColumns="False" >
+            <controls:DataGrid.Columns>
+                <controls:DataGridTextColumn Header="nom" Binding="{Binding individu.nomI}"/>
+                <controls:DataGridTextColumn Header="prenom" Binding="{Binding individu.prenomI}"/>
+                <controls:DataGridTextColumn Header="adresse" Binding="{Binding individu.adresse.VersString}"/>
+                <controls:DataGridTextColumn Header="programme" Binding="{Binding programme.nomProg}"/>
+                <controls:DataGridTextColumn Header="date adhérence" Binding="{Binding dateAdherenceS}"/>
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
+    </StackPanel>
+</Page>

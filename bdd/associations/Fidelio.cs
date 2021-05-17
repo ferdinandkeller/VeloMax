@@ -20,8 +20,8 @@ namespace VéloMax.bdd
         }
         public int numProg
         {
-            get { return ControlleurRequetes.ObtenirChampInt("Fidelio", "numI", numI, "actif", 1, "numProg"); }
-            set { ControlleurRequetes.ModifierChamp("Fidelio", "numI", numI, "actif", 1, "numProg", value); }
+            get { return ControlleurRequetes.ObtenirChampInt("Fidelio", "numI", numI, "numProg"); }
+            set { ControlleurRequetes.ModifierChamp("Fidelio", "numI", numI, "numProg", value); }
         }
         public Programme programme
         {
@@ -30,8 +30,13 @@ namespace VéloMax.bdd
         }
         public DateTime dateAdherence
         {
-            get => ControlleurRequetes.ObtenirChampDatetime("Fidelio", "numI", numI, "actif", 1, "dateAdherence");
-            set => ControlleurRequetes.ModifierChamp("Fidelio", "numI", numI, "actif", 1, "dateAdherence", value);
+            get => ControlleurRequetes.ObtenirChampDatetime("Fidelio", "numI", numI, "dateAdherence");
+            set => ControlleurRequetes.ModifierChamp("Fidelio", "numI", numI, "dateAdherence", value);
+        }
+        public string dateAdherenceS
+        {
+            get { return dateAdherence.ToString(); }
+            set { dateAdherence = DateTime.Parse(value); }
         }
 
         /* Instantiation */
@@ -42,12 +47,12 @@ namespace VéloMax.bdd
         public Fidelio(Individu individu) : this(individu.numI)
         {
         }
-        public Fidelio(int numI, int numProg, DateTime dateAdherence, int actif)
+        public Fidelio(int numI, int numProg, DateTime dateAdherence)
         {
-            ControlleurRequetes.Inserer($"INSERT INTO Fidelio (numI, numProg, dateAdherence, actif) VALUES ({numI}, {numProg}, '{dateAdherence.ToString("yyyy-MM-dd HH:mm:ss")}', {actif})");
+            ControlleurRequetes.Inserer($"INSERT INTO Fidelio (numI, numProg, dateAdherence) VALUES ({numI}, {numProg}, '{dateAdherence.ToString("yyyy-MM-dd HH:mm:ss")}')");
             this.numI = numI;
         }
-        public Fidelio(Individu individu, Programme programme, DateTime dateAdherence, int actif) : this(individu.numI, programme.numProg, dateAdherence, actif)
+        public Fidelio(Individu individu, Programme programme, DateTime dateAdherence) : this(individu.numI, programme.numProg, dateAdherence)
         {
         }
 
@@ -69,7 +74,10 @@ namespace VéloMax.bdd
         public static string FidelioFinJSON()
         {
             List<Fidelio> list = new List<Fidelio>();
-            ControlleurRequetes.SelectionnePlusieurs($"SELECT numI FROM Individu NATURAL JOIN Fidelio WHERE actif=1", (MySqlDataReader reader) => { list.Add(new Fidelio(reader.GetInt32("numI"))); });
+            foreach (Individu i in Individu.ListerFidelio())
+            {
+                list.Add(new Fidelio(i));
+            }
             ControlleurJson cjson = new ControlleurJson();
             foreach (Fidelio f in list)
             {
@@ -77,7 +85,10 @@ namespace VéloMax.bdd
                 cjson3.AjouterNormalJson("encours", f.individu.VersJson());
 
                 List<Fidelio> list2 = new List<Fidelio>();
-                ControlleurRequetes.SelectionnePlusieurs($"SELECT numI FROM Individu NATURAL JOIN Fidelio WHERE actif=0 AND numI={f.individu.numI}", (MySqlDataReader reader) => { list2.Add(new Fidelio(reader.GetInt32("numI"))); });
+                foreach (Individu i in Individu.ListerAncienFidelio())
+                {
+                    list2.Add(new Fidelio(i));
+                }
                 ControlleurJson cjson2 = new ControlleurJson();
                 foreach (Fidelio f2 in list2)
                 {

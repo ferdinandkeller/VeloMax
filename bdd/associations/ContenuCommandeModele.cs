@@ -40,7 +40,7 @@ namespace VéloMax.bdd
         public int quantModeleC
         {
             get { return ControlleurRequetes.ObtenirChampInt("ContenuCommandeModele", "numC", numC, "numM", numM, "quantModeleC"); }
-            set { ControlleurRequetes.ModifierChamp("ContenuCommandeModele", "numC", numM, "numP", numM, "quantModeleC", value); }
+            set { ControlleurRequetes.ModifierChamp("ContenuCommandeModele", "numC", numM, "numM", numM, "quantModeleC", value); }
         }
 
         /* Instantiation */
@@ -52,13 +52,13 @@ namespace VéloMax.bdd
         public ContenuCommandeModele(Commande commande, Modele modele): this(commande.numC, modele.numM)
         {
         }
-        public ContenuCommandeModele(int numC, int numM, int quantPieceC)
+        public ContenuCommandeModele(int numC, int numM, int quantModeleC)
         {
-            ControlleurRequetes.Inserer($"INSERT INTO ContenuCommandeModele (numC, numM, quantPieceC) VALUES ({numC}, {numM}, {quantPieceC})");
+            ControlleurRequetes.Inserer($"INSERT INTO ContenuCommandeModele (numC, numM, quantModeleC) VALUES ({numC}, {numM}, {quantModeleC})");
             this.numC = numC;
             this.numM = numM;
         }
-        public ContenuCommandeModele(Commande commande, Modele modele, int quantPieceC): this(commande.numC, modele.numM)
+        public ContenuCommandeModele(Commande commande, Modele modele, int quantModeleC) : this(commande.numC, modele.numM, quantModeleC)
         {
         }
 

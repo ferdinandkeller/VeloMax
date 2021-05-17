@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="VéloMax.pages.AjouterCommandeUI"
+    xmlns:local="using:VéloMax.pages"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Orientation="Vertical" Margin="25">
+        <StackPanel Orientation="Horizontal" Margin="0 0 0 25">
+            <ComboBox Name="ClientCombo" PlaceholderText="Type de client" SelectionChanged="Type_Client_Change" Margin="0 0 25 0">
+                <x:String>Particulier</x:String>
+                <x:String>Boutique</x:String>
+            </ComboBox>
+            <ComboBox Name="AdaptableCombo" PlaceholderText="Le client" Margin="0 0 25 0" />
+            <Button Content="Ajouter Commande" Click="AjoutCommande" Background="Peru"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 0 0 25">
+            <TextBox Name="dateC" Header="Date Commande :" Width="300" HorizontalAlignment="Left" Margin="0 0 25 0" />
+            <TextBox Name="dateL" Header="Date Livraison :" Width="300" HorizontalAlignment="Left" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical" Margin="0 0 25 0">
+                <TextBlock Text="Pièce :" Margin="0 0 0 25" Style="{ThemeResource SubheaderTextBlockStyle}" />
+                <ComboBox Name="refPiecesCombo" Header="Référence" PlaceholderText="" Width="300" Margin="0 0 0 25" />
+                <TextBox Name="quantiteP" Header="Quantité :" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25" />
+                <Button Content="Ajouter Pièce" Click="AjoutPieceCommande" Background="Peru"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Vélo :" Margin="0 0 0 25" Style="{ThemeResource SubheaderTextBlockStyle}" />
+                <ComboBox Name="refModeleCombo" Header="Référence" PlaceholderText="" Width="300" Margin="0 0 0 25" />
+                <TextBox Name="quantiteM" Header="Quantité :" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25" />
+                <Button Content="Ajouter Modèle" Click="AjoutModeleCommande" Background="Peru"/>
+            </StackPanel>
+        </StackPanel>
+        <TextBlock Name="Content" Text="" Margin="0 25 0 0" />
+    </StackPanel>
+</Page>
+    

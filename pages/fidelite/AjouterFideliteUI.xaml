@@ -1,0 +1,19 @@
+﻿<Page
+    x:Class="VéloMax.pages.AjouterFideliteUI"
+    xmlns:local="using:VéloMax.pages"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Orientation="Vertical" Grid.Column="0" Margin="25">
+        <TextBlock Text="Nouveau Programme :" Margin="0 0 0 25" Style="{ThemeResource SubheaderTextBlockStyle}"/>
+        <TextBox Name="nomProg" Header="Nom Programme :" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25"/>
+        <TextBox Name="cout" Header="Cout :" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25"/>
+        <TextBox Name="rabais" Header="Rabais :" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25"/>
+        <TextBox Name="duree" Header="Duree :" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25"/>
+        <Button Content="Ajouter le programme" Click="AjoutProgramme" Background="Peru"/>
+    </StackPanel>
+</Page>

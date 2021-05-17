@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="VéloMax.pages.CommandesEncoursUI"
+    xmlns:local="using:VéloMax.pages"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Nouveau" Click="Nouveau_Click" />
+            <Button Content="Détail" Click="Afficher_Click" />
+            <Button Content="Supprimer" Click="Supprimer_Click" />
+        </StackPanel>
+
+        <controls:DataGrid Name="MyDataGrid" ItemsSource="{x:Bind commandes}" AutoGenerateColumns="False">
+            <controls:DataGrid.Columns>
+                <controls:DataGridTextColumn Header="Numéro Commande" Binding="{Binding numCg}" IsReadOnly="True"/>
+                <controls:DataGridTextColumn Header="Adresse" Binding="{Binding adresse.VersString}"/>
+                <controls:DataGridTextColumn Header="Date Commande" Binding="{Binding dateCg}"/>
+                <controls:DataGridTextColumn Header="Date Livraison" Binding="{Binding dateLg}"/>
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
+    </StackPanel>
+</Page>

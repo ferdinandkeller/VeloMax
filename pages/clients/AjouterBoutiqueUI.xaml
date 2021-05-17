@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="VéloMax.pages.AjouterBoutiqueUI"
+    xmlns:local="using:VéloMax.pages"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical"  Grid.Column="0">
+            <TextBlock Text="Adresse :" Margin="15"/>
+            <TextBox Name="rueA" Header="Rue :" Width="300" HorizontalAlignment="Left" Margin="25"/>
+            <TextBox Name="villeA" Header="Ville :" Width="300" HorizontalAlignment="Left" Margin="25"/>
+            <TextBox Name="codePA" Header="Code Postal :" Width="300" HorizontalAlignment="Left" Margin="25"/>
+            <TextBox Name="provinceA" Header="Région :" Width="300" HorizontalAlignment="Left" Margin="25"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical"  Grid.Column="1">
+            <TextBlock Text="Coordonnées :" Margin="15"/>
+            <TextBox Name="nomBoutique" Header="Nom de la boutique :" Width="300" HorizontalAlignment="Left" Margin="25"/>
+            <TextBox Name="telBoutique" Header="Numéro de téléphone :" Width="300" HorizontalAlignment="Left" Margin="25"/>
+            <TextBox Name="mailBoutique" Header="Mail :" Width="300" HorizontalAlignment="Left" Margin="25"/>
+            <Button Content="Confirmer l'ajout de la boutique" Click="AjoutBoutique" Margin="25" Background="Peru"/>
+        </StackPanel>
+    </Grid>
+</Page>
