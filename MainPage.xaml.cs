@@ -34,15 +34,15 @@ namespace VéloMax
         
         // List of ValueTuple holding the Navigation Tag and the relative Navigation Page
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>{
-            ("commandes", typeof(VéloMax.Pages.CommandeMain)),
+            ("commandes", typeof(VéloMax.pages.CommandesMainUI)),
             ("stocks", typeof(VéloMax.Pages.StocksMain)),
             ("produits", typeof(VéloMax.Pages.ProduitsMain)),
-            ("clients", typeof(VéloMax.Pages.ClientsMain)),
+            ("clients", typeof(VéloMax.pages.ClientsMainUI)),
             ("fournisseurs", typeof(VéloMax.Pages.FournisseursMain)),
             ("statistiques", typeof(VéloMax.Pages.StatistiquesMain)),
             ("notices", typeof(VéloMax.Pages.Notices)),
             ("home", typeof(VéloMax.Pages.Accueil))
-            };
+        };
 
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {

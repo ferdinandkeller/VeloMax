@@ -27,6 +27,7 @@ namespace VéloMax.bdd
     {
         /* Attributs */
         public readonly int numC;
+        public int numCg { get => numC; }
 
         public int numA
         {
@@ -43,10 +44,20 @@ namespace VéloMax.bdd
             get { return ControlleurRequetes.ObtenirChampDatetime("Commande", "numC", numC, "dateC"); }
             set { ControlleurRequetes.ModifierChamp("Commande", "numC", numC, "dateC", value); }
         }
+        public string dateCg
+        {
+            get { return dateC.ToString(); }
+            set { dateC = DateTime.Parse(value); }
+        }
         public DateTime dateL
         {
             get { return ControlleurRequetes.ObtenirChampDatetime("Commande", "numC", numC, "dateL"); }
             set { ControlleurRequetes.ModifierChamp("Commande", "numC", numC, "dateL", value); }
+        }
+        public string dateLg
+        {
+            get { return dateL.ToString(); }
+            set { dateL = DateTime.Parse(value); }
         }
         public ReadOnlyCollection<ContenuCommandePiece> contenuPiece
         {
@@ -68,6 +79,9 @@ namespace VéloMax.bdd
             ControlleurRequetes.Inserer($"INSERT INTO Commande (numA, dateC, dateL) VALUES ({numA}, '{dateC.ToString("yyyy-MM-dd HH:mm:ss")}', '{dateL.ToString("yyyy-MM-dd HH:mm:ss")}')");
             this.numC = ControlleurRequetes.DernierIDUtilise();
         }
+        public Commande(Adresse adresse, DateTime dateC, DateTime dateL) : this(adresse.numA, dateC, dateL)
+        {
+        }
 
         /* Suppression */
         public void Supprimer()
@@ -79,10 +93,14 @@ namespace VéloMax.bdd
         public static ReadOnlyCollection<Commande> Lister()
         {
             List<Commande> list = new List<Commande>();
-            ControlleurRequetes.SelectionnePlusieurs($"SELECT numC FROM Commande", (MySqlDataReader reader) => { list.Add(new Commande(reader.GetInt32("numC"))); });
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numC FROM Commande WHERE dateL >= Now()", (MySqlDataReader reader) => { list.Add(new Commande(reader.GetInt32("numC"))); });
             return new ReadOnlyCollection<Commande>(list);
         }
-        //Commandes en cours
-        //Commandes livrées
+        public static ReadOnlyCollection<Commande> ListerLivrees()
+        {
+            List<Commande> list = new List<Commande>();
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numC FROM Commande WHERE dateL < Now()", (MySqlDataReader reader) => { list.Add(new Commande(reader.GetInt32("numC"))); });
+            return new ReadOnlyCollection<Commande>(list);
+        }
     }
 }
