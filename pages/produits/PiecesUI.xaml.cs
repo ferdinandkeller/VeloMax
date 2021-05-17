@@ -42,5 +42,32 @@ namespace VéloMax.pages
             ((Individu)MyDataGrid.SelectedItem).Supprimer();
             ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(PiecesUI));
         }
+
+        private async void ExporterXML(object sender, RoutedEventArgs e)
+        {
+            string xml = "<stocks>\n  <pieces>\n";
+            foreach (Piece p in Piece.ListerStockFaible())
+            {
+                xml += "    <piece>" + p.numP + "</piece>\n";
+            }
+            xml += "  </pieces>\n  <modeles>\n";
+            foreach (Modele m in Modele.ListerStockFaible())
+            {
+                xml += "    <modele>" + m.numM + "</modele>\n";
+            }
+            xml += "  </modeles>\n</stocks>";
+
+            var savePicker = new Windows.Storage.Pickers.FileSavePicker();
+            savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
+            savePicker.FileTypeChoices.Add("XML", new List<string>() { ".xml" });
+            savePicker.SuggestedFileName = "stocks_limites";
+            Windows.Storage.StorageFile file = await savePicker.PickSaveFileAsync();
+            if (file != null)
+            {
+                Windows.Storage.CachedFileManager.DeferUpdates(file);
+                await Windows.Storage.FileIO.WriteTextAsync(file, xml);
+                Windows.Storage.Provider.FileUpdateStatus status = await Windows.Storage.CachedFileManager.CompleteUpdatesAsync(file);
+            }
+        }
     }
 }
