@@ -195,14 +195,20 @@
     <Compile Include="Pages\fidelite\FideliteUI.xaml.cs">
       <DependentUpon>FideliteUI.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Fournisseurs\Catalogue.xaml.cs">
-      <DependentUpon>Catalogue.xaml</DependentUpon>
+    <Compile Include="Pages\Fournisseurs\AjouterCatalUI.xaml.cs">
+      <DependentUpon>AjouterCatalUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Fournisseurs\AjouterFournisseurUI.xaml.cs">
+      <DependentUpon>AjouterFournisseurUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Fournisseurs\CatalogueUI.xaml.cs">
+      <DependentUpon>CatalogueUI.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Notices\Notices.xaml.cs">
       <DependentUpon>Notices.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Fournisseurs\FournisseursMain.xaml.cs">
-      <DependentUpon>FournisseursMain.xaml</DependentUpon>
+    <Compile Include="Pages\Fournisseurs\FournisseursUIMain.xaml.cs">
+      <DependentUpon>FournisseursUIMain.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Produits\AjouterModeleUI.xaml.cs">
       <DependentUpon>AjouterModeleUI.xaml</DependentUpon>
@@ -372,15 +378,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Fournisseurs\Catalogue.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Pages\Fournisseurs\AjouterCatalUI.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Fournisseurs\AjouterFournisseurUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Fournisseurs\CatalogueUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Notices\Notices.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Fournisseurs\FournisseursMain.xaml">
+    <Page Include="Pages\Fournisseurs\FournisseursUIMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

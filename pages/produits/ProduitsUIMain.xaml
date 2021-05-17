@@ -7,14 +7,12 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <NavigationView Name="NV_Produits" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsBackEnabled="False" IsSettingsVisible="False" SelectionChanged="NV_Produits_SelectionChanged">
-            <NavigationView.MenuItems>
-                <NavigationViewItem Name="NV_Produits_Default" Tag="produits_pieces" Content="Pieces"/>
-                <NavigationViewItem Tag="produits_modeles" Content="Modeles" />
-            </NavigationView.MenuItems>
+    <NavigationView Name="NV_Produits" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsBackEnabled="False" IsSettingsVisible="False" SelectionChanged="NV_Produits_SelectionChanged">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Name="NV_Produits_Default" Tag="produits_pieces" Content="Pieces"/>
+            <NavigationViewItem Tag="produits_modeles" Content="Modeles" />
+        </NavigationView.MenuItems>
             
-            <Frame Name="NV_Produits_CF"></Frame>
-        </NavigationView>
-    </Grid>
+        <Frame Name="NV_Produits_CF"></Frame>
+    </NavigationView>
 </Page>

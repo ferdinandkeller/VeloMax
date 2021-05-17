@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="VéloMax.Pages.FournisseursMain"
+    x:Class="VéloMax.pages.FournisseursUIMain"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:VéloMax.bdd"
@@ -7,8 +7,27 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:data="using:VéloMax"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <Button Name="Nouveau" Content="Nouveau" Click="Nouveau_Click" />
+            <Button Name="Detail" Content="Détail" Click="Detail_Click" />
+            <Button Name="Supprimer" Content="Supprimer" Click="Supprimer_Click" />
+        </StackPanel>
+        <controls:DataGrid Name="MyDataGrid" AutoGenerateColumns="False" >
+            <controls:DataGrid.Columns>
+                <controls:DataGridTextColumn Header="siret" Binding="{Binding siret}"/>
+                <controls:DataGridTextColumn Header="nom" Binding="{Binding nomF}"/>
+                <controls:DataGridTextColumn Header="adresse" Binding="{Binding adresse.VersString}"/>
+                <controls:DataGridTextColumn Header="contact" Binding="{Binding contact}"/>
+                <controls:DataGridTextColumn Header="reactivité" Binding="{Binding reactivite}"/>
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
+    </StackPanel>
+
+    <!--
     <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
         <RelativePanel>
             <Grid Height="1000" Width="1500">
@@ -46,10 +65,11 @@
                                 <Button Grid.Column="2" x:Name="prix" Content="Adresse" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="adresseClicked"/>
                                 <Button Grid.Column="3" x:Name="contact" Content="Contact" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="contactClicked"/>
                                 <Button Grid.Column="4" x:Name="reactivite" Content="Réactivité" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="reactiviteClicked"/>
-                               <!--
+                                
                                 <Button Grid.Column="5" x:Name="catalogue" Content="Catalogue" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="Clicked"/>
                                 <TextBlock Grid.Column="6" x:Name="suppr" Text="Supprimer" HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="Black"/>
-                                -->
+        
+        
                             </Grid>
                         </DataTemplate>
                     </ListView.HeaderTemplate>
@@ -84,5 +104,6 @@
             </Grid>
         </RelativePanel>
     </Grid>
+        -->
 
 </Page>

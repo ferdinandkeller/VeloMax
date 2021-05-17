@@ -7,14 +7,12 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <NavigationView Name="NavViewClients" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsBackEnabled="False" IsSettingsVisible="False" SelectionChanged="NavView_SelectionChanged">
-            <NavigationView.MenuItems>
-                <NavigationViewItem Name="NavViewClients_Default" Tag="clientParticulier" Content="Particuliers"/>
-                <NavigationViewItem Tag="clientEntreprise" Content="Entreprises" />
-            </NavigationView.MenuItems>
-            
-            <Frame Name="NavigationContentFrame"></Frame>
-        </NavigationView>
-    </Grid>
+    <NavigationView Name="NavViewClients" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsBackEnabled="False" IsSettingsVisible="False" SelectionChanged="NavView_SelectionChanged">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Name="NavViewClients_Default" Tag="clientParticulier" Content="Particuliers"/>
+            <NavigationViewItem Tag="clientEntreprise" Content="Entreprises" />
+        </NavigationView.MenuItems>
+
+        <Frame Name="NavigationContentFrame"></Frame>
+    </NavigationView>
 </Page>

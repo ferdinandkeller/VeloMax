@@ -1,0 +1,107 @@
+﻿<Page
+    x:Class="VéloMax.pages.CatalogueUI"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:VéloMax.bdd"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:data="using:VéloMax"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <Button Name="Nouveau" Content="Nouveau" Click="Nouveau_Click" />
+            <Button Name="Supprimer" Content="Supprimer" Click="Supprimer_Click" />
+        </StackPanel>
+        <controls:DataGrid Name="MyDataGrid" AutoGenerateColumns="False" >
+            <controls:DataGrid.Columns>
+                <controls:DataGridTextColumn Header="siret" Binding="{Binding fournisseur.siret}"/>
+                <controls:DataGridTextColumn Header="pièce" Binding="{Binding numPieceF}"/>
+                <controls:DataGridTextColumn Header="prix fournisseur" Binding="{Binding prixPieceF}"/>
+                <controls:DataGridTextColumn Header="délai" Binding="{Binding delaiF}"/>
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
+    </StackPanel>
+
+    <!--
+    <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+        <RelativePanel>
+            <Grid Height="1000" Width="1500">
+                <Button Content="Ajouter un fournisseur" VerticalAlignment="Top" HorizontalAlignment="Left" Click="ButtonClicked" Margin="25" Background="Peru"/>
+                <ListView Name="Liste"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.IsVerticalRailEnabled="True"
+                  ScrollViewer.VerticalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollMode="Disabled"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ScrollViewer.IsHorizontalRailEnabled="False"
+                  Margin="0,90,0,0" 
+                  SelectionChanged="Liste_SelectionChanged">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="BorderBrush" Value="LightGray"></Setter>
+                            <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.HeaderTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" x:Name="num" Content="Num" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="numClicked"/>
+                                <Button Grid.Column="1" x:Name="nom" Content="Nom" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="nomClicked"/>
+                                <Button Grid.Column="2" x:Name="prix" Content="Adresse" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="adresseClicked"/>
+                                <Button Grid.Column="3" x:Name="contact" Content="Contact" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="contactClicked"/>
+                                <Button Grid.Column="4" x:Name="reactivite" Content="Réactivité" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="reactiviteClicked"/>
+                                
+                                <Button Grid.Column="5" x:Name="catalogue" Content="Catalogue" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="Clicked"/>
+                                <TextBlock Grid.Column="6" x:Name="suppr" Text="Supprimer" HorizontalAlignment="Stretch" VerticalAlignment="Center" Foreground="Black"/>
+        
+        
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.HeaderTemplate>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="local:Fournisseur">
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" TextWrapping="WrapWholeWords" Text="{x:Bind numFString}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <TextBox Grid.Column="1" TextWrapping="WrapWholeWords" Text="{x:Bind nomF}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <TextBox Grid.Column="2" TextWrapping="WrapWholeWords" Text="{x:Bind adresse}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <TextBlock Grid.Column="3" TextWrapping="WrapWholeWords" Text="{x:Bind contact}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <TextBox Grid.Column="4" TextWrapping="WrapWholeWords" Text="{x:Bind reactivite}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <Button Grid.Column="5" Content="Catalogue" VerticalAlignment="Center" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="catalogueClicked"/>
+                                <Button Grid.Column="6" Content="Suppr" VerticalAlignment="Center" HorizontalAlignment="Stretch" Foreground="Peru" Background="White" Click="supprClicked"/>
+
+                            </Grid>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </RelativePanel>
+    </Grid>
+        -->
+
+</Page>

@@ -77,5 +77,14 @@ namespace VéloMax.bdd
             ControlleurRequetes.SelectionnePlusieurs($"SELECT numF FROM Fournisseur", (MySqlDataReader reader) => { list.Add(new Fournisseur(reader.GetInt32("numF"))); });
             return new ReadOnlyCollection<Fournisseur>(list);
         }
+        public static ReadOnlyCollection<string> ListerString()
+        {
+            List<string> list = new List<string>();
+            foreach (Fournisseur f in Lister())
+            {
+                list.Add($"{f.nomF} [{f.siret}]");
+            }
+            return new ReadOnlyCollection<string>(list);
+        }
     }
 }

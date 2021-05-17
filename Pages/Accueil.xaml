@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="VéloMax.Pages.Accueil"
+    x:Class="VéloMax.pages.Accueil"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:VéloMax.Pages"
@@ -10,6 +10,6 @@
 
     <StackPanel Orientation="Vertical" Margin="25">
         <TextBlock TextWrapping="Wrap" Style="{StaticResource HeaderTextBlockStyle}" Text="VéloMax"/>
-        <TextBlock Text="Vous en reviez ? Le voici !" TextWrapping="Wrap" Style="{StaticResource SubHeaderTextBlockStyle}"/>
+        <TextBlock Text="Vous en reviez ? Le voici !" TextWrapping="Wrap" Style="{StaticResource TitleTextBlockStyle}"/>
     </StackPanel>
 </Page>

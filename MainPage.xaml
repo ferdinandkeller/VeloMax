@@ -9,9 +9,9 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <NavigationView x:Name="NavView" IsBackButtonVisible="Visible" IsBackEnabled="True" IsSettingsVisible="False" Loaded="NavView_Loaded" ItemInvoked="NavView_ItemInvoked" BackRequested="NavView_BackRequested">
+    <NavigationView x:Name="NavView" IsBackButtonVisible="Collapsed" IsBackEnabled="True" IsSettingsVisible="False" Loaded="NavView_Loaded" ItemInvoked="NavView_ItemInvoked" BackRequested="NavView_BackRequested">
         <NavigationView.Resources>
-            <!--<AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
+            <AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
                             BackgroundSource="Backdrop"
                             TintColor="Transparent"
                             FallbackColor="White"/>
@@ -19,7 +19,7 @@
                             BackgroundSource="HostBackdrop"
                             TintColor="{StaticResource SystemRevealChromeWhiteColor}"
                             TintOpacity="1"
-                            FallbackColor="White"/>-->
+                            FallbackColor="White"/>
         </NavigationView.Resources>
         <NavigationView.MenuItems>
             <NavigationViewItem Tag="home" Icon="Home" Content="Accueil" />
@@ -34,11 +34,9 @@
         </NavigationView.MenuItems>
         
 
-        <NavigationView.Content>
-            <Frame Name="NavigationContentFrame" >
-                <TextBlock HorizontalAlignment="Left" Height="211" Margin="52,58,0,0" Text="VéloMax" TextWrapping="Wrap" VerticalAlignment="Top" Width="546" Style="{StaticResource HeaderTextBlockStyle}"/>
-            </Frame>
-        </NavigationView.Content>
+        <Frame Name="NavigationContentFrame" >
+            <TextBlock HorizontalAlignment="Left" Height="211" Margin="52,58,0,0" Text="VéloMax" TextWrapping="Wrap" VerticalAlignment="Top" Width="546" Style="{StaticResource HeaderTextBlockStyle}"/>
+        </Frame>
 
     </NavigationView>
 

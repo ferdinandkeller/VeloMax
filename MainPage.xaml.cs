@@ -31,7 +31,6 @@ namespace VéloMax
             }
         }
 
-        
         // List of ValueTuple holding the Navigation Tag and the relative Navigation Page
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>{
             ("commandes", typeof(VéloMax.pages.CommandesMainUI)),
@@ -39,15 +38,15 @@ namespace VéloMax
             ("produits", typeof(VéloMax.pages.ProduitsUIMain)),
             ("clients", typeof(VéloMax.pages.ClientsMainUI)),
             ("programmes", typeof(VéloMax.pages.FideliteMainUI)),
-            ("fournisseurs", typeof(VéloMax.Pages.FournisseursMain)),
+            ("fournisseurs", typeof(VéloMax.pages.FournisseursUIMain)),
             ("statistiques", typeof(VéloMax.Pages.StatistiquesMain)),
             ("notices", typeof(VéloMax.Pages.Notices)),
-            ("home", typeof(VéloMax.Pages.Accueil))
+            ("home", typeof(VéloMax.pages.Accueil))
         };
 
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
-            _pages.Add(("home", typeof(VéloMax.Pages.Accueil)));
+            _pages.Add(("home", typeof(VéloMax.pages.Accueil)));
 
             // Add handler for ContentFrame navigation.
             NavigationContentFrame.Navigated += On_Navigated;
@@ -164,7 +163,7 @@ namespace VéloMax
         {
             NavView.IsBackEnabled = NavigationContentFrame.CanGoBack;
 
-            if (NavigationContentFrame.SourcePageType == typeof(VéloMax.Pages.Accueil))
+            if (NavigationContentFrame.SourcePageType == typeof(VéloMax.pages.Accueil))
             {
                 // SettingsItem is not part of NavView.MenuItems, and doesn't have a Tag.
                 NavView.SelectedItem = (NavigationViewItem)NavView.SettingsItem;
@@ -172,14 +171,14 @@ namespace VéloMax
             }
             else if(NavigationContentFrame.SourcePageType != null)
             {
-                var item = _pages.FirstOrDefault(p => p.Page == e.SourcePageType);
+                try
+                {
+                    var item = _pages.FirstOrDefault(p => p.Page == e.SourcePageType);
 
-                NavView.SelectedItem = NavView.MenuItems
-                    .OfType<NavigationViewItem>()
-                    .First(n => n.Tag.Equals(item.Tag));
+                    NavView.SelectedItem = NavView.MenuItems.OfType<NavigationViewItem>().First(n => n.Tag.Equals(item.Tag));
 
-                NavView.Header =
-                    ((NavigationViewItem)NavView.SelectedItem)?.Content?.ToString();
+                    NavView.Header = ((NavigationViewItem)NavView.SelectedItem)?.Content?.ToString();
+                } catch { }
             }
         }
     }

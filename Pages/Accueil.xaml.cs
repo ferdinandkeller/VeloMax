@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 
-namespace VéloMax.Pages
+namespace VéloMax.pages
 {
 
     public sealed partial class Accueil : Page
