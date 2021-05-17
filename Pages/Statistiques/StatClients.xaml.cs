@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
@@ -33,6 +36,11 @@ namespace VéloMax.pages
         public StatClients()
         {
             this.InitializeComponent();
+        }
+
+        public ReadOnlyCollection<MeilleurIndividu> meilleursMembres
+        {
+            get => ExecuteurCommandeIndividu.ListerMeilleursIndividus();
         }
     }
 }
