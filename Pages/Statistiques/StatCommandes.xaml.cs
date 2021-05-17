@@ -36,18 +36,21 @@ namespace VéloMax.pages
         public StatCommandes()
         {
             this.InitializeComponent();
-            int[] moyens = GetPrixMoyC();
+            double[] moyens = GetPrixMoyC();
+            string prixMoyenC = moyens[0].ToString();
+            string piecesMoy = moyens[1].ToString();
+            string modelesMoy = moyens[2].ToString();
         }
 
-        public int[] GetPrixMoyC()
+        public double[] GetPrixMoyC()
         {
-            int[] moys = new int[3];
+            double[] moys = new double[3];
             string requetePrixMoyComm = "select AVG(prixPieces+prixModeles) prixMoyen, AVG(quantPieceC) piecesMoyen, AVG(quantModeleC) modelesMoyen from ( select numC, prixP*quantPieceC prixPieces,quantPieceC from contenucommandepiece natural join commande natural join piece) as t1 natural join (select numC, prixM*quantModeleC prixModeles,quantModeleC from contenucommandemodele natural join commande natural join modele) as t2;";
             ControlleurRequetes.SelectionneUn(requetePrixMoyComm, (MySqlDataReader reader) =>
             {
-                moys[0] = reader.IsDBNull(0) ? -1 : reader.GetInt32(0);
-                moys[1] = reader.IsDBNull(1) ? -1 : reader.GetInt32(1);
-                moys[2] = reader.IsDBNull(2) ? -1 : reader.GetInt32(2);
+                moys[0] = reader.IsDBNull(0) ? -1 : reader.GetDouble(0);
+                moys[1] = reader.IsDBNull(1) ? -1 : reader.GetDouble(1);
+                moys[2] = reader.IsDBNull(2) ? -1 : reader.GetDouble(2);
             });
             return moys;
         }
