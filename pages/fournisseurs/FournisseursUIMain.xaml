@@ -12,9 +12,9 @@
 
     <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Horizontal">
-            <Button Name="Nouveau" Content="Nouveau" Click="Nouveau_Click" />
-            <Button Name="Detail" Content="Détail" Click="Detail_Click" />
-            <Button Name="Supprimer" Content="Supprimer" Click="Supprimer_Click" />
+            <Button Name="Nouveau" Content="Nouveau" Click="Nouveau_Click" Margin="15"/>
+            <Button Name="Detail" Content="Détail" Click="Detail_Click" Margin="15" />
+            <Button Name="Supprimer" Content="Supprimer" Click="Supprimer_Click" Margin="15"/>
         </StackPanel>
         <controls:DataGrid Name="MyDataGrid" AutoGenerateColumns="False" >
             <controls:DataGrid.Columns>

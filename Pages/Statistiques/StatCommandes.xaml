@@ -11,11 +11,11 @@
     <Grid>
         <StackPanel>
             <TextBlock Text="Prix moyen d'une commande : " Margin="25"/>
-            <TextBlock Text="{Binding prixMoyenC}" Margin="30" Foreground="Peru"/>
+            <TextBlock Text="{Binding prixMoyenC}" Margin="30" Foreground="#A1573A"/>
             <TextBlock Text="Nombre moyen de pièces d'une commande : " Margin="25"/>
-            <TextBlock Text="{Binding piecesMoy}" Margin="30" Foreground="Peru"/>
+            <TextBlock Text="{Binding piecesMoy}" Margin="30" Foreground="#A1573A"/>
             <TextBlock Text="Nombre moyen de modèles d'une commande : " Margin="25"/>
-            <TextBlock Text="{Binding modelesMoy}" Margin="30" Foreground="Peru"/>
+            <TextBlock Text="{Binding modelesMoy}" Margin="30" Foreground="#A1573A"/>
         </StackPanel>
     </Grid>
 </Page>

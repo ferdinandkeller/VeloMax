@@ -33,7 +33,7 @@
                 ItemsSource="{x:Bind nomProg}" DisplayMemberPath="Source"
                 <x:String>Aucun</x:String>
             </ComboBox>-->
-            <Button Content="Confirmer l'ajout du client" Click="AjoutClient" Margin="15" Background="Peru"/>
+            <Button Content="Confirmer l'ajout du client" Click="AjoutClient" Margin="15" Background="#A1573A" Foreground="White"/>
         </StackPanel>
 
     </Grid>

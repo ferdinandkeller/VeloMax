@@ -16,7 +16,7 @@
                 <x:String>Boutique</x:String>
             </ComboBox>
             <ComboBox Name="AdaptableCombo" PlaceholderText="Le client" Margin="0 0 25 0" />
-            <Button Content="Ajouter Commande" Click="AjoutCommande" Background="Peru"/>
+            <Button Content="Ajouter Commande" Click="AjoutCommande" Background="#A1573A" Foreground="White"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="0 0 0 25">
             <TextBox Name="dateC" Header="Date Commande :" Width="300" HorizontalAlignment="Left" Margin="0 0 25 0" />
@@ -27,13 +27,13 @@
                 <TextBlock Text="Pièce :" Margin="0 0 0 25" Style="{ThemeResource SubheaderTextBlockStyle}" />
                 <ComboBox Name="refPiecesCombo" Header="Référence" PlaceholderText="" Width="300" Margin="0 0 0 25" />
                 <TextBox Name="quantiteP" Header="Quantité :" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25" />
-                <Button Content="Ajouter Pièce" Click="AjoutPieceCommande" Background="Peru"/>
+                <Button Content="Ajouter Pièce" Click="AjoutPieceCommande" Background="#A1573A" Foreground="White"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Vélo :" Margin="0 0 0 25" Style="{ThemeResource SubheaderTextBlockStyle}" />
                 <ComboBox Name="refModeleCombo" Header="Référence" PlaceholderText="" Width="300" Margin="0 0 0 25" />
                 <TextBox Name="quantiteM" Header="Quantité :" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25" />
-                <Button Content="Ajouter Modèle" Click="AjoutModeleCommande" Background="Peru"/>
+                <Button Content="Ajouter Modèle" Click="AjoutModeleCommande" Background="#A1573A" Foreground="White"/>
             </StackPanel>
         </StackPanel>
         <TextBlock Name="Content" Text="" Margin="0 25 0 0" />

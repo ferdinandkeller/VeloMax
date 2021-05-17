@@ -94,6 +94,7 @@ namespace VéloMax.bdd
         public string nomM;
         public int qteM;
         public int quantStockM;
+        public bool estStockFaibleM;
 
         public EtatStockModele(int numM, string nomM, int qteM, int quantStockM)
         {
@@ -101,6 +102,14 @@ namespace VéloMax.bdd
             this.nomM = nomM;
             this.qteM = qteM;
             this.quantStockM = quantStockM;
+            if (quantStockM <= 5)
+            {
+                this.estStockFaibleM = true;
+            }
+            else
+            {
+                this.estStockFaibleM = false;
+            }
         }
     }
 }

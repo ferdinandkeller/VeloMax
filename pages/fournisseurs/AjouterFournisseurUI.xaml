@@ -28,7 +28,7 @@
             <TextBox Name="nomF" Header="Nom :" Width="300" HorizontalAlignment="Left" Margin="25"/>
             <TextBox Name="contact" Header="Contact :" Width="300" HorizontalAlignment="Left" Margin="25"/>
             <TextBox Name="reactivite" Header="Reactivite :" Width="300" HorizontalAlignment="Left" Margin="25"/>
-            <Button Content="Ajouter le fournisseur" Click="AjoutFournisseur" Margin="25" Background="Peru"/>
+            <Button Content="Ajouter le fournisseur" Click="AjoutFournisseur" Margin="25" Background="#A1573A" Foreground="White"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -21,7 +21,7 @@
         <StackPanel Orientation="Vertical"  Grid.Column="1">
             <TextBox Name="dateDiscP" Header="Date discontinuité :" Width="300" HorizontalAlignment="Left" Margin="25" />
             <TextBox Name="quantStockP" Header="Quantité en Stock :" Width="300" HorizontalAlignment="Left" Margin="25" />
-            <Button Content="Confirmer le modele" Click="Ajouter_Piece" Margin="25" Background="Peru" />
+            <Button Content="Confirmer le modele" Click="Ajouter_Piece" Margin="25" Background="#A1573A" Foreground="White" />
         </StackPanel>
     </Grid>
 </Page>

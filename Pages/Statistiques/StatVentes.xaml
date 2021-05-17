@@ -21,14 +21,11 @@
                             <Style TargetType="controls:DataGridRow">
                                 <Setter Property="IsHitTestVisible" Value="False"/>
                                 <d:Style.Triggers>
+                                    <d:DataTrigger Binding="{Binding estStockFaibleM}" Value="true">
+                                        <Setter Property="Background" Value="LightSalmon"/>
+                                    </d:DataTrigger>
                                     <d:DataTrigger Binding="{Binding quantStockM}" Value="0">
                                         <Setter Property="Background" Value="DarkSalmon"/>
-                                    </d:DataTrigger>
-                                    <d:DataTrigger Binding="{Binding quantStockM}" Value="1">
-                                        <Setter Property="Background" Value="LightSalmon"/>
-                                    </d:DataTrigger>
-                                    <d:DataTrigger Binding="{Binding quantStockM}" Value="2">
-                                        <Setter Property="Background" Value="LightSalmon"/>
                                     </d:DataTrigger>
                                 </d:Style.Triggers>
                             </Style>
@@ -42,8 +39,25 @@
                         </controls:DataGrid.Columns>
     
                     </controls:DataGrid>
+                    
                     <TextBlock Text="Pièces"/>
+                    
                     <controls:DataGrid Name="MyDataGridP" ItemsSource="{x:Bind ventesPieces}" AutoGenerateColumns="False">
+
+                        <controls:DataGrid.RowStyle>
+                            <Style TargetType="controls:DataGridRow">
+                                <Setter Property="IsHitTestVisible" Value="False"/>
+                                <d:Style.Triggers>
+                                    <d:DataTrigger Binding="{Binding estStockFaibleP}" Value="true">
+                                        <Setter Property="Background" Value="LightSalmon"/>
+                                    </d:DataTrigger>
+                                    <d:DataTrigger Binding="{Binding quantStockP}" Value="0">
+                                        <Setter Property="Background" Value="DarkSalmon"/>
+                                    </d:DataTrigger>
+                                </d:Style.Triggers>
+                            </Style>
+                        </controls:DataGrid.RowStyle>
+
                         <controls:DataGrid.Columns>
                             <controls:DataGridTextColumn Header="No." Binding="{Binding numP}"/>
                             <controls:DataGridTextColumn Header="Nom" Binding="{Binding descriptionP}"/>

@@ -27,7 +27,7 @@
             <TextBox Name="nomBoutique" Header="Nom de la boutique :" Width="300" HorizontalAlignment="Left" Margin="25"/>
             <TextBox Name="telBoutique" Header="Numéro de téléphone :" Width="300" HorizontalAlignment="Left" Margin="25"/>
             <TextBox Name="mailBoutique" Header="Mail :" Width="300" HorizontalAlignment="Left" Margin="25"/>
-            <Button Content="Confirmer l'ajout de la boutique" Click="AjoutBoutique" Margin="25" Background="Peru"/>
+            <Button Content="Confirmer l'ajout de la boutique" Click="AjoutBoutique" Margin="25" Background="#A1573A" Foreground="White"/>
         </StackPanel>
     </Grid>
 </Page>
