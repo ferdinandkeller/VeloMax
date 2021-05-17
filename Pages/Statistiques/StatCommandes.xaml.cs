@@ -46,7 +46,7 @@ namespace VéloMax.pages
         public string GetPrixMoyC(string s)
         {
             string moy="";
-            string requetePrixMoyComm = "select AVG( prixPieces+prixModeles) prixMoyen, AVG(quantPieceC) piecesMoyen, AVG(quantModeleC) modelesMoyen AVG( from ( select numC, prixP*quantPieceC prixPieces,quantPieceC from contenucommandepiece natural join commande natural join piece) as t1 natural join (select numC, prixM*quantModeleC prixModeles,quantModeleC from contenucommandemodele natural join commande natural join modele) as t2;";
+            string requetePrixMoyComm = "select AVG( prixPieces+prixModeles) prixMoyen, AVG(quantPieceC) piecesMoyen, AVG(quantModeleC) modelesMoyen from ( select numC, prixP*quantPieceC prixPieces,quantPieceC from contenucommandepiece natural join commande natural join piece) as t1 natural join (select numC, prixM*quantModeleC prixModeles,quantModeleC from contenucommandemodele natural join commande natural join modele) as t2;";
             ControlleurRequetes.SelectionneUn(requetePrixMoyComm, (MySqlDataReader reader) => { moy=reader.GetString(s); });
             return moy;
         }
