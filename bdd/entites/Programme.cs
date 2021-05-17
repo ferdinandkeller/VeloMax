@@ -41,7 +41,7 @@ namespace VéloMax.bdd
         }
         public Programme(string nom, int cout, int rabais, int duree)
         {
-            ControlleurRequetes.Inserer($"INSERT INTO Programme (nomProg, cout, rabais, duree) VALUES ('{nom}', {cout}, {rabais}, {duree})");
+            ControlleurRequetes.Inserer($"INSERT INTO Programme (nomProg, cout, rabais, duree) VALUES ('{nom.Replace("'", "''")}', {cout}, {rabais}, {duree})");
             this.numProg = ControlleurRequetes.DernierIDUtilise();
         }
 

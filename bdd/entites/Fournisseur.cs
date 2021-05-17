@@ -56,7 +56,7 @@ namespace VéloMax.bdd
         }
         public Fournisseur(int siret, string nomF, int numA, string contact, int reactivite)
         {
-            ControlleurRequetes.Inserer($"INSERT INTO Fournisseur (siret, nomF, numA, contact, reactivite) VALUES ({siret}, '{nomF}', {numA}, '{contact}', {reactivite})");
+            ControlleurRequetes.Inserer($"INSERT INTO Fournisseur (siret, nomF, numA, contact, reactivite) VALUES ({siret}, '{ nomF.Replace("'", "''") }', {numA}, '{contact}', {reactivite})");
             this.numF = ControlleurRequetes.DernierIDUtilise();
         }
         public Fournisseur(int siret, string nomF, Adresse adresse, string contact, int reactivite): this(siret, nomF, adresse.numA, contact, reactivite)
