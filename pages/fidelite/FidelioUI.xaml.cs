@@ -16,36 +16,31 @@ using VéloMax.bdd;
 using System.Collections.ObjectModel;
 using Microsoft.Toolkit.Uwp.UI.Controls;
 using System.Diagnostics;
-using VéloMax.Pages;
+using VéloMax.pages;
 
-// Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
-
-namespace VéloMax.Pages.Produits
+namespace VéloMax.pages
 {
-    /// <summary>
-    /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
-    /// </summary>
-    public sealed partial class Pieces : Page
+    public sealed partial class FidelioUI : Page
     {
-        public Pieces()
+        public FidelioUI()
         {
             this.InitializeComponent();
         }
 
-        public ReadOnlyCollection<Piece> pieces
+        public ReadOnlyCollection<Fidelio> fidelios
         {
-            get => Piece.Lister();
+            get => Fidelio.Lister();
         }
 
         private void Nouveau_Click(object sender, RoutedEventArgs e)
         {
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(AjouterPiece));
+            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(AjouterFidelioUI));
         }
 
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
-            ((Individu)MyDataGrid.SelectedItem).Supprimer();
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(Pieces));
+            ((Fidelio)MyDataGrid.SelectedItem).Supprimer();
+            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(FidelioUI));
         }
     }
 }

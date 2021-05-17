@@ -19,37 +19,33 @@ using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 using VéloMax.bdd;
-using VéloMax.Pages;
+using VéloMax.pages;
 
-// Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
-
-namespace VéloMax.Pages.Commandes
+namespace VéloMax.pages
 {
-    public sealed partial class EnCours : Page
+    public sealed partial class FideliteUI : Page
     {
-        public EnCours()
+        public FideliteUI()
         {
             this.InitializeComponent();
         }
 
-        /*
-        public ReadOnlyCollection<Commande> commandes
+        public ReadOnlyCollection<Programme> programmes
         {
-            get => Commande.Lister();
+            get => Programme.Lister();
         }
-        */
-        
-        
 
         private void Nouveau_Click(object sender, RoutedEventArgs e)
         {
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(AjouterCommande));
+            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(AjouterFideliteUI));
         }
 
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
-            //((Individu)MyDataGrid.SelectedItem).Supprimer();
-            //((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(IndividusUI));
+            ((Programme)MyDataGrid.SelectedItem).Supprimer();
+            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(FideliteUI));
         }
     }
 }
+
+

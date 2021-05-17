@@ -38,6 +38,7 @@ namespace VéloMax
             ("stocks", typeof(VéloMax.Pages.StocksMain)),
             ("produits", typeof(VéloMax.pages.ProduitsUIMain)),
             ("clients", typeof(VéloMax.pages.ClientsMainUI)),
+            ("programmes", typeof(VéloMax.pages.FideliteMainUI)),
             ("fournisseurs", typeof(VéloMax.Pages.FournisseursMain)),
             ("statistiques", typeof(VéloMax.Pages.StatistiquesMain)),
             ("notices", typeof(VéloMax.Pages.Notices)),
@@ -46,16 +47,6 @@ namespace VéloMax
 
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
-            /*
-            // You can also add items in code.
-            NavView.MenuItems.Add(new NavigationViewItemSeparator());
-            NavView.MenuItems.Add(new NavigationViewItem
-            {
-                Content = "My content",
-                Icon = new SymbolIcon((Symbol)0xF1AD),
-                Tag = "content"
-            });
-            */
             _pages.Add(("home", typeof(VéloMax.Pages.Accueil)));
 
             // Add handler for ContentFrame navigation.

@@ -39,5 +39,58 @@ namespace VéloMax.pages
                     break;
             }
         }
+        
+        private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>{
+            ("clientEntreprise", typeof(VéloMax.pages.BoutiquesUI)),
+            ("clientParticulier", typeof(VéloMax.pages.IndividusUI)),
+        };
+
+        private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+            if (args.InvokedItemContainer != null)
+            {
+                var navItemTag = args.InvokedItemContainer.Tag.ToString();
+                NavView_Navigate(navItemTag, args.RecommendedNavigationTransitionInfo);
+            }
+        }
+
+        private void NavView_Navigate(
+            string navItemTag,
+            Windows.UI.Xaml.Media.Animation.NavigationTransitionInfo transitionInfo)
+        {
+            Type _page = null;
+            var item = _pages.FirstOrDefault(p => p.Tag.Equals(navItemTag));
+            _page = item.Page;
+
+            // Get the page type before navigation so you can prevent duplicate
+            // entries in the backstack.
+            var preNavPageType = NavigationContentFrame.CurrentSourcePageType;
+
+            // Only navigate if the selected page isn't currently loaded.
+            if (!(_page is null) && !Type.Equals(preNavPageType, _page))
+            {
+                NavigationContentFrame.Navigate(_page, null, transitionInfo);
+            }
+
+        }
+
+        private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+        {
+            TryGoBack();
+        }
+
+        private bool TryGoBack()
+        {
+            if (!NavigationContentFrame.CanGoBack)
+                return false;
+
+            // Don't go back if the nav pane is overlayed.
+            if (NavViewClients.IsPaneOpen &&
+                (NavViewClients.DisplayMode == NavigationViewDisplayMode.Compact ||
+                 NavViewClients.DisplayMode == NavigationViewDisplayMode.Minimal))
+                return false;
+            NavigationContentFrame.GoBack();
+            return true;
+        }
     }
 }

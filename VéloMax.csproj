@@ -180,6 +180,21 @@
     <Compile Include="Pages\Commandes\DetailCommandeUI.xaml.cs">
       <DependentUpon>DetailCommandeUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\fidelite\AjouterFidelioUI.xaml.cs">
+      <DependentUpon>AjouterFidelioUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\fidelite\AjouterFideliteUI.xaml.cs">
+      <DependentUpon>AjouterFideliteUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\fidelite\FidelioUI.xaml.cs">
+      <DependentUpon>FidelioUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\fidelite\FideliteMainUI.xaml.cs">
+      <DependentUpon>FideliteMainUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\fidelite\FideliteUI.xaml.cs">
+      <DependentUpon>FideliteUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Fournisseurs\Catalogue.xaml.cs">
       <DependentUpon>Catalogue.xaml</DependentUpon>
     </Compile>
@@ -334,6 +349,26 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Commandes\DetailCommandeUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\fidelite\AjouterFidelioUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\fidelite\AjouterFideliteUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\fidelite\FidelioUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\fidelite\FideliteMainUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\fidelite\FideliteUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
