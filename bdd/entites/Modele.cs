@@ -79,7 +79,7 @@ namespace VéloMax.bdd
         }
         public Modele(string nomM, string descriptionM, int tailleM, LigneModele ligne, int prixM, DateTime dateIntroM, DateTime dateDiscM, int quantStockM)
         {
-            ControlleurRequetes.Inserer($"INSERT INTO Modele (nomM, descriptionM, tailleM, ligne, prixM, dateIntroM, dateDiscM, quantStockM) VALUES ('{nomM}', '{descriptionM}', {tailleM}, '{ligne.ToString()}', {prixM}, '{dateIntroM.ToString("yyyy-MM-dd HH:mm:ss")}', '{dateDiscM.ToString("yyyy-MM-dd HH:mm:ss")}', {quantStockM})");
+            ControlleurRequetes.Inserer($"INSERT INTO Modele (nomM, descriptionM, tailleM, ligne, prixM, dateIntroM, dateDiscM, quantStockM) VALUES ('{nomM.Replace("'", "''")}', '{descriptionM.Replace("'", "''")}', {tailleM}, '{ligne.ToString()}', {prixM}, '{dateIntroM.ToString("yyyy-MM-dd HH:mm:ss")}', '{dateDiscM.ToString("yyyy-MM-dd HH:mm:ss")}', {quantStockM})");
             this.numM = ControlleurRequetes.DernierIDUtilise();
         }
 

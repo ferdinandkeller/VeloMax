@@ -41,7 +41,7 @@ namespace VéloMax.bdd
         }
         public Adresse(string rue, string ville, int codepostal, string province)
         {
-            ControlleurRequetes.Inserer($"INSERT INTO Adresse (rue, ville, codepostal, province) VALUES ('{rue}', '{ville}', {codepostal}, '{province}')");
+            ControlleurRequetes.Inserer($"INSERT INTO Adresse (rue, ville, codepostal, province) VALUES ('{ rue.Replace("'", "''") }', '{ville.Replace("'", "''")}', {codepostal}, '{province.Replace("'", "''")}')");
             this.numA = ControlleurRequetes.DernierIDUtilise();
         }
 

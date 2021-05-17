@@ -67,13 +67,11 @@ namespace VéloMax.bdd
         }
         public Boutique(string nomB, int numA, string telB, string mailB)
         {
-            ControlleurRequetes.Inserer($"INSERT INTO Boutique (nomB, numA, telB, mailB) VALUES ('{nomB}', {numA}, '{telB}', '{mailB}')");
+            ControlleurRequetes.Inserer($"INSERT INTO Boutique (nomB, numA, telB, mailB) VALUES ('{ nomB.Replace("'", "''") }', {numA}, '{telB}', '{mailB}')");
             this.numB = ControlleurRequetes.DernierIDUtilise();
         }
-        public Boutique(string nomB, Adresse adresse, string telB, string mailB)
+        public Boutique(string nomB, Adresse adresse, string telB, string mailB): this(nomB, adresse.numA, telB, mailB)
         {
-            ControlleurRequetes.Inserer($"INSERT INTO Boutique (nomB, numA, telB, mailB) VALUES ('{nomB}', {adresse.numA}, '{telB}', '{mailB}')");
-            this.numB = ControlleurRequetes.DernierIDUtilise();
         }
 
         /* Suppression */

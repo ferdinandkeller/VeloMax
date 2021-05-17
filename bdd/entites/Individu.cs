@@ -71,13 +71,11 @@ namespace VéloMax.bdd
         }
         public Individu(string nomI, string prenomI, int numA, string telI, string mailI)
         {
-            ControlleurRequetes.Inserer($"INSERT INTO Individu (nomI, prenomI, numA, telI, mailI) VALUES ('{nomI}', '{prenomI}', {numA}, '{telI}', '{mailI}')");
+            ControlleurRequetes.Inserer($"INSERT INTO Individu (nomI, prenomI, numA, telI, mailI) VALUES ('{nomI.Replace("'", "''")}', '{prenomI.Replace("'", "''")}', {numA}, '{telI}', '{mailI}')");
             this.numI = ControlleurRequetes.DernierIDUtilise();
         }
-        public Individu(string nomI, string prenomI, Adresse adresse, string telI, string mailI)
+        public Individu(string nomI, string prenomI, Adresse adresse, string telI, string mailI): this(nomI, prenomI, adresse.numA, telI, mailI)
         {
-            ControlleurRequetes.Inserer($"INSERT INTO Individu (nomI, prenomI, numA, telI, mailI) VALUES ('{nomI}', '{prenomI}', {adresse.numA}, '{telI}', '{mailI}')");
-            this.numI = ControlleurRequetes.DernierIDUtilise();
         }
 
         /* Suppression */
