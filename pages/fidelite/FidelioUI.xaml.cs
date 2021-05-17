@@ -39,7 +39,7 @@ namespace VéloMax.pages
 
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
-            ((Individu)MyDataGrid.SelectedItem).Supprimer();
+            ((Fidelio)MyDataGrid.SelectedItem).Supprimer();
             ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(FidelioUI));
         }
     }

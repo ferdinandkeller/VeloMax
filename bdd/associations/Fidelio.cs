@@ -65,13 +65,13 @@ namespace VéloMax.bdd
         public static ReadOnlyCollection<Fidelio> Lister()
         {
             List<Fidelio> list = new List<Fidelio>();
-            ControlleurRequetes.SelectionnePlusieurs($"SELECT numI FROM Fidelio", (MySqlDataReader reader) => { list.Add(new Fidelio(reader.GetInt32("numI"))); });
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT DISTINCT numI FROM fidelio NATURAL JOIN programme WHERE dateAdherence + INTERVAL duree DAY > NOW()", (MySqlDataReader reader) => { list.Add(new Fidelio(reader.GetInt32("numI"))); });
             return new ReadOnlyCollection<Fidelio>(list);
         }
         public static ReadOnlyCollection<Fidelio> ListerPasFidelio()
         {
             List<Fidelio> list = new List<Fidelio>();
-            ControlleurRequetes.SelectionnePlusieurs($"SELECT numI FROM Individu WHERE numI NOT IN (SELECT DISTINCT numI FROM fidelio NATURAL JOIN individu NATURAL JOIN programme WHERE DATE_ADD(dateAdherence, INTERVAL duree DAY) > CURDATE())", (MySqlDataReader reader) => { list.Add(new Fidelio(reader.GetInt32("numI"))); });
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numI FROM Individu WHERE numI NOT IN (SELECT DISTINCT numI FROM fidelio NATURAL JOIN programme WHERE dateAdherence + INTERVAL duree DAY > NOW())", (MySqlDataReader reader) => { list.Add(new Fidelio(reader.GetInt32("numI"))); });
             return new ReadOnlyCollection<Fidelio>(list);
         }
 
