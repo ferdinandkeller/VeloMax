@@ -25,9 +25,6 @@ using VéloMax.Pages;
 
 namespace VéloMax.Pages.Statistiques
 {
-    /// <summary>
-    /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
-    /// </summary>
     public sealed partial class StatVentes : Page
     {
         public StatVentes()

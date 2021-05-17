@@ -90,9 +90,9 @@ namespace VéloMax.bdd
                     list2.Add(new Fidelio(i));
                 }
                 ControlleurJson cjson2 = new ControlleurJson();
-                foreach (Fidelio f2 in list2)
+                foreach (Programme p in Individu.ListerAncienAbonnements(f.individu))
                 {
-                    cjson2.AjouterListeJson(f2.individu.VersJson());
+                    cjson2.AjouterListeChamp($"{p.nomProg}");
                 }
                 cjson3.AjouterNormalJson("passe", cjson2.json_liste);
                 cjson.AjouterListeJson(cjson3.json_normal);

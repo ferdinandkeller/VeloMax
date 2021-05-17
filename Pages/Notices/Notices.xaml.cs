@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using VéloMax.bdd;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,13 +23,12 @@ namespace VéloMax.Pages
     /// </summary>
     public sealed partial class Notices : Page
     {
-        public List<Notice> notices { get; set; }
         public Notices()
         {
             this.InitializeComponent();
-
         }
 
+        /*
         private void Navview_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             if (args.InvokedItemContainer != null)
@@ -55,39 +55,26 @@ namespace VéloMax.Pages
                 return false;
             NavigationContentFrame.GoBack();
             return true;
-        }
+        }*/
 
-        public void Enregistrer_Clicked(object sender, RoutedEventArgs e)
+        private async void ExporterJSON(object sender, RoutedEventArgs e)
         {
-            //A faire
-
-
+            var savePicker = new Windows.Storage.Pickers.FileSavePicker();
+            savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
+            savePicker.FileTypeChoices.Add("JSON", new List<string>() { ".json" });
+            savePicker.SuggestedFileName = "clients_importants";
+            Windows.Storage.StorageFile file = await savePicker.PickSaveFileAsync();
+            if (file != null)
+            {
+                Windows.Storage.CachedFileManager.DeferUpdates(file);
+                await Windows.Storage.FileIO.WriteTextAsync(file, Fidelio.FidelioFinJSON());
+                Windows.Storage.Provider.FileUpdateStatus status = await Windows.Storage.CachedFileManager.CompleteUpdatesAsync(file);
+            }
         }
-        private void ListeBoutiques_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private void ExporterXML(object sender, RoutedEventArgs e)
         {
 
         }
-
-        public void nomClicked(object sender, RoutedEventArgs e)
-        {
-            //A faire 
-        }
-        public void tailleClicked(object sender, RoutedEventArgs e)
-        {
-            //A faire 
-        }
-        public void telClicked(object sender, RoutedEventArgs e)
-        {
-            //A faire 
-        }
-
-    }
-    
-    public class Notice
-    {
-        public string Name { get; set; }
-        public bool ExportXAML { get; set; }
-        public bool ExportJSON { get; set; }
-        public bool Exporttxt { get; set; }
     }
 }

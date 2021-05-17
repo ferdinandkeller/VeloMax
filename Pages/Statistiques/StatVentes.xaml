@@ -10,6 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+        <!--
         <RelativePanel>
             <Grid>
                 <StackPanel Orientation="Vertical">
@@ -51,5 +52,6 @@
             </Grid>
 
         </RelativePanel>
+        -->
     </Grid>
 </Page>

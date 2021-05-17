@@ -58,9 +58,7 @@ namespace VéloMax.bdd
             ControlleurRequetes.SelectionnePlusieurs($"SELECT numProg FROM Programme", (MySqlDataReader reader) => { list.Add(new Programme(reader.GetInt32("numProg"))); });
             return new ReadOnlyCollection<Programme>(list);
         }
-<<<<<<< HEAD
 
-=======
         public static ReadOnlyCollection<string> ListerString()
         {
             List<string> list = new List<string>();
@@ -70,6 +68,5 @@ namespace VéloMax.bdd
             }
             return new ReadOnlyCollection<string>(list);
         }
->>>>>>> b49a783cbefec524f89b637ac9e4cb08a8e3810b
     }
 }

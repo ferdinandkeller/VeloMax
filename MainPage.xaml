@@ -32,10 +32,13 @@
             <NavigationViewItem Tag="statistiques" Icon="TwoBars" Content="Statistiques" />
             <NavigationViewItem Tag="notices" Icon="Page" Content="Notices" />
         </NavigationView.MenuItems>
-        
 
-        <Frame Name="NavigationContentFrame" >
-            <TextBlock HorizontalAlignment="Left" Height="211" Margin="52,58,0,0" Text="VéloMax" TextWrapping="Wrap" VerticalAlignment="Top" Width="546" Style="{StaticResource HeaderTextBlockStyle}"/>
+
+        <Frame Name="NavigationContentFrame">
+            <StackPanel Orientation="Vertical" Margin="50" >
+                <TextBlock HorizontalAlignment="Left" Text="VéloMax" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource HeaderTextBlockStyle}"/>
+                <TextBlock HorizontalAlignment="Left" Text="Vous en réviez ? Le voici !" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource TitleTextBlockStyle}"/>
+            </StackPanel>
         </Frame>
 
     </NavigationView>

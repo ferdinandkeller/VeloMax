@@ -118,6 +118,12 @@ namespace VéloMax.bdd
             }
             return new ReadOnlyCollection<string>(list);
         }
+        public static ReadOnlyCollection<Programme> ListerAncienAbonnements(Individu i)
+        {
+            List<Programme> p = new List<Programme>();
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numProg FROM Fidelio WHERE numI={i.numI}", (MySqlDataReader reader) => { p.Add(new Programme(reader.GetInt32("numProg"))); });
+            return new ReadOnlyCollection<Programme>(p);
+        }
         public static ReadOnlyCollection<Individu> ListerAncienFidelio()
         {
             List<Individu> list = new List<Individu>();
