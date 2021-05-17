@@ -32,11 +32,12 @@ namespace VéloMax.Pages.Commandes
             this.InitializeComponent();
         }
 
-        
+        /*
         public ReadOnlyCollection<Commande> commandes
         {
             get => Commande.Lister();
         }
+        */
         
         
 

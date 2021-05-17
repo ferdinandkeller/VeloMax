@@ -14,7 +14,7 @@
             <Button Name="Nouveau" Content="Nouveau" Click="Nouveau_Click" />
             <Button Name="Supprimer" Content="Supprimer" Click="Supprimer_Click" />
         </StackPanel>
-
+        <!--
         <controls:DataGrid Name="MyDataGrid" ItemsSource="{x:Bind commandes}" AutoGenerateColumns="False">
             <controls:DataGrid.Columns>
                 <controls:DataGridTextColumn Header="Numéro Commande" Binding="{Binding numC}"/>
@@ -23,5 +23,6 @@
                 <controls:DataGridTextColumn Header="Date Livraison" Binding="{Binding dateL}"/>
             </controls:DataGrid.Columns>
         </controls:DataGrid>
+        -->
     </StackPanel>
 </Page>
