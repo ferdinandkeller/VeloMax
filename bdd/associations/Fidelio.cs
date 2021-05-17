@@ -99,5 +99,55 @@ namespace VéloMax.bdd
             }
             return cjson.json_liste;
         }
+
+        public static ReadOnlyCollection<MembreFidelioStat> ListerMembresStat()
+        {
+            List<MembreFidelioStat> list = new List<MembreFidelioStat>();
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numI, nomI,prenomI,nomProg,dateAdherence,duree FROM Programme NATURAL JOIN Fidelio NATURAL JOIN Individu ORDER BY nomProg;", (MySqlDataReader reader) => { list.Add(new MembreFidelioStat(reader.GetString("nomI"), reader.GetString("prenomI"), reader.GetString("nomProg"),reader.GetDateTime("dateAdherence"),reader.GetInt32("duree"))); });
+            return new ReadOnlyCollection<MembreFidelioStat>(list);
+        }
     }
+    public class MembreFidelio
+    {
+        public readonly int numI;
+        public string nomI;
+        public string prenomI;
+        public readonly int numProg;
+        public string nomProg;
+        public DateTime dateAdherence;
+        public int duree;
+        public int rabais;
+
+        public MembreFidelio(int numI,string nomI, string prenomI, int numProg,string nomProg, DateTime dateAdherence, int duree, int rabais)
+        {
+            this.numI = numI;
+            this.nomI = nomI;
+            this.prenomI = prenomI;
+            this.numProg = numProg;
+            this.nomProg = nomProg;
+            this.dateAdherence = dateAdherence;
+            this.duree = duree;
+            this.rabais = rabais;
+        }
+    }
+
+    public class MembreFidelioStat
+    {
+        public string nomProg;
+        public string nomI;
+        public string prenomI;
+        public DateTime dateAdherence;
+        public string finAdherence;
+
+        public MembreFidelioStat(string nomI, string prenomI, string nomProg, DateTime dateAdherence, int duree)
+        {
+            this.nomProg = nomProg;
+            this.nomI = nomI;
+            this.prenomI = prenomI;
+            this.dateAdherence = dateAdherence;
+            DateTime fin = dateAdherence.AddDays(duree);
+            this.finAdherence = fin.ToShortDateString();
+        }
+    }
+
 }

@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="VéloMax.Pages.Statistiques.StatFidelio"
+    xmlns:local="using:VéloMax.Pages"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <controls:DataGrid Name="MyDataGrid" ItemsSource="{x:Bind membresFidelio}" AutoGenerateColumns="False">
+                <controls:DataGrid.Columns>
+                    <controls:DataGridTextColumn Header="Fidélio" Binding="{Binding nomProg}"/>
+                    <controls:DataGridTextColumn Header="Nom" Binding="{Binding nomI}"/>
+                    <controls:DataGridTextColumn Header="Prenom" Binding="{Binding prenomI}"/>
+                    <controls:DataGridTextColumn Header="Début" Binding="{Binding dateAdherence}"/>
+                    <controls:DataGridTextColumn Header="Fin" Binding="{Binding finAdherence}"/>
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -225,8 +225,20 @@
     <Compile Include="Pages\Produits\ProduitsUIMain.xaml.cs">
       <DependentUpon>ProduitsUIMain.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Statistiques\StatClients.xaml.cs">
+      <DependentUpon>StatClients.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Statistiques\StatCommandes.xaml.cs">
+      <DependentUpon>StatCommandes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Statistiques\StatFidelio.xaml.cs">
+      <DependentUpon>StatFidelio.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Statistiques\StatistiquesMain.xaml.cs">
       <DependentUpon>StatistiquesMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Statistiques\StatVentes.xaml.cs">
+      <DependentUpon>StatVentes.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Stocks\StocksFournisseurs.xaml.cs">
       <DependentUpon>StocksFournisseurs.xaml</DependentUpon>
@@ -418,7 +430,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\Statistiques\StatClients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Statistiques\StatCommandes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Statistiques\StatFidelio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Statistiques\StatistiquesMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Statistiques\StatVentes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -442,6 +470,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI">
+      <Version>7.0.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls.DataGrid">
       <Version>7.0.2</Version>

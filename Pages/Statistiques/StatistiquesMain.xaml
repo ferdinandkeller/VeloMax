@@ -10,7 +10,7 @@
 
     <Grid>
 
-        <NavigationView x:Name="NavViewStatistiques" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="Navview_ItemInvoked" BackRequested="NavView_BackRequested">
+        <NavigationView x:Name="NavViewStatistiques" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" ItemInvoked="NavView_ItemInvoked" BackRequested="NavView_BackRequested">
             <NavigationView.Resources>
                 <!--<AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
                             BackgroundSource="Backdrop"

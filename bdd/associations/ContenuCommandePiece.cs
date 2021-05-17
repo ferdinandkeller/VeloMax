@@ -5,6 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.IO;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
+using Windows.UI.Core;
+using Windows.System;
+using System.ComponentModel;
+using System.Data.SqlClient;
 
 namespace VéloMax.bdd
 {
@@ -57,12 +72,35 @@ namespace VéloMax.bdd
         public static ReadOnlyCollection<ContenuCommandePiece> Lister(int numC)
         {
             List<ContenuCommandePiece> list = new List<ContenuCommandePiece>();
-            ControlleurRequetes.SelectionnePlusieurs($"SELECT numP FROM ContenuCommandePiece WHERE numC={numC}", (MySqlDataReader reader) => { list.Add(new ContenuCommandePiece(numC, reader.GetInt32("numP"))); });
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numP FROM ContenuCoPiece WHERE numC={numC}", (MySqlDataReader reader) => { list.Add(new ContenuCommandePiece(numC, reader.GetInt32("numP"))); });
             return new ReadOnlyCollection<ContenuCommandePiece>(list);
         }
         public static ReadOnlyCollection<ContenuCommandePiece> Lister(Commande commande)
         {
             return Lister(commande.numC);
+        }
+
+        public static ReadOnlyCollection<EtatStockPiece> ListerQuantitesVenduesP()
+        {
+            List<EtatStockPiece> list = new List<EtatStockPiece>();
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numP, descriptionP,SUM(quantPieceC) qteP,quantStockP FROM ContenuCommandePiece  NATURAL JOIN Piece GROUP BY numP ORDER BY quantStockP;", (MySqlDataReader reader) => { list.Add(new EtatStockPiece(reader.GetInt32("numP"), reader.GetString("descriptionP"), reader.GetInt32("qteP"), reader.GetInt32("quantSotckP"))); });
+            return new ReadOnlyCollection<EtatStockPiece>(list);
+        }
+    }
+
+    public class EtatStockPiece
+    {
+        public readonly int numP;
+        public string descriptionP;
+        public int qteP;
+        public int quantSotckP;
+
+        public EtatStockPiece(int numP, string descriptionP, int qteP, int quantStockP)
+        {
+            this.numP = numP;
+            this.descriptionP = descriptionP;
+            this.qteP = qteP;
+            this.quantSotckP = quantSotckP;
         }
     }
 }
