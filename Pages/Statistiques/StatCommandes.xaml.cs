@@ -32,23 +32,39 @@ namespace VéloMax.pages
         public StatCommandes()
         {
             this.InitializeComponent();
-            double[] moyens = GetPrixMoyC();
-            PrixM.Text = moyens[0].ToString();
-            PieceM.Text = moyens[1].ToString();
-            ModelM.Text = moyens[2].ToString();
+            PrixM.Text = $"{GetMoyPrix()}€";
+            PieceM.Text = $"{GetMoyPiece()}";
+            ModelM.Text = $"{GetMoyModele()}";
         }
 
-        public double[] GetPrixMoyC()
+        public double GetMoyPiece()
         {
-            double[] moys = new double[3];
-            string requetePrixMoyComm = "select AVG(prixPieces+prixModeles) prixMoyen, AVG(quantPieceC) piecesMoyen, AVG(quantModeleC) modelesMoyen from ( select numC, prixP*quantPieceC prixPieces,quantPieceC from contenucommandepiece natural join commande natural join piece) as t1 natural join (select numC, prixM*quantModeleC prixModeles,quantModeleC from contenucommandemodele natural join commande natural join modele) as t2;";
-            ControlleurRequetes.SelectionneUn(requetePrixMoyComm, (MySqlDataReader reader) =>
+            double moy = -1;
+            ControlleurRequetes.SelectionneUn("SELECT AVG(quantPieces) AS quantPieces FROM(SELECT SUM(quantPieceC) AS quantPieces FROM contenucommandepiece NATURAL JOIN commande NATURAL JOIN piece GROUP BY numC) AS T;", (MySqlDataReader reader) =>
             {
-                moys[0] = reader.IsDBNull(0) ? -1 : reader.GetDouble(0);
-                moys[1] = reader.IsDBNull(1) ? -1 : reader.GetDouble(1);
-                moys[2] = reader.IsDBNull(2) ? -1 : reader.GetDouble(2);
+                moy = reader.IsDBNull(0) ? -1 : reader.GetDouble("quantPieces");
             });
-            return moys;
+            return moy;
+        }
+
+        public double GetMoyModele()
+        {
+            double moy = -1;
+            ControlleurRequetes.SelectionneUn("SELECT AVG(quantModeles) AS quantModeles FROM(SELECT SUM(quantModeleC) AS quantModeles FROM contenucommandemodele NATURAL JOIN commande NATURAL JOIN modele GROUP BY numC) AS T;", (MySqlDataReader reader) =>
+            {
+                moy = reader.IsDBNull(0) ? -1 : reader.GetDouble("quantModeles");
+            });
+            return moy;
+        }
+
+        public double GetMoyPrix()
+        {
+            double moy = -1;
+            ControlleurRequetes.SelectionneUn("SELECT AVG((prixPieces + prixModeles)/(quantPieceC + quantModeleC)) as moyPrixTot FROM (SELECT numC, SUM(prixP*quantPieceC) AS prixPieces, quantPieceC FROM contenucommandepiece NATURAL JOIN commande NATURAL JOIN piece GROUP BY numC) AS T1 NATURAL JOIN (SELECT SUM(prixM*quantModeleC) AS prixModeles, quantModeleC FROM contenucommandemodele NATURAL JOIN commande NATURAL JOIN modele GROUP BY numC) AS T2;", (MySqlDataReader reader) =>
+            {
+                moy = reader.IsDBNull(0) ? -1 : reader.GetDouble("moyPrixTot");
+            });
+            return moy;
         }
     }
 }
