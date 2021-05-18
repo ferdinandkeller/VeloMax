@@ -25,11 +25,7 @@ namespace VéloMax.pages
         public CommandesEncoursUI()
         {
             this.InitializeComponent();
-        }
-
-        public ReadOnlyCollection<Commande> commandes
-        {
-            get => Commande.Lister();
+            MyDataGrid.ItemsSource = Commande.Lister();
         }
 
         private void Nouveau_Click(object sender, RoutedEventArgs e)
@@ -49,7 +45,7 @@ namespace VéloMax.pages
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
             ((Commande)MyDataGrid.SelectedItem).Supprimer();
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(CommandesEncoursUI));
+            MyDataGrid.ItemsSource = Commande.Lister();
         }
     }
 }

@@ -20,6 +20,11 @@ namespace VéloMax.pages
 {
     public sealed partial class AjouterModeleUI : Page
     {
+        
+        public List<ComP> pieces = new List<ComP>();
+        public List<ComM> modeles = new List<ComM>();
+        public string content = "";
+
         public AjouterModeleUI()
         {
             this.InitializeComponent();
@@ -35,17 +40,15 @@ namespace VéloMax.pages
             try {
                 DateTime dateI = new DateTime(dateIntroM.SelectedDate.Value.Year, dateIntroM.SelectedDate.Value.Month, dateIntroM.SelectedDate.Value.Day);
                 DateTime dateD = new DateTime(dateDiscM.SelectedDate.Value.Year, dateDiscM.SelectedDate.Value.Month, dateDiscM.SelectedDate.Value.Day);
-                new Modele(nomM.Text, descriptionM.Text, int.Parse(tailleM.Text), ConvertisseurLigneModel.LigneVersListe()[ligneM.SelectedIndex], int.Parse(prixM.Text),dateI,dateD, int.Parse(quantStockM.Text));// DateTime.Parse(dateIntroM.Text), DateTime.Parse(dateDiscM.Text)
+                Modele mod = new Modele(nomM.Text, descriptionM.Text, int.Parse(tailleM.Text), ConvertisseurLigneModel.LigneVersListe()[ligneM.SelectedIndex], int.Parse(prixM.Text),dateI,dateD, int.Parse(quantStockM.Text));
+                foreach (ComP cp in pieces)
+                {
+                    new CompositionModele(mod, cp.p, cp.q);
+                }
                 ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(ModelesUI));
-                foreach()
             } catch { }
         }
 
-        public List<ComP> pieces = new List<ComP>();
-        public List<ComM> modeles = new List<ComM>();
-        public string content = "";
-
-        
         public void AfficherContenuModele()
         {
             string t = "PIECES :\n";
@@ -53,11 +56,10 @@ namespace VéloMax.pages
             {
                 t += $"[{cp.p.numP}] x{cp.q}\n";
             }
-            Debug.WriteLine(t);
             Content.Text = t;
         }
 
-        public void AjoutPiece(object sender, RoutedEventArgs e)
+        public void AjoutPieceModele(object sender, RoutedEventArgs e)
         {
             try
             {

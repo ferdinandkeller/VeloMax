@@ -9,15 +9,9 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     
-
-    <Page.Resources>
-        <CollectionViewSource x:Name="ListeFiles" IsSourceGrouped="False" 
-                              ItemsPath="Files"/>
-    </Page.Resources>
-    
     <StackPanel Orientation="Vertical">
-        <ComboBox Name="refModeleCombo" Header="Modèle" PlaceholderText=""  SelectionChanged="Type_Model_Change" Width="300" Margin="0 0 0 25" />
-        <controls:DataGrid Name="MyDataGrid" ItemsSource="{x:Bind noticeModele}" AutoGenerateColumns="False">
+        <ComboBox Name="refModeleCombo" Header="Modèle" PlaceholderText="" SelectionChanged="Type_Model_Change" Width="300" Margin="0 0 0 25" />
+        <controls:DataGrid Name="MyDataGrid" AutoGenerateColumns="False" IsReadOnly="True">
             <controls:DataGrid.Columns>
                 <controls:DataGridTextColumn Header="Modèle" Binding="{Binding modele}"/>
                 <controls:DataGridTextColumn Header="Pièce" Binding="{Binding piece}"/>

@@ -71,33 +71,21 @@ namespace VéloMax.bdd
             get => CompositionModele.Lister(numM);
         }
 
-        public bool EstStockFaible { get; set; }
-
-        public void StockFaible()
+        public bool EstStockFaible
         {
-            if (this.quantStockM <= 5)
-            {
-                EstStockFaible = true;
-            }
-            else
-            {
-                EstStockFaible = false;
-            }
+            get { return quantStockM <= 5; }
         }
-
 
         /* Instantiation */
         public Modele(int numM)
         {
             this.numM = numM;
-            StockFaible();
         }
         public Modele(string nomM, string descriptionM, int tailleM, LigneModele ligne, int prixM, DateTime dateIntroM, DateTime dateDiscM, int quantStockM)
         {
-            ControlleurRequetes.Inserer($"INSERT INTO Modele (nomM, descriptionM, tailleM, ligne, prixM, dateIntroM, dateDiscM, quantStockM) VALUES ('{nomM.Replace("'", "''")}', '{descriptionM.Replace("'", "''")}', {tailleM}, '{ligne.ToString()}', {prixM}, '{dateIntroM.ToString("yyyy-MM-dd HH:mm:ss")}', '{dateDiscM.ToString("yyyy-MM-dd HH:mm:ss")}', {quantStockM})");
-            this.numM = ControlleurRequetes.DernierIDUtilise();
-            StockFaible();
-
+            int nm = -1;
+            ControlleurRequetes.SelectionneUn($"INSERT INTO Modele (nomM, descriptionM, tailleM, ligne, prixM, dateIntroM, dateDiscM, quantStockM) VALUES ('{nomM.Replace("'", "''")}', '{descriptionM.Replace("'", "''")}', {tailleM}, '{ligne.ToString()}', {prixM}, '{dateIntroM.ToString("yyyy-MM-dd HH:mm:ss")}', '{dateDiscM.ToString("yyyy-MM-dd HH:mm:ss")}', {quantStockM}); SELECT LAST_INSERT_ID() AS l;", (MySqlDataReader reader) => { nm = reader.GetInt32("l"); });
+            this.numM = nm;
         }
 
         /* Suppression */

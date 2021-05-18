@@ -25,11 +25,7 @@ namespace VéloMax.pages
         public IndividusUI()
         {
             this.InitializeComponent();
-        }
-
-        public ReadOnlyCollection<Individu> individus
-        {
-            get => Individu.Lister();
+            MyDataGrid.ItemsSource = Individu.Lister();
         }
 
         private void Nouveau_Click(object sender, RoutedEventArgs e)
@@ -40,7 +36,7 @@ namespace VéloMax.pages
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
             ((Individu)MyDataGrid.SelectedItem).Supprimer();
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(IndividusUI));
+            MyDataGrid.ItemsSource = Individu.Lister();
         }
     }
 }

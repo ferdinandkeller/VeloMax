@@ -19,20 +19,16 @@
             <TextBox Name="tailleM" Header="Taille :" Width="300" HorizontalAlignment="Left" Margin="25"/>
             <ComboBox Name="ligneM" Header="Ligne :" PlaceholderText="Choisis une ligne" Margin="25" />
             <ComboBox Name="refPiecesCombo" Header="Référence" PlaceholderText="" Width="300" Margin="25" />
-            <TextBox Name="quantiteP" Header="Quantité :" Width="300" HorizontalAlignment="Left" Margin="25" />
-            <Button Content="Ajouter Pièce" Click="AjoutPieceModele" Background="#A1573A" Foreground="White" Margin="25"/>
-            <TextBlock Name="Content" Text="" Margin="25" />
+            <TextBox Name="quantiteP" Header="Quantité pièce :" Width="300" HorizontalAlignment="Left" Margin="25" />
+            <Button Name="AjouterPiece" Content="Ajouter Pièce" Click="AjoutPieceModele" Background="#A1573A" Foreground="White" Margin="25"/>
         </StackPanel>
         <StackPanel Orientation="Vertical"  Grid.Column="1">
             <TextBox Name="prixM" Header="Prix :" Width="300" HorizontalAlignment="Left" Margin="25"/>
-            <!--
-            <TextBox Name="dateIntroM" Header="Date introduction :" Width="300" HorizontalAlignment="Left" Margin="25"/>
-             <TextBox Name="dateDiscM" Header="Date discontinuité :" Width="300" HorizontalAlignment="Left" Margin="25"/>
-            -->
             <DatePicker x:Name="dateIntroM" Header="Date introduction :" Width="300" HorizontalAlignment="Left" Margin="25"/>
             <DatePicker x:Name="dateDiscM" Header="Date discontinuité :" Width="300" HorizontalAlignment="Left" Margin="25"/>
             <TextBox Name="quantStockM" Header="Quantité en Stock :" Width="300" HorizontalAlignment="Left" Margin="25"/>
             <Button Content="Confirmer le modele" Click="Ajouter_Modele" Margin="25" Background="#A1573A" Foreground="White"/>
+            <TextBlock Name="Content" Text="" Margin="25" />
         </StackPanel>
     </Grid>
 </Page>

@@ -26,23 +26,23 @@ namespace VéloMax.pages
 {
     public sealed partial class ModelesUI : Page
     {
+        public string[] tableau { get; set; }
+
         public ModelesUI()
         {
             this.InitializeComponent();
+            MyDataGrid.ItemsSource = Modele.Lister();
             /*
             foreach (DataGridColumn c in MyDataGrid.Columns)
             {
                 if (c.Tag != null && c.Tag.Equals("MaLigne"))
                 {
-                    (c as DataGridComboBoxColumn).ItemsSource = ConvertisseurLigneModel.LigneVersListeString();
+                    DataGridComboBoxColumn zz = ((DataGridComboBoxColumn)c);
+                    Debug.WriteLine(zz.ItemsSource);
+                    zz.ItemsSource = new List<string>  ();
                 }
             }
             */
-        }
-
-        public ReadOnlyCollection<Modele> modeles
-        {
-            get => Modele.Lister();
         }
 
         private void Nouveau_Click(object sender, RoutedEventArgs e)
@@ -53,7 +53,7 @@ namespace VéloMax.pages
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
             ((Modele)MyDataGrid.SelectedItem).Supprimer();
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(ModelesUI));
+            MyDataGrid.ItemsSource = Modele.Lister();
         }
 
         private async void ExporterXML(object sender, RoutedEventArgs e)

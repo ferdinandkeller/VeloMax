@@ -8,7 +8,6 @@
     mc:Ignorable="d"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
     <Grid>
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
@@ -22,20 +21,7 @@
                     <Button Content="Stocks Faibles -> XML" Background="#A1573A" Foreground="White" Width="150" Margin="0 0 25 0" Click="ExporterXML"/>
                 </StackPanel>
             </StackPanel>
-            <controls:DataGrid Name="MyDataGrid" ItemsSource="{x:Bind modeles}" AutoGenerateColumns="False">
-                <controls:DataGrid.RowStyle>
-                    <Style TargetType="controls:DataGridRow">
-                        <Setter Property="IsHitTestVisible" Value="False"/>
-                        <d:Style.Triggers>
-                            <d:DataTrigger Binding="{Binding RelativeSource={RelativeSource Self},Path=Row.DataItem.estStockFaibleM}" Value="True">
-                                <Setter Property="Background" Value="LightSalmon"/>
-                            </d:DataTrigger>
-                            <d:DataTrigger Binding="{Binding RelativeSource={RelativeSource Self},Path=Row.DataItem.quantStockM}" Value="5">
-                                <Setter Property="Background" Value="DarkSalmon"/>
-                            </d:DataTrigger>
-                        </d:Style.Triggers>
-                    </Style>
-                </controls:DataGrid.RowStyle>
+            <controls:DataGrid Name="MyDataGrid" AutoGenerateColumns="False">
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Header="référence" Binding="{Binding numMg}"/>
                     <controls:DataGridTextColumn Header="nom" Binding="{Binding nomM}"/>
@@ -43,7 +29,7 @@
                     <controls:DataGridTextColumn Header="taille" Binding="{Binding tailleM}"/>
                     <controls:DataGridComboBoxColumn Header="ligne" Binding="{Binding ligne}" Tag="MaLigne"/>
                     <controls:DataGridTextColumn Header="prix" Binding="{Binding prixM}"/>
-                    <controls:DataGridTextColumn Header="date introduction" Binding="{Binding dateIntroMS }"/>
+                    <controls:DataGridTextColumn Header="date introduction" Binding="{Binding dateIntroMS}"/>
                     <controls:DataGridTextColumn Header="date discontinuité" Binding="{Binding dateDiscMS}"/>
                     <controls:DataGridTextColumn Header="quantité stock" Binding="{Binding quantStockM}"/>
                 </controls:DataGrid.Columns>

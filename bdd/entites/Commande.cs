@@ -102,8 +102,6 @@ namespace VéloMax.bdd
             int nc = -1;
             ControlleurRequetes.SelectionneUn($"INSERT INTO Commande (numA, dateC, dateL) VALUES ({numA}, '{dateC.ToString("yyyy-MM-dd HH:mm:ss")}', '{dateL.ToString("yyyy-MM-dd HH:mm:ss")}'); SELECT LAST_INSERT_ID() AS l;", (MySqlDataReader reader) => { nc = reader.GetInt32("l"); });
             this.numC = nc;
-            // ControlleurRequetes.Inserer($"INSERT INTO Commande (numA, dateC, dateL) VALUES ({numA}, '{dateC.ToString("yyyy-MM-dd HH:mm:ss")}', '{dateL.ToString("yyyy-MM-dd HH:mm:ss")}'); ");
-            // this.numC = ControlleurRequetes.DernierIDUtilise();
         }
         public Commande(Adresse adresse, DateTime dateC, DateTime dateL) : this(adresse.numA, dateC, dateL)
         {

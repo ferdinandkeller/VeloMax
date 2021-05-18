@@ -25,11 +25,7 @@ namespace VéloMax.pages
         public PiecesUI()
         {
             this.InitializeComponent();
-        }
-
-        public ReadOnlyCollection<Piece> pieces
-        {
-            get => Piece.Lister();
+            MyDataGrid.ItemsSource = Piece.Lister();
         }
 
         private void Nouveau_Click(object sender, RoutedEventArgs e)
@@ -39,8 +35,8 @@ namespace VéloMax.pages
 
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
-            ((Individu)MyDataGrid.SelectedItem).Supprimer();
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(PiecesUI));
+            ((Piece)MyDataGrid.SelectedItem).Supprimer();
+            MyDataGrid.ItemsSource = Piece.Lister();
         }
 
         private async void ExporterXML(object sender, RoutedEventArgs e)

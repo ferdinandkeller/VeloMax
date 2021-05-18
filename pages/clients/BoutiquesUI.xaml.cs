@@ -28,11 +28,7 @@ namespace VéloMax.pages
         public BoutiquesUI()
         {
             this.InitializeComponent();
-        }
-
-        public ReadOnlyCollection<Boutique> entreprises
-        {
-            get => Boutique.Lister();
+            MyDataGrid.ItemsSource = Boutique.Lister();
         }
 
         private void Nouveau_Click(object sender, RoutedEventArgs e)
@@ -43,7 +39,7 @@ namespace VéloMax.pages
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
             ((Boutique)MyDataGrid.SelectedItem).Supprimer();
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(BoutiquesUI));
+            MyDataGrid.ItemsSource = Boutique.Lister();
         }
     }
 }

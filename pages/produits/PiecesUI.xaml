@@ -21,7 +21,7 @@
                 <Button Content="Stocks Faibles -> XML" Background="#A1573A" Foreground="White" Width="Auto" Margin="0 0 25 0" Click="ExporterXML"/>
             </StackPanel>
         </StackPanel>
-        <controls:DataGrid Name="MyDataGrid" ItemsSource="{x:Bind pieces}" AutoGenerateColumns="False">
+        <controls:DataGrid Name="MyDataGrid" AutoGenerateColumns="False">
             <controls:DataGrid.Columns>
                 <controls:DataGridTextColumn Header="référence" Binding="{Binding numPg}" IsReadOnly="True"/>
                 <controls:DataGridTextColumn Header="description" Binding="{Binding descriptionP}"/>

@@ -28,11 +28,7 @@ namespace VéloMax.pages
         public FidelioUI()
         {
             this.InitializeComponent();
-        }
-
-        public ReadOnlyCollection<Fidelio> fidelios
-        {
-            get => Fidelio.Lister();
+            MyDataGrid.ItemsSource = Fidelio.Lister();
         }
 
         private void Nouveau_Click(object sender, RoutedEventArgs e)
@@ -43,7 +39,7 @@ namespace VéloMax.pages
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
             ((Fidelio)MyDataGrid.SelectedItem).Supprimer();
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(FidelioUI));
+            MyDataGrid.ItemsSource = Fidelio.Lister();
         }
 
         private async void ExporterJSON(object sender, RoutedEventArgs e)

@@ -40,10 +40,8 @@ namespace VéloMax.pages
 
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine(MyDataGrid.SelectedIndex);
-            Debug.WriteLine(CatalFournisseur.Lister(f).Count());
-            CatalFournisseur.Lister(f)[MyDataGrid.SelectedIndex].Supprimer();
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(CatalogueUI), f);
+            ((CatalFournisseur)MyDataGrid.SelectedItem).Supprimer();
+            MyDataGrid.ItemsSource = CatalFournisseur.Lister(f);
         }
     }
 }

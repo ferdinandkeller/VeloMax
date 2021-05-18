@@ -28,11 +28,7 @@ namespace VéloMax.pages
         public FideliteUI()
         {
             this.InitializeComponent();
-        }
-
-        public ReadOnlyCollection<Programme> programmes
-        {
-            get => Programme.Lister();
+            MyDataGrid.ItemsSource = Programme.Lister();
         }
 
         private void Nouveau_Click(object sender, RoutedEventArgs e)
@@ -43,7 +39,7 @@ namespace VéloMax.pages
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
             ((Programme)MyDataGrid.SelectedItem).Supprimer();
-            ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(FideliteUI));
+            MyDataGrid.ItemsSource = Programme.Lister();
         }
     }
 }

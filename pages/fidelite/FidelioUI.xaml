@@ -22,7 +22,7 @@
             </StackPanel>
             
         </StackPanel>
-        <controls:DataGrid Name="MyDataGrid" ItemsSource="{x:Bind fidelios}" AutoGenerateColumns="False" >
+        <controls:DataGrid Name="MyDataGrid" AutoGenerateColumns="False" >
             <controls:DataGrid.Columns>
                 <controls:DataGridTextColumn Header="nom" Binding="{Binding individu.nomI}"/>
                 <controls:DataGridTextColumn Header="prenom" Binding="{Binding individu.prenomI}"/>
