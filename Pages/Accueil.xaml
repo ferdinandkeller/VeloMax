@@ -11,5 +11,6 @@
     <StackPanel Orientation="Vertical" Margin="25">
         <TextBlock TextWrapping="Wrap" Style="{StaticResource HeaderTextBlockStyle}" Text="VéloMax"/>
         <TextBlock Text="Vous en reviez ? Le voici !" TextWrapping="Wrap" Style="{StaticResource TitleTextBlockStyle}"/>
+        <Image Source="https://images-na.ssl-images-amazon.com/images/I/91xuq9jEvYL.jpg" Width="500" Margin="0 25 0 0" />
     </StackPanel>
 </Page>
