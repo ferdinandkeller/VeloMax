@@ -13,7 +13,7 @@
         <TextBox Name="nomProg" Header="Nom Programme :" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25"/>
         <TextBox Name="cout" Header="Cout :" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25"/>
         <TextBox Name="rabais" Header="Rabais :" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25"/>
-        <TextBox Name="duree" Header="Duree :" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25"/>
+        <TextBox Name="duree" Header="Duree :" PlaceholderText="Nombre de jours" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25"/>
         <Button Content="Ajouter le programme" Click="AjoutProgramme" Background="#A1573A" Foreground="White"/>
     </StackPanel>
 </Page>

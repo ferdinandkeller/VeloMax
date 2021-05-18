@@ -26,13 +26,16 @@ namespace VéloMax.pages
 
             ClientCombo.ItemsSource = Individu.ListerPasFidelioString();
             ProgrammeCombo.ItemsSource = Programme.ListerString();
+            dateAdherence1.SelectedDate = DateTimeOffset.Now;
+            dateAdherence1.MinYear = DateTimeOffset.Now;
         }
 
         public void AjoutProgramme(object sender, RoutedEventArgs e)
         {
             try
             {
-                new Fidelio(Individu.ListerPasFidelio()[ClientCombo.SelectedIndex], Programme.Lister()[ProgrammeCombo.SelectedIndex], DateTime.Parse(dateAdherence.Text));
+                DateTime date = new DateTime(dateAdherence1.SelectedDate.Value.Year, dateAdherence1.SelectedDate.Value.Month, dateAdherence1.SelectedDate.Value.Day);
+                new Fidelio(Individu.ListerPasFidelio()[ClientCombo.SelectedIndex], Programme.Lister()[ProgrammeCombo.SelectedIndex], date); //DateTime.Parse(dateAdherence.Text)
                 ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(FidelioUI));
             } catch { }
         }

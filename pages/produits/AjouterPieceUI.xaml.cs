@@ -23,13 +23,18 @@ namespace VéloMax.pages
         public AjouterPieceUI()
         {
             this.InitializeComponent();
+            dateIntroP.SelectedDate = DateTimeOffset.Now;
+            dateDiscP.SelectedDate = DateTimeOffset.Now.AddYears(10);
+            dateDiscP.MinYear = DateTimeOffset.Now;
         }
 
         public void Ajouter_Piece(object sender, RoutedEventArgs e)
         {
             try
             {
-                new Piece(descriptionP.Text, DateTime.Parse(dateIntroP.Text), DateTime.Parse(dateDiscP.Text), int.Parse(prixP.Text), int.Parse(quantStockP.Text));
+                DateTime dateI = new DateTime(dateIntroP.SelectedDate.Value.Year, dateIntroP.SelectedDate.Value.Month, dateIntroP.SelectedDate.Value.Day);
+                DateTime dateD = new DateTime(dateDiscP.SelectedDate.Value.Year, dateDiscP.SelectedDate.Value.Month, dateDiscP.SelectedDate.Value.Day);
+                new Piece(descriptionP.Text, dateI, dateD, int.Parse(prixP.Text), int.Parse(quantStockP.Text)); //DateTime.Parse(dateIntroP.Text), DateTime.Parse(dateDiscP.Text)
                 ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(PiecesUI));
             } catch { }
         }

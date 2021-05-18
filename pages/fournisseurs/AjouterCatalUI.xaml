@@ -14,7 +14,7 @@
             <ComboBox Name="pieceCombo" Header="Pièce :" PlaceholderText="" Width="300" Margin="0 0 0 25" />
             <TextBox Name="numPF" Header="Identifiant pièce fournisseur :" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25" />
             <TextBox Name="prixPF" Header="Prix fournisseur :" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25" />
-            <TextBox Name="delaiF" Header="Délai :" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25" />
+            <TextBox Name="delaiF" Header="Délai :" PlaceholderText="Nombre de jours" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25" />
             <Button Content="Ajouter Catalogue" Click="AjoutCatalogue" Background="#A1573A" Foreground="White"/>
         </StackPanel>
     </StackPanel>

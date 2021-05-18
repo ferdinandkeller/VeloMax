@@ -12,7 +12,10 @@
         <TextBlock Text="Fidelio :" Margin="0 0 0 25" Style="{ThemeResource SubheaderTextBlockStyle}"/>
         <ComboBox Name="ClientCombo" Header="Client :" PlaceholderText="Client à fidéliser" Width="300" Margin="0 0 0 25" />
         <ComboBox Name="ProgrammeCombo" Header="Programme :" PlaceholderText="Programme choisit" Width="300" Margin="0 0 0 25" />
+        <!--
         <TextBox Name="dateAdherence" Header="Date d'adhérence :" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25"/>
+        -->
+        <DatePicker x:Name="dateAdherence1" Header="Date d'adhérence :" Width="300" HorizontalAlignment="Left" Margin="0 0 0 25"/>
         <Button Content="Ajouter le client au programme" Click="AjoutProgramme" Background="#A1573A" Foreground="White"/>
     </StackPanel>
 </Page>

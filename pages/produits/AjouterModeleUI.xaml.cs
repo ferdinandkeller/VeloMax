@@ -24,12 +24,17 @@ namespace VéloMax.pages
         {
             this.InitializeComponent();
             ligneM.ItemsSource = ConvertisseurLigneModel.LigneVersListeString();
+            dateIntroM.SelectedDate = DateTimeOffset.Now;
+            dateDiscM.SelectedDate = DateTimeOffset.Now.AddYears(10);
+            dateDiscM.MinYear = DateTimeOffset.Now;
         }
 
         public void Ajouter_Modele(object sender, RoutedEventArgs e)
         {
             try {
-                new Modele(nomM.Text, descriptionM.Text, int.Parse(tailleM.Text), ConvertisseurLigneModel.LigneVersListe()[ligneM.SelectedIndex], int.Parse(prixM.Text), DateTime.Parse(dateIntroM.Text), DateTime.Parse(dateDiscM.Text), int.Parse(quantStockM.Text));
+                DateTime dateI = new DateTime(dateIntroM.SelectedDate.Value.Year, dateIntroM.SelectedDate.Value.Month, dateIntroM.SelectedDate.Value.Day);
+                DateTime dateD = new DateTime(dateDiscM.SelectedDate.Value.Year, dateDiscM.SelectedDate.Value.Month, dateDiscM.SelectedDate.Value.Day);
+                new Modele(nomM.Text, descriptionM.Text, int.Parse(tailleM.Text), ConvertisseurLigneModel.LigneVersListe()[ligneM.SelectedIndex], int.Parse(prixM.Text),dateI,dateD, int.Parse(quantStockM.Text));// DateTime.Parse(dateIntroM.Text), DateTime.Parse(dateDiscM.Text)
                 ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(ModelesUI));
             } catch { }
         }
