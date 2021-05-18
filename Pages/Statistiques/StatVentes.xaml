@@ -9,8 +9,7 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
-        
+    <Grid>
         <RelativePanel>
             <Grid>
                 <StackPanel Orientation="Vertical">

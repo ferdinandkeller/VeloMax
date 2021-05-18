@@ -17,7 +17,7 @@
                             FallbackColor="White"/>
             <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground"
                             BackgroundSource="HostBackdrop"
-                            TintColor="{StaticResource SystemColorBackgroundColor}"
+                            TintColor="{StaticResource SystemAltHighColor}"
                             TintOpacity="0.5"
                             FallbackColor="White"/>
         </NavigationView.Resources>
