@@ -27,6 +27,7 @@ namespace VéloMax.pages
             dateIntroM.SelectedDate = DateTimeOffset.Now;
             dateDiscM.SelectedDate = DateTimeOffset.Now.AddYears(10);
             dateDiscM.MinYear = DateTimeOffset.Now;
+            refPiecesCombo.ItemsSource = Piece.ListerString();
         }
 
         public void Ajouter_Modele(object sender, RoutedEventArgs e)
@@ -36,7 +37,51 @@ namespace VéloMax.pages
                 DateTime dateD = new DateTime(dateDiscM.SelectedDate.Value.Year, dateDiscM.SelectedDate.Value.Month, dateDiscM.SelectedDate.Value.Day);
                 new Modele(nomM.Text, descriptionM.Text, int.Parse(tailleM.Text), ConvertisseurLigneModel.LigneVersListe()[ligneM.SelectedIndex], int.Parse(prixM.Text),dateI,dateD, int.Parse(quantStockM.Text));// DateTime.Parse(dateIntroM.Text), DateTime.Parse(dateDiscM.Text)
                 ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(ModelesUI));
+                foreach()
             } catch { }
         }
+
+        public List<ComP> pieces = new List<ComP>();
+        public List<ComM> modeles = new List<ComM>();
+        public string content = "";
+
+        
+        public void AfficherContenuModele()
+        {
+            string t = "PIECES :\n";
+            foreach (ComP cp in pieces)
+            {
+                t += $"[{cp.p.numP}] x{cp.q}\n";
+            }
+            Debug.WriteLine(t);
+            Content.Text = t;
+        }
+
+        public void AjoutPiece(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Piece p = Piece.Lister()[refPiecesCombo.SelectedIndex];
+                int quant = int.Parse(quantiteP.Text);
+                bool edited = false;
+                foreach (ComP cp in pieces)
+                {
+                    if (cp.p.numP == p.numP)
+                    {
+                        cp.q += quant;
+                        edited = true;
+                        break;
+                    }
+                }
+                if (!edited)
+                {
+                    pieces.Add(new ComP(p, quant));
+                }
+                AfficherContenuModele();
+            }
+            catch { }
+        }
+
+
     }
 }

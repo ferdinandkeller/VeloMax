@@ -18,6 +18,10 @@
             <TextBox Name="descriptionM" Header="Description :" Width="300" HorizontalAlignment="Left" Margin="25"/>
             <TextBox Name="tailleM" Header="Taille :" Width="300" HorizontalAlignment="Left" Margin="25"/>
             <ComboBox Name="ligneM" Header="Ligne :" PlaceholderText="Choisis une ligne" Margin="25" />
+            <ComboBox Name="refPiecesCombo" Header="Référence" PlaceholderText="" Width="300" Margin="25" />
+            <TextBox Name="quantiteP" Header="Quantité :" Width="300" HorizontalAlignment="Left" Margin="25" />
+            <Button Content="Ajouter Pièce" Click="AjoutPieceModele" Background="#A1573A" Foreground="White" Margin="25"/>
+            <TextBlock Name="Content" Text="" Margin="25" />
         </StackPanel>
         <StackPanel Orientation="Vertical"  Grid.Column="1">
             <TextBox Name="prixM" Header="Prix :" Width="300" HorizontalAlignment="Left" Margin="25"/>
