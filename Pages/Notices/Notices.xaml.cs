@@ -30,10 +30,10 @@ namespace VéloMax.Pages
     public class Notice
     {
         
-        public string modele;
-        public string piece;
-        public string quant;
-        public string dates;
+        public string modele { get; set; }
+        public string piece { get; set; }
+        public string quant { get; set; }
+        public string dates { get; set; }
 
         public Notice(int numM,string nomM, int numP,string descriptionP,int quant, DateTime dateIntroP, DateTime dateDiscP)
         {
@@ -59,7 +59,7 @@ namespace VéloMax.Pages
 
         public static ReadOnlyCollection<Notice> DonnerNotice(string numM)
         {
-            string requete = "Select numM, nomM,numP, descriptionP, quant, dateIntroP,dateDiscP from compositionmodele natural join modele natural join piece where numM='" + numM + "';";
+            string requete = $"Select numM, nomM,numP, descriptionP, quant, dateIntroP,dateDiscP from modele natural join compositionmodele natural join piece where numM={numM};";
             List<Notice> list = new List<Notice>();
             ControlleurRequetes.SelectionnePlusieurs(requete, (MySqlDataReader reader) => { list.Add(new Notice(reader.GetInt32("numM"), reader.GetString("nomM"), reader.GetInt32("numP"), reader.GetString("descriptionP"), reader.GetInt32("quant"), reader.GetDateTime(" dateIntroP"), reader.GetDateTime(" dateDiscP"))); });
             return new ReadOnlyCollection<Notice>(list);
@@ -68,37 +68,10 @@ namespace VéloMax.Pages
         public void Type_Model_Change(object sender, SelectionChangedEventArgs e)
         {
             string numM = e.AddedItems[0].ToString();
-            noticeModele = DonnerNotice(numM);
+            int n = numM.Length;
+            string num = numM.Substring(n - 2, 1);
+            noticeModele = DonnerNotice(num);
         }
-
-        /*
-        private void Navview_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
-        {
-            if (args.InvokedItemContainer != null)
-            {
-                var navItemTag = args.InvokedItemContainer.Tag.ToString();
-            }
-        }
-
-        private void NavView_BackRequested(NavigationView sender,
-                                           NavigationViewBackRequestedEventArgs args)
-        {
-            TryGoBack();
-        }
-
-        private bool TryGoBack()
-        {
-            if (!NavigationContentFrame.CanGoBack)
-                return false;
-
-            // Don't go back if the nav pane is overlayed.
-            if (NavViewNotices.IsPaneOpen &&
-                (NavViewNotices.DisplayMode == NavigationViewDisplayMode.Compact ||
-                 NavViewNotices.DisplayMode == NavigationViewDisplayMode.Minimal))
-                return false;
-            NavigationContentFrame.GoBack();
-            return true;
-        }*/
 
         private async void ExporterJSON(object sender, RoutedEventArgs e)
         {

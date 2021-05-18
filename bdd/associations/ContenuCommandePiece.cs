@@ -90,11 +90,11 @@ namespace VéloMax.bdd
 
     public class EtatStockPiece
     {
-        public readonly int numP;
-        public string descriptionP;
-        public int qteP;
-        public int quantStockP;
-        public bool estStockFaibleP;
+        public int numP { get; set; }
+        public string descriptionP { get; set; }
+        public int qteP { get; set; }
+        public int quantStockP { get; set; }
+        public bool estStockFaibleP { get; set; }
 
         public EtatStockPiece(int numP, string descriptionP, int qteP, int quantStockP)
         {

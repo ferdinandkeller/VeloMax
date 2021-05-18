@@ -142,11 +142,11 @@ namespace VéloMax.bdd
 
     public class MembreFidelioStat
     {
-        public string nomProg;
-        public string nomI;
-        public string prenomI;
-        public DateTime dateAdherence;
-        public string finAdherence;
+        public string nomProg { get; set; }
+        public string nomI { get; set; }
+        public string prenomI { get; set; }
+        public DateTime dateAdherence { get; set; }
+        public string finAdherence { get; set; }
 
         public MembreFidelioStat(string nomI, string prenomI, string nomProg, DateTime dateAdherence, int duree)
         {

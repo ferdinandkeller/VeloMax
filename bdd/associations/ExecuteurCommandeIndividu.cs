@@ -62,7 +62,7 @@ namespace VéloMax.bdd
         public static ReadOnlyCollection<MeilleurIndividu> ListerMeilleursIndividus()
         {
             List<MeilleurIndividu> list = new List<MeilleurIndividu>();
-            string s = "SELECT numI,nomI,prenomI, SUM(quantPieceC+quantModeleC) quanti,SUM(quantPieceC*prixP+quantModeleC*prixM) prixTot,COUNT(numC) c FROM Individu NATURAL JOIN Commande NATURAL JOIN ContenuCommandeModele NATURAL JOIN ContenuCommandePiece NATURAL JOIN piece NATURAL JOIN modele GROUP BY numI ORDER BY c DESC;";
+            string s = "SELECT numI, nomI, prenomI, SUM(quantiTot) as quanti, SUM(PrixTot) as prixTot, COUNT(numC) as c FROM (SELECT numC, IFNULL((SELECT SUM(quantPieceC * prixP) as prixTot FROM contenucommandepiece NATURAL JOIN piece WHERE contenucommandepiece.numC = commande.numC GROUP BY numC), 0) + IFNULL((SELECT SUM(quantModeleC * prixM) as prixTot FROM contenucommandemodele NATURAL JOIN modele WHERE contenucommandemodele.numC = commande.numC GROUP BY numC), 0) AS PrixTot, IFNULL((SELECT SUM(quantPieceC) as quant FROM contenucommandepiece NATURAL JOIN piece WHERE contenucommandepiece.numC = commande.numC GROUP BY numC), 0) + IFNULL((SELECT SUM(quantModeleC) as quant FROM contenucommandemodele NATURAL JOIN modele WHERE contenucommandemodele.numC = commande.numC GROUP BY numC), 0) AS QuantiTot FROM commande) as t1 NATURAL JOIN ExecuteurCommandeIndividu NATURAL JOIN Individu;" ;
             ControlleurRequetes.SelectionnePlusieurs(s, (MySqlDataReader reader) => { list.Add(new MeilleurIndividu(reader.GetString("nomI"), reader.GetString("prenomI"),reader.GetString("quanti"), reader.GetString("prixTot"), reader.GetString("c"))); });
             return new ReadOnlyCollection<MeilleurIndividu>(list);
         }
@@ -70,11 +70,11 @@ namespace VéloMax.bdd
 
     public class MeilleurIndividu
     {
-        public string nomI;
-        public string prenomI;
-        public string quantiteVentes;
-        public string montant;
-        public string nombreCommandes;
+        public string nomI { get; set; }
+        public string prenomI { get; set; }
+        public string quantiteVentes { get; set; }
+        public string montant { get; set; }
+        public string nombreCommandes { get; set; }
 
         public MeilleurIndividu(string nomI, string prenomI, string quantiteVentes, string montant, string nombreCommandes)
         {

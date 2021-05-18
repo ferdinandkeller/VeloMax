@@ -62,7 +62,7 @@ namespace VéloMax.bdd
         public static ReadOnlyCollection<MeilleurBoutique> ListerMeilleursBoutiques()
         {
             List<MeilleurBoutique> list = new List<MeilleurBoutique>();
-            string s = "SELECT numB,nomB,SUM(quantPieceC+quantModeleC) quanti,SUM(quantPieceC*prixP+quantModeleC*prixM) prixTot,COUNT(numC) c FROM Boutique NATURAL JOIN Commande NATURAL JOIN ContenuCommandeModele NATURAL JOIN ContenuCommandePiece NATURAL JOIN piece NATURAL JOIN modele GROUP BY numB ORDER BY c DESC;";
+            string s = "SELECT numB, nomB, SUM(quantiTot) as quanti, SUM(PrixTot) as prixTot, COUNT(numC) as c FROM (SELECT numC, IFNULL((SELECT SUM(quantPieceC * prixP) as prixTot FROM contenucommandepiece NATURAL JOIN piece WHERE contenucommandepiece.numC = commande.numC GROUP BY numC), 0) + IFNULL((SELECT SUM(quantModeleC * prixM) as prixTot FROM contenucommandemodele NATURAL JOIN modele WHERE contenucommandemodele.numC = commande.numC GROUP BY numC), 0) AS PrixTot,IFNULL((SELECT SUM(quantPieceC) as quant FROM contenucommandepiece NATURAL JOIN piece WHERE contenucommandepiece.numC = commande.numC GROUP BY numC), 0)+IFNULL((SELECT SUM(quantModeleC) as quant FROM contenucommandemodele NATURAL JOIN modele WHERE contenucommandemodele.numC = commande.numC GROUP BY numC), 0) AS QuantiTot FROM commande) as t1 NATURAL JOIN ExecuteurCommandeBoutique NATURAL JOIN Boutique; ";
             ControlleurRequetes.SelectionnePlusieurs(s, (MySqlDataReader reader) => { list.Add(new MeilleurBoutique(reader.GetString("nomB"), reader.GetString("quanti"), reader.GetString("prixTot"), reader.GetString("c"))); });
             return new ReadOnlyCollection<MeilleurBoutique>(list);
         }
@@ -70,10 +70,10 @@ namespace VéloMax.bdd
 
     public class MeilleurBoutique
     {
-        public string nomB;
-        public string quantiteVentesB;
-        public string montantB;
-        public string nombreCommandesB;
+        public string nomB { get; set; }
+        public string quantiteVentesB { get; set; }
+        public string montantB { get; set; }
+        public string nombreCommandesB { get; set; }
 
         public MeilleurBoutique(string nomB,string quantiteVentes, string montant, string nombreCommandes)
         {
