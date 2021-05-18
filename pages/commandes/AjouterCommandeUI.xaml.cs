@@ -53,6 +53,11 @@ namespace VéloMax.pages
 
             refPiecesCombo.ItemsSource = Piece.ListerString();
             refModeleCombo.ItemsSource = Modele.ListerString();
+
+            dateC.SelectedDate = DateTimeOffset.Now;
+            dateL.SelectedDate = DateTimeOffset.Now;
+            dateC.MinYear = DateTimeOffset.Now;
+            dateL.MinYear = DateTimeOffset.Now;
         }
 
         public void AfficherContenuCommande()
@@ -134,12 +139,14 @@ namespace VéloMax.pages
         }
 
         private void AjoutCommande(object sender, RoutedEventArgs e)
-        {
+       {
+            DateTime dateCC = new DateTime(dateC.SelectedDate.Value.Year, dateC.SelectedDate.Value.Month, dateC.SelectedDate.Value.Day);
+            DateTime dateLL = new DateTime(dateL.SelectedDate.Value.Year, dateL.SelectedDate.Value.Month, dateL.SelectedDate.Value.Day);
             if (ClientCombo.SelectedIndex == 0)
             {
                 Individu ind = Individu.Lister()[AdaptableCombo.SelectedIndex];
 
-                Commande c = new Commande(ind.adresse, DateTime.Parse(dateC.Text), DateTime.Parse(dateL.Text));
+                Commande c = new Commande(ind.adresse, dateCC, dateLL);
 
                 foreach (ComP cp in pieces)
                 {
@@ -157,7 +164,7 @@ namespace VéloMax.pages
             {
                 Boutique bout = Boutique.Lister()[AdaptableCombo.SelectedIndex];
 
-                Commande c = new Commande(bout.adresse, DateTime.Parse(dateC.Text), DateTime.Parse(dateL.Text));
+                Commande c = new Commande(bout.adresse, dateCC, dateLL);
 
                 foreach (ComP cp in pieces)
                 {

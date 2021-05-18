@@ -19,8 +19,12 @@
             
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="0 0 0 25">
+            <!--
             <TextBox Name="dateC" Header="Date Commande :" Width="300" HorizontalAlignment="Left" Margin="0 0 25 0" />
             <TextBox Name="dateL" Header="Date Livraison :" Width="300" HorizontalAlignment="Left" />
+            -->
+            <DatePicker x:Name="dateC" Header="Date Commande :" Width="300" HorizontalAlignment="Left" Margin="0 0 25 0"/>
+            <DatePicker x:Name="dateL" Header="Date Livraison :" Width="300" HorizontalAlignment="Left"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <StackPanel Orientation="Vertical" Margin="0 0 25 0">
