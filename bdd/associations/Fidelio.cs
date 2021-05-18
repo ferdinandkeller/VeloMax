@@ -145,7 +145,7 @@ namespace VéloMax.bdd
         public string nomProg { get; set; }
         public string nomI { get; set; }
         public string prenomI { get; set; }
-        public DateTime dateAdherence { get; set; }
+        public string dateAdherence { get; set; }
         public string finAdherence { get; set; }
 
         public MembreFidelioStat(string nomI, string prenomI, string nomProg, DateTime dateAdherence, int duree)
@@ -153,7 +153,7 @@ namespace VéloMax.bdd
             this.nomProg = nomProg;
             this.nomI = nomI;
             this.prenomI = prenomI;
-            this.dateAdherence = dateAdherence;
+            this.dateAdherence = dateAdherence.ToShortDateString();
             DateTime fin = dateAdherence.AddDays(duree);
             this.finAdherence = fin.ToShortDateString();
         }

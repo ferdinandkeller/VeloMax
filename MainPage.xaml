@@ -25,10 +25,22 @@
             <NavigationViewItem Tag="home" Icon="Home" Content="Accueil" />
             <NavigationViewItem Tag="commandes" Icon="Shop" Content="Commandes"/>
             <NavigationViewItem Tag="clients" Icon="People" Content="Clients" ToolTipService.ToolTip="Clients"/>
+            <NavigationViewItem Tag="programmes" Content="Fidelio">
+                <NavigationViewItem.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE734;" HorizontalAlignment="Right" Width="30"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <!--
             <NavigationViewItem Tag="programmes" Icon="Edit" Content="Fidelio" />
-            <NavigationViewItem Tag="fournisseurs" Icon="Manage" Content="Fournisseurs" />
             <NavigationViewItem Tag="produits" Icon="Edit" Content="Produits" />
-            <!--<NavigationViewItem Tag="stocks" Icon="Priority" Content="Stocks" />-->
+            -->
+
+            <NavigationViewItem Tag="produits" Content="Produits">
+                <NavigationViewItem.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xF133;" HorizontalAlignment="Right" Width="30"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem Tag="fournisseurs" Icon="Manage" Content="Fournisseurs" />
             <NavigationViewItem Tag="statistiques" Icon="TwoBars" Content="Statistiques" />
             <NavigationViewItem Tag="notices" Icon="Page" Content="Notices" />
         </NavigationView.MenuItems>
