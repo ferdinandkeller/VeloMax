@@ -83,7 +83,7 @@ namespace VéloMax.bdd
         public static ReadOnlyCollection<EtatStockPiece> ListerQuantitesVenduesP()
         {
             List<EtatStockPiece> list = new List<EtatStockPiece>();
-            ControlleurRequetes.SelectionnePlusieurs($"SELECT numP, descriptionP,SUM(quantPieceC) qteP,quantStockP FROM ContenuCommandePiece  NATURAL JOIN Piece GROUP BY numP ORDER BY quantStockP;", (MySqlDataReader reader) => { list.Add(new EtatStockPiece(reader.GetInt32("numP"), reader.GetString("descriptionP"), reader.GetInt32("qteP"), reader.GetInt32("quantSotckP"))); });
+            ControlleurRequetes.SelectionnePlusieurs($"SELECT numP, descriptionP,SUM(quantPieceC) qteP,quantStockP FROM ContenuCommandePiece  NATURAL JOIN Piece GROUP BY numP ORDER BY quantStockP;", (MySqlDataReader reader) => { list.Add(new EtatStockPiece(reader.GetInt32("numP"), reader.GetString("descriptionP"), reader.GetInt32("qteP"), reader.GetInt32("quantStockP"))); });
             return new ReadOnlyCollection<EtatStockPiece>(list);
         }
     }
