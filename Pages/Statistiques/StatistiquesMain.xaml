@@ -23,7 +23,7 @@
                             FallbackColor="White"/>-->
             </NavigationView.Resources>
             <NavigationView.MenuItems>
-                <NavigationViewItem Tag="statsVentes" Content="Ventes"/>
+                <NavigationViewItem Name="NavViewStat_Default" Tag="statsVentes" Content="Ventes"/>
                 <NavigationViewItem Tag="statClients" Content="Clients"/>
                 <NavigationViewItem Tag="statsFidelio" Content="Fidélio" />
                 <NavigationViewItem Tag="statsCommandes" Content="Commandes" />

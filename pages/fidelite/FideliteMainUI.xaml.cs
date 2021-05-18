@@ -20,11 +20,10 @@ namespace VéloMax.pages
         public FideliteMainUI()
         {
             this.InitializeComponent();
-            //NavViewFidelite.SelectedItem = NavViewFidelite_Default;
-            //NavigationContentFrame.Navigate(typeof(FidelioUI));
+            NavViewFidelite.SelectedItem = NavViewFidelite_Default;
+            NavigationContentFrame.Navigate(typeof(FidelioUI));
         }
 
-        /*
         private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             switch (((NavigationViewItem)args.SelectedItem).Tag)
@@ -37,7 +36,6 @@ namespace VéloMax.pages
                     break;
             }
         }
-        */
 
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>{
             ("fidelio", typeof(VéloMax.pages.FidelioUI)),
