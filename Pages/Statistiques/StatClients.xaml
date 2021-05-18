@@ -11,6 +11,7 @@
 
     <Grid>
         <StackPanel Orientation="Vertical">
+            <TextBlock Text="Particuliers"/>
             <controls:DataGrid Name="MyDataGrid" ItemsSource="{x:Bind meilleursMembres}" AutoGenerateColumns="False">
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Header="Nom" Binding="{Binding nomI}"/>
@@ -18,6 +19,15 @@
                     <controls:DataGridTextColumn Header="Qtés cumulées" Binding="{Binding quantiteVentes}"/>
                     <controls:DataGridTextColumn Header="Montant cumulé" Binding="{Binding montant}"/>
                     <controls:DataGridTextColumn Header="Nb commandes" Binding="{Binding nombreCommandes}"/>
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
+            <TextBlock Text="Boutiques"/>
+            <controls:DataGrid Name="MyDataGrid2" ItemsSource="{x:Bind meilleursBoutiques}" AutoGenerateColumns="False">
+                <controls:DataGrid.Columns>
+                    <controls:DataGridTextColumn Header="Nom" Binding="{Binding nomB}"/>
+                    <controls:DataGridTextColumn Header="Qtés cumulées" Binding="{Binding quantiteVentesB}"/>
+                    <controls:DataGridTextColumn Header="Montant cumulé" Binding="{Binding montantB}"/>
+                    <controls:DataGridTextColumn Header="Nb commandes" Binding="{Binding nombreCommandesB}"/>
                 </controls:DataGrid.Columns>
             </controls:DataGrid>
         </StackPanel>

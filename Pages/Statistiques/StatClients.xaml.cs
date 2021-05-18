@@ -39,5 +39,10 @@ namespace VéloMax.pages
         {
             get => ExecuteurCommandeIndividu.ListerMeilleursIndividus();
         }
+
+        public ReadOnlyCollection<MeilleurBoutique> meilleursBoutiques
+        {
+            get => ExecuteurCommandeBoutique.ListerMeilleursBoutiques();
+        }
     }
 }
