@@ -23,23 +23,19 @@ using VéloMax.pages;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-
-// Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
+using System.Diagnostics;
 
 namespace VéloMax.pages
 {
-    /// <summary>
-    /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
-    /// </summary>
     public sealed partial class StatCommandes : Page
     {
         public StatCommandes()
         {
             this.InitializeComponent();
             double[] moyens = GetPrixMoyC();
-            string prixMoyenC = moyens[0].ToString();
-            string piecesMoy = moyens[1].ToString();
-            string modelesMoy = moyens[2].ToString();
+            PrixM.Text = moyens[0].ToString();
+            PieceM.Text = moyens[1].ToString();
+            ModelM.Text = moyens[2].ToString();
         }
 
         public double[] GetPrixMoyC()
@@ -54,7 +50,5 @@ namespace VéloMax.pages
             });
             return moys;
         }
-
     }
-
 }

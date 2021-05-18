@@ -146,18 +146,17 @@ namespace VéloMax.pages
             {
                 Individu ind = Individu.Lister()[AdaptableCombo.SelectedIndex];
 
-                Commande c = new Commande(ind.adresse, dateCC, dateLL);
-
+                Commande com = new Commande(ind.adresse, dateCC, dateLL);
+                Debug.WriteLine(com.numC);
                 foreach (ComP cp in pieces)
                 {
-                    new ContenuCommandePiece(c, cp.p, cp.q);
+                    new ContenuCommandePiece(com, cp.p, cp.q);
                 }
                 foreach (ComM cm in modeles)
                 {
-                    new ContenuCommandeModele(c, cm.m, cm.q);
+                    new ContenuCommandeModele(com, cm.m, cm.q);
                 }
-
-                new ExecuteurCommandeIndividu(c, ind);
+                new ExecuteurCommandeIndividu(com, ind);
                 ((this.Frame.Parent as NavigationView).Content as Frame).Navigate(typeof(CommandesEncoursUI));
             }
             else if (ClientCombo.SelectedIndex == 1)

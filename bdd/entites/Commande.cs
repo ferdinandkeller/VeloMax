@@ -20,6 +20,7 @@ using Windows.UI.Core;
 using Windows.System;
 using System.ComponentModel;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace VéloMax.bdd
 {
@@ -67,6 +68,28 @@ namespace VéloMax.bdd
         {
             get => ContenuCommandeModele.Lister(numC);
         }
+        public bool enStock
+        {
+            get
+            {
+                bool res = true;
+                foreach (ContenuCommandePiece ccp in contenuPiece)
+                {
+                    if (ccp.quantPieceC > ccp.piece.quantStockP)
+                    {
+                        res = false;
+                    }
+                }
+                foreach (ContenuCommandeModele ccm in contenuModele)
+                {
+                    if (ccm.quantModeleC > ccm.modele.quantStockM)
+                    {
+                        res = false;
+                    }
+                }
+                return res;
+            }
+        }
 
         /* Instantiation */
         public Commande(int numC)
@@ -76,8 +99,11 @@ namespace VéloMax.bdd
 
         public Commande(int numA, DateTime dateC, DateTime dateL)
         {
-            ControlleurRequetes.Inserer($"INSERT INTO Commande (numA, dateC, dateL) VALUES ({numA}, '{dateC.ToString("yyyy-MM-dd HH:mm:ss")}', '{dateL.ToString("yyyy-MM-dd HH:mm:ss")}')");
-            this.numC = ControlleurRequetes.DernierIDUtilise();
+            int nc = -1;
+            ControlleurRequetes.SelectionneUn($"INSERT INTO Commande (numA, dateC, dateL) VALUES ({numA}, '{dateC.ToString("yyyy-MM-dd HH:mm:ss")}', '{dateL.ToString("yyyy-MM-dd HH:mm:ss")}'); SELECT LAST_INSERT_ID() AS l;", (MySqlDataReader reader) => { nc = reader.GetInt32("l"); });
+            this.numC = nc;
+            // ControlleurRequetes.Inserer($"INSERT INTO Commande (numA, dateC, dateL) VALUES ({numA}, '{dateC.ToString("yyyy-MM-dd HH:mm:ss")}', '{dateL.ToString("yyyy-MM-dd HH:mm:ss")}'); ");
+            // this.numC = ControlleurRequetes.DernierIDUtilise();
         }
         public Commande(Adresse adresse, DateTime dateC, DateTime dateL) : this(adresse.numA, dateC, dateL)
         {

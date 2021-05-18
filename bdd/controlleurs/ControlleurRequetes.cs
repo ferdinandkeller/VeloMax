@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
 
 namespace VéloMax.bdd
 {
@@ -70,9 +71,9 @@ namespace VéloMax.bdd
         public static int DernierIDUtilise()
         {
             int res = -1;
-            SelectionneUn("SELECT LAST_INSERT_ID()", (MySqlDataReader reader) =>
+            SelectionneUn("SELECT LAST_INSERT_ID() AS l", (MySqlDataReader reader) =>
             {
-                res = reader.GetInt32("LAST_INSERT_ID()");
+                res = reader.GetInt32("l");
             });
             return res;
         }
