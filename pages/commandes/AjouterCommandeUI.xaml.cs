@@ -62,22 +62,44 @@ namespace VéloMax.pages
 
         public void AfficherContenuCommande()
         {
+            float tot = 0;
+            float rabais = 0;
             string t = "PIECES :\n";
             foreach (ComP cp in pieces)
             {
-                t += $"[{cp.p.numP}] x{cp.q}\n";
+                t += $"[{cp.p.numP}] x{cp.q} ({cp.p.prixP*cp.q}€)\n";
+                tot += cp.p.prixP * cp.q;
             }
             t += "\nMODELES :\n";
             foreach (ComM cm in modeles)
             {
-                t += $"[{cm.m.numM}] {cm.m.nomM} x{cm.q}\n";
+                t += $"[{cm.m.numM}] {cm.m.nomM} x{cm.q} ({cm.m.prixM * cm.q}€)\n";
+                tot += cm.m.prixM * cm.q;
             }
+            t += "\nTOTAL :\n";
+            t += $"{tot} €";
+            if (ClientCombo.SelectedIndex == 0)
+            {
+                Individu ind = Individu.Lister()[AdaptableCombo.SelectedIndex];
+                rabais = ind.fidelio.programme.rabais;
+                if (rabais == -1) { rabais = 0; }
+            }
+            else if (ClientCombo.SelectedIndex == 1)
+            {
+                Boutique bout = Boutique.Lister()[AdaptableCombo.SelectedIndex];
+                rabais = float.Parse(bout.remise);
+            }
+            t += $"\n-> REMISE : {rabais}%";
+            float totr = tot * (1 - (rabais / 100));
+            t += "\nTOTAL FINAL :\n";
+            t += $"{totr} €";
             Debug.WriteLine(t);
             Content.Text = t;
         }
 
         public void Type_Client_Change(object sender, SelectionChangedEventArgs e)
         {
+            Content.Text = "";
             if (e.AddedItems[0].ToString() == "Particulier")
             {
                 AdaptableCombo.ItemsSource = Individu.ListerString();

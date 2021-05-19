@@ -106,7 +106,7 @@ namespace VéloMax.bdd
             List<string> list = new List<string>();
             foreach (Modele m in Lister())
             {
-                list.Add($"{m.nomM} ({ConvertisseurLigneModel.LigneVersString(m.ligne)}) [{m.numM}]");
+                list.Add($"{m.nomM} ({ConvertisseurLigneModel.LigneVersString(m.ligne)}) [{m.numM}] ({m.prixM} €)");
             }
             return new ReadOnlyCollection<string>(list);
         }

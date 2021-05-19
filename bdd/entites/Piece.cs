@@ -81,7 +81,7 @@ namespace VéloMax.bdd
             List<string> list = new List<string>();
             foreach (Piece p in Lister())
             {
-                list.Add($"{p.descriptionP} [{p.numP}]");
+                list.Add($"{p.descriptionP} [{p.numP}] ({p.prixP} €)");
             }
             return new ReadOnlyCollection<string>(list);
         }
