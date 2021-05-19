@@ -44,6 +44,10 @@ namespace VéloMax.pages
             {
                 moy = reader.IsDBNull(0) ? -1 : reader.GetDouble("quantPieces");
             });
+            if (moy == -1)
+            {
+                moy = 0;
+            }
             return moy;
         }
 
@@ -54,16 +58,24 @@ namespace VéloMax.pages
             {
                 moy = reader.IsDBNull(0) ? -1 : reader.GetDouble("quantModeles");
             });
+            if (moy == -1)
+            {
+                moy = 0;
+            }
             return moy;
         }
 
         public double GetMoyPrix()
         {
             double moy = -1;
-            ControlleurRequetes.SelectionneUn("SELECT AVG((prixPieces + prixModeles)/(quantPieceC + quantModeleC)) as moyPrixTot FROM (SELECT numC, SUM(prixP*quantPieceC) AS prixPieces, quantPieceC FROM contenucommandepiece NATURAL JOIN commande NATURAL JOIN piece GROUP BY numC) AS T1 NATURAL JOIN (SELECT SUM(prixM*quantModeleC) AS prixModeles, quantModeleC FROM contenucommandemodele NATURAL JOIN commande NATURAL JOIN modele GROUP BY numC) AS T2;", (MySqlDataReader reader) =>
+            ControlleurRequetes.SelectionneUn("SELECT AVG(PrixTot) as moyPrixTot FROM (SELECT numC, IFNULL((SELECT SUM(quantPieceC * prixP) as prixTot FROM contenucommandepiece NATURAL JOIN piece WHERE contenucommandepiece.numC = commande.numC GROUP BY numC), 0) + IFNULL((SELECT SUM(quantModeleC * prixM) as prixTot FROM contenucommandemodele NATURAL JOIN modele WHERE contenucommandemodele.numC = commande.numC GROUP BY numC), 0) AS PrixTot FROM commande) as t1; ", (MySqlDataReader reader) =>
             {
                 moy = reader.IsDBNull(0) ? -1 : reader.GetDouble("moyPrixTot");
             });
+            if (moy == -1)
+            {
+                moy = 0;
+            }
             return moy;
         }
     }
