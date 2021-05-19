@@ -32,17 +32,22 @@ namespace VéloMax.pages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            float tot = 0;
             c = new Commande((int)e.Parameter);
             string t = "PIECES :\n";
             foreach (ContenuCommandePiece ccp in ContenuCommandePiece.Lister(c))
             {
-                t += $"[{ccp.numP}] x{ccp.quantPieceC}\n";
+                t += $"[{ccp.numP}] x{ccp.quantPieceC} ({ccp.piece.prixP * ccp.quantPieceC}€)\n";
+                tot += ccp.piece.prixP * ccp.quantPieceC;
             }
             t += "\nMODELES :\n";
             foreach (ContenuCommandeModele ccm in ContenuCommandeModele.Lister(c))
             {
-                t += $"[{ccm.numM}] {ccm.modele.nomM} x{ccm.quantModeleC}\n";
+                t += $"[{ccm.numM}] {ccm.modele.nomM} x{ccm.quantModeleC} ({ccm.modele.prixM * ccm.quantModeleC}€)\n";
+                tot += ccm.modele.prixM * ccm.quantModeleC;
             }
+            t += "\nTOTAL (non remisé) :\n";
+            t += $"{tot} €";
             Debug.WriteLine(t);
             Content.Text = t;
         }
