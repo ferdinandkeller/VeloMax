@@ -146,7 +146,7 @@ namespace VéloMax.bdd
         }
 
         /* Autojointure */
-        public ReadOnlyCollection<Modele> ModelesSimilaires()
+        public ReadOnlyCollection<Modele> ModelesSimilaires(int numM)
         {
             List<Modele> list = new List<Modele>();
             ControlleurRequetes.SelectionnePlusieurs($"SELECT m2.numM FROM Modele AS m1 JOIN Modele AS m2 ON (m1.ligne = m2.ligne) WHERE m1.numM={numM} AND m1.numM<>m2.numM", (MySqlDataReader reader) => { list.Add(new Modele(reader.GetInt32("numM"))); });
