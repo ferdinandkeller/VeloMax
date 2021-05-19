@@ -37,6 +37,9 @@ namespace VéloMax.pages
                 case "clientEntreprise":
                     NavigationContentFrame.Navigate(typeof(BoutiquesUI));
                     break;
+                case "clientAll":
+                    NavigationContentFrame.Navigate(typeof(AllClients));
+                    break;
             }
         }
         

@@ -156,6 +156,9 @@
     <Compile Include="Pages\Clients\AjouterIndividuUI.xaml.cs">
       <DependentUpon>AjouterIndividuUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Clients\AllClients.xaml.cs">
+      <DependentUpon>AllClients.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Clients\BoutiquesUI.xaml.cs">
       <DependentUpon>BoutiquesUI.xaml</DependentUpon>
     </Compile>
@@ -337,6 +340,10 @@
     <Page Include="Pages\Clients\AjouterIndividuUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Clients\AllClients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Clients\BoutiquesUI.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -11,6 +11,7 @@
         <NavigationView.MenuItems>
             <NavigationViewItem Name="NavViewClients_Default" Tag="clientParticulier" Content="Particuliers"/>
             <NavigationViewItem Tag="clientEntreprise" Content="Entreprises" />
+            <NavigationViewItem Tag="clientAll" Content="Clients ayant commandé" />
         </NavigationView.MenuItems>
 
         <Frame Name="NavigationContentFrame"></Frame>
