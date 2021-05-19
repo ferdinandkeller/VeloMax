@@ -18,7 +18,7 @@
                     <SolidColorBrush Color="#A1573A"/>
                 </StackPanel.Background>
                 <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE74E;" HorizontalAlignment="Right" Width="30"/>
-                <Button Content="Historique clients -> JSON" Background="#A1573A" Foreground="White" Width="Auto" Click="ExporterJSON"/>
+                <Button Content="Expiration proche → JSON" Background="#A1573A" Foreground="White" Width="Auto" Click="ExporterJSON"/>
             </StackPanel>
             
         </StackPanel>

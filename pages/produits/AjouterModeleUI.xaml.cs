@@ -54,7 +54,7 @@ namespace VéloMax.pages
             string t = "PIECES :\n";
             foreach (ComP cp in pieces)
             {
-                t += $"[{cp.p.numP}] x{cp.q}\n";
+                t += $"[{cp.p.numP}] x{cp.q} ({cp.p.prixP* cp.q}€)\n";
             }
             Content.Text = t;
         }

@@ -18,7 +18,7 @@
                             <SolidColorBrush Color="#A1573A"/>
                         </StackPanel.Background>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE74E;" HorizontalAlignment="Right" Width="30"/>
-                        <Button Content="Stocks Faibles -> XML" Background="#A1573A" Foreground="White" Width="Auto" Margin="0 0 25 0" Click="ExporterXML"/>
+                        <Button Content="Stocks Faibles → XML" Background="#A1573A" Foreground="White" Width="Auto" Margin="0 0 25 0" Click="ExporterXML"/>
                     </StackPanel>
                     <TextBlock Text="Modèles"/>
                     <controls:DataGrid Name="MyDataGridM" ItemsSource="{x:Bind ventesModeles}" AutoGenerateColumns="False">

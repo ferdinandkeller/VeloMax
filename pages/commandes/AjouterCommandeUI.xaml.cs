@@ -99,6 +99,8 @@ namespace VéloMax.pages
 
         public void Type_Client_Change(object sender, SelectionChangedEventArgs e)
         {
+            pieces = new List<ComP>();
+            modeles = new List<ComM>();
             Content.Text = "";
             if (e.AddedItems[0].ToString() == "Particulier")
             {
